@@ -445,6 +445,7 @@
           tags:
           - CableCoil
     - item: Wirecutter
+    - item: Screwdriver
     - item: Crowbar
     - item: trayScanner
   - type: BorgModuleIcon
@@ -486,6 +487,7 @@
     - item: Wirecutter
     - item: WelderIndustrial
     - item: Multitool
+    - item: SprayPainter
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: tool-module }
 
@@ -522,7 +524,7 @@
   - type: ItemBorgModule
     hands:
     - item: MiningDrill
-    - item: Shovel
+    - item: WeaponProtoKineticAccelerator
     - item: MineralScannerUnpowered
     - item: BorgOreBag
     - item: RadioHandheld # imp
@@ -542,7 +544,7 @@
   - type: ItemBorgModule
     hands:
     - item: MiningDrillDiamond
-    - item: Shovel
+    - item: WeaponProtoKineticAccelerator
     - item: AdvancedMineralScannerUnpowered
     - item: OreBagOfHolding
   - type: BorgModuleIcon
@@ -584,6 +586,7 @@
     - item: WelderExperimental
     - item: Multitool
     - item: RemoteSignallerAdvanced
+    - item: SprayPainter
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-tools-module }
 
@@ -739,10 +742,12 @@
   - type: ItemBorgModule
     hands:
     - item: AdvMopItem
+    - item: AdvMopItem
     - item: BorgMegaSprayBottle
     - item: HoloprojectorBorg
     - item: BorgDropper
     - item: Beaker
+    - item: SprayPainter
       hand:
         emptyLabel: borg-slot-beakers-empty
         emptyRepresentative: Beaker
@@ -1181,7 +1186,7 @@
       - state: icon-syndicate
     - type: ItemBorgModule
       hands:
-      - item: Crowbar
+      - item: SyndicateJawsOfLife
       - item: Emag
       - item: AccessBreaker
       - item: PinpointerSyndicateNuclear
@@ -1298,6 +1303,7 @@
     - item: Wirecutter
     - item: Multitool
     - item: RefuelingWelder
+    - item: SprayPainter
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tool-module }
 
