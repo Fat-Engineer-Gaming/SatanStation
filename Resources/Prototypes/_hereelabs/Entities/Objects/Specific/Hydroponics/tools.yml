@@ -1,0 +1,231 @@
+- type: entity
+  name: wooden rake
+  parent: BaseItem
+  id: HydroponicsToolWoodRake
+  description: It's used for removing weeds or scratching your back.
+  components:
+  - type: Tag
+    tags:
+    - Hoe
+    - BotanyHoe
+  - type: Sprite
+    sprite: _hereelabs/Objects/Tools/Makeshift/rake.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    swingLeft: true
+    damage:
+      types:
+        Piercing: 10
+  - type: Item
+    sprite: _hereelabs/Objects/Tools/Makeshift/rake.rsi
+    size: Normal
+  - type: PhysicalComposition
+    materialComposition:
+      WoodPlank: 100
+  - type: DamageOtherOnHit
+    staminaCost: 5
+  - type: ThrowingAngle
+    angle: 135
+  - type: Construction
+    graph: WoodRake
+    node: rake
+  # end imp edits #
+  
+- type: entity
+  name: wooden plant clippers
+  parent: BaseItem
+  id: HydroponicsToolWoodClippers
+  description: A tool used to take samples from plants.
+  components:
+  - type: Tag
+    tags:
+    - PlantSampleTaker
+  - type: Sprite
+    sprite: _hereelabs/Objects/Tools/Makeshift/clippers.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: 90
+    damage:
+      types:
+        Slash: 4
+  - type: Item
+    sprite: _hereelabs/Objects/Tools/Makeshift/clippers.rsi
+    storedRotation: -90
+  - type: PhysicalComposition
+    materialComposition:
+      WoodPlank: 100
+  - type: DamageOtherOnHit # imp
+    staminaCost: 5
+  - type: Construction
+    graph: WoodClippers
+    node: clippers
+  
+- type: entity
+  name: wooden shiv
+  parent: [BaseKnife, BaseMinorContraband]
+  id: WoodShiv
+  description: A shiv made out of wood. Not exactly the best damage wise, but it's a start.
+  components:
+  - type: Tag
+    tags:
+    - CombatKnife
+    - Knife
+    - Shiv
+  - type: Construction
+    graph: WoodShiv
+    node: icon
+  - type: Sprite
+    sprite: _hereelabs/Objects/Tools/Makeshift/shiv.rsi
+    state: icon
+  - type: MeleeWeapon
+    attackRate: 2
+    damage:
+      types:
+        Slash: 2.25
+  - type: Item
+    sprite: _hereelabs/Objects/Tools/Makeshift/shiv.rsi
+  - type: DisarmMalus
+    malus: 0.225
+  - type: ThrowingAngle # imp
+    angle: 200
+    
+- type: entity
+  parent: BaseItem
+  id: WoodBucket
+  name: wooden bucket
+  description: It's a boring old wooden bucket. At least it's not plastic.
+  components:
+  - type: Drink
+    solution: bucket
+    ignoreEmpty: true
+  - type: Clickable
+  - type: Sprite
+    sprite: _hereelabs/Objects/Tools/Makeshift/bucket.rsi
+    layers:
+    - state: icon
+    - map: ["enum.SolutionContainerLayers.Fill"]
+      state: fill-1
+      visible: false
+  - type: Item
+    size: Normal
+    quickEquip: false
+  - type: SolutionContainerManager
+    solutions:
+      bucket:
+        maxVol: 250
+  - type: MixableSolution
+    solution: bucket
+  - type: SolutionTransfer
+    transferAmount: 100
+    maxTransferAmount: 100
+    minTransferAmount: 10
+    canChangeTransferAmount: true
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+  - type: MeleeWeapon
+    soundNoDamage:
+      path: "/Audio/Effects/Fluids/splat.ogg"
+    damage:
+      types:
+        Blunt: 0
+  - type: Spillable
+    solution: bucket
+  - type: SpillWhenWorn
+    solution: bucket
+  - type: DrawableSolution
+    solution: bucket
+  - type: RefillableSolution
+    solution: bucket
+  - type: DrainableSolution
+    solution: bucket
+  - type: SolutionItemStatus
+    solution: bucket
+  - type: Appearance
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: fill-
+  - type: ExaminableSolution
+    solution: bucket
+  - type: Tag
+    tags:
+      - Bucket
+  - type: PhysicalComposition
+    materialComposition:
+      WoodPlank: 50
+  - type: DnaSubstanceTrace
+  
+- type: entity
+  parent: [ StorageTank ]
+  id: WoodBarrel
+  abstract: false
+  name: wooden barrel
+  description: A wooden barrel. You could fill it up with liquids.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Structures/Storage/barrels.rsi #imp edit
+    state: brown #imp edit
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.18,-0.48,0.18,0.28"
+        density: 200
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 25
+      behaviors:
+      - !type:SpillBehavior
+        solution: tank
+      - !type:PlaySoundBehavior
+        sound:
+          collection: HollowPlastic #imp edit, plastic now
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: SolutionContainerManager
+    solutions:
+      tank:
+        maxVol: 500
+  - type: Construction
+    graph: WoodBarrel
+    node: woodBarrel
+  - type: PhysicalComposition
+    materialComposition:
+      WoodPlank: 3000 # 30 sheets, 1 stack, imp edit to make plastic to match sprites
+  - type: ExaminableSolution
+    solution: tank
+  - type: StaticPrice
+    price: 300 # imp edit, plastic more spensive than steel
+    
+- type: entity
+  parent: hydroponicsSoil
+  id: ConstructedSoil
+  name: constructed soil
+  description: It's a good start.
+  components:
+  - type: Construction
+    graph: ConstructSoil
+    node: soil
+  - type: Sprite
+    sprite: Structures/Hydroponics/misc.rsi
+    state: soil
+    noRot: true
+  - type: PlantHolder
+    waterLevel: 0
+    nutritionLevel: 0

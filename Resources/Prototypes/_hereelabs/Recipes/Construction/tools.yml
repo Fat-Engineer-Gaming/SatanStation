@@ -1,0 +1,55 @@
+- type: construction
+  id: ImprovisedWoodRake
+  graph: WoodRake
+  startNode: start
+  targetNode: rake
+  category: construction-category-tools
+  objectType: Item
+  
+- type: construction
+  id: ImprovisedWoodClippers
+  graph: WoodClippers
+  startNode: start
+  targetNode: clippers
+  category: construction-category-tools
+  objectType: Item
+  
+- type: construction
+  id: ImprovisedWoodShiv
+  graph: WoodShiv
+  startNode: start
+  targetNode: shiv
+  category: construction-category-tools
+  objectType: Item
+  
+- type: construction
+  id: ImprovisedWoodBucket
+  graph: WoodBucket
+  startNode: start
+  targetNode: bucket
+  category: construction-category-tools
+  objectType: Item
+  
+- type: construction
+  id: ImprovisedWoodBarrel
+  graph: WoodBarrel
+  startNode: start
+  targetNode: woodBarrel
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+    
+- type: construction
+  id: ConstructedSoil
+  graph: ConstructSoil
+  startNode: start
+  targetNode: soil
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

@@ -1,0 +1,119 @@
+- type: constructionGraph
+  id: WoodRake
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: rake
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 4
+              
+    - node: rake
+      entity: HydroponicsToolWoodRake
+      
+- type: constructionGraph
+  id: WoodClippers
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: clippers
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 4
+              
+    - node: clippers
+      entity: HydroponicsToolWoodClippers
+
+- type: constructionGraph
+  id: WoodShiv
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: shiv
+          steps:
+          - tag: Log
+            name: Add 1x log
+            icon:
+               sprite: Objects/Specific/Hydroponics/towercap.rsi
+               state: produce
+            doAfter: 4
+    - node: shiv
+      entity: WoodShiv
+
+- type: constructionGraph
+  id: WoodBucket
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: bucket
+          steps:
+            - material: WoodPlank
+              amount: 10
+              doAfter: 4
+            - material: Cloth
+              amount: 2
+              doAfter: 2
+              
+    - node: bucket
+      entity: WoodBucket
+      
+- type: constructionGraph
+  id: WoodBarrel
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: woodBarrel
+          steps:
+            - material: WoodPlank
+              amount: 30
+              doAfter: 1
+    - node: woodBarrel
+      entity: WoodBarrel
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialWoodPlank1
+              amount: 30
+          steps:
+            - tool: Screwing
+              doAfter: 10
+              
+- type: constructionGraph
+  id: ConstructSoil
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: soil
+          steps:
+          - tag: Rotten
+            name: Add 1x rotten meat.
+            icon:
+               sprite: Objects/Consumable/Food/meat.rsi
+               state: rotten
+            doAfter: 4
+          - tag: Rotten
+            name: Add 1x rotten meat.
+            icon:
+               sprite: Objects/Consumable/Food/meat.rsi
+               state: rotten
+            doAfter: 4
+    - node: soil
+      entity: ConstructedSoil
+      edges:
+        - to: start
+          completed:
+            - !type:DestroyEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 5

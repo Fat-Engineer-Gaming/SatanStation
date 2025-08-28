@@ -170,8 +170,5 @@ public sealed class BinglePitSystem : EntitySystem
         if (!TryComp<AppearanceComponent>(uid, out var appearanceComponent))
             appearanceComponent = _entityManager.EnsureComponent<AppearanceComponent>(uid);
         var appearance = _entityManager.System<AppearanceSystem>();
-        _entityManager.EnsureComponent<ScaleVisualsComponent>(uid);
-
-        appearance.SetData(uid, ScaleVisuals.Scale, Vector2.One * component.Level, appearanceComponent);
     }
 }

@@ -555,6 +555,7 @@
     - Meat
     - Trash
     - Recyclable
+    - Rotten # devilstation
   - type: Sprite
     state: rotten
   - type: SolutionContainerManager
@@ -571,6 +572,7 @@
   - type: FoodSequenceElement # imp
     entries:
       Burger: RottenMeatBurger
+  - type: Produce
   - type: Item
     inhandVisuals:
       left:

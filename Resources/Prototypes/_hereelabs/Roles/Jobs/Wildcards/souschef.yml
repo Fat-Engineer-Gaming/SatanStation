@@ -3,7 +3,7 @@
   name: Sous Chef 
   description: Criticize Le Patron's cooking skills. Get hit over the head with a rolling pin. 
   playTimeTracker: JobSousChef
-  startingGear: ChefGear
+  startingGear: SousChefGear
   icon: "JobIconChef"
   supervisors: job-supervisors-hd
   access:
