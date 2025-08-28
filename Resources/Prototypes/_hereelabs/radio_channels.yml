@@ -1,0 +1,7 @@
+- type: radioChannel
+  id: Wizard
+  name: chat-radio-wizard
+  keycode: 'w'
+  frequency: 2020
+  color: "#DD3CFF"
+  longRange: true

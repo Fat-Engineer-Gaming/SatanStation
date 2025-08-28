@@ -1,0 +1,14 @@
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyWizard
+  name: wizard encryption key
+  description: An encryption key used by wizards, for some reason. Why do those guys even have radios at all?
+  components:
+    - type: EncryptionKey
+      channels:
+        - Wizard
+      defaultChannel: Wizard
+    - type: Sprite
+      layers:
+        - state: crypt_rusted
+        - state: common_label
