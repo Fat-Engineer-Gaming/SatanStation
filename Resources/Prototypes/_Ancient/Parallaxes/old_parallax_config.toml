@@ -1,20 +1,3 @@
-# Clear to black.
-[[layers]]
-type = "clear"
-color = "#000000"
-
-# Background nebula detail.
-[[layers]]
-type = "noise"
-seed = 7832
-innercolor = "#5d1fe1"
-outercolor = "#230070"
-noise_type = "ridged"
-frequency = "4"
-octaves = 8
-power = "0.25"
-threshold = "0.40"
-
 # Mask background nebula.
 [[layers]]
 type = "noise"
