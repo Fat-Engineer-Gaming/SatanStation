@@ -1,0 +1,23 @@
+- type: entity
+  id: TeardownimovCircuitBoard
+  parent: BaseElectronics
+  name: law board (Teadownimov)
+  description: An electronics board containing the Teardownimov lawset. Expect spacing if the AI gets this. A lot of it.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: TeardownLawset
+
+- type: entity
+  id: PlasmafloodCircuitBoard
+  parent: BaseElectronics
+  name: law board (Plasmaflood)
+  description: An electronics board containing the Teardownimov lawset. Expect plasma if the AI gets it. A lot.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: PlasmafloodLawset

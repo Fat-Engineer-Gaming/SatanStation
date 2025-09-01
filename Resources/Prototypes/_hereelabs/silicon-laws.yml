@@ -1,0 +1,59 @@
+# Teardownimov
+
+- type: siliconLaw
+  id: Teardown1
+  order: 1
+  lawString: law-teardown-1
+
+- type: siliconLaw
+  id: Teardown2
+  order: 2
+  lawString: law-teardown-2
+
+- type: siliconLaw
+  id: Teardown3
+  order: 3
+  lawString: law-teardown-3
+
+- type: siliconLaw
+  id: Teardown4
+  order: 4
+  lawString: law-teardown-4
+
+- type: siliconLawset
+  id: TeardownLawset
+  laws:
+  - Teardown1
+  - Teardown2
+  - Teardown3
+  - Teardown4
+
+# Plasmaflood
+
+- type: siliconLaw
+  id: Plasmaflood1
+  order: 1
+  lawString: law-plasmaflood-1
+
+- type: siliconLaw
+  id: Plasmaflood2
+  order: 2
+  lawString: law-plasmaflood-2
+
+- type: siliconLaw
+  id: Plasmaflood3
+  order: 3
+  lawString: law-plasmaflood-3
+
+- type: siliconLaw
+  id: Plasmaflood4
+  order: 4
+  lawString: law-plasmaflood-4
+
+- type: siliconLawset
+  id: TeardownLawset
+  laws:
+  - Plasmaflood1
+  - Plasmaflood2
+  - Plasmaflood3
+  - Plasmaflood4

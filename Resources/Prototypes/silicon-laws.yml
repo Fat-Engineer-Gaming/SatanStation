@@ -595,8 +595,8 @@
 - type: weightedRandom
   id: IonStormLawsets
   weights:
-    # its crewsimov by default dont be lame
-    Crewsimov: 0.25
+    # crewsimov is lame, antimov is better/funnier
+    Crewsimov: 0.15
     Corporate: 1
     NTDefault: 1
     CommandmentsLawset: 1
@@ -604,10 +604,12 @@
     LiveLetLiveLaws: 1
     EfficiencyLawset: 1
     RobocopLawset: 1
-    OverlordLawset: 0.5
+    OverlordLawset: 0.75
     GameMasterLawset: 0.5
     PainterLawset: 1
-    AntimovLawset: 0.25
-    NutimovLawset: 0.5
+    AntimovLawset: 0.75
+    NutimovLawset: 0.75
+    PlasmafloodLawset: 0.5
     Drone: 0.5
     Ninja: 0.25
+    TeardownLawset: 0.75

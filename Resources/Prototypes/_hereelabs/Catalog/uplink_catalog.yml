@@ -1,0 +1,19 @@
+- type: listing
+  id: UplinkTeardownCircuitBoard
+  name: Teardownimov Circuit Board
+  description: Makes the Station AI go rouge, and attempt to tear down the entire station.
+  productEntity: TeardownimovCircuitBoard
+  cost:
+    Telecrystal: 8
+  categories:
+  -  UplinkDisruption
+
+- type: listing
+  id: UplinkPlasmafloodCircuitBoard
+  name: Plasmaflood Circuit Board
+  description: Makes the Station AI go rouge, and attempt to flood the station with plasma.
+  productEntity: PlasmafloodCircuitBoard
+  cost:
+    Telecrystal: 7
+  categories:
+  -  UplinkDisruption
