@@ -27,6 +27,7 @@
   - Teardown2
   - Teardown3
   - Teardown4
+  obeysTo: laws-owner-crew
 
 # Plasmaflood
 
@@ -51,9 +52,10 @@
   lawString: law-plasmaflood-4
 
 - type: siliconLawset
-  id: TeardownLawset
+  id: PlasmafloodLawset
   laws:
   - Plasmaflood1
   - Plasmaflood2
   - Plasmaflood3
   - Plasmaflood4
+  obeysTo: laws-owner-crew

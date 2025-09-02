@@ -1,8 +1,8 @@
 - type: listing
   id: UplinkTeardownCircuitBoard
-  name: Teardownimov Circuit Board
+  name: Teardown Circuit Board
   description: Makes the Station AI go rouge, and attempt to tear down the entire station.
-  productEntity: TeardownimovCircuitBoard
+  productEntity: TeardownCircuitBoard
   cost:
     Telecrystal: 8
   categories:

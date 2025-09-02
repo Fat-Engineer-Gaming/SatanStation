@@ -1,23 +1,41 @@
 - type: entity
-  id: TeardownimovCircuitBoard
-  parent: BaseElectronics
-  name: law board (Teadownimov)
-  description: An electronics board containing the Teardownimov lawset. Expect spacing if the AI gets this. A lot of it.
+  id: TeardownCircuitBoard
+  parent: BaseLawBoard
+  name: law board (Teardown)
+  description: An electronics board containing the Teardown lawset. This will cause the AI to try to tear down the station at all costs.
   components:
   - type: Sprite
     sprite: Objects/Misc/module.rsi
     state: std_mod
   - type: SiliconLawProvider
     laws: TeardownLawset
+  - type: DetailedInspect
+    verbMessage: verbs-detailed-inspect-lawset
+    tickEntries: false
+    numberedEntries: true
+    examineText:
+    - law-teardown-1
+    - law-teardown-2
+    - law-teardown-3
+    - law-teardown-4
 
 - type: entity
   id: PlasmafloodCircuitBoard
-  parent: BaseElectronics
+  parent: BaseLawBoard
   name: law board (Plasmaflood)
-  description: An electronics board containing the Teardownimov lawset. Expect plasma if the AI gets it. A lot.
+  description: An electronics board containing the Teardown lawset. This will cause the AI to try to flood the station with plasma at all costs.
   components:
   - type: Sprite
     sprite: Objects/Misc/module.rsi
     state: std_mod
   - type: SiliconLawProvider
     laws: PlasmafloodLawset
+  - type: DetailedInspect
+    verbMessage: verbs-detailed-inspect-lawset
+    tickEntries: false
+    numberedEntries: true
+    examineText:
+    - law-plasmaflood-1
+    - law-plasmaflood-2
+    - law-plasmaflood-3
+    - law-plasmaflood-4
