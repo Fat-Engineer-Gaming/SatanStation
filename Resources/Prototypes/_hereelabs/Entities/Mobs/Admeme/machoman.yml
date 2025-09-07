@@ -1,0 +1,63 @@
+- type: startingGear
+  id: MachoManGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitHawaiBlack
+    shoes: ClothingShoesColorRed
+
+- type: entity
+  name: Macho Man
+  parent: BaseMobHuman
+  id: MobMachoMan
+  components:
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+    markings:
+     HumanNoseUppie: [ "#EDC7ADFF"]
+     HeadTwisting: [ "#EDC7ADFF"]
+     HeadTwistingFlipped: [ "#EDC7ADFF"]
+     HandHeavyTattoosRight: [ "#FF0000FF", "#FF0000FF" ]
+     HandHeavyTattoosLeft: [ "#FF0000FF", "#FF0000FF" ]
+     HandRingsLeft: [ "#FF0000FF", "#FF0000FF" ]
+     HandRingsRight: [ "#FF0000FF", "#FF0000FF" ]
+     HandProstheticRight: [ "#E40000FF"]
+     HandProstheticLeft: [ "#FF0000FF"]
+     ArmTwistingLeft: [ "#FFB5B5FF"]
+     ArmTwistingRight: [ "#FFD2D2FF"]
+    skinColor: '#F2CEB5FF'
+    eyeColor: '#F9FF00FF'
+    facialHairColor: '#00000000'
+    facialHair: HumanFacialHairNeckbeard
+    hairColor: '#00000000'
+    hair: HairBald
+    gender: Male
+    sex: Male
+    age: 114
+  - type: Stamina
+    critThreshold: 500
+  - type: Insulated
+  - type: FlashImmunity
+  - type: NightVision
+    color: "#AA4A44"
+    activateSound: null
+    deactivateSound: null
+  - type: ThermalVision
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      300: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/explosion1.ogg
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 100
+        Slash: 10
+        Structural: 200
+  - type: Loadout
+    prototypes: [MachoManGear]
+  - type: InputMover
+  - type: MobMover
+  - type: ReplacementAccent # prevent talking
+    accent: machoman
