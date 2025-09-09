@@ -1,0 +1,83 @@
+- type: inventoryTemplate
+  id: scpsl
+  slots:
+    - name: pocket1
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 0,3
+      strippingWindowPos: 0,4
+      displayName: Pocket 1
+      stripHidden: true
+    - name: pocket2
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 2,3
+      strippingWindowPos: 1,4
+      displayName: Pocket 2
+      stripHidden: true
+    - name: pocket3
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 4,3
+      strippingWindowPos: 2,4
+      displayName: Pocket 3
+      stripHidden: true
+    - name: pocket4
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 3
+      uiWindowPos: 6,3
+      strippingWindowPos: 3,4
+      displayName: Pocket 4
+      stripHidden: true
+    - name: pocket5
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 3
+      uiWindowPos: 8,3
+      strippingWindowPos: 4,4
+      displayName: Pocket 5
+      stripHidden: true
+    - name: pocket6
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 3
+      uiWindowPos: 10,3
+      strippingWindowPos: 5,4
+      displayName: Pocket 6
+      stripHidden: true
+    - name: pocket7
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 3
+      uiWindowPos: 12,3
+      strippingWindowPos: 6,4
+      displayName: Pocket 7
+      stripHidden: true
+    - name: pocket8
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 3
+      uiWindowPos: 14,3
+      strippingWindowPos: 7,4
+      displayName: Pocket 8
+      stripHidden: true

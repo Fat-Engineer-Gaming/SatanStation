@@ -1,0 +1,50 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "horrendous spritework by heree",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "default"
+        },
+        {
+            "name": "breaking"
+        },
+        {
+            "name": "cadet"
+        },
+        {
+            "name": "commander"
+        },
+        {
+            "name": "containmentengineer"
+        },
+        {
+            "name": "facilitymanager"
+        },
+        {
+            "name": "guard"
+        },
+        {
+            "name": "janitor"
+        },
+        {
+            "name": "lieutenant"
+        },
+        {
+            "name": "majorscientist"
+        },
+        {
+            "name": "o5"
+        },
+        {
+            "name": "scientist"
+        },
+        {
+            "name": "zonemanager"
+        }
+    ]
+}

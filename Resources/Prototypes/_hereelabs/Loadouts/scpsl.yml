@@ -1,0 +1,55 @@
+- type: startingGear
+  id: SCPSL_CadetGear
+  equipment:
+    pocket1: SCPSL_NTFCadetKeycard
+    pocket2: WeaponSCPSL_P90
+    pocket3: Handcuffs
+    pocket4: SCPSL_Medkit
+    pocket5: SCPSL_RadioHandheld
+
+- type: startingGear
+  id: SCPSL_LieutenantGear
+  equipment:
+    pocket1: SCPSL_NTFLieutenantKeycard
+    #pocket2: WeaponSCPSL_E11
+    pocket2: WeaponPulseCarbine
+    pocket3: Handcuffs
+    pocket4: SCPSL_Medkit
+    pocket5: SCPSL_RadioHandheld
+    pocket6: ExGrenade
+
+- type: startingGear
+  id: SCPSL_CommanderGear
+  equipment:
+    pocket1: SCPSL_NTFCommanderKeycard
+    #pocket2: WeaponSCPSL_E11
+    pocket2: WeaponPulseRifle
+    pocket3: Handcuffs
+    pocket4: SCPSL_Medkit
+    pocket5: SCPSL_RadioHandheld
+    pocket6: ExGrenade
+    pocket7: GrenadeFlashBang
+    pocket8: EmergencyMedipen
+    
+- type: startingGear
+  id: SCPSL_GuardGear
+  equipment:
+    pocket1: SCPSL_GuardKeycard
+    pocket2: WeaponSCPSL_MP7
+    pocket3: SCPSL_Medkit
+    pocket4: Handcuffs
+    pocket5: SCPSL_RadioHandheld
+    pocket6: GrenadeFlashBang
+
+- type: startingGear
+  id: SCPSL_ScientistGear
+  equipment:
+    pocket1: SCPSL_ScientistKeycard
+    pocket2: SCPSL_Medkit
+    
+- type: startingGear
+  id: SCPSL_ChaosGear
+  equipment:
+    pocket1: SCPSL_ChaosKeycard
+    pocket2: WeaponSCPSL_Logicer
+    pocket3: SCPSL_Pills
