@@ -1,0 +1,15 @@
+- type: reagent
+  id: Painkiller
+  name: Painkiller
+  group: Medicine
+  desc: Kills the pain.
+  physicalDesc: relieving
+  flavor: medicine
+  color: "#A5BFC0"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:EvenHealthChange
+        damage:
+          Burn: -5
+          Brute: -5

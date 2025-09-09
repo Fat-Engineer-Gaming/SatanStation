@@ -1,7 +1,15 @@
 - type: radioChannel
   id: Wizard
-  name: chat-radio-wizard
+  name: Wizard
   keycode: 'w'
   frequency: 2020
   color: "#DD3CFF"
+  longRange: true
+  
+- type: radioChannel
+  id: Foundation
+  name: Foundation
+  keycode: '1'
+  frequency: 1173
+  color: "#C7C7C7"
   longRange: true

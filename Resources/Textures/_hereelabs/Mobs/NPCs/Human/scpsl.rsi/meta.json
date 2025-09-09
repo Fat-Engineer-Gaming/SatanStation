@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Devilstation",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "chaosinsurgency",
+      "directions": 4
+    },
+    {
+      "name": "classd",
+      "directions": 4
+    },
+    {
+      "name": "guard",
+      "directions": 4
+    },
+    {
+      "name": "ninetailedfox",
+      "directions": 4
+    },
+    {
+      "name": "scientist",
+      "directions": 4
+    },
+    {
+      "name": "tutorial",
+      "directions": 4
+    }
+  ]
+}

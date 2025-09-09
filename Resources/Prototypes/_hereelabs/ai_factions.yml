@@ -1,0 +1,28 @@
+# Devilstation
+- type: faction
+  id: SCPFoundation
+  hostile:
+  - ClassD
+  - SCP
+  - ChaosInsurgency
+
+- type: faction
+  id: ChaosInsurgency
+  friendly:
+  - ClassD
+  hostile:
+  - SCPFoundation
+
+- type: faction
+  id: ClassD
+  friendly:
+  - ChaosInsurgency
+  hostile:
+  - SCP
+  - SCPFoundation
+
+- type: faction
+  id: SCP
+  hostile:
+  - SCPFoundation
+  - ClassD
