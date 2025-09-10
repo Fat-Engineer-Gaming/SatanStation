@@ -2008,6 +2008,8 @@
     entries:
       Taco: Soybeans
       Burger: SoybeansBurger
+  - type: PluralName # imp
+    oneOf: plural-name-some
 
 - type: entity
   name: spaceman's trumpet
@@ -2316,6 +2318,8 @@
   - type: Tag
     tags:
     - Fruit
+  - type: PluralName # imp
+    oneOf: plural-name-some
 
 - type: entity
   name: berries
@@ -2353,6 +2357,8 @@
     entries:
       Taco: Berries
       Burger: BerriesBurger
+  - type: PluralName # imp
+    oneOf: plural-name-some
 
 - type: entity
   name: bungo fruit
