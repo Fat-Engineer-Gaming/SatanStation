@@ -155,9 +155,12 @@ namespace Content.Server.PDA
         {
             _ringer.RingerPlayRingtone(ent.Owner);
 
-            if (!_containerSystem.TryGetContainingContainer((ent, null, null), out var container)
-                || !TryComp<ActorComponent>(container.Owner, out var actor))
-                return;
+            // Begin Impstation - PDAs can be self-viewed
+            if (!(TryComp<ActorComponent>(ent, out var actor) ||
+                  (_containerSystem.TryGetContainingContainer((ent, null, null), out var container)
+                   && TryComp<ActorComponent>(container.Owner, out actor))))
+                   return;
+            // End Impstation - PDAs can be self-viewed
 
             var message = FormattedMessage.EscapeText(args.Message);
             var wrappedMessage = Loc.GetString("pda-notification-message",
@@ -199,6 +202,24 @@ namespace Content.Server.PDA
 
             var programs = _cartridgeLoader.GetAvailablePrograms(uid, loader);
             var id = CompOrNull<IdCardComponent>(pda.ContainedId);
+            // Begin Impstation - PDAs can be silicons
+            var owner = id?.FullName;
+            var job = id?.LocalizedJobTitle;
+            if (HasComp<Content.Shared.Silicons.Borgs.Components.BorgChassisComponent>(uid))
+            {
+                if (TryComp<Content.Shared.Silicons.Borgs.Components.BorgSwitchableTypeComponent>(uid, out var switchable) && switchable.SelectedBorgType is { } borgType)
+                    job = Loc.GetString($"borg-type-{borgType}-transponder");
+                else
+                    job = Loc.GetString("borg-type-any-transponder");
+
+                owner = MetaData(uid).EntityName;
+            }
+            if (HasComp<Content.Shared.Silicons.StationAi.StationAiHeldComponent>(uid))
+            {
+                job = Loc.GetString($"station-ai-transponder");
+                owner = MetaData(uid).EntityName;
+            }
+            // End Impstation - PDAs can be silicons
             var state = new PdaUpdateState(
                 programs,
                 GetNetEntity(loader.ActiveProgram),
