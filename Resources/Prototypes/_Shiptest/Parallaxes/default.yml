@@ -9,15 +9,15 @@
     - texture:
         !type:ImageParallaxTextureSource
         path: "/Textures/_Shiptest/Parallaxes/layer2.png"
-      slowness: 0.996625
+      slowness: 0.986625
     - texture:
         !type:ImageParallaxTextureSource
         path: "/Textures/_Shiptest/Parallaxes/layer3.png"
-      slowness: 0.989375
-    - texture:
-        !type:ImageParallaxTextureSource
-        path: "/Textures/_Shiptest/Parallaxes/asteroids.png"
-      slowness: 0.984352
+      slowness: 0.979375
+    #- texture:
+    #    !type:ImageParallaxTextureSource
+    #    path: "/Textures/_Shiptest/Parallaxes/asteroids.png"
+    #  slowness: 0.984352
   layersLQ:
     - texture:
         !type:GeneratedParallaxTextureSource
