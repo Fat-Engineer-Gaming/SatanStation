@@ -750,9 +750,10 @@
   description: A gigantic mech, usually used as a last resort in assault operations. It has several weapons on its disposal. ...WHY ARE YOU STOPPING TO LOOK AT IT?!!
   parent: PlayerSiliconBase
   suffix: Boss, Ghost Role
+  components:
   - type: MovementSpeedModifier
-    baseWalkSpeed : 3
     baseSprintSpeed : 2
+    baseWalkSpeed : 2
   - type: MobState
     allowedStates:
       - Alive
