@@ -1,19 +1,19 @@
 # Devilstation
-- type: faction
+- type: npcFaction
   id: SCPFoundation
   hostile:
   - ClassD
   - SCP
   - ChaosInsurgency
 
-- type: faction
+- type: npcFaction
   id: ChaosInsurgency
   friendly:
   - ClassD
   hostile:
   - SCPFoundation
 
-- type: faction
+- type: npcFaction
   id: ClassD
   friendly:
   - ChaosInsurgency
@@ -21,7 +21,7 @@
   - SCP
   - SCPFoundation
 
-- type: faction
+- type: npcFaction
   id: SCP
   hostile:
   - SCPFoundation
