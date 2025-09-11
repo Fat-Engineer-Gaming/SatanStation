@@ -1,8 +1,8 @@
-<p align="center"> <img alt="Impstation" src="https://github.com/hereelabs/imp-station-14/blob/master/Resources/Textures/Logo/logo.png" /></p>
+<p align="center"> <img alt="Impstation" src="https://github.com/Devilstation/imp-station-14/blob/master/Resources/Textures/Logo/logo.png" /></p>
+
+This is the repository for Devilstation, a fork of Impstation.
 
 Impstation is a fork of Space Station 14, a remake of SS13 that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), a homegrown engine written in C#.
-
-But this... isn't Impstation. Just a shitty little fork of it.
 
 ## Links
 [Website](https://impstation.gay/) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.io/about/nightlies/)
@@ -16,13 +16,14 @@ Additionally, see these resources for license and attribution information:
 
 ## Contributing
 
-Are you smart? Go contribute to [Impstation](https://github.com/impstation/imp-station-14), Not this. If, for some ungodly reason, you *really ***REALLY**** want to contribute here, just make a PR, and so long as it doesn't make the game unplayable, I'll merge it.
+If you plan on making any intensive PRs, try sending it to our upstream, [Impstation](https://github.com/impstation/imp-station-14), first. We'll get the PR regardless if it does get merged there, and I'm sure the people over there would enjoy more cool content.
+Devilstation's PR guidelines are very lax. If you want something added, and are able to contribute, then you can get it in without much difficulty. I only ask that you make sure to have whatever you PR work.
 
 ## Building
 
 1. Clone this repo:
 ```shell
-git clone https://github.com/hereelabs/imp-station-14.git
+git clone https://github.com/Devilstation/imp-station-14.git
 ```
 2. Go to the project folder and run `RUN_THIS.py` to initialize the submodules and load the engine:
 ```shell
