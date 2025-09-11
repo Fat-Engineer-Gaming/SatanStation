@@ -85,6 +85,15 @@
 
 - type: entity
   parent: BaseWeaponBallisticTurret
+  id: WeaponTurretXenoborg
+  suffix: Xenoborg
+  components:
+  - type: NpcFactionMember
+    factions:
+    - Xenoborg
+
+- type: entity
+  parent: BaseWeaponBallisticTurret
   id: WeaponTurretXeno
   name: xeno turret
   suffix: Xeno

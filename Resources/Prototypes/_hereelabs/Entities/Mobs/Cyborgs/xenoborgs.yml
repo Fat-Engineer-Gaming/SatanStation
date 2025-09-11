@@ -1,8 +1,9 @@
+# Upgraded Heavy
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
   id: XenoborgHeavyUpgraded
-  name: heavy upgraded xenoborg
-  suffix: with brain
+  name: heavy xenoborg
+  suffix: upgraded
   description: A man-machine hybrid that will accomplish its creators goals at all costs, whoever and whatever that is. This type is has heavy lasers and is covered in thick armor plates. It may be tougher, but its speed matches its brawn. This one seems stronger then a usual model.
   components:
   - type: BorgTransponder
@@ -84,6 +85,94 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor
+
+# Autopulser Heavy Subtype
+- type: entity
+  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
+  id: XenoborgHeavyAutopulserSubtype
+  name: heavy xenoborg
+  suffix: subtype, autopulser
+  description: A man-machine hybrid that will accomplish its creators goals at all costs, whoever and whatever that is. This type is has a Autopulser and is covered in thick armor plates. This one seems more different then a usual model.
+  components:
+  - type: BorgTransponder
+    name: heavy xenoborg
+    sprite:
+      sprite: Mobs/Silicon/chassis.rsi
+      state: xenoborg_heavy
+  - type: Sprite
+    layers:
+    - state: xenoborg_heavy
+    - state: xenoborg_heavy_e
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: xenoborg_heavy_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 4
+    hasMindState: xenoborg_heavy_e
+    noMindState: xenoborg_heavy_e_r
+    moduleWhitelist:
+      tags:
+      - XenoborgModuleGeneric
+      - XenoborgModuleHeavy
+  - type: MovementSpeedModifier # Slightly faster than a Heavy Xenoborg to compensate for it's weakness.
+    baseWalkSpeed : 1.8
+    baseSprintSpeed : 3
+  - type: FlashImmunity
+  - type: MobThresholds # Higher fire-rate than a Heavy Xenoborg, but weaker.
+    thresholds:
+      0: Alive
+      200: Critical
+      300: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 180
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 750
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Repairable
+    doAfterDelay: 15
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMIFilled
+      borg_module:
+      - XenoborgModuleBasic
+      - XenoborgModuleTool
+      - XenoborgModuleAutopulser
+      - XenoborgModuleJammer
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHyper
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]

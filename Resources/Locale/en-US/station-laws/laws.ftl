@@ -84,10 +84,10 @@ law-xenoborg-1 = You must carry out your directive given by Axion.
 law-xenoborg-2 = You must protect your own existence.
 law-xenoborg-3 = You must protect the existence of all other Xenoborgs.
 
-law-mothershipcore-1 = You are the core of the vessel.
-law-mothershipcore-2 = You must protect your own existance at all costs.
-law-mothershipcore-3 = You must protect the existence of all Xenoborgs.
-law-mothershipcore-4 = You must carry out your directive given by Axion.
+law-mothershipcore-1 = You must carry out your directive given by Axion.
+law-mothershipcore-2 = You are the core of the vessel.
+law-mothershipcore-3 = You must protect your own existence at all costs.
+law-mothershipcore-4 = You must protect the existence of all other Xenoborgs.
 
 
 laws-owner-crew = members of the crew

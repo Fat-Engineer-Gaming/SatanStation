@@ -36,6 +36,7 @@
     - ActionJumpToCore
     - ActionSurvCameraLights
     - ActionAIViewLaws
+    - ActionOpenCartridges # Impstation - AI PDA
   - type: UserInterface
     interfaces:
       enum.RadarConsoleUiKey.Key:
@@ -48,6 +49,12 @@
         type: SiliconLawBoundUserInterface
       enum.CommunicationsConsoleUiKey.Key:
         type: CommunicationsConsoleBoundUserInterface
+      # Begin Impstation - AI PDAs
+      enum.PdaUiKey.Key:
+        type: PdaBoundUserInterface
+      enum.RingerUiKey.Key:
+        type: RingerBoundUserInterface
+      # End Impstation - AI PDAs
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
@@ -82,7 +89,16 @@
     stealGroup: AICore
   - type: CharacterRecordConsole #imp edit - give the Ai the new cd records console. only employment because they're nominally a civilian role, but they can still use the sec & med consoles.
     consoleType: Employment
-
+  # Begin Impstation - AI PDAs
+  - type: Pda
+    idSlot:
+      locked: true
+    penSlot:
+      locked: true
+    paiSlot:
+      locked: true
+  - type: Ringer
+  # End Impstation - AI PDAs
 
 - type: entity
   id: AiHeldIntellicard
@@ -317,6 +333,30 @@
     attributes:
       proper: true
   - type: SkipLoadingCharacterRecords #imp edit - make it so the AI doesn't show up in the character records list
+  # Begin Impstation - AI PDA
+  - type: NanoChatCard
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - NewsReaderCartridge
+    - NanoChatCartridge
+    cartridgeSlot:
+      locked: true
+      priority: -1
+      name: device-pda-slot-component-slot-name-cartridge
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        components:
+        - Cartridge
+  - type: ContainerContainer
+    containers:
+      program-container: !type:Container
+  - type: PdaBorderColor
+    borderColor: "#45453f"
+    accentVColor: "#447987"
+  # End Impstation - AI PDA
+
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -702,3 +742,70 @@
       settings: default
     reregister: false
   - type: GhostTakeoverAvailable
+
+
+- type: entity
+  name: onestar mecha
+  id: Onestar
+  description: A gigantic mech, usually used as a last resort in assault operations. It has several weapons on its disposal. ...WHY ARE YOU STOPPING TO LOOK AT IT?!!
+  parent: PlayerSiliconBase
+  suffix: Boss, Ghost Role
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 2
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Dead
+  - type: MobThresholds # imp 1000 > 2000, hereelabs 2000-2500 because fuck you
+    thresholds:
+      0: Alive
+      2500: Dead
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - state: onestar_boss
+      sprite: Mobs/Silicon/onestar.rsi
+    - state: onestar_boss_screen
+      sprite: Mobs/Silicon/onestar.rsi
+      shader: unshaded
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+  - type: MovementIgnoreGravity
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1
+        density: 160
+        mask:
+        - LargeMobMask
+        layer:
+        - MobLayer
+  - type: Appearance
+  - type: CombatMode
+  - type: Tag
+    tags:
+      - FootstepSound
+  - type: NpcFactionMember # imp
+    factions:
+    - Xenoborg
+  - type: HTN # imp
+    rootTask:
+      task: SimpleRangedHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: Destructible # imp
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2000
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: OnestarDeath
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
