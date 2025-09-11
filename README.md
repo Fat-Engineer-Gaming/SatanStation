@@ -17,6 +17,7 @@ Additionally, see these resources for license and attribution information:
 ## Contributing
 
 If you plan on making any intensive PRs, try sending it to our upstream, [Impstation](https://github.com/impstation/imp-station-14), first. We'll get the PR regardless if it does get merged there, and I'm sure the people over there would enjoy more cool content.
+
 Devilstation's PR guidelines are very lax. If you want something added, and are able to contribute, then you can get it in without much difficulty. I only ask that you make sure to have whatever you PR work.
 
 ## Building
