@@ -1,6 +1,6 @@
 - type: reagent
-  id: Painkiller
-  name: Painkiller
+  id: Painkillers
+  name: Painkillers
   group: Medicine
   desc: Kills the pain.
   physicalDesc: relieving
