@@ -643,7 +643,7 @@
 - type: entity
   name: onestar mecha
   id: Onestar
-  description: A gigantic mech. You should really be shooting at it.
+  description: A gigantic mech, usually used as a last resort in assault operations. It has several weapons on its disposal. ...WHY ARE YOU STOPPING TO LOOK AT IT?!!
   parent: PlayerSiliconBase
   suffix: Boss, Ghost Role
   components:
@@ -669,10 +669,10 @@
     allowedStates:
       - Alive
       - Dead
-  - type: MobThresholds # imp 1000 > 2000
+  - type: MobThresholds # imp 1000 > 2000, hereelabs 2000-2500 because fuck you
     thresholds:
       0: Alive
-      2000: Dead
+      2500: Dead
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -703,7 +703,7 @@
       - FootstepSound
   - type: NpcFactionMember # imp
     factions:
-    - AllHostile
+    - Xenoborg
   - type: HTN # imp
     rootTask:
       task: SimpleRangedHostileCompound
