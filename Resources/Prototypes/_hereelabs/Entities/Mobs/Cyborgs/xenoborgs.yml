@@ -279,7 +279,7 @@
       - XenoborgModuleTool
       - XenoborgModuleHypo
       - XenoborgModuleChameleonProjector
-      - XenoborgModuleCloakDevice
+      - XenoborgModuleSuperCloakDevice
       - BorgModuleSyndicateWeapon
   - type: ItemSlots
     slots:
@@ -291,3 +291,107 @@
       0: Alive
       150: Critical
       300: Dead
+
+- type: entity
+  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
+  id: XenoborgJanitor
+  name: janitor xenoborg
+  suffix: with brain
+  description: A man-machine hybrid that will accomplish its creators goals at all costs, whoever and whatever that is. This type is... A JANITOR??? AND WHY DOES IT HAVE A CLAW ON IT??? WHAT THE FU-
+  components:
+  - type: BorgTransponder
+    name: janitor xenoborg
+    sprite:
+      sprite: Mobs/Silicon/chassis.rsi
+      state: xenoborg_janitor
+  - type: Sprite
+    layers:
+    - state: xenoborg_janitor
+    - state: xenoborg_janitor_e
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: xenoborg_janitor_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 4
+    hasMindState: xenoborg_janitor_e
+    noMindState: xenoborg_janitor_e_r
+    moduleWhitelist:
+      tags:
+      - XenoborgModuleGeneric
+  - type: FlashImmunity
+  - type: MobThresholds # It's just a janitor, doesn't need too much HP.
+    thresholds:
+      0: Alive
+      20: Critical # die
+      50: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 190
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer_xenoborg.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Repairable
+    doAfterDelay: 2 # You MUST clean.
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMIFilled
+      borg_module:
+      - XenoborgModuleBasic
+      - XenoborgModuleTool
+      - XenoborgModuleJanitor
+      - BorgModuleSyndicateWeapon # THE JANITOR CAN NOT BE STOPPED. WHAT THE FUCK IS A KILOMETER!!!!!!!!!!!!
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor # THE CLEANING WILL NOT BE STOPPED
+
+- type: entity
+  parent: XenoborgJanitor
+  id: XenoborgJanitorPrinted
+  suffix: no brain
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMI
+      borg_module:
+      - XenoborgModuleBasic
+      - XenoborgModuleTool
+      - XenoborgModuleJanitor
+      - BorgModuleSyndicateWeapon # THE JANITOR CAN NOT BE STOPPED. WHAT THE FUCK IS A KILOMETER!!!!!!!!!!!!
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHighPrinted
+

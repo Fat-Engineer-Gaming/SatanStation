@@ -16,12 +16,14 @@
     - Changeling
     - Heretic
     - Replicator
+    - Xenoborg
 
 - type: npcFaction
   id: Penguin
   hostile:
   - Dragon
   - Replicator
+  - Xenoborg
 
 # Initial infected should be ignored by zombies
 - type: npcFaction
