@@ -297,7 +297,7 @@
   id: XenoborgJanitor
   name: janitor xenoborg
   suffix: with brain
-  description: A man-machine hybrid that aims to replicate itself. They love extracting brains to insert into fresh Xenoborg chassis to grow their army. This type is has heavy lasers and is covered in thick armor plates. It may be tougher, but its speed matches its brawn.
+  description: A man-machine hybrid that will accomplish its creators goals at all costs, whoever and whatever that is. This type is... A JANITOR??? AND WHY DOES IT HAVE A CLAW ON IT??? WHAT THE FU-
   components:
   - type: BorgTransponder
     name: janitor xenoborg
@@ -322,13 +322,12 @@
     moduleWhitelist:
       tags:
       - XenoborgModuleGeneric
-      - XenoborgModuleJanitor
   - type: FlashImmunity
   - type: MobThresholds # It's just a janitor, doesn't need too much HP.
     thresholds:
       0: Alive
-      50: Critical
-      100: Dead
+      20: Critical # die
+      50: Dead
     stateAlertDict:
       Alive: BorgHealth
       Critical: BorgCrit
@@ -360,7 +359,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Repairable
-    doAfterDelay: 5 # You MUST clean.
+    doAfterDelay: 2 # You MUST clean.
   - type: ContainerFill
     containers:
       borg_brain:
@@ -369,8 +368,30 @@
       - XenoborgModuleBasic
       - XenoborgModuleTool
       - XenoborgModuleJanitor
+      - BorgModuleSyndicateWeapon # THE JANITOR CAN NOT BE STOPPED. WHAT THE FUCK IS A KILOMETER!!!!!!!!!!!!
   - type: ItemSlots
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMicroreactor # THE CLEANING WILL NOT BE STOPPED
+
+- type: entity
+  parent: XenoborgJanitor
+  id: XenoborgJanitorPrinted
+  suffix: no brain
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMI
+      borg_module:
+      - XenoborgModuleBasic
+      - XenoborgModuleTool
+      - XenoborgModuleJanitor
+      - BorgModuleSyndicateWeapon # THE JANITOR CAN NOT BE STOPPED. WHAT THE FUCK IS A KILOMETER!!!!!!!!!!!!
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellHighPrinted
+

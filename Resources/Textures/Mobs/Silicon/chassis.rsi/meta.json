@@ -727,7 +727,7 @@
             "name": "xenoborg_janitor",
             "delays": [
                 [
-                    0.5,
+                    0.2,
                     0.2
                 ]
             ]
@@ -736,7 +736,7 @@
             "name": "xenoborg_janitor_l",
             "delays": [
                 [
-                    0.5,
+                    0.2,
                     0.2
                 ]
             ]
@@ -745,7 +745,7 @@
             "name": "xenoborg_janitor_e",
             "delays": [
                 [
-                    0.5,
+                    0.2,
                     0.2
                 ]
             ]
@@ -754,10 +754,10 @@
             "name": "xenoborg_janitor_e_r",
             "delays": [
                 [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
                 ]
             ]
         },

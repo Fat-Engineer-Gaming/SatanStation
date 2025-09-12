@@ -55,6 +55,7 @@
   - Dino # imp
   - Dragon
   - Replicator # imp
+  - Xenoborg
 
 - type: npcFaction
   id: SimpleHostile
@@ -196,7 +197,6 @@
 - type: npcFaction
   id: Xenoborg
   hostile:
-  # they have brains
   - NanoTrasen
   - Syndicate
   - Zombie
@@ -206,9 +206,6 @@
   - Heretic # imp
   - Dino # imp
   - Penguin # imp
-
-  - Xeno # rivalry
-
-  # cause they are hostile to them
+  - Xeno
   - SimpleHostile
   - AllHostile
