@@ -1,0 +1,358 @@
+- type: entity
+  parent: Shiptest_BaseComputerRetro
+  id: Shiptest_BaseComputerShuttleRetro
+  name: shuttle console
+  description: Used to pilot a shuttle.
+  abstract: true
+  components:
+  - type: ShuttleConsole
+  - type: ActivatableUI
+    key: enum.ShuttleConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+        enum.ShuttleConsoleUiKey.Key:
+          type: ShuttleConsoleBoundUserInterface
+        enum.WiresUiKey.Key:
+          type: WiresBoundUserInterface
+  - type: RadarConsole
+  - type: WorldLoader
+    radius: 256
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#43ccb5"
+  - type: ItemSlots
+    slots:
+      disk_slot:
+        name: Disk
+        insertSound:
+          path: /Audio/Machines/terminal_insert_disc.ogg
+        ejectSound:
+          path: /Audio/Machines/terminal_insert_disc.ogg
+        whitelist:
+          components:
+          - ShuttleDestinationCoordinates
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+        ents: []
+      disk_slot: !type:ContainerSlot {}
+  - type: GuideHelp
+    guides:
+    - ShuttleCraft
+
+- type: entity
+  parent: Shiptest_BaseComputerShuttleRetro
+  id: Shiptest_ComputerShuttleRetro
+  name: old shuttle console
+  description: Used to pilot a shuttle. Has an older chassis, but works just the same.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-retro
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi
+    - map: ["computerLayerKeyboard"]
+      state: keyboardbase
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi
+    - map: ["computerLayerScreen"]
+      state: shuttle
+    - map: ["computerLayerKeys"]
+      state: generic_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: Computer
+    board: ShuttleConsoleCircuitboard
+    
+- type: entity
+  parent: [ Shiptest_BaseComputerRetro ]
+  id: Shiptest_ComputerCommsRetro
+  name: old communications computer # imp
+  description: A computer used to make announcements over the station's communications relay. Not great at sending long distance communications.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-retro
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi
+    - map: ["computerLayerKeyboard"]
+      state: keyboardbase
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: ["computerLayerKeys"]
+      state: generic_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: CommunicationsConsole
+    title: Station
+    canShuttle: false
+    global: false
+    announceSentBy: true
+    sound: /Audio/_hereelabs/Announcements/oldannounce.ogg
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    transmitFrequencyId: ShuttleTimer
+  - type: ActivatableUI
+    key: enum.CommunicationsConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.CommunicationsConsoleUiKey.Key:
+        type: CommunicationsConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: CommsComputerCircuitboard
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#3c5eb5"
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+    
+- type: entity
+  parent: Shiptest_ComputerCommsRetro
+  id: Shiptest_LongDistanceComputerCommsRetro
+  name: old long distance communications computer
+  description: A computer used to make long distance announcements via keyboard. Great for getting in contact with stations and shuttles nearby.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-solgov
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: keyboardbase
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: comm_logs
+    - map: ["computerLayerKeys"]
+      state: generic_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: AccessReader
+    access: [[ "CentralCommand" ]]
+  - type: CommunicationsConsole
+    title: Long Distance
+    color: "#7B8EFF"
+    canShuttle: false
+    global: true
+  - type: Computer
+    board: CentcommCommsComputerCircuitboard
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#00FF00"
+    
+- type: entity
+  parent: [ Shiptest_BaseComputerRetro ]
+  id: Shiptest_ComputerIdRetro
+  name: old ID card computer
+  description: Terminal for programming station resident ID cards to access parts of the station.
+  components:
+  - type: IdCardConsole
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    targetIdSlot:
+      name: id-card-console-target-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+  - type: ActivatableUI
+    key: enum.IdCardConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.IdCardConsoleUiKey.Key:
+        type: IdCardConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: CrewManifestViewer
+    ownerKey: enum.IdCardConsoleUiKey.Key
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-retro
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: keyboardbase # imp
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: id
+    - map: ["computerLayerKeys"]
+      state: med_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: Computer
+    board: IDComputerCircuitboard
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#3c5eb5"
+  - type: Tag
+    tags:
+    - AccessBreakerImmune
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      IdCardConsole-privilegedId: !type:ContainerSlot
+      IdCardConsole-targetId: !type:ContainerSlot
+      
+- type: entity
+  parent: Shiptest_BaseComputerRetro
+  id: Shiptest_ComputerCrewMonitoringRetro
+  name: crew monitoring console
+  description: Used to monitor active health sensors built into most of the crew's uniforms.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-retro
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: generic_key
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: crew
+    - map: ["computerLayerKeys"]
+      state: med_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#006400"
+  - type: Computer
+    board: CrewMonitoringComputerCircuitboard
+  - type: ActivatableUI
+    key: enum.CrewMonitoringUIKey.Key
+  - type: UserInterface
+    interfaces:
+        enum.CrewMonitoringUIKey.Key:
+          type: CrewMonitoringBoundUserInterface
+        enum.WiresUiKey.Key:
+          type: WiresBoundUserInterface
+  - type: CrewMonitoringConsole
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: CrewMonitor
+  - type: WirelessNetworkConnection
+    range: 1200
+    
+- type: entity
+  parent: [ Shiptest_BaseComputerRetro ]
+  id: Shiptest_ComputerAlertRetro
+  name: old atmospheric alerts computer
+  description: Used to access the station's atmospheric automated alert system.
+  components:
+  - type: Computer
+    board: AlertsComputerCircuitboard
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-retro
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: generic_key
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: alert_0
+    - map: ["computerLayerKeys"]
+      state: atmos_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+        computerLayerKeys:
+          True: { visible: true, shader: unshaded }
+          False: { visible: true, shader: shaded }
+      enum.AtmosAlertsComputerVisuals.ComputerLayerScreen:
+        computerLayerScreen:
+          0: { state: alert_0 }
+          1: { state: alert_0 }
+          2: { state: alert_1 }
+          3: { state: alert_2 }
+          4: { state: alert_2 }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+  - type: AtmosAlertsComputer
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.AtmosAlertsComputerUiKey.Key
+  - type: UserInterface
+    interfaces:
+        enum.AtmosAlertsComputerUiKey.Key:
+            type: AtmosAlertsComputerBoundUserInterface
+        enum.WiresUiKey.Key:
+          type: WiresBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - AtmosphericAlertsComputer
+    - DeviceMonitoringAndControl
+
+- type: entity
+  parent: [ Shiptest_BaseComputerRetro ]
+  id: Shiptest_ComputerAtmosMonitoringRetro
+  name: old atmospheric network monitor
+  description: Used to monitor the station's atmospheric networks.
+  components:
+  - type: Computer
+    board: AtmosMonitoringComputerCircuitboard
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-retro
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: generic_key
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: tank
+    - map: ["computerLayerKeys"]
+      state: atmos_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: AtmosMonitoringConsole
+    navMapTileColor: "#1a1a1a"
+    navMapWallColor: "#404040"
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.AtmosMonitoringConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.AtmosMonitoringConsoleUiKey.Key:
+        type: AtmosMonitoringConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: GuideHelp
+    guides:
+    - AtmosphericNetworkMonitor
+    - DeviceMonitoringAndControl

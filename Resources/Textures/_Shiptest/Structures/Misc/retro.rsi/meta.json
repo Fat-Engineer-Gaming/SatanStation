@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CC-AGPL-3.0",
+  "copyright": "https://github.com/shiptest-ss13/Shiptest/commit/cd0030a66948a77562cb00b903ca5be96e74b9f6",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "retro_tree"
+    },
+    {
+      "name": "retro_rock1"
+    },
+    {
+      "name": "retro_rock"
+    },
+    {
+      "name": "retro_lava",
+      "delays": [
+        [
+          0.5,
+          0.2,
+          0.2,
+          0.2,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "retro_boulder"
+    },
+    {
+      "name": "retro_water",
+      "delays": [
+        [
+          0.5,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    }
+  ]
+}
