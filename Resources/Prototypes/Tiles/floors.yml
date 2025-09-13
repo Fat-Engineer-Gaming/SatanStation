@@ -1,7 +1,7 @@
 - type: tile
   id: FloorSteel
   name: tiles-steel-floor
-  sprite: /Textures/_hereelabs/Tiles/steel.png
+  sprite: /Textures/_Shiptest/Tiles/tiled_gray.png
   variants: 4
   placementVariants:
   - 1.0
@@ -19,7 +19,7 @@
 - type: tile
   id: FloorSteelCheckerLight
   name: tiles-steel-floor-checker-light
-  sprite: /Textures/Tiles/cafeteria.png
+  sprite: /Textures/_Shiptest/Tiles/checker_light.png
   variants: 4
   placementVariants:
   - 1.0
@@ -37,7 +37,7 @@
 - type: tile
   id: FloorSteelCheckerDark
   name: tiles-steel-floor-checker-dark
-  sprite: /Textures/_hereelabs/Tiles/checker_dark.png
+  sprite: /Textures/_Shiptest/Tiles/checker_dark.png
   variants: 4
   placementVariants:
   - 1.0
@@ -121,7 +121,7 @@
 - type: tile
   id: FloorSteelMono
   name: tiles-steel-floor-mono
-  sprite: /Textures/Tiles/steel_mono.png
+  sprite: /Textures/_Shiptest/Tiles/monotile_gray.png
   variants: 4
   placementVariants:
   - 1.0
@@ -217,7 +217,7 @@
 - type: tile
   id: FloorPlastic
   name: tiles-plastic-floor
-  sprite: /Textures/_hereelabs/Tiles/tile_full.png
+  sprite: /Textures/_Shiptest/Tiles/ridged.png
   variants: 4
   placementVariants:
   - 1.0
@@ -256,7 +256,7 @@
 - type: tile
   id: FloorWhite
   name: tiles-white-floor
-  sprite: /Textures/_hereelabs/Tiles/white.png
+  sprite: /Textures/_Shiptest/Tiles/tiled_light.png
   variants: 4
   placementVariants:
   - 1.0
@@ -340,7 +340,7 @@
 - type: tile
   id: FloorWhiteMono
   name: tiles-white-floor-mono
-  sprite: /Textures/_hereelabs/Tiles/white_mono.png
+  sprite: /Textures/_Shiptest/Tiles/monotile_light.png
   variants: 4
   placementVariants:
   - 1.0
@@ -412,7 +412,7 @@
 - type: tile
   id: FloorWhitePlastic
   name: tiles-plastic-white-floor
-  sprite: /Textures/_hereelabs/Tiles/tile_fulllight.png
+  sprite: /Textures/_Shiptest/Tiles/lighthatched.png
   variants: 4
   placementVariants:
   - 1.0
@@ -430,7 +430,7 @@
 - type: tile
   id: FloorDark
   name: tiles-dark-floor
-  sprite: /Textures/_hereelabs/Tiles/dark.png
+  sprite: /Textures/_Shiptest/Tiles/tiled_dark.png
   variants: 4
   placementVariants:
   - 1.0
@@ -514,7 +514,7 @@
 - type: tile
   id: FloorDarkMono
   name: tiles-dark-floor-mono
-  sprite: /Textures/_hereelabs/Tiles/dark_mono.png
+  sprite: /Textures/_Shiptest/Tiles/monotile_dark.png
   variants: 4
   placementVariants:
   - 1.0
@@ -586,7 +586,7 @@
 - type: tile
   id: FloorDarkPlastic
   name: tiles-plastic-dark-floor
-  sprite: /Textures/_hereelabs/Tiles/tile_fulldark.png
+  sprite: /Textures/_Shiptest/Tiles/darkchunky.png
   variants: 4
   placementVariants:
   - 1.0
@@ -604,7 +604,7 @@
 - type: tile
   id: FloorTechMaint
   name: tiles-techmaint-floor
-  sprite: /Textures/_hereelabs/Tiles/tech_maint.png
+  sprite: /Textures/_Shiptest/Tiles/techmaint.png
   variants: 4
   placementVariants:
   - 1.0
@@ -652,7 +652,7 @@
 - type: tile
   id: FloorMono
   name: tiles-mono-floor
-  sprite: /Textures/_hereelabs/Tiles/mono.png
+  sprite: /Textures/_Shiptest/Tiles/monotile_gray.png
   variants: 4
   placementVariants:
   - 1.0
@@ -682,7 +682,7 @@
 - type: tile
   id: FloorSteelDirty
   name: tiles-dirty-steel-floor
-  sprite: /Textures/Tiles/steel_dirty.png
+  sprite: /Textures/_Shiptest/Tiles/tiled_gray.png
   variants: 4
   placementVariants:
   - 1.0
@@ -736,7 +736,13 @@
 - type: tile
   id: FloorBlue
   name: tiles-blue-tile
-  sprite: /Textures/Tiles/blue.png
+  sprite: /Textures/_Shiptest/Tiles/blue.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -748,7 +754,7 @@
 - type: tile
   id: FloorSteelLime
   name: tiles-lime-floor
-  sprite: /Textures/Tiles/lime.png
+  sprite: /Textures/_Shiptest/Tiles/lime.png
   variants: 4
   placementVariants:
   - 1.0
@@ -803,7 +809,13 @@
 - type: tile
   id: FloorFreezer
   name: tiles-freezer
-  sprite: /Textures/Tiles/freezer.png
+  sprite: /Textures/_Shiptest/Tiles/freezer.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -815,7 +827,13 @@
 - type: tile
   id: FloorShowroom
   name: tiles-showroom-floor
-  sprite: /Textures/Tiles/showroom.png
+  sprite: /Textures/_Shiptest/Tiles/showroom.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -827,7 +845,7 @@
 - type: tile
   id: FloorHydro
   name: tiles-hydro-floor
-  sprite: /Textures/_hereelabs/Tiles/hydro.png
+  sprite: /Textures/_Shiptest/Tiles/hydro.png
   variants: 4
   placementVariants:
   - 1.0
@@ -845,7 +863,7 @@
 - type: tile
   id: FloorBar
   name: tiles-bar-floor
-  sprite: /Textures/_hereelabs/Tiles/bar.png
+  sprite: /Textures/_Shiptest/Tiles/bar.png
   variants: 4
   placementVariants:
   - 1.0
@@ -863,7 +881,13 @@
 - type: tile
   id: FloorClown
   name: tiles-clown-floor
-  sprite: /Textures/Tiles/clown.png
+  sprite: /Textures/_Shiptest/Tiles/clown.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -875,7 +899,13 @@
 - type: tile
   id: FloorMime
   name: tiles-mime-floor
-  sprite: /Textures/Tiles/mime.png
+  sprite: /Textures/_Shiptest/Tiles/mime.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -887,7 +917,13 @@
 - type: tile
   id: FloorKitchen
   name: tiles-kitchen-floor
-  sprite: /Textures/Tiles/kitchen.png
+  sprite: /Textures/_Shiptest/Tiles/checker_light.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -899,7 +935,13 @@
 - type: tile
   id: FloorLaundry
   name: tiles-laundry-floor
-  sprite: /Textures/Tiles/laundry.png
+  sprite: /Textures/_Shiptest/Tiles/laundry.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]

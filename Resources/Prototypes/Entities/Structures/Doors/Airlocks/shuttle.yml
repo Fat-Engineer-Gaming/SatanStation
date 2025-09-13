@@ -29,8 +29,39 @@
           position: "0,-0.5"
         hard: false
   - type: Sprite
-    sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
-    snapCardinals: false
+    sprite: _Shiptest/Structures/Doors/Airlocks/External/shuttle.rsi
+    layers: 
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: emergency_unlit
+      shader: unshaded
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+      visible: false
+    - state: welded
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+      shader: unshaded
+    - state: panel_open
+      sprite: _Shiptest/Structures/Doors/Airlocks/overlays.rsi
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
+    - state: electrified
+      sprite: Effects/electricity.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.Sparks"]
   - type: Wires
     layoutId: Docking
   - type: Door
@@ -68,8 +99,39 @@
   description: Necessary for connecting two space craft together.
   components:
   - type: Sprite
-    sprite: _Shiptest/Structures/Doors/Airlocks/External/external_glass.rsi
-    snapCardinals: false
+    sprite: _Shiptest/Structures/Doors/Airlocks/External/shuttle_glass.rsi
+    layers: 
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: emergency_unlit
+      shader: unshaded
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+      visible: false
+    - state: welded
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: emergency_unlit
+      sprite: _Shiptest/Structures/Doors/Airlocks/External/external.rsi
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+      shader: unshaded
+    - state: panel_open
+      sprite: _Shiptest/Structures/Doors/Airlocks/overlays.rsi
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
+    - state: electrified
+      sprite: Effects/electricity.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.Sparks"]
   - type: Occluder
     enabled: false
   - type: Door

@@ -1,0 +1,102 @@
+- type: entity
+  parent: BaseStructureComputer
+  id: Shiptest_BaseComputerRetro
+  name: old computer
+  description: It's old, but that doesn't mean it doesn't work just as well as a newer computer.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Animateable
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
+  - type: Computer
+  - type: ApcPowerReceiver
+    powerLoad: 200
+  - type: ExtensionCableReceiver
+  - type: ActivatableUIRequiresPower
+  - type: Sprite
+    sprite: _Shiptest/Structures/Machines/retro_computer.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer-retro
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi
+    - map: ["computerLayerKeyboard"]
+      state: keyboardbase
+      sprite: _Shiptest/Structures/Machines/retro_computer.rsi
+    - map: ["computerLayerScreen"]
+      state: generic
+    - map: ["computerLayerKeys"]
+      state: generic_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+        computerLayerKeys:
+          True: { visible: true, shader: unshaded }
+          False: { visible: true, shader: shaded }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+  - type: LitOnPowered
+  - type: PointLight
+    color: "#887755FF" #imp
+    radius: 2.4 #imp
+    energy: 1.6
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    offset: "0, 0.4" # shine from the top, not bottom of the computer
+    castShadows: false
+  - type: EmitSoundOnUIOpen
+    sound:
+      collection: Keyboard
+      params:
+        volume: -1
+        variation: 0.05 #making a note so this is in the commit if we want to change this later - ruddygreat
+        pitch: 1.05  # low pitch keyboard sounds feel kinda weird
+    blacklist:
+      tags:
+      - NoConsoleSound
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+        ents: []
+  - type: LightningTarget
+    priority: 1
+  - type: RequireProjectileTarget
+  - type: Electrified
+    enabled: false
+    usesApcPower: true
+  - type: WiresPanel
+  - type: WiresVisuals
+  - type: Wires
+    boardName: wires-board-name-computer
+    layoutId: Computer
+  - type: PowerSwitch #imp; idk thought it'd be cute and immersive to turn computers on and off - AvianMaiden
+# Begin Harmony changes, add ambience
+  - type: SpamEmitSoundRequirePower
+  - type: SpamEmitSound
+    minInterval: 25
+    maxInterval: 40
+    sound:
+      collection: HarmonyComputerSFX
+      params:
+        volume: -5
+        maxDistance: 3
+        variation: 0.1
+# End Harmony Changes
+#
+#     This is overwritten by children, so needs to be defined there
+#  - type: UserInterface
+#    interfaces:
+#      enum.WiresUiKey.Key:
+#        type: WiresBoundUserInterface
