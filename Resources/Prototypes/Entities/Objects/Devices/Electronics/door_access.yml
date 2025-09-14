@@ -326,3 +326,12 @@
   components:
   - type: AccessReader
     access: [["Xenoborg"]]
+
+# Sol Alliance
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSAN
+  suffix: SAN, Locked
+  components:
+  - type: AccessReader
+    access: [["SAN"]]

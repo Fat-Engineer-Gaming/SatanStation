@@ -488,6 +488,7 @@
     - item: WelderIndustrial
     - item: Multitool
     - item: SprayPainter
+    - item: MeleeHammer
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: tool-module }
 
@@ -1371,6 +1372,7 @@
     - item: Multitool
     - item: RefuelingWelder
     - item: SprayPainter
+    - item: MeleeHammer
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tool-module }
 
