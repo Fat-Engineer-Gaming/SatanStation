@@ -58,4 +58,10 @@
   id: Tongue
 
 - type: Tag
+  id: Ushanka
+
+- type: Tag
   id: WaterTank
+
+- type: Tag
+  id: WoodenHandle
