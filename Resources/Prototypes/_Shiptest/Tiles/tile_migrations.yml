@@ -1,31 +1,31 @@
 - type: tileAlias
-  id: FloorSteel
-  target: Shiptest_FloorSteelTiled
+  id: Shiptest_FloorSteelTiled
+  target: FloorSteel
   
 - type: tileAlias
-  id: FloorMono
-  target: Shiptest_FloorSteelMono
+  id: Shiptest_FloorSteelMono
+  target: FloorMono
   
 - type: tileAlias
-  id: FloorDark
-  target: Shiptest_FloorDark
+  id: Shiptest_FloorDark
+  target: FloorDark
   
 - type: tileAlias
-  id: FloorDarkMono
-  target: Shiptest_FloorDarkMono
+  id: Shiptest_FloorDarkMono
+  target: FloorDarkMono
   
 - type: tileAlias
-  id: FloorWhite
-  target: Shiptest_FloorLight
+  id: Shiptest_FloorLight
+  target: FloorWhite
   
 - type: tileAlias
-  id: FloorWhiteMono
-  target: Shiptest_FloorLightMono
+  id: Shiptest_FloorLightMono
+  target: FloorWhiteMono
   
 - type: tileAlias
-  id: FloorTechMaint
-  target: Shiptest_FloorSteelTech
+  id: Shiptest_FloorSteelTech
+  target: FloorTechMaint
   
 - type: tileAlias
-  id: Plating
-  target: Shiptest_Plating
+  id: Shiptest_Plating
+  target: Plating

@@ -441,3 +441,15 @@
     collection: FootstepTile
   itemDrop: FloorTileItemLino
   heatCapacity: 10000
+  
+- type: tile
+  id: NES_FloorStone
+  name: stone floor
+  sprite: /Textures/_Shiptest/Tiles/Specific/retro_stone.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000

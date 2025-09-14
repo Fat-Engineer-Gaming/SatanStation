@@ -1,0 +1,40 @@
+# Desert
+- type: tile
+  id: NES_FloorSand
+  name: tiles-desert-floor
+  sprite: /Textures/_Shiptest/Tiles/Specific/retro_sand.png
+  variants: 1
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+  
+# Grass
+- type: tile
+  id: NES_FloorGrass
+  name: tiles-grass-planet-floor
+  sprite: /Textures/_Shiptest/Tiles/Specific/retro_grass.png
+  variants: 1
+  baseTurf: FloorPlanetDirt
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepGrass
+  itemDrop: FloorTileItemGrass
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+# Snow
+- type: tile
+  id: NES_FloorSnow
+  name: tiles-snow
+  sprite: /Textures/_Shiptest/Tiles/Specific/retro_snow.png
+  variants: 1
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepSnow
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
