@@ -368,3 +368,17 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: EvolutionMenuUtilityMimic
+  name: evolutionmenu-utility-mimic-name
+  description: evolutionmenu-utility-mimic-desc
+  icon: { sprite: _Goobstation/Changeling/changeling_abilities.rsi, state: mimic }
+  productAction: ActionMimic
+  cost:
+    EvolutionPoint: 1
+  categories:
+  - ChangelingAbilityUtility
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
