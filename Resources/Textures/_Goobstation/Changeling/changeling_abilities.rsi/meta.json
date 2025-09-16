@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken and edited from Paradise Station wiki https://paradisestation.org/wiki/index.php/Changeling , sting_transform and sting_armblade retextures made by whateverusername0",
+    "copyright": "Taken and edited from Paradise Station wiki https://paradisestation.org/wiki/index.php/Changeling , sting_transform and sting_armblade retextures made by whateverusername0, mimic made by fatengineergaming.",
     "MetaAtlas": false,
     "size": {
         "x": 32,
@@ -108,6 +108,9 @@
         },
         {
             "name": "transform_cycle"
+        },
+        {
+            "name": "mimic"
         }
     ]
 }

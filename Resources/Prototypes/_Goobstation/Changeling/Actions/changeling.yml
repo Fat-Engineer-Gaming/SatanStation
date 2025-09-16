@@ -599,6 +599,24 @@
     chemicalCost: 0
     useInLesserForm: true
 
+- type: entity
+  id: ActionMimic
+  name: Voice Mimicry
+  description: We modify our mouth to sound like others.
+  components:
+  - type: Action
+    useDelay: 1
+    checkCanInteract: false
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Goobstation/Changeling/changeling_abilities.rsi
+      state: mimic
+  - type: InstantAction
+    event: !type:ToggleMimicEvent {}
+  - type: GoobChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
+
     # imp edit ↓
 - type: entity
   parent: BaseAction

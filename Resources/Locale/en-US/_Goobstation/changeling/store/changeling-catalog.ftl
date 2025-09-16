@@ -134,3 +134,7 @@ evolutionmenu-utility-spacesuit-name = Space Adaptation
 evolutionmenu-utility-spacesuit-desc =
     We prepare our cells to resist barotrauma. We must still breathe. Cannot be used in our lesser form.
     Costs a small amount of chemicals.
+
+evolutionmenu-utility-mimic-name = Voice Mimicry
+evolutionmenu-utility-mimic-desc =
+    We shape our mouth and tounge to allow us to make the illusion of sounding like our prey.

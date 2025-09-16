@@ -14,6 +14,7 @@ using Content.Shared.Atmos.Rotting;
 using Content.Server.Objectives.Components;
 using Content.Server.Light.Components;
 using Content.Shared._Goobstation.Changeling;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
@@ -34,6 +35,7 @@ public sealed partial class GoobChangelingSystem : EntitySystem
     [Dependency] private readonly SharedRottingSystem _rotting = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _userInterfaceSystem = default!;
+    [Dependency] private static readonly EntProtoId MimicMaskPrototype = "ClothingMaskChangelingMimicMask";
 
     public void SubscribeAbilities()
     {
@@ -49,6 +51,7 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         SubscribeLocalEvent<GoobChangelingComponent, ToggleArmbladeEvent>(OnToggleArmblade);
         SubscribeLocalEvent<GoobChangelingComponent, CreateBoneShardEvent>(OnCreateBoneShard);
         SubscribeLocalEvent<GoobChangelingComponent, ToggleChitinousArmorEvent>(OnToggleArmor);
+        SubscribeLocalEvent<GoobChangelingComponent, ToggleMimicEvent>(OnToggleMimic);
         SubscribeLocalEvent<GoobChangelingComponent, ToggleOrganicShieldEvent>(OnToggleShield);
         SubscribeLocalEvent<GoobChangelingComponent, ShriekDissonantEvent>(OnShriekDissonant);
         SubscribeLocalEvent<GoobChangelingComponent, ShriekResonantEvent>(OnShriekResonant);
@@ -795,6 +798,20 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         EnsureComp<GoobHivemindComponent>(uid);
 
         _popup.PopupEntity(Loc.GetString("changeling-hivemind-start"), uid, uid);
+    }
+
+    private void OnToggleMimic(EntityUid uid, GoobChangelingComponent comp, ref ToggleMimicEvent args)
+    {
+        if (!TryUseAbility(uid, comp, args))
+            return;
+
+        if (!TryToggleArmor(uid, comp, [(MimicMaskPrototype, "mask")]))
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-equip-mask-fail"), uid, uid);
+            return;
+        }
+
+        PlayMeatySound(uid, comp);
     }
 
     #endregion
