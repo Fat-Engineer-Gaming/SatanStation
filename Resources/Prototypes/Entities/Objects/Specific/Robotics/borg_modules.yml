@@ -540,6 +540,8 @@
     - item: RubberStampApproved
     - item: RubberStampDenied
     - item: RadioHandheld
+    - item: WeaponTetherGun
+    - item: WeaponForceGun
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
 

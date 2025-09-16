@@ -78,3 +78,5 @@ changeling-mindshield-start = We shape our mental patterns to imitate mindshield
 changeling-mindshield-end = We cease our mindshield pattern shaping.
 changeling-mindshield-fail = We already have an implanted mindshield.
 changeling-mindshield-overwrite = Our mindshield patterns give way to the implant.
+
+changeling-equip-mimic-fail = We must remove our mask.
