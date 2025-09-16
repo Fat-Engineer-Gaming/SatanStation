@@ -1,7 +1,7 @@
 {
     "version": 1,
-    "license": "CC0-1.0",
-    "copyright": "Edited by Flareguy, originally created by github user @moonheart08",
+    "license": "CC-AGPL-3.0",
+    "copyright": "Edited by hereelabs, tile sprites originate from Shiptest.",
     "size": {
         "x": 32,
         "y": 32
