@@ -55,7 +55,7 @@
 - type: tile
   id: FloorSteelMini
   name: tiles-steel-floor-mini
-  sprite: /Textures/Tiles/steel_mini.png
+  sprite: /Textures/_Shiptest/Tiles/steel_mini.png
   variants: 4
   placementVariants:
   - 1.0
@@ -73,7 +73,7 @@
 - type: tile
   id: FloorSteelPavement
   name: tiles-steel-floor-pavement
-  sprite: /Textures/Tiles/steel_pavement.png
+  sprite: /Textures/_Shiptest/Tiles/steel_pavement.png
   variants: 4
   placementVariants:
   - 1.0
@@ -91,7 +91,7 @@
 - type: tile
   id: FloorSteelDiagonal
   name: tiles-steel-floor-diagonal
-  sprite: /Textures/Tiles/steel_diagonal.png
+  sprite: /Textures/_Shiptest/Tiles/steel_diagonal.png
   variants: 4
   placementVariants:
   - 1.0
@@ -139,7 +139,7 @@
 - type: tile
   id: FloorSteelPavementVertical
   name: tiles-steel-floor-pavement-vertical
-  sprite: /Textures/Tiles/steel_pavement_vertical.png
+  sprite: /Textures/_Shiptest/Tiles/steel_pavement_vertical.png
   variants: 4
   placementVariants:
   - 1.0
@@ -157,7 +157,7 @@
 - type: tile
   id: FloorSteelHerringbone
   name: tiles-steel-floor-herringbone
-  sprite: /Textures/Tiles/steel_herringbone.png
+  sprite: /Textures/_Shiptest/Tiles/steel_herringbone.png
   variants: 4
   placementVariants:
   - 1.0
@@ -175,7 +175,7 @@
 - type: tile
   id: FloorSteelDiagonalMini
   name: tiles-steel-floor-diagonal-mini
-  sprite: /Textures/Tiles/steel_diagonal_mini.png
+  sprite: /Textures/_Shiptest/Tiles/steel_diagonal_mini.png
   variants: 4
   placementVariants:
   - 1.0
@@ -274,7 +274,7 @@
 - type: tile
   id: FloorWhiteMini
   name: tiles-white-floor-mini
-  sprite: /Textures/Tiles/white_mini.png
+  sprite: /Textures/_Shiptest/Tiles/white_mini.png
   variants: 4
   placementVariants:
   - 1.0
@@ -292,7 +292,7 @@
 - type: tile
   id: FloorWhitePavement
   name: tiles-white-floor-pavement
-  sprite: /Textures/Tiles/white_pavement.png
+  sprite: /Textures/_Shiptest/Tiles/white_pavement.png
   variants: 4
   placementVariants:
   - 1.0
@@ -310,7 +310,7 @@
 - type: tile
   id: FloorWhiteDiagonal
   name: tiles-white-floor-diagonal
-  sprite: /Textures/Tiles/white_diagonal.png
+  sprite: /Textures/_Shiptest/Tiles/white_diagonal.png
   variants: 4
   placementVariants:
   - 1.0
@@ -358,7 +358,7 @@
 - type: tile
   id: FloorWhitePavementVertical
   name: tiles-white-floor-pavement-vertical
-  sprite: /Textures/Tiles/white_pavement_vertical.png
+  sprite: /Textures/_Shiptest/Tiles/white_pavement_vertical.png
   variants: 4
   placementVariants:
   - 1.0
@@ -376,7 +376,7 @@
 - type: tile
   id: FloorWhiteHerringbone
   name: tiles-white-floor-herringbone
-  sprite: /Textures/Tiles/white_herringbone.png
+  sprite: /Textures/_Shiptest/Tiles/white_herringbone.png
   variants: 4
   placementVariants:
   - 1.0
@@ -394,7 +394,7 @@
 - type: tile
   id: FloorWhiteDiagonalMini
   name: tiles-white-floor-diagonal-mini
-  sprite: /Textures/Tiles/white_diagonal_mini.png
+  sprite: /Textures/_Shiptest/Tiles/white_diagonal_mini.png
   variants: 4
   placementVariants:
   - 1.0
@@ -448,7 +448,7 @@
 - type: tile
   id: FloorDarkMini
   name: tiles-dark-floor-mini
-  sprite: /Textures/Tiles/dark_mini.png
+  sprite: /Textures/_Shiptest/Tiles/dark_mini.png
   variants: 4
   placementVariants:
   - 1.0
@@ -466,7 +466,7 @@
 - type: tile
   id: FloorDarkPavement
   name: tiles-dark-floor-pavement
-  sprite: /Textures/Tiles/dark_pavement.png
+  sprite: /Textures/_Shiptest/Tiles/dark_pavement.png
   variants: 4
   placementVariants:
   - 1.0
@@ -484,7 +484,7 @@
 - type: tile
   id: FloorDarkDiagonal
   name: tiles-dark-floor-diagonal
-  sprite: /Textures/Tiles/dark_diagonal.png
+  sprite: /Textures/_Shiptest/Tiles/dark_diagonal.png
   variants: 4
   placementVariants:
   - 1.0
@@ -532,7 +532,7 @@
 - type: tile
   id: FloorDarkPavementVertical
   name: tiles-dark-floor-pavement-vertical
-  sprite: /Textures/Tiles/dark_pavement_vertical.png
+  sprite: /Textures/_Shiptest/Tiles/dark_pavement_vertical.png
   variants: 4
   placementVariants:
   - 1.0
@@ -550,7 +550,7 @@
 - type: tile
   id: FloorDarkHerringbone
   name: tiles-dark-floor-herringbone
-  sprite: /Textures/Tiles/dark_herringbone.png
+  sprite: /Textures/_Shiptest/Tiles/dark_herringbone.png
   variants: 4
   placementVariants:
   - 1.0
@@ -568,7 +568,7 @@
 - type: tile
   id: FloorDarkDiagonalMini
   name: tiles-dark-floor-diagonal-mini
-  sprite: /Textures/Tiles/dark_diagonal_mini.png
+  sprite: /Textures/_Shiptest/Tiles/dark_diagonal_mini.png
   variants: 4
   placementVariants:
   - 1.0
