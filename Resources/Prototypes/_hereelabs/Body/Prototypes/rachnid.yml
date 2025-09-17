@@ -21,11 +21,13 @@
       connections:
       - aux right arm
       - right arm
+      - aux right arm
+      - aux left arm
       - left arm
       - aux left arm
       - right leg
       - left leg
-      - head # Shitmed
+      - head
     right arm:
       part: RightArmRachnid
       connections:
@@ -38,6 +40,18 @@
       part: RightHandRachnid
     left hand:
       part: LeftHandRachnid
+    aux right arm:
+      part: RightArmRachnidAux
+      connections:
+      - aux right hand
+    aux left arm:
+      part: LeftArmRachnidAux
+      connections:
+      - aux left hand
+    aux right hand:
+      part: RightHandRachnidAux
+    aux left hand:
+      part: LeftHandRachnidAux
     right leg:
       part: RightLegRachnid
       connections:
