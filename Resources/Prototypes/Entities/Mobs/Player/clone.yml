@@ -16,6 +16,11 @@
   # traits
   - BlackAndWhiteOverlay
   - Clumsy
+  - Tiny
+  - Dwarf
+  - Short
+  - Tall
+  - Huge
   - Hemophilia
   - ImpairedMobility
   # - LegsParalyzed (you get healed)
