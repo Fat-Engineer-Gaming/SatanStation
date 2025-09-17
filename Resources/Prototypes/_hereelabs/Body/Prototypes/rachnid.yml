@@ -19,8 +19,10 @@
         liver: OrganArachnidLiver
         kidneys: OrganArachnidKidneys
       connections:
+      - aux right arm
       - right arm
       - left arm
+      - aux left arm
       - right leg
       - left leg
       - head # Shitmed
