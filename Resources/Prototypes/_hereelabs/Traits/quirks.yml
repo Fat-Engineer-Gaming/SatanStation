@@ -1,0 +1,170 @@
+# If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
+
+- type: trait
+  id: Tiny
+  name: trait-tiny-name
+  description: trait-tiny-desc
+  category: Height
+  cost: 1
+  components:
+  - type: WieldingBlocker
+  - type: Item
+    size: Huge
+  - type: MultiHandedItem
+  - type: ScaleVisuals
+    scale: 0.5, 0.5
+  - type: FixturesReplace
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        # they r smallest
+        density: 85
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      flammable:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 1
+        restitution: 0.0
+        mask:
+        - 221
+        layer:
+        - 0
+
+- type: trait
+  id: Dwarf
+  name: trait-dwarf-name
+  description: trait-dwarf-desc
+  category: Height
+  cost: 1
+  components:
+  - type: ScaleVisuals
+    scale: 1, 0.8
+  - type: FixturesReplace
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.30
+        # they r smaller
+        density: 120
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      flammable:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.30
+        density: 1
+        restitution: 0.0
+        mask:
+        - 221
+        layer:
+        - 0
+       
+- type: trait
+  id: Short
+  name: trait-short-name
+  description: trait-short-desc
+  category: Height
+  cost: 1
+  components:
+  - type: ScaleVisuals
+    scale: 0.95, 0.95
+  - type: FixturesReplace
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.325
+        # they r small
+        density: 125
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      flammable:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.325
+        density: 1
+        restitution: 0.0
+        mask:
+        - 221
+        layer:
+        - 0
+       
+- type: trait
+  id: Tall
+  name: trait-tall-name
+  description: trait-tall-desc
+  category: Height
+  cost: 1
+  components:
+  - type: ScaleVisuals
+    scale: 1.05, 1.05
+  - type: FixturesReplace
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.40
+        # they r bigger
+        density: 160
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      flammable:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.40
+        density: 1
+        restitution: 0.0
+        mask:
+        - 221
+        layer:
+        - 0
+
+- type: trait
+  id: Huge
+  name: trait-huge-name
+  description: trait-huge-desc
+  category: Height
+  cost: 1
+  components:
+  - type: ScaleVisuals
+    scale: 1.10, 1.10
+  - type: FixturesReplace
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        # they r biggest
+        density: 200
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+      flammable:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 1
+        restitution: 0.0
+        mask:
+        - 221
+        layer:
+        - 0
