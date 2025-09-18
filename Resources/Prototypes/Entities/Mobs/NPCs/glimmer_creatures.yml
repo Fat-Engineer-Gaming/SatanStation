@@ -1,0 +1,146 @@
+﻿- type: entity
+  name: glimmer mite
+  parent: [ BaseMob, MobCombat ]
+  id: MobGlimmerMite
+  description: A strange pest from Bluespace.
+  components:
+  - type: Sprite
+    sprite: _DV/Mobs/Ghosts/glimmermite.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: mite
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: mite
+      Dead:
+        Base: mite_dead
+    baseDecayRate: 0.25
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Plasma
+          Quantity: 15
+  - type: AmbientSound
+    range: 6
+    volume: -3
+    sound: /Audio/_DV/Glimmer_Creatures/mite.ogg
+  - type: AmbientOnPowered
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - AllHostile
+  - type: NPCRetaliation
+    attackMemoryLength: 10
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      4: Dead
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Effects/explosion1.ogg
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 3
+        Slash: 3
+  - type: Damageable
+
+- type: entity
+  parent: [ BaseMob, MobCombat, MobDamageable ]
+  id: MobGlimmerWisp
+  name: glimmer wisp
+  description: A strange orb from Bluespace..
+  components:
+  # appearance
+  - type: Sprite
+    drawDepth: Ghosts
+    sprite: Mobs/Demons/glimmer_wisp.rsi
+    layers:
+    - state: willowisp
+      shader: unshaded
+  - type: PointLight
+    color: "#419ba3"
+  - type: Stealth
+    lastVisibility: 0.66
+  - type: AmbientSound
+    volume: -8
+    range: 5
+    sound:
+      path: /Audio/Ambience/wisp_ambience.ogg
+  # physical
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 13
+        mask:
+        - Opaque
+        layer:
+        - MobLayer
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 8
+    baseWalkSpeed: 5
+  - type: MovementIgnoreGravity
+  - type: Speech
+  # powers
+  # damage
+  - type: Reactive
+    groups:
+      Acidic: [Touch] # Holy water
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/wail.ogg
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ectoplasm:
+            min: 2
+            max: 3
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+    damageContainer: ManifestedSpirit
+    damageModifierSet: CorporealSpirit
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      10: 0.8
+      20: 0.6
+      30: 0.3
+  - type: StatusEffects
+    allowed:
+    - Stun
+    - KnockedDown #KnockedDown is inseperable from stun because... IT JUST IS OK?
+    - SlowedDown
+    - Pacified
+  # AI
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - AllHostile
+  - type: NPCRetaliation
+    attackMemoryLength: 10
