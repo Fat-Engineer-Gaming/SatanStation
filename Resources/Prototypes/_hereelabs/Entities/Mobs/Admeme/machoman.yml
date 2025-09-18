@@ -33,8 +33,9 @@
     sex: Male
     age: 114
   - type: Stamina
-    critThreshold: 500
+    critThreshold: 1000
   - type: Insulated
+  - type: Magboots
   - type: FlashImmunity
   - type: NightVision
     color: "#AA4A44"
@@ -44,20 +45,29 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Critical
-      300: Dead
+      4000: Critical # you do not kill macho man. That is not how this game works...
+      5000: Dead
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Effects/explosion1.ogg
     animation: WeaponArcPunch
     damage:
       types:
-        Blunt: 100
-        Slash: 10
-        Structural: 200
+        Blunt: 500
+        Heat: 500
+        Slash: 500
+        Structural: 5000
   - type: Loadout
     prototypes: [MachoManGear]
   - type: InputMover
   - type: MobMover
   - type: ReplacementAccent # prevent talking
     accent: machoman
+  - type: GhostRole
+    name: Macho Man
+    description: You are the death of this station. You will not spare anything or anyone who dares to stand in your way. OH YEAH!!!
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: default
