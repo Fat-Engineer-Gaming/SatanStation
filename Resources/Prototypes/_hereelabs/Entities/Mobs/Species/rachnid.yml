@@ -12,7 +12,6 @@
     species: Rachnid
   - type: Hunger
   - type: Thirst
-  - type: Carriable
   - type: Tag
     tags:
     - CanPilot

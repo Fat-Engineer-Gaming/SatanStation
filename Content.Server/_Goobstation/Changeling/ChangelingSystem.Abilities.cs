@@ -14,7 +14,6 @@ using Content.Shared.Atmos.Rotting;
 using Content.Server.Objectives.Components;
 using Content.Server.Light.Components;
 using Content.Shared._Goobstation.Changeling;
-using Content.Shared.Clothing.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
@@ -35,7 +34,9 @@ public sealed partial class GoobChangelingSystem : EntitySystem
     [Dependency] private readonly SharedRottingSystem _rotting = default!;
     [Dependency] private readonly SharedStealthSystem _stealth = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _userInterfaceSystem = default!;
-    [Dependency] private static readonly EntProtoId MimicMaskPrototype = "ClothingMaskChangelingMimicMask";
+    [Dependency] private readonly Content.Shared._Offbrand.Wounds.BrainDamageSystem _brainDamage = default!; // Offbrand
+    [Dependency] private readonly Content.Shared._Offbrand.Wounds.HeartSystem _heart = default!; // Offbrand
+    [Dependency] private readonly Content.Shared._Offbrand.Wounds.WoundableSystem _woundable = default!; // Offbrand
 
     public void SubscribeAbilities()
     {
@@ -51,7 +52,6 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         SubscribeLocalEvent<GoobChangelingComponent, ToggleArmbladeEvent>(OnToggleArmblade);
         SubscribeLocalEvent<GoobChangelingComponent, CreateBoneShardEvent>(OnCreateBoneShard);
         SubscribeLocalEvent<GoobChangelingComponent, ToggleChitinousArmorEvent>(OnToggleArmor);
-        SubscribeLocalEvent<GoobChangelingComponent, ToggleMimicEvent>(OnToggleMimic);
         SubscribeLocalEvent<GoobChangelingComponent, ToggleOrganicShieldEvent>(OnToggleShield);
         SubscribeLocalEvent<GoobChangelingComponent, ShriekDissonantEvent>(OnShriekDissonant);
         SubscribeLocalEvent<GoobChangelingComponent, ShriekResonantEvent>(OnShriekResonant);
@@ -178,11 +178,14 @@ public sealed partial class GoobChangelingSystem : EntitySystem
             biomassPercentRestored /= 2;
 
         PlayMeatySound(args.User, comp);
+        UpdateBiomass(uid, comp, comp.MaxBiomass * biomassPercentRestored - comp.TotalAbsorbedEntities);
 
         var dmg = new DamageSpecifier(_proto.Index(AbsorbedDamageGroup), 200);
         _damage.TryChangeDamage(target, dmg, true, false);
         _blood.ChangeBloodReagent(target, "FerrochromicAcid");
         _blood.SpillAllSolutions(target);
+        _brainDamage.KillBrain(target); // Offbrand
+        _heart.KillHeart(target); // Offbrand
 
         EnsureComp<GoobAbsorbedComponent>(target);
 
@@ -198,6 +201,7 @@ public sealed partial class GoobChangelingSystem : EntitySystem
             popupSelf = Loc.GetString("changeling-absorb-end-self-ling", ("target", Identity.Entity(target, EntityManager)));
             bonusChemicals += targetComp.MaxChemicals / 2;
             bonusEvolutionPoints += 2;
+            comp.MaxBiomass += targetComp.MaxBiomass / 2;
         }
         else
         {
@@ -303,7 +307,11 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         }
 
         if (!_mobState.IsDead(uid))
+        {
             _mobState.ChangeMobState(uid, MobState.Dead);
+            _brainDamage.KillBrain(uid); // Offbrand
+            _heart.KillHeart(uid); // Offbrand
+        }
 
         comp.IsInStasis = true;
     }
@@ -327,6 +335,10 @@ public sealed partial class GoobChangelingSystem : EntitySystem
             return;
 
         // heal of everything
+        _brainDamage.TryChangeBrainDamage(uid, -1000); // Offbrand
+        _heart.ChangeHeartDamage(uid, -1000); // Offbrand
+        _heart.TryRestartHeart(uid); // Offbrand
+        _woundable.TryClearAllWounds(uid); // Offbrand
         _damage.SetAllDamage(uid, damageable, 0);
         _mobState.ChangeMobState(uid, MobState.Alive);
         _blood.TryModifyBloodLevel(uid, 1000);
@@ -798,20 +810,6 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         EnsureComp<GoobHivemindComponent>(uid);
 
         _popup.PopupEntity(Loc.GetString("changeling-hivemind-start"), uid, uid);
-    }
-
-    private void OnToggleMimic(EntityUid uid, GoobChangelingComponent comp, ref ToggleMimicEvent args)
-    {
-        if (!TryUseAbility(uid, comp, args))
-            return;
-
-        if (!TryToggleArmor(uid, comp, [(MimicMaskPrototype, "mask")]))
-        {
-            _popup.PopupEntity(Loc.GetString("changeling-equip-mask-fail"), uid, uid);
-            return;
-        }
-
-        PlayMeatySound(uid, comp);
     }
 
     #endregion
