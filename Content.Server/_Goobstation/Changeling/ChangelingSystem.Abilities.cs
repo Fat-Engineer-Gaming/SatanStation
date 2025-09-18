@@ -14,7 +14,6 @@ using Content.Shared.Atmos.Rotting;
 using Content.Server.Objectives.Components;
 using Content.Server.Light.Components;
 using Content.Shared._Goobstation.Changeling;
-using Content.Shared.Clothing.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Flash.Components;
@@ -53,7 +52,6 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         SubscribeLocalEvent<GoobChangelingComponent, ToggleArmbladeEvent>(OnToggleArmblade);
         SubscribeLocalEvent<GoobChangelingComponent, CreateBoneShardEvent>(OnCreateBoneShard);
         SubscribeLocalEvent<GoobChangelingComponent, ToggleChitinousArmorEvent>(OnToggleArmor);
-        SubscribeLocalEvent<GoobChangelingComponent, ToggleMimicEvent>(OnToggleMimic);
         SubscribeLocalEvent<GoobChangelingComponent, ToggleOrganicShieldEvent>(OnToggleShield);
         SubscribeLocalEvent<GoobChangelingComponent, ShriekDissonantEvent>(OnShriekDissonant);
         SubscribeLocalEvent<GoobChangelingComponent, ShriekResonantEvent>(OnShriekResonant);
@@ -180,6 +178,7 @@ public sealed partial class GoobChangelingSystem : EntitySystem
             biomassPercentRestored /= 2;
 
         PlayMeatySound(args.User, comp);
+        UpdateBiomass(uid, comp, comp.MaxBiomass * biomassPercentRestored - comp.TotalAbsorbedEntities);
 
         var dmg = new DamageSpecifier(_proto.Index(AbsorbedDamageGroup), 200);
         _damage.TryChangeDamage(target, dmg, true, false);
@@ -202,6 +201,7 @@ public sealed partial class GoobChangelingSystem : EntitySystem
             popupSelf = Loc.GetString("changeling-absorb-end-self-ling", ("target", Identity.Entity(target, EntityManager)));
             bonusChemicals += targetComp.MaxChemicals / 2;
             bonusEvolutionPoints += 2;
+            comp.MaxBiomass += targetComp.MaxBiomass / 2;
         }
         else
         {
@@ -810,20 +810,6 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         EnsureComp<GoobHivemindComponent>(uid);
 
         _popup.PopupEntity(Loc.GetString("changeling-hivemind-start"), uid, uid);
-    }
-
-    private void OnToggleMimic(EntityUid uid, GoobChangelingComponent comp, ref ToggleMimicEvent args)
-    {
-        if (!TryUseAbility(uid, comp, args))
-            return;
-
-        if (!TryToggleArmor(uid, comp, [(MimicMaskPrototype, "mask")]))
-        {
-            _popup.PopupEntity(Loc.GetString("changeling-equip-mask-fail"), uid, uid);
-            return;
-        }
-
-        PlayMeatySound(uid, comp);
     }
 
     #endregion
