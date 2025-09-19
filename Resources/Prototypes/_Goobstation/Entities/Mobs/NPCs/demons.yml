@@ -48,7 +48,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      1000: Dead # 2 rifle magazines, its a boss enemy after all
+      500: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
       0: 1.0
@@ -81,8 +81,8 @@
       path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
     damage:
       types:
-        Piercing: 30
-        Slash: 40
+        Piercing: 15
+        Slash: 15
         Structural: 400
   - type: StaticPrice
     price: 10000

@@ -12,7 +12,7 @@
   - type: Tendril
     maxSpawns: 10
     mobsToDefeat: 99999
-    spawnDelay: 5
+    spawnDelay: 10
     spawns:
     - MobFleshGolem
     chasmDelay: 999999

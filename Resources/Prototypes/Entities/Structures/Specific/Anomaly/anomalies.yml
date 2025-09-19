@@ -252,14 +252,14 @@
         spawnOnSuperCritical: true
         minAmount: 2
         maxAmount: 20
-        minRange: 5
+        minRange: 3
         maxRange: 15
       spawns:
       - FleshBlocker
     - settings:
         spawnOnSuperCritical: true
-        minAmount: 7
-        maxAmount: 25
+        minAmount: 2
+        maxAmount: 15
         maxRange: 20
       spawns:
       - MobFleshJared
@@ -289,23 +289,23 @@
       - MobFleshGolem
       - MobFleshClamp
       - MobFleshLover
-  - type: WallSpawnAnomaly #imp
-    entries:
-    - settings:
-        spawnOnPulse: true
-        spawnOnStabilityChanged: true
-        spawnOnSeverityChanged: true
-        minAmount: 3
-        maxAmount: 7
-        maxRange: 4
-      wall: WallMeat
-    - settings:
-        spawnOnSuperCritical: true
-        minAmount: 10
-        maxAmount: 30
-        maxRange: 10
-      wall: WallMeat
-
+#  - type: WallSpawnAnomaly #imp
+#    entries:
+#    - settings:
+#        spawnOnPulse: true
+#        spawnOnStabilityChanged: true
+#        spawnOnSeverityChanged: true
+#        minAmount: 3
+#        maxAmount: 7
+#        maxRange: 4
+#      wall: WallMeat
+#    - settings:
+#        spawnOnSuperCritical: true
+#        minAmount: 10
+#        maxAmount: 30
+#        maxRange: 10
+#      wall: WallMeat
+# i dont LIKE walls.
 - type: entity
   id: AnomalyBluespace
   parent: BaseAnomaly
