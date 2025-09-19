@@ -94,13 +94,17 @@
     - Binary
     - Common
     - Science
-    - CentComm
+    - CentCom
+    - Security
+    - Command
   - type: ActiveRadio
     channels:
     - Binary
     - Common
     - Science
-    - CentComm
+    - CentCom
+    - Security
+    - Command
   - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
