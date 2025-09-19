@@ -6,8 +6,10 @@
 
 - type: entity
   name: Macho Man
+  suffix: OH YEAH!!!
   parent: BaseMobHuman
   id: MobMachoMan
+  description: OH YEAH!!!
   components:
   - type: RandomHumanoidAppearance
     randomizeName: false
@@ -65,7 +67,7 @@
     accent: machoman
   - type: GhostRole
     name: Macho Man
-    description: You are the death of this station. You will not spare anything or anyone who dares to stand in your way. OH YEAH!!!
+    description: OH YEAH!!!
     rules: ghost-role-information-antagonist-rules
     mindRoles:
     - MindRoleGhostRoleSoloAntagonist
