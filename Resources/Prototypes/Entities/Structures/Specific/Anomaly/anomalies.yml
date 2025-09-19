@@ -224,9 +224,9 @@
       floor: FloorFlesh
     - settings:
         spawnOnSuperCritical: true
-        minAmount: 10
-        maxAmount: 30
-        maxRange: 10
+        minAmount: 50
+        maxAmount: 100
+        maxRange: 20
       floor: FloorFlesh
   - type: EntitySpawnAnomaly
     entries:
@@ -250,17 +250,17 @@
       - MobFleshLover
     - settings:
         spawnOnSuperCritical: true
-        minAmount: 10
-        maxAmount: 15
-        minRange: 5
+        minAmount: 2
+        maxAmount: 20
+        minRange: 3
         maxRange: 15
       spawns:
       - FleshBlocker
     - settings:
         spawnOnSuperCritical: true
-        minAmount: 5
-        maxAmount: 10
-        maxRange: 8
+        minAmount: 2
+        maxAmount: 15
+        maxRange: 20
       spawns:
       - MobFleshJared
       - MobFleshGolem
@@ -268,11 +268,18 @@
       - MobFleshLover
     - settings:
         spawnOnSuperCritical: true
-        minAmount: 5
-        maxAmount: 8
-        maxRange: 10
+        minAmount: 1
+        maxAmount: 1
+        maxRange: 1
       spawns:
-      - FleshKudzu
+      - Fleshgate
+    - settings:
+        spawnOnSuperCritical: true
+        minAmount: 1
+        maxAmount: 1
+        maxRange: 1
+      spawns:
+      - MobRipper
     - settings:
         spawnOnShutdown: true
         maxAmount: 2
@@ -282,24 +289,23 @@
       - MobFleshGolem
       - MobFleshClamp
       - MobFleshLover
-      - FleshKudzu
-  - type: WallSpawnAnomaly #imp
-    entries:
-    - settings:
-        spawnOnPulse: true
-        spawnOnStabilityChanged: true
-        spawnOnSeverityChanged: true
-        minAmount: 3
-        maxAmount: 7
-        maxRange: 4
-      wall: WallMeat
-    - settings:
-        spawnOnSuperCritical: true
-        minAmount: 10
-        maxAmount: 30
-        maxRange: 10
-      wall: WallMeat
-
+#  - type: WallSpawnAnomaly #imp
+#    entries:
+#    - settings:
+#        spawnOnPulse: true
+#        spawnOnStabilityChanged: true
+#        spawnOnSeverityChanged: true
+#        minAmount: 3
+#        maxAmount: 7
+#        maxRange: 4
+#      wall: WallMeat
+#    - settings:
+#        spawnOnSuperCritical: true
+#        minAmount: 10
+#        maxAmount: 30
+#        maxRange: 10
+#      wall: WallMeat
+# i dont LIKE walls.
 - type: entity
   id: AnomalyBluespace
   parent: BaseAnomaly
@@ -1087,18 +1093,27 @@
     - settings:
         spawnOnPulse: true
         spawnOnSuperCritical: true
-        minAmount: 10
-        maxAmount: 20
-        maxRange: 4
+        minAmount: 2
+        maxAmount: 6
+        maxRange: 10
       spawns:
-      - ShadowKudzuWeak
+      - MobGlimmerMite
     - settings:
         spawnOnSuperCritical: true
-        minAmount: 30
-        maxAmount: 40
-        maxRange: 50
+        minAmount: 1
+        maxAmount: 2
+        maxRange: 8
       spawns:
-      - ShadowKudzu
+      - MobGlimmerWisp
+    - type: EntitySpawnAnomaly
+      entries:
+      - settings:
+          spawnOnSuperCritical: true
+          minAmount: 7
+          maxAmount: 15
+          maxRange: 10
+        spawns:
+        - MobGlimmerMite
   - type: Portal
     arrivalSound: /Audio/Items/hiss.ogg
     departureSound: /Audio/Items/hiss.ogg
@@ -1144,41 +1159,41 @@
         maxAmount: 30
         maxRange: 10
       wall: WallRockChromite
-
-- type: entity
-  id: AnomalyTech
-  parent: BaseAnomaly
-  suffix: Tech
-  components:
-  - type: Sprite
-    sprite: Structures/Specific/Anomalies/tech_anom.rsi
-    layers:
-    - state: bg
-      map: ["enum.AnomalyVisualLayers.Base"]
-    - state: bg_powered
-      map: ["enum.AnomalyVisualLayers.Animated"]
-      visible: false
-      shader: unshaded
-    - state: part1
-    - state: part2
-    - state: part3
-    - state: part4
-  - type: PointLight
-    radius: 6.5
-    energy: 3.5
-    color: "#56c1e8"
-  - type: Anomaly
-    corePrototype: AnomalyCoreTech
-    coreInertPrototype: AnomalyCoreTechInert
-    minPulseLength: 60
-    maxPulseLength: 120
-    supercriticalSoundAtAnimationStart:
-      collection: AnomalyTechSupercritical
-  - type: TechAnomaly
-  - type: DeviceLinkSource
-    ports:
-      - Pulse
-      - Timer
+# Disabled Tech Anom until I can think of a good rework, it's literally just annoying ass lasers that bolt shit in its current state.
+#- type: entity
+#  id: AnomalyTech
+#  parent: BaseAnomaly
+#  suffix: Tech
+#  components:
+#  - type: Sprite
+#    sprite: Structures/Specific/Anomalies/tech_anom.rsi
+#    layers:
+#    - state: bg
+#      map: ["enum.AnomalyVisualLayers.Base"]
+#    - state: bg_powered
+#      map: ["enum.AnomalyVisualLayers.Animated"]
+#      visible: false
+#      shader: unshaded
+#    - state: part1
+#    - state: part2
+#    - state: part3
+#    - state: part4
+#  - type: PointLight
+#    radius: 6.5
+#    energy: 3.5
+#    color: "#56c1e8"
+#  - type: Anomaly
+#    corePrototype: AnomalyCoreTech
+#    coreInertPrototype: AnomalyCoreTechInert
+#    minPulseLength: 60
+#    maxPulseLength: 120
+#    supercriticalSoundAtAnimationStart:
+#      collection: AnomalyTechSupercritical
+#  - type: TechAnomaly
+#  - type: DeviceLinkSource
+#    ports:
+#      - Pulse
+#      - Timer
 
 - type: entity
   id: AnomalyTechBeam
