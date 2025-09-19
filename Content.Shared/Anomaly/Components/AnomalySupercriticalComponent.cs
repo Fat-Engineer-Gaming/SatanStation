@@ -23,5 +23,5 @@ public sealed partial class AnomalySupercriticalComponent : Component
     /// The maximum size the anomaly scales to while going supercritical
     /// </summary>
     [DataField]
-    public float MaxScaleAmount = 3;
+    public float MaxScaleAmount = 10;
 }

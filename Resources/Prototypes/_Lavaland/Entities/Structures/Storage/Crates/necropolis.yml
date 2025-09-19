@@ -1,0 +1,10 @@
+﻿- type: entity
+  parent: CrateGenericSteel
+  id: LavalandCrateNecropolis
+  name: necropolis chest
+  description: For a second, you swore you saw it looking at you.
+  components:
+  - type: Icon
+    sprite: _Lavaland/Structures/Storage/Crates/necropolechest.rsi
+  - type: Sprite
+    sprite: _Lavaland/Structures/Storage/Crates/necropolechest.rsi

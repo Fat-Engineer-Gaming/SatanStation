@@ -1,0 +1,98 @@
+﻿- type: entity
+  name: Ripper
+  parent: [ SimpleSpaceMobBase, MobCombat ]
+  id: MobRipper
+  description: This might have been human once.
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: SpamEmitSound
+    minInterval: 15
+    maxInterval: 45
+    sound:
+      path: /Audio/_RMC14/Xeno/alien_echoroar_1.ogg
+      params:
+        volume: -5
+        maxDistance: 10
+        variation: 0.5
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - Flesh
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 2
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Goobstation/Mobs/Aliens/flesh.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepThud
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      500: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      0: 1.0
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatAnomaly
+      amount: 15
+    - id: AnomalyCoreFleshInert
+      amount: 5
+    - id: OrganHumanAppendix
+      amount: 3
+    - id: OrganHumanKidneys
+      amount: 3
+    - id: OrganHumanEars
+      amount: 3
+    - id: OrganHumanEyes
+      amount: 3
+    - id: OrganHumanLungs
+      amount: 3
+    - id: OrganHumanLiver
+      amount: 3
+    - id: OrganHumanStomach
+      amount: 3
+    - id: OrganHumanHeart
+      amount: 3
+    - id: OrganHumanTongue
+      amount: 3
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Piercing: 15
+        Slash: 15
+        Structural: 400
+  - type: StaticPrice
+    price: 10000
+  - type: Bloodstream
+    bloodMaxVolume: 3000
+    bloodReagent: Blood
+  - type: Tendril
+    maxSpawns: 50
+    mobsToDefeat: 99999
+    spawnDelay: 7
+    spawns:
+    - MobFleshGolemSalvage
+    chasmDelay: 999999
