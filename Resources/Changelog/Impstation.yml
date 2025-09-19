@@ -1,34 +1,4 @@
 ﻿Entries:
-- author: sev7ves
-  changes:
-  - message: Added a door alarm wire to high sec doors
-    type: Add
-  id: 1769
-  time: '2025-06-08T04:10:56.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/2586
-- author: ThatKidConnor
-  changes:
-  - message: Gave the syndicat a recolour resembling Impstation Bloodred hardsuits.
-    type: Tweak
-  id: 1770
-  time: '2025-06-08T04:16:44.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/2646
-- author: DinnerCalzone, hivehum, crocodilecarousel, ATDoop
-  changes:
-  - message: A number of things have been added to celebrate Impstation's anniversary
-      on June 16th! An anniversary crate can be ordered from cargo!
-    type: Add
-  id: 1771
-  time: '2025-06-08T04:15:06.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/2637
-- author: Oberonics
-  changes:
-  - message: Cremators across all stations are now electrically powered. How they
-      worked before is classified.
-    type: Tweak
-  id: 1772
-  time: '2025-06-08T04:12:59.0000000+00:00'
-  url: https://github.com/impstation/imp-station-14/pull/2502
 - author: AvianMaiden
   changes:
   - message: Slime/Gastro blinks work with directional audio now. Kode babies harm
@@ -4167,3 +4137,56 @@
   id: 2268
   time: '2025-09-18T02:53:32.0000000+00:00'
   url: https://github.com/impstation/imp-station-14/pull/3463
+- author: sowelipililimute
+  changes:
+  - message: Peridaxon now exists, a chemical that can heal mild cases of heart damage
+      without requiring surgical intervention!
+    type: Add
+  - message: Cloneoxadone now exists, a stronger variant of Cryoxadone that requires
+      a colder body temperature to work, and thus, more pronounced stasis.
+    type: Add
+  - message: Cryoxadone now heals a minor amount of heart damage
+    type: Tweak
+  - message: The heart will now take half the damage from high heartrate
+    type: Tweak
+  - message: Health analyzers no longer incorrectly round brain and heart damage
+    type: Fix
+  - message: The heart stops from brain damage at the advertised 30% activity instead
+      of at higher levels
+    type: Fix
+  - message: Bone death no longer reports as internal fractures on the health analyzer
+    type: Fix
+  id: 2269
+  time: '2025-09-18T07:28:59.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/3477
+- author: sowelipililimute
+  changes:
+  - message: Revenant can now siphon soul energy from critical people, and deals cold
+      damage from doingso
+    type: Fix
+  - message: Unidentified corpses no longer spawn alive
+    type: Fix
+  - message: Bottles return to their original 1x1 size
+    type: Tweak
+  - message: People can now become fully unconscious from large amounts of pain
+    type: Tweak
+  id: 2270
+  time: '2025-09-18T21:05:54.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/3480
+- author: sowelipililimute
+  changes:
+  - message: Zombies no longer cause PVS reloads
+    type: Fix
+  id: 2271
+  time: '2025-09-18T23:57:36.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/3482
+- author: sowelipililimute
+  changes:
+  - message: There is now a surgery UI that guides you through the steps to do a specific
+      operation!
+    type: Add
+  - message: Surgery should be more reliable now.
+    type: Fix
+  id: 2272
+  time: '2025-09-19T00:35:46.0000000+00:00'
+  url: https://github.com/impstation/imp-station-14/pull/3481
