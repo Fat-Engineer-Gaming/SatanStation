@@ -42,7 +42,7 @@
     - item: StunBatonBorg
     - item: JawsOfLife
     - item: WelderExperimental
-    - item: MiningDrillDiamond # Closest we got to a Sonic Jackhammer. Probably gonna make that when I work on a Deathsquad Cyborg.
+    - item: SonicJackhammer
     - item: SelfRechargingFireExtinguisher
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: ert-module }
