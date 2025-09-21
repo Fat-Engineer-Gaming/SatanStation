@@ -5,7 +5,7 @@
         "y": 32
     },
     "license": "CC-BY-SA-3.0",
-    "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/commit/faf6db214927874c19b8fa8585d26b5d40de1acc, derelict generic sprites modified by GoldenCan(GitHub), xenoborg sprites, created and modified by Samuka-C (github). Derelict Engineer, Janitor, Miner, Medical, and Assault Borg sprites by _miket on Discord, Xenoborg Janitor, and ERT Cyborg made by FatEngineerGaming (Discord).",
+    "copyright": "Taken from tgstation at https://github.com/tgstation/tgstation/commit/faf6db214927874c19b8fa8585d26b5d40de1acc, derelict generic sprites modified by GoldenCan(GitHub), xenoborg sprites, created and modified by Samuka-C (github). Derelict Engineer, Janitor, Miner, Medical, and Assault Borg sprites by _miket on Discord, Xenoborg Janitor, and ERT Cyborg made by FatEngineerGaming (Discord), Commando sprites from Paradise (or TG, i literally do not know -Fat Engi) https://github.com/ParadiseSS13/Paradise/tree/master.",
     "states": [
         {
             "name": "cargo",
@@ -877,6 +877,22 @@
         },
         {
             "name": "ERT_l",
+            "directions": 4
+        },
+        {
+            "name": "commando",
+            "directions": 4
+        },
+        {
+            "name": "commando_e",
+            "directions": 4
+        },
+        {
+            "name": "commando_e_r",
+            "directions": 4
+        },
+        {
+            "name": "commando_l",
             "directions": 4
         }
     ]
