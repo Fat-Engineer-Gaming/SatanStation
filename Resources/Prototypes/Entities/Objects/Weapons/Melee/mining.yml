@@ -39,8 +39,8 @@
     materialComposition:
       Steel: 100
       Wood: 100
-  - type: DamageOtherOnHit # Imp
-    staminaCost: 5
+#  - type: DamageOtherOnHit # why the fuck does this require stamina? Let me mine god dammit.
+#    staminaCost: 5
 
 - type: entity
   name: mining drill
