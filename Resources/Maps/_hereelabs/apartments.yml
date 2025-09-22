@@ -48351,14 +48351,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 64.00128,-19.701885
       parent: 1
-- proto: DroneBoxCardboard
-  entities:
-  - uid: 9197
-    components:
-    - type: Transform
-      rot: 7.411848912397545E-13 rad
-      pos: 14.559914,16.645426
-      parent: 1
 - proto: EmergencyNitrogenTankFilled
   entities:
   - uid: 190
