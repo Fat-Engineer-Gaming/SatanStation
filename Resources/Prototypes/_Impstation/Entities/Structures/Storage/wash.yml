@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseMachinePowered, CrateBaseSecure]
+  parent: [CrateBaseSecure, BaseMachinePowered]
   id: WashingMachine
   name: laundry machine
   description: You could use this to wash and dry your clothes. It's recommended to lock before using.
@@ -48,7 +48,6 @@
     locked: false
     insideToggleTime: 60
     useAccess: false
-  - type: LockVisuals
   - type: DamageOtherOnHit # imp
     damage:
       types:
