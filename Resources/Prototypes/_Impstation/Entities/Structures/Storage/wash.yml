@@ -1,5 +1,5 @@
 - type: entity
-  parent: CrateBaseSecure
+  parent: [BaseMachinePowered, CrateBaseSecure]
   id: WashingMachine
   name: laundry machine
   description: You could use this to wash and dry your clothes. It's recommended to lock before using.
@@ -26,6 +26,18 @@
     anchored: true
   - type: Physics
     bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 110
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
   - type: GenericVisualizer
     visuals:
       enum.LaundryMachineVisuals.Light:
@@ -36,4 +48,15 @@
     locked: false
     insideToggleTime: 60
     useAccess: false
+  - type: LockVisuals
+  - type: DamageOtherOnHit # imp
+    damage:
+      types:
+        Blunt: 15
+    staminaCost: 50
   - type: LaundryMachine
+  #- type: Construction
+  #  graph: CrateSecure
+  #  node: cratesecure
+  #  containers:
+  #  - entity_storage

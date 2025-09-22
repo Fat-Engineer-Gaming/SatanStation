@@ -7,7 +7,7 @@ namespace Content.Shared._hereelabs.Laundry;
 ///     Washing machine. Ha
 ///     For now washing and drying are merged into one component, sorry not sorry
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class LaundryMachineComponent : Component
 {
     [DataField, AutoNetworkedField]
