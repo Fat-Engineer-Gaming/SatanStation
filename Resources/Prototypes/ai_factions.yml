@@ -16,6 +16,7 @@
     - Penguin # imp
     - SimpleHostile # imp
     - Replicator # imp
+    - Amalgam
 
 - type: npcFaction
   id: NanoTrasen
@@ -31,6 +32,7 @@
   - Xenoborg
   - Dino # imp
   - Replicator # imp
+  - Amalgam
 
 - type: npcFaction
   id: Mouse
@@ -39,6 +41,7 @@
   - AllHostile
   - Wizard
   - Penguin # imp
+  - Amalgam
 
 - type: npcFaction
   id: Passive
@@ -56,6 +59,7 @@
   - Dragon
   - Replicator # imp
   - Xenoborg
+  - Amalgam
 
 - type: npcFaction
   id: SimpleHostile
@@ -76,6 +80,7 @@
   - Dino # imp
   - Penguin # imp
   - Replicator # imp
+  - Amalgam
 
 - type: npcFaction
   id: SimpleNeutral
@@ -97,6 +102,7 @@
   - Dino # imp
   - Penguin # imp
   - Replicator # imp
+  - Amalgam
 
 - type: npcFaction
   id: Xeno
@@ -116,6 +122,7 @@
   - Replicator # imp
   - Dragon
   - Xenoborg
+  - Amalgam
 
 - type: npcFaction
   id: Zombie
@@ -136,6 +143,7 @@
   - Replicator # imp
   - Dragon
   - Xenoborg
+  - Amalgam
 
 - type: npcFaction
   id: Revolutionary
@@ -149,6 +157,7 @@
   - Xenoborg
   - Dino # imp
   - Replicator # imp
+  - Amalgam
 
 - type: npcFaction
   id: AllHostile
@@ -171,6 +180,7 @@
   - Dino # imp
   - Penguin # imp
   - Replicator # imp
+  - Amalgam
 
 - type: npcFaction
   id: Wizard
@@ -193,6 +203,7 @@
   - Dino # imp
   - Penguin # imp
   - Replicator # imp
+  - Amalgam
 
 - type: npcFaction
   id: Xenoborg
@@ -209,3 +220,25 @@
   - Xeno
   - SimpleHostile
   - AllHostile
+
+- type: npcFaction
+  id: Amalgam # Basically just allhostile
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Wizard
+#  - Xenoborg # They're made and trained by the Xenoborgs.
+  - Changeling # imp
+  - Heretic # imp
+  - Dino # imp
+  - Penguin # imp
+  - Replicator # imp

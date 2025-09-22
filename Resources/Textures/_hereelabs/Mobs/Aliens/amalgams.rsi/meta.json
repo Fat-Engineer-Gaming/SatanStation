@@ -1,0 +1,26 @@
+﻿{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by FatEngineerGaming (Discord/Github)",
+    "states": [
+        {
+            "name": "dead"
+        },
+        {
+            "name": "swarmer_alive",
+            "directions": 4
+        },
+        {
+            "name": "faker_alive",
+            "directions": 4
+        },
+        {
+            "name": "thing_alive",
+            "directions": 4
+        }
+    ]
+}
