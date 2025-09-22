@@ -7,7 +7,7 @@
   description: survival-description
   cooldown: 2
   rules:
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
     - SpaceTrafficControlFriendlyEventScheduler
@@ -69,8 +69,8 @@
     - Wizard
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
-    - MeteorSwarmMildScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmMildScheduler
+    #- MeteorSwarmScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
     - SpaceTrafficControlFriendlyEventScheduler
@@ -86,7 +86,7 @@
   description: extended-description
   rules:
   - BasicStationEventScheduler
-  - MeteorSwarmScheduler
+  #- MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
@@ -115,7 +115,7 @@
   - DynamicRule
   - DummyNonAntag
   - DynamicStationEventScheduler
-  - MeteorSwarmScheduler
+  #- MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
@@ -139,7 +139,7 @@
   description: secret-description
   rules:
     - BasicStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -178,7 +178,7 @@
     - Traitor
     - SubGamemodesRule
     - BasicStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -208,7 +208,7 @@
     - DummyNonAntagChance
     - SubGamemodesRule
     - BasicStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -226,7 +226,7 @@
     - Revolutionary
     - SubGamemodesRule
     - BasicStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -242,7 +242,7 @@
   - DummyNonAntagChance
   - SubGamemodesRuleNoWizard #No Dual Wizards at the start, midround is fine
   - BasicStationEventScheduler
-  - MeteorSwarmScheduler
+  #- MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 
@@ -261,7 +261,7 @@
   rules:
   - Zombie
   - BasicStationEventScheduler
-  - MeteorSwarmScheduler
+  #- MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
 

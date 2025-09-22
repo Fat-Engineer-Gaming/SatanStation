@@ -11,7 +11,7 @@
     - DummyNonAntagChance
     - SpyVsSpy
     - SleeperlessStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -25,7 +25,7 @@
     - DummyNonAntagChance
     - SpyVsSpy3TC
     - SleeperlessStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -40,7 +40,7 @@
     - DummyNonAntagChance
     - SpyVsSpy
     - SleeperlessStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -55,7 +55,7 @@
     - DummyNonAntagChance
     - SpyVsSpy3TC
     - SleeperlessStationEventScheduler
-    - MeteorSwarmScheduler
+    #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
 
@@ -74,8 +74,8 @@
   - Changeling
   - BasicStationEventScheduler
   - KesslerSyndromeScheduler
-  - MeteorSwarmMildScheduler
-  - MeteorSwarmScheduler
+  #- MeteorSwarmMildScheduler
+  #- MeteorSwarmScheduler
   - RampingStationEventScheduler
   - SpaceTrafficControlEventScheduler
   - SpaceTrafficControlFriendlyEventScheduler
@@ -89,7 +89,7 @@
   rules:
   - Thief
   - BasicStationEventScheduler
-  - MeteorSwarmScheduler
+  #- MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
   - LowpopLimiter
@@ -103,6 +103,6 @@
   - PacifistVsPacifist
   - RenaultMigrationEventScheduler # bonus TC
   - SleeperlessStationEventScheduler
-  - MeteorSwarmScheduler
+  #- MeteorSwarmScheduler
   - SpaceTrafficControlFriendlyEventScheduler # the obstacle is each other, not vent spawns!
   - BasicRoundstartVariation
