@@ -1,8 +1,8 @@
 - type: entity
-  parent: CrateBaseWeldable
+  parent: CrateBaseSecure
   id: WashingMachine
-  name: washing machine
-  description: You could use this to wash your clothes, but it looks like most of the wiring was gutted out...
+  name: laundry machine
+  description: You could use this to wash and dry your clothes. It's recommended to lock before using.
   components:
   - type: Icon
     sprite: _Impstation/Structures/Storage/Wash.rsi
@@ -16,6 +16,7 @@
       map: ["enum.StorageVisualLayers.Door"]
     - state: washOff
       shader: unshaded
+      map: ["light"]
     - state: paper
       sprite: _Impstation/Structures/Storage/Crates/labels.rsi
       map: [ "enum.PaperLabelVisuals.Layer" ]
@@ -25,3 +26,14 @@
     anchored: true
   - type: Physics
     bodyType: Static
+  - type: GenericVisualizer
+    visuals:
+      enum.LaundryMachineVisuals.Light:
+        light:
+          True: { state: washOn, shader: "unshaded" }
+          False: { state: washOff, shader: "unshaded" }
+  - type: Lock
+    locked: false
+    insideToggleTime: 60
+    useAccess: false
+  - type: LaundryMachine
