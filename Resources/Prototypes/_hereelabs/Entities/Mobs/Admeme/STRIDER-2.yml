@@ -403,7 +403,7 @@
   id: DroneJukebox
   name: Drone Jukebox
   categories: [HideSpawnMenu]
-  parent: [ BaseItem, ConstructibleMachine ]
+  parent: [BaseItem]
   description: A machine capable of playing a wide variety of tunes. Enjoyment not guaranteed.
   components:
   - type: StationAiWhitelist
@@ -412,8 +412,6 @@
     layers:
     - state: "off"
       map: ["enum.JukeboxVisualLayers.Base"]
-  - type: Transform
-    anchored: false
   - type: Jukebox
     onState: on
     offState: off
@@ -423,8 +421,6 @@
   - type: Machine
     board: JukeboxCircuitBoard
   - type: Appearance
-  - type: ApcPowerReceiver
-    powerLoad: 0
   - type: ExtensionCableReceiver
   - type: ActivatableUI
     key: enum.JukeboxUiKey.Key
@@ -438,22 +434,6 @@
   - type: Wires
     boardName: wires-board-name-jukebox
     layoutId: Jukebox
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: Metallic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 75
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 1
-            max: 2
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -1194,6 +1174,7 @@
       - DroneModuleProtolatheHyper
       - DroneComputerComms
       - DroneIdTerminal
+      - DroneResearchAndDevelopmentServer
       - DroneComputerResearchAndDevelopment
       - DroneBaseResearchAndDevelopmentPointSource
 
