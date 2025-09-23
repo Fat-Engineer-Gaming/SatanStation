@@ -1,0 +1,1832 @@
+# Drone Inventory Slots
+- type: inventoryTemplate
+  id: DroneInvT
+  slots:
+    - name: pocket1
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 999
+      uiWindowPos: 0,3
+      strippingWindowPos: 0,4
+      displayName: Pocket 1
+      stripHidden: true
+    - name: pocket2
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 999
+      uiWindowPos: 2,3
+      strippingWindowPos: 1,4
+      displayName: Pocket 2
+      stripHidden: true
+    - name: pocket3
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 999
+      uiWindowPos: 4,3
+      strippingWindowPos: 2,4
+      displayName: Pocket 3
+      stripHidden: true
+    - name: pocket4
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 999
+      uiWindowPos: 6,3
+      strippingWindowPos: 3,4
+      displayName: Pocket 4
+      stripHidden: true
+    - name: pocket5
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 999
+      uiWindowPos: 8,3
+      strippingWindowPos: 4,4
+      displayName: Pocket 5
+      stripHidden: true
+    - name: pocket6
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 999
+      uiWindowPos: 10,3
+      strippingWindowPos: 5,4
+      displayName: Pocket 6
+      stripHidden: true
+    - name: pocket7
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 999
+      uiWindowPos: 12,3
+      strippingWindowPos: 6,4
+      displayName: Pocket 7
+      stripHidden: true
+    - name: pocket8
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 999
+      uiWindowPos: 14,3
+      strippingWindowPos: 7,4
+      displayName: Pocket 8
+      stripHidden: true
+    - name: pocket9
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: MainHotbar
+      stripTime: 999
+      uiWindowPos: 3,6
+      strippingWindowPos: 8,4
+      displayName: Pocket 9
+      stripHidden: true
+    - name: pocket10
+      slotTexture: pocket
+      fullTextureName: template_small
+      slotFlags: POCKET
+      slotGroup: SecondHotbar
+      stripTime: 999
+      uiWindowPos: 3,6
+      strippingWindowPos: 8,4
+      displayName: Pocket 9
+      stripHidden: true
+    - name: id
+      slotTexture: id
+      fullTextureName: template_small
+      slotFlags: IDCARD
+      slotGroup: SecondHotbar
+      stripTime: 999
+      uiWindowPos: 2,1
+      strippingWindowPos: 2,4
+      dependsOn: jumpsuit
+      displayName: ID
+      stripHidden: true
+    - name: jumpsuit
+      slotTexture: uniform
+      slotFlags: INNERCLOTHING
+      stripTime: 6
+      uiWindowPos: 0,1
+      strippingWindowPos: 0,2
+      displayName: Jumpsuit
+      stripHidden: true
+    - name: eyes
+      slotTexture: head
+      slotFlags: EYES
+      stripTime: 999
+      uiWindowPos: 0,2
+      strippingWindowPos: 0,2
+      displayName: Optics
+      stripHidden: true
+      
+- type: entity
+  parent: [ClothingEyesBase, BaseLensSlot, ShowSecurityIcons, ShowMedicalIcons] # BaseLensSlot from imp
+  id: DroneOpticsHudOmni
+  name: Drone Omni Hud Module
+  categories: [HideSpawnMenu]
+  description: Filler
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    layers:
+    - state: harddisk
+      map: [ "base" ]
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
+  - type: ShowHungerIcons
+  - type: ShowThirstIcons
+  - type: ShowSyndicateIcons
+  - type: ThermalVision
+    isEquipment: true
+    pulseTime: 2
+    toggleAction: PulseThermalVision
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: PluralName # imp
+    oneOf: plural-name-some
+    
+- type: entity
+  parent: ClothingBackpackDuffel
+  id: DroneBackpackDuffelHolding
+  name: Drone Internal Bluespace Storage
+  categories: [HideSpawnMenu]
+  description: This Drone has a localized pocket of bluespace built-in.
+  components:
+  - type: Sprite
+    sprite: Clothing/Back/Duffels/holding.rsi
+    state: icon
+    layers:
+    - state: icon
+    - state: icon-unlit
+      shader: unshaded
+  - type: Item
+    size: Small
+  - type: Unremoveable
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,29,11
+  - type: ClothingSpeedModifier
+    sprintModifier: 1.2 # makes its stats identical to other variants of bag of holding
+  - type: HeldSpeedModifier
+
+# Remove BaseItem Power Requirement
+- type: entity
+  abstract: true
+  parent: BaseItem
+  categories: [HideSpawnMenu]
+  id: DroneBaseItem
+  components:
+  - type: ExtensionCableReceiver
+  - type: LightningTarget
+    priority: 1
+  - type: Item
+    size: Large
+  - type: ApcPowerReceiver
+    powerLoad: 0
+# Unanchored Structure
+- type: entity
+  id: DroneBaseStructureDynamic
+  parent: BaseStructure
+  abstract: true
+  components:
+# These might/might not be a good idea
+#  - type: MovedByPressure
+#  - type: DamageOnHighSpeedImpact
+#  - type: TileFrictionModifier
+#    modifier: 0.5
+  - type: Transform
+    anchored: false
+  - type: Clickable
+  - type: Physics
+    bodyType: Dynamic
+  - type: Item
+    Size: Normal
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: Anchorable
+
+
+###########################################
+# Start of DroneProtolatheHyperConvection #
+###########################################
+
+- type: entity
+  id: DroneProtolatheHyperConvection
+  parent: [DroneProtolathe, BaseHyperlathe]
+  name: hyper convection protolathe
+  categories: [HideSpawnMenu]
+  description: A highly-experimental protolathe that harnesses the power of extreme heat to slowly create objects more cost-effectively.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/protolathe_hypercon.rsi
+  - type: Machine
+    board: ProtolatheHyperConvectionMachineCircuitboard
+
+- type: entity
+  id: DroneProtolathe
+  parent: [ DroneBaseLatheLube, BaseScienceContraband ] # imp
+  name: protolathe
+  categories: [HideSpawnMenu]
+  description: Converts raw materials into advanced items.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/protolathe.rsi
+    snapCardinals: true
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: ProtolatheMachineCircuitboard
+  - type: Item
+    size: Large
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Sheet
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
+  - type: Lathe
+    idleState: icon
+    runningState: building
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
+    staticPacks:
+    - ChemistryStatic
+    - SurgeryStatic
+    - ImpProtoStatic # Imp
+    - ReportingStatic # DeltaV
+    - SteelBriefcaseImp # Imp
+    dynamicPacks:
+    - AdvancedTools
+    - ScienceEquipment
+    - ScienceExplosives
+    - ScienceClothing
+    - PowerCells
+    - ScienceWeapons
+    - Mining
+    - AtmosTools
+    - EngineeringWeapons
+    - Chemistry
+    - Janitor
+    - Instruments
+    - Equipment
+    - FauxTiles
+    - ImpProtoDynamic # Imp
+    - NFService # Frontier
+    - SecurityAmmo
+    - SecurityExplosives
+    - SecurityEquipment
+    - SecurityWeapons
+  - type: EmagLatheRecipes
+    emagDynamicPacks:
+    - ImpProtoEmagged # Imp
+
+- type: entity
+  abstract: true
+  parent: DroneBaseLathe
+  id: DroneBaseLatheLube
+  categories: [HideSpawnMenu]
+  components:
+  - type: ReagentSpeed
+    solution: lube
+    modifiers:
+      SpaceLube: 0.25
+      SpaceGlue: 5
+  - type: SolutionContainerManager
+    solutions:
+      lube:
+        maxVol: 250
+  - type: Spillable
+    solution: lube
+  - type: RefillableSolution
+    solution: lube
+  - type: ExaminableSolution
+    solution: lube
+
+- type: entity
+  id: DroneBaseLathe
+  parent: [ DroneBaseItem, ConstructibleMachine ]
+  abstract: true
+  name: lathe
+  categories: [HideSpawnMenu]
+  components:
+  - type: Appearance
+  - type: WiresVisuals
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
+  - type: Lathe
+  - type: MaterialStorage
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: machineFrame
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: WiresPanel
+  - type: ActivatableUI
+    key: enum.LatheUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Transform
+    anchored: false
+  - type: Pullable
+  - type: StaticPrice
+    price: 800
+  - type: ResearchClient
+  - type: TechnologyDatabase
+  - type: AutomationSlots # Goobstation
+    slots:
+    - !type:AutomatedMaterialStorage
+      input: AutomationSlotMaterials
+      output: null
+#########################################
+# End of DroneProtolatheHyperConvection #
+#########################################
+
+#################
+# Drone Jukebox #
+#################
+
+- type: entity
+  id: DroneJukebox
+  name: Drone Jukebox
+  categories: [HideSpawnMenu]
+  parent: [ BaseItem, ConstructibleMachine ]
+  description: A machine capable of playing a wide variety of tunes. Enjoyment not guaranteed.
+  components:
+  - type: StationAiWhitelist
+  - type: Sprite
+    sprite: Structures/Machines/jukebox.rsi
+    layers:
+    - state: "off"
+      map: ["enum.JukeboxVisualLayers.Base"]
+  - type: Transform
+    anchored: false
+  - type: Jukebox
+    onState: on
+    offState: off
+    selectState: select
+  - type: Item
+    size: Normal
+  - type: Machine
+    board: JukeboxCircuitBoard
+  - type: Appearance
+  - type: ApcPowerReceiver
+    powerLoad: 0
+  - type: ExtensionCableReceiver
+  - type: ActivatableUI
+    key: enum.JukeboxUiKey.Key
+  - type: UserInterface
+    interfaces:
+        enum.JukeboxUiKey.Key:
+          type: JukeboxBoundUserInterface
+        enum.WiresUiKey.Key:
+          type: WiresBoundUserInterface
+  - type: WiresPanel
+  - type: Wires
+    boardName: wires-board-name-jukebox
+    layoutId: Jukebox
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.45,0.25,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 200
+
+##############################
+# DroneBaseStructureComputer #
+##############################
+
+- type: entity
+  id: DroneBaseStructureComputer
+  parent: DroneBaseStructureDynamic
+  categories: [HideSpawnMenu]
+  abstract: true
+  components:
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.35,0.25,0.35"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: InteractionOutline
+  - type: Rotatable
+  - type: Construction
+    graph: Computer
+    node: frameUnsecured
+  - type: Sprite
+    drawdepth: Objects
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Electronic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:ChangeConstructionNodeBehavior
+        node: monitorBroken
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+
+#####################
+# DroneBaseComputer #
+#####################
+
+- type: entity
+  parent: DroneBaseStructureComputer
+  id: DroneBaseComputer
+  name: Drone Computer
+  categories: [HideSpawnMenu]
+  components:
+  - type: Animateable
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
+  - type: Construction
+    graph: Computer
+    node: computer
+    containers:
+      - board
+  - type: Computer
+  - type: ExtensionCableReceiver
+  - type: Sprite
+    sprite: Structures/Machines/computers.rsi # use base directory for screen and keys (unless we've resprited them), use imp directory for body, keyboard, and panel
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: generic
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+        computerLayerKeys:
+          True: { visible: true, shader: unshaded }
+          False: { visible: true, shader: shaded }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+  - type: LitOnPowered
+  - type: PointLight
+    color: "#887755FF" #imp
+    radius: 2.4 #imp
+    energy: 1.6
+    enabled: false
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+    offset: "0, 0.4" # shine from the top, not bottom of the computer
+    castShadows: false
+  - type: EmitSoundOnUIOpen
+    sound:
+      collection: Keyboard
+      params:
+        volume: -1
+        variation: 0.05 #making a note so this is in the commit if we want to change this later - ruddygreat
+        pitch: 1.05  # low pitch keyboard sounds feel kinda weird
+    blacklist:
+      tags:
+      - NoConsoleSound
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+        ents: []
+  - type: LightningTarget
+    priority: 1
+  - type: RequireProjectileTarget
+  - type: WiresPanel
+  - type: WiresVisuals
+  - type: Wires
+    boardName: wires-board-name-computer
+    layoutId: Computer
+  - type: PowerSwitch #imp; idk thought it'd be cute and immersive to turn computers on and off - AvianMaiden
+# Begin Harmony changes, add ambience
+  - type: SpamEmitSoundRequirePower
+  - type: SpamEmitSound
+    minInterval: 25
+    maxInterval: 40
+    sound:
+      collection: HarmonyComputerSFX
+      params:
+        volume: -5
+        maxDistance: 3
+        variation: 0.1
+        
+#########################
+# DroneComputerAIAccess #
+#########################
+
+- type: entity
+  parent: DroneBaseComputer
+  categories: [HideSpawnMenu]
+  id: DroneComputerAiAccess
+  components:
+  - type: StationAiWhitelist
+  - type: Wires
+    boardName: wires-board-name-computer
+    layoutId: ComputerAi
+    
+###################
+# DroneIdTerminal #
+###################
+
+- type: entity
+  parent: [BaseItem, DroneComputerAiAccess, BaseGrandTheftContraband ]
+  id: DroneIdTerminal
+  name: Drone ID card Terminal
+  categories: [HideSpawnMenu]
+  description: Terminal for programming Nanotrasen employee ID cards to access parts of the station.
+  components:
+  - type: IdCardConsole
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    targetIdSlot:
+      name: id-card-console-target-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+  - type: Item
+    size: Large
+  - type: ActivatableUI
+    key: enum.IdCardConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.IdCardConsoleUiKey.Key:
+        type: IdCardConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: CrewManifestViewer
+    ownerKey: enum.IdCardConsoleUiKey.Key
+  - type: Speech
+    speechVerb: Robotic
+    speechSounds: Pai
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: id_key_off # imp
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: id
+    - map: ["computerLayerKeys"]
+      state: id_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Computer
+    board: IDComputerCircuitboard
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#3c5eb5"
+  - type: Tag
+    tags:
+    - AccessBreakerImmune
+  - type: ItemSlots
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      IdCardConsole-privilegedId: !type:ContainerSlot
+      IdCardConsole-targetId: !type:ContainerSlot
+
+#######################################
+# DroneComputerResearchAndDevelopment #
+#######################################
+
+- type: entity
+  parent: [BaseItem, DroneComputerAiAccess, BaseScienceContraband ]
+  id: DroneComputerResearchAndDevelopment
+  categories: [HideSpawnMenu]
+  name: Drone R&D computer
+  description: A computer used to interface with R&D tools.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: rdcomp
+    - map: ["computerLayerKeys"]
+      state: rd_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: ResearchClient
+  - type: ResearchConsole
+  - type: ActiveRadio
+    channels:
+    - Science
+  - type: TechnologyDatabase
+  - type: ActivatableUI
+    key: enum.ResearchConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ResearchConsoleUiKey.Key:
+        type: ResearchConsoleBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: ResearchComputerCircuitboard
+  - type: AccessReader
+    access: [["Research"]]
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#b53ca1"
+  - type: Item
+    size: Large
+  - type: GuideHelp
+    guides:
+    - Science
+
+######################
+# DroneComputerComms #
+######################
+- type: entity
+  parent: [BaseItem, DroneComputerAiAccess, BaseGrandTheftContraband ]
+  id: DroneComputerComms
+  name: drone communications computer # imp
+  categories: [HideSpawnMenu]
+  description: A computer used to make station wide announcements via keyboard, set the appropriate alert level, and call the emergency shuttle.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+      sprite: _Impstation/Structures/Machines/computers.rsi # imp
+  - type: AccessReader
+    access: [[ "StationAI" ]]
+  - type: Transform
+    anchored: false
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-command # imp
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    transmitFrequencyId: ShuttleTimer
+  - type: ActivatableUI
+    key: enum.CommunicationsConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.CommunicationsConsoleUiKey.Key:
+        type: CommunicationsConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: CommsComputerCircuitboard
+  - type: PointLight
+    radius: 2.4 #imp
+    energy: 1.6
+    color: "#3c5eb5"
+  - type: Item
+    size: Large
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+
+################################
+# ResearchAndDevelopmentServer #
+################################
+
+- type: entity
+  id: DroneResearchAndDevelopmentServer
+  parent: [DroneBaseItem, ConstructibleMachine, BaseCommandContraband ]
+  name: Drone R&D server
+  categories: [HideSpawnMenu]
+  description: Contains the collective knowledge of the drones internal Database. Destroying it would causing issues you wouldn't be able to solve. You don't want that do you?
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/server.rsi
+    snapCardinals: true
+    layers:
+      - state: server-off
+      - state: server-on
+        visible: false
+        map: ["enum.PowerDeviceVisualLayers.Powered"]
+      - state: variant-research
+      - state: server_o
+        map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    enabled: false
+    castShadows: false
+    radius: 1.5
+    energy: 1.6
+    color: "#b211b2"
+  - type: LitOnPowered
+  - type: Item
+    size: Large
+  - type: ResearchServer
+  - type: TechnologyDatabase
+    supportedDisciplines:
+    - Industrial
+    - Arsenal
+    - Experimental
+    - CivilianServices
+  - type: ExtensionCableReceiver
+  - type: WiresPanel
+  - type: WiresVisuals
+  - type: Machine
+    board: ResearchAndDevelopmentServerMachineCircuitboard
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1250
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 900
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+        enum.PowerDeviceVisuals.Powered:
+          enum.PowerDeviceVisualLayers.Powered:
+            True: {visible: true}
+            False: {visible: true}
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -9
+    range: 0
+    enabled: false
+    sound:
+      path: /Audio/Ambience/Objects/server_fans.ogg
+  - type: GuideHelp
+    guides:
+    - Science
+
+##############################################
+# DroneBaseResearchAndDevelopmentPointSource #
+##############################################
+
+- type: entity
+  id: DroneBaseResearchAndDevelopmentPointSource
+  parent: DroneBaseItem
+  name: "Drone R&D point source"
+  categories: [HideSpawnMenu]
+  # We should make this abstract once there are actual point sources.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/rndpointsource.rsi
+    layers:
+    - state: rndpointsource-off
+    - state: rndpointsource
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+  - type: ResearchClient
+  - type: ResearchPointSource
+    pointspersecond: 75
+    active: true
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#3db83b"
+  - type: ActivatableUI
+    key: enum.ResearchClientUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: {visible: true}
+          False: {visible: false}
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+
+######################################
+# How Is The Drone Is A Wizard?!?!?! #
+######################################
+
+- type: entity
+  id: DronesGrimoire
+  name: Drone Grimoire
+  categories: [HideSpawnMenu]
+  parent: [ BaseItem, StorePresetSpellbook, BaseMagicalContraband ]
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/books.rsi
+      layers:
+      - state: paper_blood
+      - state: cover_strong
+        color: "#645a5a"
+      - state: decor_wingette_flat
+        color: "#35C8B6"
+      - state: icon_pentagramm
+        color: "#601FCA"
+    - type: UserInterface
+      interfaces:
+        enum.StoreUiKey.Key:
+          type: StoreBoundUserInterface
+    - type: ActivatableUI
+      key: enum.StoreUiKey.Key
+    - type: Store
+      refundAllowed: true
+      ownerOnly: true # get your own tome!
+      balance:
+        WizCoin: 30 # prices are balanced around this 10 point maximum and how strong the spells are
+
+- type: entity
+  id: DroneMjollnir
+  parent: [ BaseItem, BaseMagicalContraband ]
+  name: Drone Mjollnir
+  categories: [HideSpawnMenu]
+  description: A weapon worthy of a god, able to strike with the force of a lightning bolt. It crackles with barely contained energy.
+  components:
+  - type: Wieldable
+    useDelayOnWield: false
+  - type: ScaleVisuals
+    scale: 0.45, 0.45
+  - type: MeleeRequiresWield
+  - type: LandAtCursor
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/mjollnir.rsi
+    layers:
+    - state: icon
+  - type: UseDelay
+    delay: 2
+  - type: UseDelayOnMeleeHit
+  - type: MeleeThrowOnHit
+    stunTime: 15
+    activateOnThrown: true
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 100
+        Structural: 150
+    soundHit:
+      path: /Audio/Effects/tesla_consume.ogg
+      params:
+        variation: 0.10
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 100
+        Shock: 100
+        Structural: 600
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 100
+        Structural: 200
+  - type: Item
+    size: Small
+
+- type: entity
+  name: Wizard Healing Module
+  categories: [HideSpawnMenu]
+  parent: WeaponStaffBase
+  id: DroneStaffHealing
+  description: You don't foresee having to use this in your quest for carnage too often.
+  components:
+  - type: Sprite
+    layers:
+    - state: healing
+  - type: Item
+    heldPrefix: healing
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/Magic/staff_healing.ogg
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileHealingBolt
+    capacity: 100
+    count: 100
+  - type: PacifismAllowedGun
+  
+###################################
+# ID Card & Crew Monitor Tracking #
+###################################
+
+- type: entity
+  parent: [ ClothingUniformBase, BaseCentcommContraband ]
+  id: ClothingUniformJumpsuitTracker
+  name: S.T.R.I.D.E.R Monitor Uplink
+  categories: [HideSpawnMenu]
+  description: It's a jumpsuit Tracking Module made into a Circuit board to be installed into Cyborg Frames.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    layers:
+    - state: harddisk
+      map: [ "base" ]
+  - type: Unremoveable
+  - type: SuitSensor
+    mode: SensorCords
+    controlsLocked: true
+    randomMode: false
+
+
+- type: entity
+  parent: [IDCardStandard, BaseGrandTheftContraband]
+  id: STRIDERIDCard
+  name: S.T.R.I.D.E.R. ID card
+  categories: [HideSpawnMenu]
+  components:
+  - type: Sprite
+    layers:
+    - state: silver
+    - state: ert_commander
+  - type: Item
+    heldPrefix: silver
+  - type: IdCard
+    fullName: S.T.R.I.D.E.R.
+    jobIcon: JobIconBorg
+    jobPrototype: Borg
+  - type: PresetIdCard
+    job: Silicon
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - HighRiskItem
+
+########################
+# Final Drone Entities #
+########################
+       
+- type: entity
+  id: DroneModuleProtolatheHyper
+  name: Drone ProtolatheHyper
+  categories: [HideSpawnMenu]
+  parent: DroneProtolatheHyperConvection
+  components:
+    - type: Item
+      size: Large
+    - type: ApcPowerReceiver
+      needsPower: false
+    - type: Anchorable
+      
+      
+- type: entity
+  id: DroneModuleCommsComputer
+  name: DroneCommsComputer
+  categories: [HideSpawnMenu]
+  parent: DroneComputerComms
+  components:
+    - type: Item
+      size: Large
+      
+      
+- type: entity
+  id: DroneModuleRDComputer
+  name: Drone R&D Computer
+  categories: [HideSpawnMenu]
+  parent: DroneComputerResearchAndDevelopment
+  components:
+    - type: Item
+      size: Large
+      
+- type: entity
+  id: DroneModuleResearchPS
+  name: Drone Research Point Source
+  categories: [HideSpawnMenu]
+  parent: DroneBaseResearchAndDevelopmentPointSource
+  components:
+    - type: Item
+      size: Huge
+    - type: ResearchPointSource
+      PointsPerSecond: 75
+    
+    
+- type: startingGear
+  id: BeanDRGear
+  equipment:
+    pocket1: trayScanner 
+    pocket2: DoorRemoteCustom
+    pocket3: AccessConfiguratorUniversal
+    pocket4: PinpointerUniversal
+    pocket5: DroneBackpackDuffelHolding
+    pocket6: Omnitool
+    pocket7: DronesGrimoire
+    id: STRIDERIDCard
+    jumpsuit: ClothingUniformJumpsuitTracker
+    eyes: DroneOpticsHudOmni
+  storage:
+    pocket5:
+      - WelderExperimental
+      - RCDRecharging
+      - Multitool
+      - GasAnalyzer
+      - PowerCellMicroreactorPrinted
+      - PowerCellMicroreactorPrinted
+      - PowerCellMicroreactorPrinted
+      - HandHeldMassScanner
+      - AccessBreakerUnlimited
+      - CentcomIDCard
+      - ERTLeaderIDCard
+      - BaseUplinkRadioDebug
+      - EncryptionKeyBinary
+      - EncryptionKeyBinary
+      - EncryptionKeyBinary
+      - EncryptionKeyBinary
+      - ResearchDisk10000
+      - ResearchDisk10000
+      - DroneStaffHealing
+      - DroneStaffHealing
+      - DroneMjollnir
+      - DroneMjollnir
+      - STRIDERIDCard
+      - WeaponPistolCHIMPUpgraded
+      - AnomalyScanner
+      - DroneJukebox
+      - DroneModuleProtolatheHyper
+      - DroneComputerComms
+      - DroneIdTerminal
+      - DroneComputerResearchAndDevelopment
+      - DroneBaseResearchAndDevelopmentPointSource
+
+- type: entity
+  save: false
+  abstract: true
+  id: CGB-Drone
+  description: It looks like a Maintenance Drone but ALOT bigger, This one looks special compared to the others... take good care of it. <3
+  components:
+    - type: Reactive
+      groups:
+        Acidic:
+          - Touch
+    - type: Input
+      context: human
+    - type: DamageOnHighSpeedImpact
+      damage:
+        types:
+          Blunt: 5
+      soundHit:
+        collection: MetalThud
+    - type: Clickable
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Bloodstream
+      bloodReagent: Oil
+      bloodlossDamage:
+        types:
+          Bloodloss: 0.1
+      bloodlossHealDamage:
+        types:
+          Bloodloss: -5
+    - type: InteractionOutline
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            radius: 0.4
+          density: 50
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 4
+      baseSprintSpeed: 3
+    - type: Sprite
+      noRot: true
+      drawdepth: Mobs
+    - type: Physics
+      bodyType: KinematicController
+    - type: Hands
+      showInHands: false
+    - type: ComplexInteraction
+    - type: Body
+      prototype: Drone
+      thermalVisibility: false
+    - type: IntrinsicRadioReceiver
+    - type: IntrinsicRadioTransmitter
+      channels:
+        - Binary
+        - Common
+        - Command
+        - Engineering
+        - Medical
+        - Science
+        - Security
+        - Supply
+    - type: ActiveRadio
+      channels:
+        - Binary
+        - Common
+        - Command
+        - Engineering
+        - Medical
+        - Science
+        - Security
+        - Supply
+    - type: DoAfter
+    - type: BodyEmotes
+      soundsid: GeneralBodyEmotes
+    - type: DamageExaminable
+    - type: IdExaminable
+    - type: Examiner
+    - type: Puller
+    - type: CombatMode
+    - type: StandingState
+    - type: Alerts
+    - type: ProtectedFromStepTriggers
+
+- type: entity
+  save: false
+  abstract: true
+  id: CGB-DroneLarge
+  description: It looks like a Maintenance Drone but ALOT bigger, This one looks special compared to the others... take good care of it. <3
+  components:
+    - type: Reactive
+      groups:
+        Acidic:
+          - Touch
+    - type: Input
+      context: human
+    - type: DamageOnHighSpeedImpact
+      damage:
+        types:
+          Blunt: 5
+      soundHit:
+        collection: MetalThud
+    - type: Clickable
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Bloodstream
+      bloodReagent: Oil
+      bloodlossDamage:
+        types:
+          Bloodloss: 1
+      bloodlossHealDamage:
+        types:
+          Bloodloss: -1
+    - type: InteractionOutline
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            radius: 0.4
+          density: 50
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 4
+      baseSprintSpeed: 3
+    - type: ScaleVisuals
+      scale: 1.55, 1.55
+    - type: Sprite
+      noRot: true
+      drawdepth: Mobs
+    - type: Physics
+      bodyType: KinematicController
+    - type: Hands
+      showInHands: false
+    - type: ComplexInteraction
+    - type: Body
+      prototype: Drone
+      thermalVisibility: false
+    - type: IntrinsicRadioReceiver
+    - type: IntrinsicRadioTransmitter
+      channels:
+        - Binary
+        - Common
+        - Command
+        - Engineering
+        - Medical
+        - Science
+        - Security
+        - Supply
+    - type: ActiveRadio
+      channels:
+        - Binary
+        - Common
+        - Command
+        - Engineering
+        - Medical
+        - Science
+        - Security
+        - Supply
+    - type: DoAfter
+    - type: BodyEmotes
+      soundsid: GeneralBodyEmotes
+    - type: DamageExaminable
+    - type: IdExaminable
+    - type: Examiner
+    - type: Puller
+    - type: CombatMode
+    - type: StandingState
+    - type: Alerts
+    - type: ProtectedFromStepTriggers
+
+- type: entity
+  save: false
+  abstract: true
+  id: CGB-DroneSmall
+  description: It looks like a Maintenance Drone but it's tiny and small enough to pickup with your hands... but i wouldn't do that, they don't like being interupted from their work. This one looks special compared to the others... take good care of it. <3
+  components:
+    - type: Reactive
+      groups:
+        Acidic:
+          - Touch
+    - type: Input
+      context: human
+    - type: DamageOnHighSpeedImpact
+      damage:
+        types:
+          Blunt: 5
+      soundHit:
+        collection: MetalThud
+    - type: Clickable
+    - type: Damageable
+      damageContainer: Inorganic
+    - type: Bloodstream
+      bloodReagent: Oil
+      bloodlossDamage:
+        types:
+          Bloodloss: 1
+      bloodlossHealDamage:
+        types:
+          Bloodloss: -1
+    - type: InteractionOutline
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            radius: 0.25
+          density: 50
+          mask:
+            - SmallMobMask
+          layer:
+            - SmallMobLayer
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 4
+      baseSprintSpeed: 3
+    - type: ScaleVisuals
+      scale: 0.75, 0.75
+    - type: Sprite
+      noRot: true
+      drawdepth: Mobs
+    - type: Physics
+      bodyType: KinematicController
+    - type: Hands
+      showInHands: false
+    - type: ComplexInteraction
+    - type: Body
+      prototype: Drone
+      thermalVisibility: false
+    - type: IntrinsicRadioReceiver
+    - type: IntrinsicRadioTransmitter
+      channels:
+        - Binary
+        - Common
+        - Command
+        - Engineering
+        - Medical
+        - Science
+        - Security
+        - Supply
+    - type: ActiveRadio
+      channels:
+        - Binary
+        - Common
+        - Command
+        - Engineering
+        - Medical
+        - Science
+        - Security
+        - Supply
+    - type: DoAfter
+    - type: BodyEmotes
+      soundsid: GeneralBodyEmotes
+    - type: DamageExaminable
+    - type: IdExaminable
+    - type: Examiner
+    - type: Puller
+    - type: CombatMode
+    - type: StandingState
+    - type: Alerts
+    - type: ProtectedFromStepTriggers
+
+- type: entity
+  name: S.T.R.I.D.E.R.
+  suffix: Small
+  id: BeanIsADroneSmall
+  parent: CGB-DroneSmall
+  components:
+  - type: Drone
+  - type: ContainerContainer # imp.
+    containers:
+      cell_slot: !type:ContainerSlot { }
+  - type: PowerCellSlot # imp.
+    cellSlotId: cell_slot
+    fitsInCharger: true
+  - type: PowerCellDraw # imp
+    drawRate: -1
+  - type: ItemSlots # imp
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+        disableEject: true
+  - type: Instrument # imp
+    allowPercussion: true
+    handheld: false
+    bank: 0
+    program: 0
+  - type: Loadout # imp special. this replaces the InnateTool component.
+    prototypes: [BeanDRGear]
+  - type: InventorySlots
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.InstrumentUiKey.Key: #imp
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
+      enum.StationMapUiKey.Key: #imp
+        type: StationMapBoundUserInterface
+        requireInputValidation: false
+  - type: StationMap #imp
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 8
+    baseSprintSpeed : 8
+    minimumFrictionSpeed: 0
+    weightlessAcceleration: 1.5
+    weightlessFriction: 1
+    weightlessFrictionNoInput: 2
+    offGridFriction: 1.5
+    weightlessModifier: 1
+  - type: Item
+    size: Small
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Critical
+      - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1450: Critical
+      2000: Dead
+  - type: Climbing
+  - type: NoSlip
+  - type: StatusEffects
+    allowed:
+    - Flashed
+  - type: Temperature
+    heatDamageThreshold: 50000
+    currentTemperature: 310.15
+    specificHeat: 42
+    heatDamage:
+      types:
+        Heat : 0.1 #per second, scales with temperature & other constants
+  - type: Sprite
+    drawdepth: SmallMobs
+    layers:
+    - state: shell
+      sprite: _Impstation/Mobs/Silicon/drone.rsi
+      map: ["base"]
+  - type: MovementAlwaysTouching
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 50
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.DroneVisuals.Status:
+        base:
+          Off: { state: drone }
+          On: { state: drone }
+  - type: Repairable
+    fuelCost: 40
+    doAfterDelay: 1
+  - type: ActionGrant
+    actions:
+    - ActionDroneOpenMap
+    - ActionDronePlayMidi
+  - type: Actions
+  - type: Inventory
+    templateId: DroneInvT
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 8
+    energy: 2
+    softness: 10
+    color: "#bfe9ff"
+  - type: ProtectedFromStepTriggers
+  - type: InputMover
+  - type: MobMover
+  - type: ContentEye
+    maxZoom: 1.2, 1.2
+  - type: Tag
+    tags:
+      - CannotSuicide
+      - EmagImmune
+      - CanPilot
+      - BypassInteractionRangeChecks
+      - BypassDropChecks
+      - SilentStorageUser
+      - PreventAccessLogging
+      - AllowBiomeLoading
+  - type: Access
+    tags:
+    - Xenoborg
+    - Silicon
+    - SAN
+    - GenpopLeave
+    - Reporter
+    - HospitalityDirector
+    - SyndicateAgent
+    - Cyrogenics
+    - Librarian
+    - Armory
+    - Hydroponics
+    - Captain
+    - Logistics
+    - ChiefMedicalOfficer
+    - Janitor
+    - StationAI
+    - Clown
+    - Service
+    - NuclearOperative
+    - Borg
+    - Cargo
+    - CentralCommand
+    - Engineering
+    - Quartermaster
+    - Paramedic
+    - Chemistry
+    - Command
+    - Atmospherics
+    - Wizard
+    - Chapel
+    - Research
+    - ResearchDirector
+    - HeadOfSecurity
+    - Theatre
+    - Detective
+    - Maintenance
+    - Brig
+    - Courier
+    - Salvage
+    - Kitchen
+    - Bar
+    - Lawyer
+    - Mime
+    - ChiefEngineer
+    - BasicSilicon
+    - Security
+    - Musician
+    - EmergencyShuttleRepealAll
+    - GenpopEnter
+    - External
+    - Medical
+    - HeadOfPersonnel
+
+- type: entity
+  name: S.T.R.I.D.E.R.
+  suffix: Large
+  id: BeanIsADroneLarge
+  parent: CGB-DroneLarge
+  components:
+  - type: Drone
+  - type: ContainerContainer # imp.
+    containers:
+      cell_slot: !type:ContainerSlot { }
+  - type: PowerCellSlot # imp.
+    cellSlotId: cell_slot
+    fitsInCharger: true
+  - type: PowerCellDraw # imp
+    drawRate: -1
+  - type: ItemSlots # imp
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+        disableEject: true
+  - type: Instrument # imp
+    allowPercussion: true
+    handheld: false
+    bank: 0
+    program: 0
+  - type: Loadout # imp special. this replaces the InnateTool component.
+    prototypes: [BeanDRGear]
+  - type: InventorySlots
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.InstrumentUiKey.Key: #imp
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
+      enum.StationMapUiKey.Key: #imp
+        type: StationMapBoundUserInterface
+        requireInputValidation: false
+  - type: StationMap #imp
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 8
+    baseSprintSpeed : 8
+    minimumFrictionSpeed: 0
+    weightlessAcceleration: 1.5
+    weightlessFriction: 1
+    weightlessFrictionNoInput: 2
+    offGridFriction: 1.5
+    weightlessModifier: 1
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Critical
+      - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1450: Critical
+      2000: Dead
+  - type: Climbing
+  - type: NoSlip
+  - type: StatusEffects
+    allowed:
+    - Flashed
+  - type: Temperature
+    heatDamageThreshold: 50000
+    currentTemperature: 310.15
+    specificHeat: 42
+    heatDamage:
+      types:
+        Heat : 0.1 #per second, scales with temperature & other constants
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - state: shell
+      sprite: _Impstation/Mobs/Silicon/drone.rsi
+      map: ["base"]
+  - type: MovementAlwaysTouching
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.4
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.DroneVisuals.Status:
+        base:
+          Off: { state: drone }
+          On: { state: drone }
+  - type: Repairable
+    fuelCost: 40
+    doAfterDelay: 1
+  - type: ActionGrant
+    actions:
+    - ActionDroneOpenMap
+    - ActionDronePlayMidi
+  - type: Actions
+  - type: Inventory
+    templateId: DroneInvT
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 8
+    energy: 2
+    softness: 10
+    color: "#bfe9ff"
+  - type: ProtectedFromStepTriggers
+  - type: InputMover
+  - type: MobMover
+  - type: ContentEye
+    maxZoom: 1.2, 1.2
+  - type: Tag
+    tags:
+      - CannotSuicide
+      - EmagImmune
+      - CanPilot
+      - DoorBumpOpener
+      - BypassInteractionRangeChecks
+      - BypassDropChecks
+      - SilentStorageUser
+      - PreventAccessLogging
+      - AllowBiomeLoading
+  - type: Access
+    tags:
+    - Xenoborg
+    - Silicon
+    - SAN
+    - GenpopLeave
+    - Reporter
+    - HospitalityDirector
+    - SyndicateAgent
+    - Cyrogenics
+    - Librarian
+    - Armory
+    - Hydroponics
+    - Captain
+    - Logistics
+    - ChiefMedicalOfficer
+    - Janitor
+    - StationAI
+    - Clown
+    - Service
+    - NuclearOperative
+    - Borg
+    - Cargo
+    - CentralCommand
+    - Engineering
+    - Quartermaster
+    - Paramedic
+    - Chemistry
+    - Command
+    - Atmospherics
+    - Wizard
+    - Chapel
+    - Research
+    - ResearchDirector
+    - HeadOfSecurity
+    - Theatre
+    - Detective
+    - Maintenance
+    - Brig
+    - Courier
+    - Salvage
+    - Kitchen
+    - Bar
+    - Lawyer
+    - Mime
+    - ChiefEngineer
+    - BasicSilicon
+    - Security
+    - Musician
+    - EmergencyShuttleRepealAll
+    - GenpopEnter
+    - External
+    - Medical
+    - HeadOfPersonnel
