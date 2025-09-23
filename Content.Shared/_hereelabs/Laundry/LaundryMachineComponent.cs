@@ -31,36 +31,39 @@ public sealed partial class LaundryMachineComponent : Component
     public int TimeSettingMinutes = 15;
 
     [AutoNetworkedField]
-    public TimeSpan TimeRemaining;
+    public TimeSpan TimeRemaining = TimeSpan.FromSeconds(0);
 
     [AutoNetworkedField]
-    public LaundryMachineState State = LaundryMachineState.Off;
+    public LaundryMachineState LaundryState = LaundryMachineState.Off;
 
     [AutoNetworkedField]
     public LaundryMachineWashState WashState = LaundryMachineWashState.Inactive;
 
     [AutoNetworkedField]
-    public LaundryMachineWashState? WashDelayNextState;
+    public LaundryMachineWashState? WashDelayNextState = null;
+
+    [AutoNetworkedField]
+    public bool Paused = false;
 
     [DataField, AutoNetworkedField]
     public SoundSpecifier SwitchSound = new SoundPathSpecifier(
         "/Audio/Weapons/click.ogg",
-        new AudioParams().WithVolume(-6)
+        AudioParams.Default.WithVolume(-6)
     );
 
     [DataField, AutoNetworkedField]
     public SoundSpecifier StartSound = new SoundPathSpecifier(
         "/Audio/Weapons/click.ogg",
-        new AudioParams().WithVolume(-6).WithPitchScale(0.9f)
+        AudioParams.Default.WithVolume(-6).WithPitchScale(0.9f)
     );
 
     [DataField, AutoNetworkedField]
-    public SoundSpecifier FillSound = new SoundPathSpecifier("/Audio/_hereelabs/Machines/laundry_water.ogg");
+    public SoundSpecifier FillSound = new SoundPathSpecifier("/Audio/_hereelabs/Machines/laundry_fillwater.ogg");
 
     [DataField, AutoNetworkedField]
     public SoundSpecifier SpinSound = new SoundPathSpecifier(
         "/Audio/_hereelabs/Machines/laundry_spin.ogg",
-        new AudioParams().WithLoop(true)
+        AudioParams.Default.WithLoop(true)
     );
 
     [DataField, AutoNetworkedField]
@@ -69,7 +72,7 @@ public sealed partial class LaundryMachineComponent : Component
     [DataField, AutoNetworkedField]
     public SoundSpecifier FastSpinSound = new SoundPathSpecifier(
         "/Audio/_hereelabs/Machines/laundry_spinfast.ogg",
-        new AudioParams().WithLoop(true)
+        AudioParams.Default.WithLoop(true)
     );
 
     [DataField, AutoNetworkedField]

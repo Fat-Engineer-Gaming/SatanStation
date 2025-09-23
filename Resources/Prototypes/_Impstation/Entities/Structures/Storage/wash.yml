@@ -1,5 +1,7 @@
+# a loooot of devilstation changes here
+
 - type: entity
-  parent: [CrateBaseSecure, BaseMachinePowered]
+  parent: [ CrateBaseSecure, BaseMachinePowered ]
   id: WashingMachine
   name: laundry machine
   description: You could use this to wash and dry your clothes. It's recommended to lock before using.
@@ -32,7 +34,7 @@
         shape:
           !type:PhysShapeAabb
           bounds: "-0.45,-0.45,0.45,0.45"
-        density: 110
+        density: 100
         mask:
         - MachineMask
         layer:
@@ -51,13 +53,17 @@
       tank:
         maxVol: 200
         reagents:
-          Water: 200
+          - data: []
+            ReagentId: Water
+            Quantity: 200
   - type: ExaminableSolution
     solution: tank
     exactVolume: true
   - type: DrawableSolution
     solution: tank
   - type: InjectableSolution
+    solution: tank
+  - type: DumpableSolution
     solution: tank
   - type: Lock
     locked: false
@@ -66,12 +72,30 @@
   - type: DamageOtherOnHit # imp
     damage:
       types:
-        Blunt: 15
+        Blunt: 12
     staminaCost: 50
   - type: LaundryMachine
     damage:
       types:
         Blunt: 1
+  - type: AmbientSound
+    enabled: false
+    volume: 0
+    range: 6
+    sound:
+      path: /Audio/_hereelabs/Machines/laundry_spin.ogg
+  - type: EntityStorage
+    openOnMove: false
+  - type: Climbable
+  - type: ContainerContainer
+    containers:
+      detergentSlot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      detergentSlot:
+        whitelist:
+          components:
+          - FitsInDispenser
   #- type: Construction
   #  graph: CrateSecure
   #  node: cratesecure
