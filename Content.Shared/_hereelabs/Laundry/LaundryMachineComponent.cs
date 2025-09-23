@@ -1,5 +1,7 @@
+using Content.Shared.Damage;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using Robust.Shared.Audio;
 
 namespace Content.Shared._hereelabs.Laundry;
 
@@ -38,7 +40,40 @@ public sealed partial class LaundryMachineComponent : Component
     public LaundryMachineWashState WashState = LaundryMachineWashState.Inactive;
 
     [AutoNetworkedField]
-    public LaundryMachineWashState WashDelayNextState = LaundryMachineWashState.Inactive;
+    public LaundryMachineWashState? WashDelayNextState;
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier SwitchSound = new SoundPathSpecifier(
+        "/Audio/Weapons/click.ogg",
+        new AudioParams().WithVolume(-6)
+    );
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier StartSound = new SoundPathSpecifier(
+        "/Audio/Weapons/click.ogg",
+        new AudioParams().WithVolume(-6).WithPitchScale(0.9f)
+    );
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier FillSound = new SoundPathSpecifier("/Audio/_hereelabs/Machines/laundry_water.ogg");
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier SpinSound = new SoundPathSpecifier(
+        "/Audio/_hereelabs/Machines/laundry_spin.ogg",
+        new AudioParams().WithLoop(true)
+    );
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier StartSpinSound = new SoundPathSpecifier("/Audio/_hereelabs/Machines/laundry_spinstart.ogg");
+
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier FastSpinSound = new SoundPathSpecifier(
+        "/Audio/_hereelabs/Machines/laundry_spinfast.ogg",
+        new AudioParams().WithLoop(true)
+    );
+
+    [DataField, AutoNetworkedField]
+    public DamageSpecifier Damage = default!;
 }
 
 [Serializable, NetSerializable]
@@ -79,9 +114,10 @@ public enum LaundryMachineWashState
 {
     Inactive,
     Delay,
-    WaterFill,
+    WashFill,
     Washing,
     WashDraining,
+    RinseFill,
     Rinsing,
     RinseDraining,
     FastSpin
