@@ -28,7 +28,6 @@
     washFactor: 2
   - type: Spillable
     solution: soaked
-    spillDelay: 0.75
     spillWhenThrown: false
     preventMelee: false
 

@@ -3,6 +3,7 @@ using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
@@ -41,7 +42,10 @@ public abstract class SharedLaundrySystem : EntitySystem
     private readonly int _dryerCycleCount = Enum.GetValues<DryerCycleSetting>().Length;
 
     public const float DRIP_VOLUME = 10f;
-    public const float DRIP_AMOUNT = 0.02f;
+    public const float DRIP_AMOUNT = 0.08f;
+    public const float CLEAN_STRENGTH_FACTOR = 0.25f;
+    public const float WASH_STRENGTH_FACTOR = 0.75f;
+    public const float MACHINE_WASH_PORTION = 0.25f;
 
     public override void Initialize()
     {
@@ -442,7 +446,7 @@ public abstract class SharedLaundrySystem : EntitySystem
         Dirty(ent);
     }
 
-    protected bool PauseMachine(EntityUid uid, LaundryMachineComponent comp, EntityUid? user = null, bool doPopup = false)
+    protected bool PauseMachine(EntityUid uid, LaundryMachineComponent comp, EntityUid? user = null, bool doPopup = true)
     {
         if (comp.Paused)
             return false;
@@ -515,8 +519,7 @@ public abstract class SharedLaundrySystem : EntitySystem
         if (!_solutions.EnsureSolution(ent.Owner, ent.Comp.Solution, out var solution, ent.Comp.SolutionCapacity))
             return;
 
-        /// should probably ensure SpillableComponent too instead of doing it manually in prototypes ?
-
+        EnsureComp<ReactiveComponent>(ent.Owner);
     }
     private void OnWashableExamined(Entity<WashableClothingComponent> ent, ref ExaminedEvent args)
     {

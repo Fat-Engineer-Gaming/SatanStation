@@ -24,6 +24,5 @@
   - type: WashableClothing # devil !
   - type: Spillable
     solution: soaked
-    spillDelay: 1
     spillWhenThrown: false
     preventMelee: false

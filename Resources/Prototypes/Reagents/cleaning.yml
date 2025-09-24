@@ -5,6 +5,7 @@
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
   color: "#a1000b"
+  laundryCleaningStrength: 8.0 # devil !
   boilingPoint: 111.0
   meltingPoint: -5.0
   metabolisms:
@@ -73,6 +74,7 @@
   flavor: clean
   color: "#c8dfc9"
   recognizable: true
+  laundryCleaningStrength: 1.0 # devil !
   boilingPoint: 100.0
   meltingPoint: 60.0
   slipData:

@@ -52,6 +52,7 @@ laundry-machine-verb-resume = Resume
 laundry-machine-verb-stop = Stop
 
 laundry-machine-started = Started
+laundry-machine-start-must-close = {CAPITALIZE(THE($machine))} must be closed to start
 laundry-machine-paused = Paused
 laundry-machine-resumed = Resumed
 laundry-machine-resume-must-close = {CAPITALIZE(THE($machine))} must be closed to resume
