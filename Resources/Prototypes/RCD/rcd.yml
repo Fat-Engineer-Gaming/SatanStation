@@ -88,6 +88,18 @@
   fx: EffectRCDConstruct2
 
 - type: rcd
+  id: ReinforcedWallSolid
+  category: WallsAndFlooring
+  sprite: /Textures/Interface/Radial/RCD/reinforced_wall.png
+  mode: ConstructObject
+  prototype: WallReinforced
+  cost: 4
+  delay: 3
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct3
+
+- type: rcd
   id: Grille
   category: WindowsAndGrilles
   sprite: /Textures/Interface/Radial/RCD/grille.png
@@ -184,6 +196,17 @@
   fx: EffectRCDConstruct4
 
 - type: rcd
+  id: FirelockGlass
+  category: Airlocks
+  sprite: /Textures/Interface/Radial/RCD/firelock.png
+  mode: ConstructObject
+  prototype: FirelockGlass
+  cost: 4
+  delay: 3
+  rotation: Camera
+  fx: EffectRCDConstruct3
+
+- type: rcd
   id: Firelock
   category: Airlocks
   sprite: /Textures/Interface/Radial/RCD/firelock.png
@@ -194,6 +217,19 @@
   collisionMask: FullTileMask
   rotation: Camera
   fx: EffectRCDConstruct3
+
+- type: rcd
+  id: BlastdoorXeno
+  category: Airlocks
+  sprite: /Textures/Interface/Radial/RCD/Xeno_door.png
+  mode: ConstructObject
+  prototype: BlastDoorXeno
+  cost: 8
+  delay: 3
+  collisionMask: FullTileMask
+  rotation: Camera
+  fx: EffectRCDConstruct3
+
 
 # Lighting
 - type: rcd
@@ -273,18 +309,6 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
-
-- type: rcd
-  id: ReinforcedWallSolid
-  category: WallsAndFlooring
-  sprite: /Textures/Interface/Radial/RCD/reinforced_wall.png
-  mode: ConstructObject
-  prototype: WallReinforced
-  cost: 4
-  delay: 3
-  collisionMask: FullTileMask
-  rotation: User
-  fx: EffectRCDConstruct3
   
 - type: rcd
   id: ElecAPC
@@ -298,13 +322,23 @@
   fx: EffectRCDConstruct0
   
 - type: rcd
-  id: ElecAdvSMES
+  id: ElecWMSub
   category: Electrical
-  sprite: /Textures/Interface/Radial/RCD/advancedsmes.png
+  sprite: /Textures/Interface/Radial/RCD/substation_static.png
   mode: ConstructObject
-  prototype: SMESAdvanced
-  collisionMask: Impassable
-  cost: 50
-  delay: 15
-  rotation: Camera
+  prototype: SubstationWallBasic
+  cost: 128
+  delay: 4
+  rotation: User
+  fx: EffectRCDConstruct4
+
+- type: rcd
+  id: ElecWMGen
+  category: Electrical
+  sprite: /Textures/Interface/Radial/RCD/WMGen_static.png
+  mode: ConstructObject
+  prototype: GeneratorWallmountBasic
+  cost: 64
+  delay: 4
+  rotation: User
   fx: EffectRCDConstruct4
