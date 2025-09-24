@@ -273,3 +273,38 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
+
+- type: rcd
+  id: ReinforcedWallSolid
+  category: WallsAndFlooring
+  sprite: /Textures/Interface/Radial/RCD/reinforced_wall.png
+  mode: ConstructObject
+  prototype: WallReinforced
+  cost: 4
+  delay: 3
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct3
+  
+- type: rcd
+  id: ElecAPC
+  category: Electrical
+  sprite: /Textures/Interface/Radial/RCD/static.png
+  mode: ConstructObject
+  prototype: APCBasic
+  cost: 1
+  delay: 0
+  rotation: User
+  fx: EffectRCDConstruct0
+  
+- type: rcd
+  id: ElecAdvSMES
+  category: Electrical
+  sprite: /Textures/Interface/Radial/RCD/advancedsmes.png
+  mode: ConstructObject
+  prototype: SMESAdvanced
+  collisionMask: Impassable
+  cost: 50
+  delay: 15
+  rotation: Camera
+  fx: EffectRCDConstruct4
