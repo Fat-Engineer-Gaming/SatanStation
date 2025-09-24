@@ -357,19 +357,6 @@
           - MachineLayer
   - type: Lathe
   - type: MaterialStorage
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
   - type: WiresPanel
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
@@ -481,19 +468,6 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Electronic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 500
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: GlassBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: monitorBroken
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
 
 #####################
 # DroneBaseComputer #
@@ -834,28 +808,6 @@
   - type: WiresVisuals
   - type: Machine
     board: ResearchAndDevelopmentServerMachineCircuitboard
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 1250
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 900
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 1
-            max: 2
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -913,28 +865,6 @@
         enum.PowerDeviceVisualLayers.Powered:
           True: {visible: true}
           False: {visible: false}
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 400
-      behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 200
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalBreak
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          SheetSteel1:
-            min: 1
-            max: 1
 
 ######################################
 # How Is The Drone Is A Wizard?!?!?! #
@@ -995,7 +925,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 100
+        Blunt: 25
         Structural: 150
     soundHit:
       path: /Audio/Effects/tesla_consume.ogg
@@ -1004,14 +934,14 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 100
-        Shock: 100
-        Structural: 600
+        Blunt: 15
+        Shock: 15
+        Structural: 100
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 100
-        Structural: 200
+        Blunt: 10
+        Structural: 100
   - type: Item
     size: Small
 
