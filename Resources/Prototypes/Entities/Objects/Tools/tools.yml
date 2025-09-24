@@ -359,11 +359,13 @@
     - Airlock
     - AirlockGlass
     - Firelock
+    - FirelockGlass
     - TubeLight
     - BulbLight
     - LVCable
     - MVCable
     - HVCable
+    - ElecAPC
     - CableTerminal
     - Deconstruct
   - type: LimitedCharges
@@ -446,6 +448,8 @@
     - Airlock
     - AirlockGlass
     - Firelock
+    - FirelockGlass
+    - BlastDoorXen
     - TubeLight
     - BulbLight
     - LVCable
@@ -453,12 +457,13 @@
     - HVCable
     - CableTerminal
     - ElecAPC
-    - ElecAdvSMES
+    - ElecWMSub
+    - ElecWMGen
     - Deconstruct
   - type: LimitedCharges
     maxCharges: 256
   - type: AutoRecharge
-    rechargeDuration: 0.5
+    rechargeDuration: 20
   - type: Sprite
     sprite: _Impstation/Objects/Tools/rcd.rsi # imp
     state: icon
