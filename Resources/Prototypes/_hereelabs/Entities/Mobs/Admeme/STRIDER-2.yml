@@ -1146,7 +1146,7 @@
   storage:
     pocket5:
       - WelderExperimental
-      - RCDRecharging
+      - DroneRCD
       - Multitool
       - GasAnalyzer
       - PowerCellMicroreactorPrinted
