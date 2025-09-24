@@ -1,7 +1,6 @@
 using Content.Shared.Atmos;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
 using Content.Shared.Storage.EntitySystems;
@@ -16,7 +15,6 @@ public sealed class LaundrySystem : SharedLaundrySystem
 {
     [Dependency] private readonly PuddleSystem _puddle = default!;
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
     [Dependency] private readonly ReactiveSystem _reactive = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
@@ -35,7 +33,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
         base.Initialize();
 
         SubscribeLocalEvent<LaundryMachineComponent, StorageBeforeOpenEvent>(OnMachineOpened);
-        SubscribeLocalEvent<LaundryMachineComponent, DestructionEventArgs>(OnDestruction);
+        SubscribeLocalEvent<LaundryMachineComponent, DestructionEventArgs>(OnMachineDestruction);
 
         _sawmill = _logManager.GetSawmill("laundry.server");
     }
@@ -47,13 +45,20 @@ public sealed class LaundrySystem : SharedLaundrySystem
         if (_timer < UPDATE_TIME)
             return;
 
-        var query = EntityQueryEnumerator<LaundryMachineComponent>();
-        while (query.MoveNext(out var uid, out var machine))
-            UpdateComponent((uid, machine), UPDATE_TIME);
+        var machineQuery = EntityQueryEnumerator<LaundryMachineComponent>();
+        while (machineQuery.MoveNext(out var uid, out var machine))
+            UpdateMachineComponent((uid, machine), UPDATE_TIME);
+
+        var washableQuery = EntityQueryEnumerator<WashableClothingComponent>();
+        while (washableQuery.MoveNext(out var uid, out var washable))
+            UpdateWashableComponent((uid, washable), UPDATE_TIME);
 
         _timer -= UPDATE_TIME;
     }
-    private void UpdateComponent(Entity<LaundryMachineComponent> ent, float deltaTime)
+
+    #region Machine
+
+    private void UpdateMachineComponent(Entity<LaundryMachineComponent> ent, float deltaTime)
     {
         var comp = ent.Comp;
 
@@ -65,7 +70,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
             case LaundryMachineState.Off:
                 break;
             case LaundryMachineState.Washing:
-                UpdateComponentWash(ent, deltaTime);
+                UpdateMachineComponentWash(ent, deltaTime);
                 break;
             case LaundryMachineState.Delay:
                 comp.TimeRemaining -= TimeSpan.FromSeconds(deltaTime);
@@ -73,11 +78,11 @@ public sealed class LaundrySystem : SharedLaundrySystem
                     ChangeMachineState(ent, LaundryMachineState.Drying);
                 break;
             case LaundryMachineState.Drying:
-                UpdateComponentDry(ent, deltaTime);
+                UpdateMachineComponentDry(ent, deltaTime);
                 break;
         }
     }
-    private void UpdateComponentWash(Entity<LaundryMachineComponent> ent, float deltaTime)
+    private void UpdateMachineComponentWash(Entity<LaundryMachineComponent> ent, float deltaTime)
     {
         var uid = ent.Owner;
         var comp = ent.Comp;
@@ -180,7 +185,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
                 break;
         }
     }
-    private void UpdateComponentDry(Entity<LaundryMachineComponent> ent, float deltaTime)
+    private void UpdateMachineComponentDry(Entity<LaundryMachineComponent> ent, float deltaTime)
     {
         var uid = ent.Owner;
         var comp = ent.Comp;
@@ -198,7 +203,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
     {
         if (_solutions.EnsureSolutionEntity(uid, "drum", out var drumSoln) && _solutions.EnsureSolutionEntity(uid, "tank", out var tankSoln))
         {
-            Solution takenSolution = _solutions.SplitSolution(tankSoln.Value, amount);
+            var takenSolution = _solutions.SplitSolution(tankSoln.Value, amount);
             var transferred = _solutions.AddSolution(drumSoln.Value, takenSolution);
 
             if (transferred < amount)
@@ -216,7 +221,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
                 return;
             }
 
-            Solution takenSolution = _solutions.SplitSolution(detergentSoln.Value, amount);
+            var takenSolution = _solutions.SplitSolution(detergentSoln.Value, amount);
             var transferred = _solutions.AddSolution(drumSoln.Value, takenSolution);
 
             if (transferred < amount)
@@ -230,7 +235,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
             if (amount < 0)
                 amount = (double)soln.Value.Comp.Solution.Volume;
 
-            Solution removed = _solutions.SplitSolution(soln.Value, amount);
+            var removed = _solutions.SplitSolution(soln.Value, amount);
             _puddle.TrySpillAt(uid, removed, out var puddle, sound);
         }
     }
@@ -242,12 +247,15 @@ public sealed class LaundrySystem : SharedLaundrySystem
             return;
 
         var contained = entStorage.Contents.ContainedEntities;
-        Solution solution = soln.Value.Comp.Solution;
+        var solution = soln.Value.Comp.Solution;
+
+        var containedLen = contained.Count;
+        var portion = solution.Volume / containedLen;
 
         foreach (var containedUid in contained)
         {
             /// splash solution onto everything inside
-            Solution removed = _solutions.SplitSolution(soln.Value, solution.Volume * 0.01f * deltaTime);
+            var removed = _solutions.SplitSolution(soln.Value, solution.Volume * portion * deltaTime);
 
             _reactive.DoEntityReaction(containedUid, removed, ReactionMethod.Touch);
 
@@ -260,7 +268,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
 
             _sawmill.Debug($"{containedUid} {damageFactor}");
 
-            _damageable.TryChangeDamage(containedUid, comp.Damage * damageFactor * deltaTime, interruptsDoAfters:false);
+            _damageable.TryChangeDamage(containedUid, comp.Damage * damageFactor * deltaTime, interruptsDoAfters: false);
         }
     }
     private void MachineHeat(EntityUid uid, LaundryMachineComponent comp, float deltaTime)
@@ -270,20 +278,21 @@ public sealed class LaundrySystem : SharedLaundrySystem
         if (!TryComp<EntityStorageComponent>(uid, out var entStorage))
             return;
 
-        Solution solution = soln.Value.Comp.Solution;
+        var solution = soln.Value.Comp.Solution;
 
-        /// i am very likely doing this horribly wrong but i do not care right now, i just want to get this working in some way at the moment
-        if (solution.Temperature < Atmospherics.T0C + 71f)
+        /// i am very likely doing this horribly wrong or smth but i do not care right now, i just want to get this working in some way at the moment
+        var targetTemp = Atmospherics.T0C + comp.TemperatureCelcius;
+        if (solution.Temperature < targetTemp)
         {
-            _solutions.AddThermalEnergy(soln.Value, 3750f);
-            if (solution.Temperature > Atmospherics.T0C + 71f)
-                _solutions.SetTemperature(soln.Value, Atmospherics.T0C + 71f);
+            _solutions.AddThermalEnergy(soln.Value, 18.75f);
+            if (solution.Temperature > targetTemp)
+                _solutions.SetTemperature(soln.Value, targetTemp);
         }
-        if (entStorage.Air.Temperature < Atmospherics.T0C + 71f)
+        if (entStorage.Air.Temperature < targetTemp)
         {
-            _atmosphere.AddHeat(entStorage.Air, 3750f * deltaTime);
-            if (entStorage.Air.Temperature > Atmospherics.T0C + 71f)
-                entStorage.Air.Temperature = Atmospherics.T0C + 71f;
+            _atmosphere.AddHeat(entStorage.Air, 18.75f * deltaTime);
+            if (entStorage.Air.Temperature > targetTemp)
+                entStorage.Air.Temperature = targetTemp;
         }
     }
 
@@ -296,12 +305,60 @@ public sealed class LaundrySystem : SharedLaundrySystem
             return;
 
         /// pause
-        PauseMachine(uid, comp, doPopup:false);
+        PauseMachine(uid, comp, doPopup: false);
     }
-    private void OnDestruction(EntityUid uid, LaundryMachineComponent comp, DestructionEventArgs args)
+    private void OnMachineDestruction(EntityUid uid, LaundryMachineComponent comp, DestructionEventArgs args)
     {
         DrainDrum(uid, -1, true);
         if (_solutions.EnsureSolutionEntity(uid, "tank", out var tankSoln))
             _puddle.TrySpillAt(uid, tankSoln.Value.Comp.Solution, out var puddle);
     }
+
+    #endregion
+
+    #region Washable clothing
+
+    private void UpdateWashableComponent(Entity<WashableClothingComponent> ent, float deltaTime)
+    {
+        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+            return;
+
+        if (solution.Volume >= DRIP_VOLUME)
+            WashableDrip(ent);
+    }
+
+    public void WashableWash(Entity<WashableClothingComponent> ent, Solution solution)
+    {
+
+    }
+    public void WashableDrip(Entity<WashableClothingComponent> ent)
+    {
+        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+            return;
+
+        var dripped = _solutions.SplitSolution(soln.Value, DRIP_AMOUNT);
+
+        if (TryComp<InsideEntityStorageComponent>(ent.Owner, out var insideEntStorage))
+        {
+            var entStorageUid = insideEntStorage.Storage;
+            if (TryComp<EntityStorageComponent>(entStorageUid, out var entStorage) && TryComp<LaundryMachineComponent>(entStorageUid, out var laundryMachine))
+            {
+                /// try dripping into laundry machine drum
+                if (_solutions.EnsureSolutionEntity(entStorageUid, "drum", out var drumSoln))
+                {
+                    var transferred = _solutions.AddSolution(drumSoln.Value, dripped);
+
+                    /// spill leftovers as a puddle
+                    if (transferred < dripped.Volume)
+                        _puddle.TrySpillAt(ent.Owner, dripped, out var pudl, false);
+                    return;
+                }
+            }
+        }
+
+        /// spill dripped as puddle
+        _puddle.TrySpillAt(ent.Owner, dripped, out var puddle, false);
+    }
+
+    #endregion
 }

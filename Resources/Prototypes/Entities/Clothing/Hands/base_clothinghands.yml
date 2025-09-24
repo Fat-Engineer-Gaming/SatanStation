@@ -30,6 +30,12 @@
         Cold: 5 # imp edit. for cold lightbulbs. also makes sense that gloves would protect from cold
   - type: PluralName
     oneOf: plural-name-pair-1
+  - type: WashableClothing # devil !
+  - type: Spillable
+    solution: soaked
+    spillDelay: 1
+    spillWhenThrown: false
+    preventMelee: false
 
 - type: entity
   abstract: true

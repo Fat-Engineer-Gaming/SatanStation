@@ -1,7 +1,12 @@
 using Content.Shared.Audio;
+using Content.Shared.Chemistry;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Popups;
 using Content.Shared.Power;
@@ -9,9 +14,11 @@ using Content.Shared.Power.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
+using Content.Shared._Impstation.ImpEvaporation;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared._hereelabs.Laundry;
 
@@ -25,24 +32,34 @@ public abstract class SharedLaundrySystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] protected readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] protected readonly ItemSlotsSystem _itemSlots = default!;
+    [Dependency] protected readonly SharedSolutionContainerSystem _solutions = default!;
 
     private readonly int _modeCount = Enum.GetValues<LaundryMachineMode>().Length;
     private readonly int _washerCycleCount = Enum.GetValues<WasherCycleSetting>().Length;
     private readonly int _dryerCycleCount = Enum.GetValues<DryerCycleSetting>().Length;
 
+    public const float DRIP_VOLUME = 10f;
+    public const float DRIP_AMOUNT = 0.02f;
+
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<LaundryMachineComponent, ExaminedEvent>(OnExamined);
-        SubscribeLocalEvent<LaundryMachineComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
-        SubscribeLocalEvent<LaundryMachineComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<LaundryMachineComponent, UnanchorAttemptEvent>(OnUnanchorAttempt);
+        SubscribeLocalEvent<LaundryMachineComponent, ComponentShutdown>(OnMachineShutdown);
+        SubscribeLocalEvent<LaundryMachineComponent, ExaminedEvent>(OnMachineExamined);
+        SubscribeLocalEvent<LaundryMachineComponent, GetVerbsEvent<Verb>>(OnMachineGetVerbs);
+        SubscribeLocalEvent<LaundryMachineComponent, UnanchorAttemptEvent>(OnMachineUnanchorAttempt);
         SubscribeLocalEvent<LaundryMachineComponent, EntRemovedFromContainerMessage>(OnMachineRemoveEntity);
+
+        SubscribeLocalEvent<WashableClothingComponent, ComponentInit>(OnWashableInit);
+        SubscribeLocalEvent<WashableClothingComponent, ExaminedEvent>(OnWashableExamined);
     }
-    private void OnExamined(Entity<LaundryMachineComponent> ent, ref ExaminedEvent args)
+
+    #region Machine
+
+    private void OnMachineExamined(Entity<LaundryMachineComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
             return;
@@ -65,7 +82,7 @@ public abstract class SharedLaundrySystem : EntitySystem
         args.PushMarkup(Loc.GetString("laundry-machine-examined-state", ("state", comp.LaundryState)), 11);
     }
 
-    private void OnGetVerbs(EntityUid uid, LaundryMachineComponent comp, GetVerbsEvent<Verb> args)
+    private void OnMachineGetVerbs(EntityUid uid, LaundryMachineComponent comp, GetVerbsEvent<Verb> args)
     {
         if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract)
             return;
@@ -156,13 +173,13 @@ public abstract class SharedLaundrySystem : EntitySystem
         }
     }
 
-    private void OnShutdown(EntityUid uid, LaundryMachineComponent comp, ComponentShutdown args)
+    private void OnMachineShutdown(EntityUid uid, LaundryMachineComponent comp, ComponentShutdown args)
     {
         StopJitterMachine(uid);
         _ambientSound.SetAmbience(uid, false);
     }
 
-    private void OnUnanchorAttempt(EntityUid uid, LaundryMachineComponent comp, UnanchorAttemptEvent args)
+    private void OnMachineUnanchorAttempt(EntityUid uid, LaundryMachineComponent comp, UnanchorAttemptEvent args)
     {
         if (!comp.Paused)
         {
@@ -449,6 +466,14 @@ public abstract class SharedLaundrySystem : EntitySystem
     {
         if (!comp.Paused)
             return false;
+        if (!TryComp<EntityStorageComponent>(uid, out var entStorage))
+            return false;
+
+        if (entStorage.Open)
+        {
+            _popup.PopupPredicted(Loc.GetString("laundry-machine-resume-must-close", ("machine", Identity.Entity(uid, EntityManager))), uid, user);
+            return false;
+        }
 
         Entity<LaundryMachineComponent> ent = (uid, comp);
 
@@ -480,4 +505,72 @@ public abstract class SharedLaundrySystem : EntitySystem
 
         return true;
     }
+
+    #endregion
+
+    #region Washable clothing
+
+    private void OnWashableInit(Entity<WashableClothingComponent> ent, ref ComponentInit args)
+    {
+        if (!_solutions.EnsureSolution(ent.Owner, ent.Comp.Solution, out var solution, ent.Comp.SolutionCapacity))
+            return;
+
+        /// should probably ensure SpillableComponent too instead of doing it manually in prototypes ?
+
+    }
+    private void OnWashableExamined(Entity<WashableClothingComponent> ent, ref ExaminedEvent args)
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        var comp = ent.Comp;
+        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+            return;
+
+        args.PushMarkup(Loc.GetString($"washable-clothing-examined-status-{GetWashableWetness(ent).ToString().ToLower()}"), 10);
+        if (solution.Volume >= DRIP_VOLUME)
+            args.PushMarkup(Loc.GetString("washable-clothing-examined-dripping"), 9);
+
+
+    }
+    public bool TryGetWashableSolution(Entity<WashableClothingComponent> ent, [NotNullWhen(true)] out Entity<SolutionComponent>? soln, [NotNullWhen(true)] out Solution? solution)
+    {
+        if (!TryComp<SolutionContainerManagerComponent>(ent.Owner, out var solutionContainer))
+        {
+            soln = null;
+            solution = null;
+            return false;
+        }
+
+        if (!_solutions.TryGetSolution((ent.Owner, solutionContainer), ent.Comp.Solution, out var gottenSoln, out var gottenSolution))
+        {
+            soln = null;
+            solution = null;
+            return false;
+        }
+
+        soln = gottenSoln;
+        solution = gottenSolution;
+        return true;
+    }
+    public ClothingWetness GetWashableWetness(Entity<WashableClothingComponent> ent)
+    {
+        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+            return ClothingWetness.Dry;
+
+        if (solution.Volume >= 17.5)
+            return ClothingWetness.Drenched;
+        if (solution.Volume >= 15)
+            return ClothingWetness.VeryWet;
+        if (solution.Volume >= 10)
+            return ClothingWetness.Wet;
+        if (solution.Volume >= 5)
+            return ClothingWetness.Moist;
+        if (solution.Volume > 0)
+            return ClothingWetness.Damp;
+
+        return ClothingWetness.Dry;
+    }
+
+    #endregion
 }

@@ -24,6 +24,13 @@
     tags:
     - WhitelistChameleon
   - type: ProtectedFromStepTriggers
+  - type: WashableClothing # devil !
+    washFactor: 2
+  - type: Spillable
+    solution: soaked
+    spillDelay: 0.75
+    spillWhenThrown: false
+    preventMelee: false
 
 # a variant for military boots that are all leather or synthetic so moths can't eat them if you want lore-friendly shoes
 

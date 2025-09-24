@@ -51,11 +51,11 @@
       drum:
         maxVol: 250
       tank:
-        maxVol: 200
+        maxVol: 400
         reagents:
           - data: []
             ReagentId: Water
-            Quantity: 200
+            Quantity: 400
   - type: ExaminableSolution
     solution: tank
     exactVolume: true

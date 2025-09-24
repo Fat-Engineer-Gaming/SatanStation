@@ -15,6 +15,7 @@
   - type: PhysicalComposition
     materialComposition:
       Cloth: 50
+  - type: WashableClothing # devil !
   - type: StaticPrice
     price: 20
 

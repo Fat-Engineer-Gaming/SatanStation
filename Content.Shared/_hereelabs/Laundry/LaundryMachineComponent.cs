@@ -30,6 +30,9 @@ public sealed partial class LaundryMachineComponent : Component
     [DataField, AutoNetworkedField]
     public int TimeSettingMinutes = 15;
 
+    [DataField, AutoNetworkedField]
+    public float TemperatureCelcius = 80f;
+
     [AutoNetworkedField]
     public TimeSpan TimeRemaining = TimeSpan.FromSeconds(0);
 

@@ -19,6 +19,13 @@
   - type: WearerGetsExamineText # imp
     thing: obvious-thing-pin
     examineText: obvious-desc-default
+  - type: WashableClothing # devil !
+    washFactor: 2
+  - type: Spillable
+    solution: soaked
+    spillDelay: 0.5
+    spillWhenThrown: false
+    preventMelee: false
 
 - type: entity
   parent: ClothingNeckPinBase

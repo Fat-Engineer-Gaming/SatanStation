@@ -36,6 +36,13 @@
     slots:
     - Snout
     hideOnToggle: true
+  - type: WashableClothing # devil !
+    capacity: 2
+  - type: Spillable
+    solution: soaked
+    spillDelay: 0.75
+    spillWhenThrown: false
+    preventMelee: false
 
 - type: entity
   parent: ClothingMaskBandanaBase

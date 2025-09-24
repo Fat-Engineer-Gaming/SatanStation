@@ -26,6 +26,12 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 30
+  - type: WashableClothing # devil !
+  - type: Spillable
+    solution: soaked
+    spillDelay: 1.5
+    spillWhenThrown: false
+    preventMelee: false
   - type: Tag
     tags:
     - ClothMade
