@@ -198,7 +198,7 @@
 - type: rcd
   id: FirelockGlass
   category: Airlocks
-  sprite: /Textures/Interface/Radial/RCD/firelock.png
+  sprite: /Textures/Interface/Radial/RCD/firelock_glass.png
   mode: ConstructObject
   prototype: FirelockGlass
   cost: 4
