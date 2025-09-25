@@ -93,7 +93,7 @@
   sprite: /Textures/Interface/Radial/RCD/reinforced_wall.png
   mode: ConstructObject
   prototype: WallReinforced
-  cost: 4
+  cost: 12
   delay: 3
   collisionMask: FullTileMask
   rotation: User
@@ -201,7 +201,7 @@
   sprite: /Textures/Interface/Radial/RCD/firelock_glass.png
   mode: ConstructObject
   prototype: FirelockGlass
-  cost: 4
+  cost: 6
   delay: 3
   rotation: Camera
   fx: EffectRCDConstruct3
@@ -219,7 +219,7 @@
   fx: EffectRCDConstruct3
 
 - type: rcd
-  id: BlastdoorXeno
+  id: Blastdoor
   category: Airlocks
   sprite: /Textures/Interface/Radial/RCD/Xeno_door.png
   mode: ConstructObject
@@ -327,7 +327,7 @@
   sprite: /Textures/Interface/Radial/RCD/substation_static.png
   mode: ConstructObject
   prototype: SubstationWallBasic
-  cost: 128
+  cost: 48
   delay: 4
   rotation: User
   fx: EffectRCDConstruct4
@@ -338,7 +338,7 @@
   sprite: /Textures/Interface/Radial/RCD/WMGen_static.png
   mode: ConstructObject
   prototype: GeneratorWallmountBasic
-  cost: 64
+  cost: 128
   delay: 4
   rotation: User
   fx: EffectRCDConstruct4
