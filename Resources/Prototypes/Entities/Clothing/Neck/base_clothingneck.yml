@@ -1,7 +1,7 @@
 - type: entity
   abstract: true
   parent: Clothing
-  id: ClothingNeckBase
+  id: [ ClothingNeckBase, ClothingWashableBase ]
   components:
   - type: Item
     size: Small
@@ -28,11 +28,6 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
-  - type: WashableClothing # devil !
-  - type: Spillable
-    solution: soaked
-    spillWhenThrown: false
-    preventMelee: false
   - type: Tag
     tags:
     - ClothMade

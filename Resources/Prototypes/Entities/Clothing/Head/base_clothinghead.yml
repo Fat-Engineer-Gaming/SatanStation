@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ]
   id: ClothingHeadBase
   components:
   - type: Clothing
@@ -25,11 +25,6 @@
     - ClothMade
     - WhitelistChameleon
     - DroneUsable # imp
-  - type: WashableClothing # devil !
-  - type: Spillable
-    solution: soaked
-    spillWhenThrown: false
-    preventMelee: false
 
 - type: entity
   abstract: true

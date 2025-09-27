@@ -28,13 +28,13 @@ public sealed partial class LaundryMachineComponent : Component
     public LaundryMachineMode Mode = LaundryMachineMode.WashAndDry;
 
     [DataField, AutoNetworkedField]
-    public int TimeSettingMinutes = 15;
+    public int TimeSettingMinutes = 10;
 
     [DataField, AutoNetworkedField]
     public float TemperatureCelcius = 80f;
 
-    [AutoNetworkedField]
-    public TimeSpan TimeRemaining = TimeSpan.FromSeconds(0);
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
+    public TimeSpan TimeRemaining = TimeSpan.Zero;
 
     [AutoNetworkedField]
     public LaundryMachineState LaundryState = LaundryMachineState.Off;

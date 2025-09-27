@@ -7,6 +7,7 @@ using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
+using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Popups;
@@ -41,8 +42,7 @@ public abstract class SharedLaundrySystem : EntitySystem
     private readonly int _washerCycleCount = Enum.GetValues<WasherCycleSetting>().Length;
     private readonly int _dryerCycleCount = Enum.GetValues<DryerCycleSetting>().Length;
 
-    public const float DRIP_VOLUME = 10f;
-    public const float DRIP_AMOUNT = 0.08f;
+    public readonly FixedPoint2 DRIP_AMOUNT = 0.08;
     public const float CLEAN_STRENGTH_FACTOR = 0.25f;
     public const float WASH_STRENGTH_FACTOR = 0.75f;
     public const float MACHINE_WASH_PORTION = 0.25f;
@@ -516,7 +516,7 @@ public abstract class SharedLaundrySystem : EntitySystem
 
     private void OnWashableInit(Entity<WashableClothingComponent> ent, ref ComponentInit args)
     {
-        if (!_solutions.EnsureSolution(ent.Owner, ent.Comp.Solution, out var solution, ent.Comp.SolutionCapacity))
+        if (!_solutions.EnsureSolution(ent.Owner, ent.Comp.Solution, out var _, ent.Comp.SolutionCapacity))
             return;
 
         EnsureComp<ReactiveComponent>(ent.Owner);
@@ -527,11 +527,11 @@ public abstract class SharedLaundrySystem : EntitySystem
             return;
 
         var comp = ent.Comp;
-        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+        if (!TryGetWashableSolution(ent, out var _, out var solution))
             return;
 
         args.PushMarkup(Loc.GetString($"washable-clothing-examined-status-{GetWashableWetness(ent).ToString().ToLower()}"), 10);
-        if (solution.Volume >= DRIP_VOLUME)
+        if (solution.Volume >= comp.DripVolume)
             args.PushMarkup(Loc.GetString("washable-clothing-examined-dripping"), 9);
 
 
@@ -558,16 +558,18 @@ public abstract class SharedLaundrySystem : EntitySystem
     }
     public ClothingWetness GetWashableWetness(Entity<WashableClothingComponent> ent)
     {
-        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+        if (!TryGetWashableSolution(ent, out var _, out var solution))
             return ClothingWetness.Dry;
 
-        if (solution.Volume >= 17.5)
+        var wetnessScale = ent.Comp.WetnessScale;
+
+        if (solution.Volume >= 17.5 * wetnessScale)
             return ClothingWetness.Drenched;
-        if (solution.Volume >= 15)
+        if (solution.Volume >= 15 * wetnessScale)
             return ClothingWetness.VeryWet;
-        if (solution.Volume >= 10)
+        if (solution.Volume >= 7.5 * wetnessScale)
             return ClothingWetness.Wet;
-        if (solution.Volume >= 5)
+        if (solution.Volume >= 5 * wetnessScale)
             return ClothingWetness.Moist;
         if (solution.Volume > 0)
             return ClothingWetness.Damp;

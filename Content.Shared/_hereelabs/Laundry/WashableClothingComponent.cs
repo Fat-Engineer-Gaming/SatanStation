@@ -1,7 +1,7 @@
-using Content.Shared.Damage;
+using Content.Shared.Atmos;
+using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
-using Robust.Shared.Audio;
 
 namespace Content.Shared._hereelabs.Laundry;
 
@@ -19,6 +19,15 @@ public sealed partial class WashableClothingComponent : Component
 
     [DataField, AutoNetworkedField]
     public float WashFactor = 1f;
+
+    [DataField, AutoNetworkedField]
+    public float WetnessScale = 1f;
+
+    [DataField, AutoNetworkedField]
+    public FixedPoint2 DripVolume = 10f;
+
+    [DataField, AutoNetworkedField]
+    public float DryTemperature = Atmospherics.T0C + 60f;
 }
 
 [Serializable, NetSerializable]

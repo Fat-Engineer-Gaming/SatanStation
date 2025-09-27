@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ]
   id: ClothingOuterBase
   components:
   - type: Clothing
@@ -10,10 +10,6 @@
     state: icon
   - type: WashableClothing # devil !
     capacity: 2
-  - type: Spillable
-    solution: soaked
-    spillWhenThrown: false
-    preventMelee: false
 
 - type: entity
   abstract: true

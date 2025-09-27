@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ]
   id: ClothingHandsBase
   components:
   - type: Sprite
@@ -30,11 +30,6 @@
         Cold: 5 # imp edit. for cold lightbulbs. also makes sense that gloves would protect from cold
   - type: PluralName
     oneOf: plural-name-pair-1
-  - type: WashableClothing # devil !
-  - type: Spillable
-    solution: soaked
-    spillWhenThrown: false
-    preventMelee: false
 
 - type: entity
   abstract: true

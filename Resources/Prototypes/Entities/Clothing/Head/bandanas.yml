@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingHeadBaseButcherable, BaseFoldable]
+  parent: [ClothingHeadBaseButcherable, ClothingWashableBase, BaseFoldable]
   id: ClothingHeadBandBase
   abstract: true
   components:
@@ -32,10 +32,6 @@
     - WhitelistChameleon
   - type: WashableClothing # devil !
     washFactor: 2
-  - type: Spillable
-    solution: soaked
-    spillWhenThrown: false
-    preventMelee: false
 
 - type: entity
   parent: [ClothingHeadBandBase, ClothingMaskBandBlack]

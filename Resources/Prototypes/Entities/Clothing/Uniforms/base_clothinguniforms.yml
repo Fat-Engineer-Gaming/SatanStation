@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ]
   id: UnsensoredClothingUniformBase
   components:
   - type: Sprite
@@ -26,11 +26,6 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 30
-  - type: WashableClothing # devil !
-  - type: Spillable
-    solution: soaked
-    spillWhenThrown: false
-    preventMelee: false
   - type: Tag
     tags:
     - ClothMade
