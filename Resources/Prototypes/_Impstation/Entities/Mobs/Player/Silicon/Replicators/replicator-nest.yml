@@ -5,7 +5,7 @@
   id: ReplicatorNest
   name: replicator nest
   description: A roiling mass of nanotechnology is eating through the station's infrastructure.
-  categories: [ HideSpawnMenu ] # don't want admins spawning unlinked nests
+  categories: [ HideSpawnMenu ] # don't want admins spawning unlinked nests (Fine, you win for this one... for now... -Fat Engi)
   placement:
     mode: SnapGridCenter
   components:
