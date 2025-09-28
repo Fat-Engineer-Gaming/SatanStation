@@ -129,7 +129,7 @@
       strippingWindowPos: 0,2
       displayName: Optics
       stripHidden: true
-      
+
 - type: entity
   parent: [ClothingEyesBase, BaseLensSlot, ShowSecurityIcons, ShowMedicalIcons] # BaseLensSlot from imp
   id: DroneOpticsHudOmni
@@ -157,7 +157,7 @@
     coverage: EYES
   - type: PluralName # imp
     oneOf: plural-name-some
-    
+
 - type: entity
   parent: ClothingBackpackDuffel
   id: DroneBackpackDuffelHolding
@@ -565,7 +565,7 @@
         volume: -5
         maxDistance: 3
         variation: 0.1
-        
+
 #########################
 # DroneComputerAIAccess #
 #########################
@@ -579,7 +579,7 @@
   - type: Wires
     boardName: wires-board-name-computer
     layoutId: ComputerAi
-    
+
 ###################
 # DroneIdTerminal #
 ###################
@@ -908,7 +908,7 @@
   - type: Wieldable
     useDelayOnWield: false
   - type: ScaleVisuals
-    scale: 0.45, 0.45
+    scale: 1.5, 1.5
   - type: MeleeRequiresWield
   - type: LandAtCursor
   - type: Sprite
@@ -943,7 +943,7 @@
         Blunt: 10
         Structural: 100
   - type: Item
-    size: Small
+    size: Large
 
 - type: entity
   name: Wizard Healing Module
@@ -965,7 +965,7 @@
     capacity: 100
     count: 100
   - type: PacifismAllowedGun
-  
+
 ###################################
 # ID Card & Crew Monitor Tracking #
 ###################################
@@ -1015,7 +1015,7 @@
 ########################
 # Final Drone Entities #
 ########################
-       
+
 - type: entity
   id: DroneModuleProtolatheHyper
   name: Drone ProtolatheHyper
@@ -1027,8 +1027,8 @@
     - type: ApcPowerReceiver
       needsPower: false
     - type: Anchorable
-      
-      
+
+
 - type: entity
   id: DroneModuleCommsComputer
   name: DroneCommsComputer
@@ -1037,8 +1037,8 @@
   components:
     - type: Item
       size: Large
-      
-      
+
+
 - type: entity
   id: DroneModuleRDComputer
   name: Drone R&D Computer
@@ -1047,7 +1047,7 @@
   components:
     - type: Item
       size: Large
-      
+
 - type: entity
   id: DroneModuleResearchPS
   name: Drone Research Point Source
@@ -1058,12 +1058,12 @@
       size: Huge
     - type: ResearchPointSource
       PointsPerSecond: 75
-    
-    
+
+
 - type: startingGear
   id: BeanDRGear
   equipment:
-    pocket1: trayScanner 
+    pocket1: trayScanner
     pocket2: DoorRemoteCustom
     pocket3: AccessConfiguratorUniversal
     pocket4: PinpointerUniversal
@@ -1075,8 +1075,8 @@
     eyes: DroneOpticsHudOmni
   storage:
     pocket5:
-      - WelderExperimental
       - DroneRCD
+      - WelderExperimental
       - Multitool
       - GasAnalyzer
       - PowerCellMicroreactorPrinted
@@ -1091,13 +1091,10 @@
       - EncryptionKeyBinary
       - EncryptionKeyBinary
       - EncryptionKeyBinary
-      - ResearchDisk10000
-      - ResearchDisk10000
       - DroneStaffHealing
       - DroneStaffHealing
       - DroneMjollnir
       - DroneMjollnir
-      - STRIDERIDCard
       - WeaponPistolCHIMPUpgraded
       - AnomalyScanner
       - DroneJukebox
@@ -1107,6 +1104,7 @@
       - DroneResearchAndDevelopmentServer
       - DroneComputerResearchAndDevelopment
       - DroneBaseResearchAndDevelopmentPointSource
+      - DroneMaterialSilo
 
 - type: entity
   save: false

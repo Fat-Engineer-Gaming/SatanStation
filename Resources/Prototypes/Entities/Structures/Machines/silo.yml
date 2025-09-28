@@ -61,3 +61,53 @@
   - type: WiresPanel
   - type: StaticPrice
     price: 1500
+
+- type: entity
+  id: DroneMaterialSilo
+  parent: [BaseItem]
+  name: Drone Nano silo
+  categories: [HideSpawnMenu]
+  description: A machine that was made for S.T.R.I.D.E.R. Class Drone/Borg hybrid, capable of using bluespace technology to transmit materials across the whole station.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/silo.rsi
+    snapCardinals: true
+    layers:
+    - state: silo
+      map: [ "base" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        base:
+          True: { state: silo_active }
+          False: { state: silo }
+  - type: OreSilo
+  - type: MaterialStorage
+    whitelist:
+      tags:
+      - Sheet
+      - RawMaterial
+      - Ingot
+  - type: ActivatableUI
+    key: enum.OreSiloUiKey.Key
+  - type: ActivatableUIRequiresPower
+  - type: UserInterface
+    interfaces:
+      enum.OreSiloUiKey.Key:
+        type: OreSiloBoundUserInterface
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: WiresVisuals
+  - type: WiresPanel
+  - type: Item
+    size: Huge

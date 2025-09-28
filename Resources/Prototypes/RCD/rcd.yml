@@ -180,7 +180,7 @@
   cost: 4
   delay: 4
   collisionMask: FullTileMask
-  rotation: Camera
+  rotation: User
   fx: EffectRCDConstruct4
 
 - type: rcd
@@ -192,7 +192,19 @@
   cost: 4
   delay: 4
   collisionMask: FullTileMask
-  rotation: Camera
+  rotation: User
+  fx: EffectRCDConstruct4
+
+- type: rcd
+  id: SecWindoor
+  category: Airlocks
+  sprite: /Textures/Interface/Radial/RCD/sec_windoor.png
+  mode: ConstructObject
+  prototype: WindoorSecure
+  cost: 6
+  delay: 4
+  collisionMask: FullTileMask
+  rotation: User
   fx: EffectRCDConstruct4
 
 - type: rcd
@@ -219,15 +231,27 @@
   fx: EffectRCDConstruct3
 
 - type: rcd
-  id: Blastdoor
+  id: NormBlastdoor
+  category: Airlocks
+  sprite: /Textures/Interface/Radial/RCD/Norm_door.png
+  mode: ConstructObject
+  prototype: BlastDoor
+  cost: 8
+  delay: 3
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct3
+
+- type: rcd
+  id: XenoBlastdoor
   category: Airlocks
   sprite: /Textures/Interface/Radial/RCD/Xeno_door.png
   mode: ConstructObject
   prototype: BlastDoorXeno
-  cost: 8
+  cost: 16
   delay: 3
   collisionMask: FullTileMask
-  rotation: Camera
+  rotation: User
   fx: EffectRCDConstruct3
 
 
@@ -309,7 +333,7 @@
   collisionMask: Impassable
   rotation: User
   fx: EffectRCDConstruct0
-  
+
 - type: rcd
   id: ElecAPC
   category: Electrical
@@ -320,7 +344,7 @@
   delay: 0
   rotation: User
   fx: EffectRCDConstruct0
-  
+
 - type: rcd
   id: ElecWMSub
   category: Electrical

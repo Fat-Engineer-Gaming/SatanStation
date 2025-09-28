@@ -348,6 +348,7 @@
   - type: RCD
     availablePrototypes:
     - WallSolid
+    - ReinforcedWallSolid
     - FloorSteel
     - Plating
     - Catwalk
@@ -358,8 +359,10 @@
     - ReinforcedWindow
     - Airlock
     - AirlockGlass
+    - SecWindoor
     - Firelock
     - FirelockGlass
+    - BlastDoor
     - TubeLight
     - BulbLight
     - LVCable
@@ -447,9 +450,10 @@
     - ReinforcedWindow
     - Airlock
     - AirlockGlass
+    - SecWindoor
     - Firelock
     - FirelockGlass
-    - BlastdoorXeno
+    - XenoBlastdoor
     - TubeLight
     - BulbLight
     - LVCable
