@@ -1,0 +1,5 @@
+﻿# This is highly illegal contraband and is illegal to own IC.
+- type: contrabandSeverity
+  id: Xenoborg
+  examineColor: red
+  examineText: contraband-examine-text-Xenoborg
