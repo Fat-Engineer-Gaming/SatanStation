@@ -140,3 +140,12 @@
       emergencyLightColor: PaleVioletRed
       forceEnableEmergencyLights: true
       shuttleTime: 600
+    silver:
+      announcement: alert-level-silver-announcement
+      selectable: false
+      sound: /Audio/_Impstation/Misc/epsilon-clean.ogg
+      disableSelection: true
+      color: Silver
+      emergencyLightColor: Silver
+      forceEnableEmergencyLights: true
+      shuttleTime: 600
