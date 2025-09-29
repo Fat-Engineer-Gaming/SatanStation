@@ -348,6 +348,7 @@
   - type: RCD
     availablePrototypes:
     - WallSolid
+    - ReinforcedWallSolid
     - FloorSteel
     - Plating
     - Catwalk
@@ -358,12 +359,16 @@
     - ReinforcedWindow
     - Airlock
     - AirlockGlass
+    - SecWindoor
     - Firelock
+    - FirelockGlass
+    - BlastDoor
     - TubeLight
     - BulbLight
     - LVCable
     - MVCable
     - HVCable
+    - ElecAPC
     - CableTerminal
     - Deconstruct
   - type: LimitedCharges
@@ -424,6 +429,71 @@
   components:
   - type: AutoRecharge
     rechargeDuration: 1
+
+- type: entity
+  id: DroneRCD
+  parent: [ BaseItem, BaseEngineeringContraband ]
+  name: S.T.R.I.D.E.R. Omni RCD
+  description: The rapid construction device that was heavily enhanced to build structures that standard issue RCDs cant.
+  components:
+  - type: RCD
+    availablePrototypes:
+    - WallSolid
+    - ReinforcedWallSolid
+    - FloorSteel
+    - Plating
+    - Catwalk
+    - Grille
+    - Window
+    - WindowDirectional
+    - WindowReinforcedDirectional
+    - ReinforcedWindow
+    - Airlock
+    - AirlockGlass
+    - SecWindoor
+    - Firelock
+    - FirelockGlass
+    - XenoBlastdoor
+    - TubeLight
+    - BulbLight
+    - LVCable
+    - MVCable
+    - HVCable
+    - CableTerminal
+    - ElecAPC
+    - ElecWMSub
+    - ElecWMGen
+    - Deconstruct
+  - type: LimitedCharges
+    maxCharges: 256
+  - type: AutoRecharge
+    rechargeDuration: 20
+  - type: Sprite
+    sprite: _Impstation/Objects/Tools/rcd.rsi # imp
+    state: icon
+  - type: Item
+    size: Normal
+  - type: Clothing
+    sprite: _Impstation/Objects/Tools/rcd.rsi # imp
+    quickEquip: false
+    slots:
+    - Belt
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 600
+      Plastic: 100
+  - type: StaticPrice
+    price: 25000
+  - type: UserInterface
+    interfaces:
+      enum.RcdUiKey.Key:
+        type: RCDMenuBoundUserInterface
+  - type: ActivatableUI
+    inHandsOnly: true
+    key: enum.RcdUiKey.Key
+  - type: Tag
+    tags:
+    - DroneUsable
 
 - type: entity
   name: compressed matter
