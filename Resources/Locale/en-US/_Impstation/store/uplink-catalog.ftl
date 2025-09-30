@@ -98,7 +98,7 @@ uplink-nullrod-upgrade-name = Profane Censer
 uplink-nullrod-upgrade-desc = A vile incense burner used to transform nullrod items into more sinister forms.
 
 uplink-gay-implanter-name = Gay implanter
-uplink-gay-implanter-desc = Huh??? Why is this in here??? Is my uplink hacked??
+uplink-gay-implanter-desc = Wh- boss, what do you want us to do? Make like, gay implants or something? -Urist McSydimplant, Jun 1st.
 
 uplink-valushot-name = Deadly Dan's ValuShot 9000
 uplink-valushot-desc = Lethal weaponry at a discount price!
@@ -107,7 +107,7 @@ uplink-valushotfamily-name = Deadly Dan's ValuShot Family Pack
 uplink-valushotfamily-desc = 3 ValuShot 9000 pistols for a special deal!
 
 uplink-valushotclub-name = Deadly Dan's ValuShot Club Bundle
-uplink-valushotclub-desc = Bulk buys! 14 ValuShot 9000 pistols for the price of 10!
+uplink-valushotclub-desc = Bulk buys! 14 ValuShot 9000 pistols for the whole party!
 
 uplink-supermatter-grenade-name = Supermatter Grenade
 uplink-supermatter-grenade-desc = Grenade that simulates delamination of a supermatter engine, generates powerful gravity well. Explosion comparable to a Mini Bomb.

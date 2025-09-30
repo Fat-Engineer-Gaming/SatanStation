@@ -5,9 +5,9 @@
   productEntity: WeaponCleanerLakeUpgradeKit
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 10
+    Telecrystal: 45
   cost:
-    Telecrystal: 12 # was 14, didn't realise that the real CL came w/ that many grenades so this probably deserves a buff
+    Telecrystal: 55
   categories:
   - UplinkJob
   conditions:
@@ -26,9 +26,9 @@
   productEntity: BoxCleanerGrenadesBleach
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 8
+    Telecrystal: 30
   cost:
-    Telecrystal: 10
+    Telecrystal: 40
   categories:
   - UplinkJob
   conditions:
@@ -47,9 +47,9 @@
   productEntity: WeaponPistolZipperAP
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 18
+    Telecrystal: 80
   cost:
-    Telecrystal: 20
+    Telecrystal: 100
   categories:
     - UplinkWeaponry
 
@@ -61,9 +61,9 @@
   productEntity: ClothingBackpackDuffelSyndicateFilledBR
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 13
+    Telecrystal: 60
   cost:
-    Telecrystal: 18
+    Telecrystal: 80
   categories:
     - UplinkWeaponry
 
@@ -74,7 +74,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/nemesismag.rsi, state: icon }
   productEntity: MagazineBR
   cost:
-    Telecrystal: 2
+    Telecrystal: 5
   categories:
   - UplinkAmmo
 
@@ -84,7 +84,7 @@
   description: uplink-caseless-ammo-desc
   productEntity: MagazineBoxCaselessRifle
   cost:
-    Telecrystal: 2
+    Telecrystal: 5
   categories:
   - UplinkAmmo
 
@@ -96,9 +96,9 @@
   productEntity: BulletCatcherBox
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 20
   cost:
-    Telecrystal: 6
+    Telecrystal: 40
   conditions:
   - !type:BuyerJobCondition
     whitelist:
@@ -113,7 +113,7 @@
   icon: { sprite: /Textures/_NF/Objects/Fun/spaceblade.rsi, state: contraband }
   productEntity: MysterySpaceBladeBoxSyndicate
   cost:
-    Telecrystal: 1
+    Telecrystal: 3
   categories:
   - UplinkPointless
 
@@ -168,9 +168,9 @@
   productEntity: BloodRedRoseBox
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 13
   cost:
-    Telecrystal: 7
+    Telecrystal: 20
   categories:
     - UplinkWeaponry
 
@@ -180,7 +180,7 @@
   description: uplink-saw-ammo-desc
   productEntity: MagazineBoxRifle
   cost:
-    Telecrystal: 2
+    Telecrystal: 4
   categories:
   - UplinkAmmo
 
@@ -192,9 +192,9 @@
   productEntity: AdderBox
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 10
   cost:
-    Telecrystal: 5
+    Telecrystal: 15
   categories:
     - UplinkWeaponry
 
@@ -206,9 +206,9 @@
   productEntity: ClothingBackpackDuffelSyndicateFilledAkurra
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 8
+    Telecrystal: 45
   cost:
-    Telecrystal: 12
+    Telecrystal: 55
   categories:
     - UplinkWeaponry
 
@@ -219,9 +219,9 @@
   productEntity: WeaponFlamerXiuhcoatl
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 14
+    Telecrystal: 50
   cost:
-    Telecrystal: 16
+    Telecrystal: 60
   categories:
     - UplinkWeaponry
 
@@ -232,9 +232,9 @@
   productEntity: WeaponSpecialOuroboros
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 10
+    Telecrystal: 25
   cost:
-    Telecrystal: 12
+    Telecrystal: 50 # This can easily backfire.
   categories:
     - UplinkWeaponry
 
@@ -244,7 +244,7 @@
   description: uplink-ourobros-desc
   productEntity: WeaponSpecialOuroBros
   cost:
-    Telecrystal: 30
+    Telecrystal: 80
   categories:
   - UplinkWeaponry
   conditions: # surplus exclusive
@@ -261,9 +261,9 @@
   productEntity: BriefcaseSyndieAnacondaBundleFilled
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 6
+    Telecrystal: 30
   cost:
-    Telecrystal: 8
+    Telecrystal: 45
   categories:
     - UplinkWeaponry
 
@@ -273,7 +273,7 @@
   description: uplink-valushot-desc
   productEntity: WeaponPistolValu
   cost:
-    Telecrystal: 2
+    Telecrystal: 5
   categories:
     - UplinkWeaponry
 
@@ -284,7 +284,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Pistols/valu.rsi, state: base }
   productEntity: DeadlyDanFamilyPack
   cost:
-    Telecrystal: 5
+    Telecrystal: 15
   categories:
     - UplinkWeaponry
 
@@ -298,7 +298,7 @@
   discountDownTo:
     Telecrystal: 19
   cost:
-    Telecrystal: 20
+    Telecrystal: 90
   categories:
     - UplinkWeaponry
 
@@ -309,7 +309,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Snipers/star_service.rsi, state: base }
   productEntity: ClothingBackpackDuffelSyndicateFilledSuperMosin
   cost:
-    Telecrystal: 8
+    Telecrystal: 45
   categories:
   - UplinkWeaponry
 
@@ -320,9 +320,9 @@
   productEntity: CigPackMixedRejects
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 1
+    Telecrystal: 5
   cost:
-    Telecrystal: 2
+    Telecrystal: 10
   categories:
   - UplinkChemicals
 
@@ -333,9 +333,9 @@
   productEntity: CigCartonMixedRejects
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 3
+    Telecrystal: 10
   cost:
-    Telecrystal: 5
+    Telecrystal: 25
   categories:
   - UplinkChemicals
 
@@ -346,9 +346,9 @@
   productEntity: PoisonAutoInjector
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 6
+    Telecrystal: 30
   cost:
-    Telecrystal: 8
+    Telecrystal: 40
   categories:
   - UplinkChemicals
   conditions:
@@ -365,9 +365,9 @@
   productEntity: WeaponLauncherBazooka
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 17
+    Telecrystal: 80
   cost:
-    Telecrystal: 20
+    Telecrystal: 100
   categories:
     - UplinkWeaponry
 
@@ -378,7 +378,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Ammunition/Magazine/Special/echioncanister.rsi, state: icon }
   productEntity: EchionCanister
   cost:
-    Telecrystal: 2
+    Telecrystal: 3
   categories:
   - UplinkAmmo
 
@@ -389,7 +389,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Specific/Syndicate/echionsynth.rsi, state: icon }
   productEntity: EchionSynth
   cost:
-    Telecrystal: 5
+    Telecrystal: 15
   categories:
   - UplinkAmmo
 
@@ -400,7 +400,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Ammunition/SpeedLoaders/Magnum/sniper.rsi, state: icon }
   productEntity: SpeedLoaderAnaconda
   cost:
-    Telecrystal: 1
+    Telecrystal: 2
   categories:
   - UplinkAmmo
 
@@ -411,7 +411,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Projectiles/bazooka.rsi, state: explosive }
   productEntity: LeviathanExplosiveRocketBox
   cost:
-    Telecrystal: 5
+    Telecrystal: 25
   categories:
     - UplinkAmmo
 
@@ -422,7 +422,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Projectiles/bazooka.rsi, state: incendiary }
   productEntity: LeviathanIncendiaryRocketBox
   cost:
-    Telecrystal: 5
+    Telecrystal: 25
   categories:
     - UplinkAmmo
 
@@ -433,7 +433,7 @@
   icon: { sprite: /Textures/_Impstation/Objects/Weapons/Guns/Projectiles/bazooka.rsi, state: concussion }
   productEntity: LeviathanConcussionRocketBox
   cost:
-    Telecrystal: 5
+    Telecrystal: 25
   categories:
     - UplinkAmmo
 
@@ -454,9 +454,9 @@
   productEntity: PoisonAutoInjector
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 10
+    Telecrystal: 50
   cost:
-    Telecrystal: 12
+    Telecrystal: 60
   categories:
   - UplinkChemicals
   conditions:
@@ -477,9 +477,9 @@
   productEntity: ClothingBackpackDuffelSyndicateFilledMascotCindy
   discountCategory: veryRareDiscounts
   discountDownTo:
-    Telecrystal: 10
+    Telecrystal: 50
   cost:
-    Telecrystal: 15
+    Telecrystal: 75
   categories:
   - UplinkPointless
   conditions:
@@ -502,7 +502,7 @@
   discountDownTo:
     Telecrystal: 6
   cost:
-    Telecrystal: 8
+    Telecrystal: 80
   categories:
   - UplinkJob
   conditions:

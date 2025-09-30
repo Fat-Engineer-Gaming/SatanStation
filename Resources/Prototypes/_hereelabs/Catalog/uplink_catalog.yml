@@ -4,7 +4,7 @@
   description: Makes the Station AI go rouge, and attempt to tear down the entire station.
   productEntity: TeardownCircuitBoard
   cost:
-    Telecrystal: 8
+    Telecrystal: 50
   categories:
   -  UplinkDisruption
 
@@ -14,6 +14,6 @@
   description: Makes the Station AI go rouge, and attempt to flood the station with plasma.
   productEntity: PlasmafloodCircuitBoard
   cost:
-    Telecrystal: 7
+    Telecrystal: 50
   categories:
   -  UplinkDisruption
