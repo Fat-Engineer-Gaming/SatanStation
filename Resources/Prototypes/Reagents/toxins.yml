@@ -504,6 +504,9 @@
             type: Animal
             shouldHave: false
           - !type:OrganType
+            type: Arachnid
+            shouldHave: false
+          - !type:OrganType
             type: Vox
             shouldHave: false
           - !type:OrganType # imp
@@ -520,6 +523,9 @@
             type: Animal
             shouldHave: false
           - !type:OrganType
+            type: Arachnid
+            shouldHave: false
+          - !type:OrganType
             type: Vox
             shouldHave: false
           - !type:OrganType # imp
@@ -529,6 +535,9 @@
         conditions:
         - !type:OrganType
           type: Animal
+          shouldHave: false
+        - !type:OrganType
+          type: Arachnid
           shouldHave: false
         - !type:OrganType
           type: Vox
@@ -552,6 +561,12 @@
         conditions:
         - !type:OrganType
           type: Animal
+        reagent: Protein
+        amount: 0.5
+      - !type:AdjustReagent
+        conditions:
+        - !type:OrganType
+          type: Arachnid
         reagent: Protein
         amount: 0.5
       - !type:AdjustReagent

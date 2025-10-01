@@ -8,6 +8,14 @@
   color: "#664300"
   recognizable: true
   metabolisms:
+    Alcohol:
+      effects:
+      - !type:Drunk
+        boozePower: 12 # spiderce
+        conditions:
+        - !type:OrganType
+          type: Arachnid
+          shouldHave: true
     Drink:
       effects:
       - !type:SatiateThirst
@@ -101,6 +109,14 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
+    Alcohol:
+      effects:
+      - !type:Drunk
+        boozePower: 12
+        conditions:
+        - !type:OrganType
+          type: Arachnid
+          shouldHave: true
     Drink:
       effects:
       - !type:SatiateThirst
@@ -157,6 +173,14 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
+    Alcohol:
+      effects:
+      - !type:Drunk
+        boozePower: 12
+        conditions:
+        - !type:OrganType
+          type: Arachnid
+          shouldHave: true
     Drink:
       effects:
       - !type:SatiateThirst
@@ -379,6 +403,14 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: false
   metabolisms:
+    Alcohol:
+      effects:
+      - !type:Drunk
+        boozePower: 12
+        conditions:
+        - !type:OrganType
+          type: Arachnid
+          shouldHave: true
     Drink:
       effects:
       - !type:SatiateThirst
