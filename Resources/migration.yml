@@ -725,3 +725,10 @@ FoodDonutJellySlugcat: FoodDonutJellyScurret
 # 2025-08-11
 ClothingUniformJumpsuitChiefEngineerNT: ClothingUniformJumpsuitChiefEngineer
 ClothingUniformJumpsuitParamedicNT: ClothingUniformJumpsuitParamedic
+
+# 2025-08-11
+## we use 100tc systems now.
+BaseUplinkRadio20TC: BaseUplinkRadio100TC
+BaseUplinkRadio25TC: BaseUplinkRadio125TC
+BaseUplinkRadio40TC: BaseUplinkRadio200TC
+BaseUplinkRadio60TC: BaseUplinkRadio300TC

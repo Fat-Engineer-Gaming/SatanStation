@@ -6,7 +6,7 @@
   description: uplink-contortionist-jumpsuit-desc
   productEntity: ClothingUniformJumpsuitAtmosSyndie
   cost:
-    Telecrystal: 9
+    Telecrystal: 40
   categories:
   - UplinkJob
   conditions:
