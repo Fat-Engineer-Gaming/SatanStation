@@ -1,7 +1,7 @@
 - type: entity
   abstract: true
-  parent: Clothing
-  id: [ ClothingNeckBase, ClothingWashableBase ]
+  parent: [ Clothing, ClothingWashableBase ]
+  id: ClothingNeckBase
   components:
   - type: Item
     size: Small

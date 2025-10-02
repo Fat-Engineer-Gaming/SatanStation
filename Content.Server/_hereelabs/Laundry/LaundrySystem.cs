@@ -2,6 +2,7 @@ using Content.Shared.Atmos;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
@@ -40,7 +41,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
         SubscribeLocalEvent<LaundryMachineComponent, StorageBeforeOpenEvent>(OnMachineOpened);
         SubscribeLocalEvent<LaundryMachineComponent, DestructionEventArgs>(OnMachineDestruction);
 
-        SubscribeLocalEvent<WashableClothingComponent, ComponentInit>(OnWashableInitServer);
+        SubscribeLocalEvent<WashableClothingComponent, ComponentInit>(OnWashableInit);
         SubscribeLocalEvent<WashableClothingComponent, ReactionEntityEvent>(OnWashableSplashed);
         SubscribeLocalEvent<WashableClothingComponent, DestructionEventArgs>(OnWashableDestruction);
 
@@ -201,6 +202,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
 
         /// do drying behavior
         MachineSpin(uid, comp, deltaTime);
+        DrainDrum(uid, deltaTime, false);
         MachineHeat(uid, comp, deltaTime);
 
         comp.TimeRemaining -= TimeSpan.FromSeconds(deltaTime);
@@ -485,8 +487,12 @@ public sealed class LaundrySystem : SharedLaundrySystem
 
         return driedSolution;
     }
-    private void OnWashableInitServer(Entity<WashableClothingComponent> ent, ref ComponentInit args)
+    private void OnWashableInit(Entity<WashableClothingComponent> ent, ref ComponentInit args)
     {
+        if (!_solutions.EnsureSolution(ent.Owner, ent.Comp.Solution, out var _, ent.Comp.SolutionCapacity))
+            return;
+
+        EnsureComp<ReactiveComponent>(ent.Owner);
         EnsureComp<TemperatureComponent>(ent.Owner);
     }
     private void OnWashableSplashed(Entity<WashableClothingComponent> ent, ref ReactionEntityEvent args)

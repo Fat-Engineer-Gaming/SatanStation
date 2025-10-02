@@ -1,9 +1,7 @@
 using Content.Shared.Audio;
-using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
@@ -11,12 +9,10 @@ using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Popups;
-using Content.Shared.Power;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
-using Content.Shared._Impstation.ImpEvaporation;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
@@ -30,11 +26,11 @@ public abstract class SharedLaundrySystem : EntitySystem
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedPowerReceiverSystem _receiver = default!;
+    /// [Dependency] private readonly SharedPowerReceiverSystem _receiver = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    /// [Dependency] private readonly ThrowingSystem _throwing = default!;
+    /// [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] protected readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] protected readonly SharedSolutionContainerSystem _solutions = default!;
 
@@ -57,7 +53,6 @@ public abstract class SharedLaundrySystem : EntitySystem
         SubscribeLocalEvent<LaundryMachineComponent, UnanchorAttemptEvent>(OnMachineUnanchorAttempt);
         SubscribeLocalEvent<LaundryMachineComponent, EntRemovedFromContainerMessage>(OnMachineRemoveEntity);
 
-        SubscribeLocalEvent<WashableClothingComponent, ComponentInit>(OnWashableInit);
         SubscribeLocalEvent<WashableClothingComponent, ExaminedEvent>(OnWashableExamined);
     }
 
@@ -514,13 +509,6 @@ public abstract class SharedLaundrySystem : EntitySystem
 
     #region Washable clothing
 
-    private void OnWashableInit(Entity<WashableClothingComponent> ent, ref ComponentInit args)
-    {
-        if (!_solutions.EnsureSolution(ent.Owner, ent.Comp.Solution, out var _, ent.Comp.SolutionCapacity))
-            return;
-
-        EnsureComp<ReactiveComponent>(ent.Owner);
-    }
     private void OnWashableExamined(Entity<WashableClothingComponent> ent, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
