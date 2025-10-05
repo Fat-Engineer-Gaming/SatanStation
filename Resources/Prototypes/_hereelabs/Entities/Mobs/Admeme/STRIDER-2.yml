@@ -908,7 +908,7 @@
   - type: Wieldable
     useDelayOnWield: false
   - type: ScaleVisuals
-    scale: 1.5, 1.5
+    scale: 2.5, 2.5
   - type: MeleeRequiresWield
   - type: LandAtCursor
   - type: Sprite
@@ -916,10 +916,10 @@
     layers:
     - state: icon
   - type: UseDelay
-    delay: 2
+    delay: 3.5
   - type: UseDelayOnMeleeHit
   - type: MeleeThrowOnHit
-    stunTime: 15
+    stunTime: 2.5
     activateOnThrown: true
   - type: MeleeWeapon
     wideAnimationRotation: -135
@@ -1160,30 +1160,6 @@
     - type: Body
       prototype: Drone
       thermalVisibility: false
-    - type: TypingIndicator
-      proto: robot
-    - type: Speech
-      speechVerb: Robotic
-      speechSounds: Borg
-    - type: Vocal
-      sounds:
-      Unsexed: UnisexSilicon
-      wilhelmProbability: 0
-    - type: BorgChassis
-      maxModules: 7
-      moduleWhitelist:
-      tags:
-      - XenoborgModuleGeneric
-      - XenoborgModuleEngi
-      - BorgModuleEngineering
-      - BorgModuleGeneric
-    - type: ContainerFill
-      containers:
-      borg_brain:
-      - MMIFilled
-    - type: NpcFactionMember
-      factions:
-      - NanoTrasen
     - type: IntrinsicRadioReceiver
     - type: IntrinsicRadioTransmitter
       channels:
@@ -1270,6 +1246,24 @@
     - type: Hands
       showInHands: false
     - type: ComplexInteraction
+    - type: TypingIndicator
+      proto: robot
+    - type: Speech
+      speechVerb: Robotic
+      speechSounds: Borg
+    - type: Vocal
+      sounds:
+      Unsexed: UnisexSilicon
+      wilhelmProbability: 0
+    - type: BorgChassis
+      maxModules: 7
+      moduleWhitelist:
+      tags:
+      - XenoborgModuleGeneric
+      - XenoborgModuleEngi
+      - BorgModuleEngineering
+      - BorgModuleGeneric
+
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -1359,6 +1353,23 @@
     - type: Hands
       showInHands: false
     - type: ComplexInteraction
+    - type: TypingIndicator
+      proto: robot
+    - type: Speech
+      speechVerb: Robotic
+      speechSounds: Borg
+    - type: Vocal
+      sounds:
+      Unsexed: UnisexSilicon
+      wilhelmProbability: 0
+    - type: BorgChassis
+      maxModules: 7
+      moduleWhitelist:
+      tags:
+      - XenoborgModuleGeneric
+      - XenoborgModuleEngi
+      - BorgModuleEngineering
+      - BorgModuleGeneric
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -1448,6 +1459,9 @@
     weightlessModifier: 1
   - type: Item
     size: Small
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
   - type: MobState
     allowedStates:
       - Alive
@@ -1599,6 +1613,9 @@
       borg_brain: !type:ContainerSlot { }
       cell_slot: !type:ContainerSlot { }
       borg_module: !type:Container { }
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
   - type: PowerCellSlot # imp.
     cellSlotId: cell_slot
     fitsInCharger: true
