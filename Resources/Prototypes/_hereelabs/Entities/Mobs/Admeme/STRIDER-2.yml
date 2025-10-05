@@ -1255,15 +1255,6 @@
       sounds:
       Unsexed: UnisexSilicon
       wilhelmProbability: 0
-    - type: BorgChassis
-      maxModules: 7
-      moduleWhitelist:
-      tags:
-      - XenoborgModuleGeneric
-      - XenoborgModuleEngi
-      - BorgModuleEngineering
-      - BorgModuleGeneric
-
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -1362,14 +1353,6 @@
       sounds:
       Unsexed: UnisexSilicon
       wilhelmProbability: 0
-    - type: BorgChassis
-      maxModules: 7
-      moduleWhitelist:
-      tags:
-      - XenoborgModuleGeneric
-      - XenoborgModuleEngi
-      - BorgModuleEngineering
-      - BorgModuleGeneric
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -1396,7 +1379,7 @@
         - Supply
     - type: DoAfter
     - type: BodyEmotes
-      soundsid: GeneralBodyEmotes
+      soundsId: GeneralBodyEmotes
     - type: DamageExaminable
     - type: IdExaminable
     - type: Examiner
