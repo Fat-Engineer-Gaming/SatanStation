@@ -1,5 +1,5 @@
 ﻿- type: entity # TODO: Add the visuals
-  id: SupermatterCascade # this is basically just kudzu but on crack
+  id: SupermatterKudzu # this is basically just kudzu but on crack
   name: Cascade Crystal
   suffix: DO NOT MAP.
   description: If you're looking at this, I'd suggest accepting your fate.
@@ -22,24 +22,32 @@
       state: crystal_cascade_11
       drawdepth: Overdoors
     - type: Clickable
+    - type: Physics
+      bodyType: Static
     - type: Fixtures
       fixtures:
         fix1:
-          hard: false
-          density: 7
+          hard: true
+          density: 60
           shape:
             !type:PhysShapeAabb
-            bounds: "-0.5,-0.5,0.5,0.5"
+            bounds: "-0.45,-0.45,0.45,0.45"
+          mask:
+          - MachineMask
+          - MobMask
+          - ItemMask
           layer:
+          - Impassable
           - MidImpassable
+          - LowImpassable
     - type: Kudzu
-      growthTickChance: 0.95 # run
-      spreadChance: 0.95
+      growthTickChance: 0.85
+      spreadChance: 0.85
     - type: SupermatterImmune
     - type: PointLight
       enabled: true
-      radius: 3
-      energy: 1.3
+      radius: 1
+      energy: 0.2
       color: "#ffe000"
     - type: AmbientSound
       range: 3
@@ -47,6 +55,7 @@
       sound:
         path: /Audio/_EE/Supermatter/calm.ogg
     - type: RadiationSource # it's fine until it's coming from several dozen of these
-      intensity: 1.6
-      slope: 0.3
-    - type: Physics
+      intensity: 1.2
+      slope: 0.1
+    - type: Supermatter
+    - type: Airtight

@@ -57,9 +57,9 @@ public sealed partial class SupermatterComponent : Component
     [DataField]
     public EntProtoId TeslaSpawnPrototype = "TeslaEnergyBall";
 
-    // one day...
-    // [DataField]
-    // public EntProtoId KudzuSpawnPrototype = "SupermatterKudzu";
+    // TODAY
+    [DataField]
+    public EntProtoId KudzuSpawnPrototype = "SupermatterKudzu";
 
     [DataField]
     public EntProtoId AnomalyBluespaceSpawnPrototype = "AnomalyBluespace";
