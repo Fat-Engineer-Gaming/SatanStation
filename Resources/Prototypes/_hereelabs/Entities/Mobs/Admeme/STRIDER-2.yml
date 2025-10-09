@@ -908,7 +908,7 @@
   - type: Wieldable
     useDelayOnWield: false
   - type: ScaleVisuals
-    scale: 1.5, 1.5
+    scale: 2.5, 2.5
   - type: MeleeRequiresWield
   - type: LandAtCursor
   - type: Sprite
@@ -916,10 +916,10 @@
     layers:
     - state: icon
   - type: UseDelay
-    delay: 2
+    delay: 3.5
   - type: UseDelayOnMeleeHit
   - type: MeleeThrowOnHit
-    stunTime: 15
+    stunTime: 2.5
     activateOnThrown: true
   - type: MeleeWeapon
     wideAnimationRotation: -135
@@ -1246,6 +1246,15 @@
     - type: Hands
       showInHands: false
     - type: ComplexInteraction
+    - type: TypingIndicator
+      proto: robot
+    - type: Speech
+      speechVerb: Robotic
+      speechSounds: Borg
+    - type: Vocal
+      sounds:
+      Unsexed: UnisexSilicon
+      wilhelmProbability: 0
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -1335,6 +1344,15 @@
     - type: Hands
       showInHands: false
     - type: ComplexInteraction
+    - type: TypingIndicator
+      proto: robot
+    - type: Speech
+      speechVerb: Robotic
+      speechSounds: Borg
+    - type: Vocal
+      sounds:
+      Unsexed: UnisexSilicon
+      wilhelmProbability: 0
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -1361,7 +1379,7 @@
         - Supply
     - type: DoAfter
     - type: BodyEmotes
-      soundsid: GeneralBodyEmotes
+      soundsId: GeneralBodyEmotes
     - type: DamageExaminable
     - type: IdExaminable
     - type: Examiner
@@ -1380,7 +1398,9 @@
   - type: Drone
   - type: ContainerContainer # imp.
     containers:
+      borg_brain: !type:ContainerSlot { }
       cell_slot: !type:ContainerSlot { }
+      borg_module: !type:Container { }
   - type: PowerCellSlot # imp.
     cellSlotId: cell_slot
     fitsInCharger: true
@@ -1422,6 +1442,9 @@
     weightlessModifier: 1
   - type: Item
     size: Small
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
   - type: MobState
     allowedStates:
       - Alive
@@ -1432,6 +1455,10 @@
       0: Alive
       1450: Critical
       2000: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
   - type: Climbing
   - type: NoSlip
   - type: StatusEffects
@@ -1495,6 +1522,7 @@
     tags:
       - CannotSuicide
       - EmagImmune
+      - SiliconEmotes
       - CanPilot
       - BypassInteractionRangeChecks
       - BypassDropChecks
@@ -1565,7 +1593,12 @@
   - type: Drone
   - type: ContainerContainer # imp.
     containers:
+      borg_brain: !type:ContainerSlot { }
       cell_slot: !type:ContainerSlot { }
+      borg_module: !type:Container { }
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
   - type: PowerCellSlot # imp.
     cellSlotId: cell_slot
     fitsInCharger: true
@@ -1615,6 +1648,10 @@
       0: Alive
       1450: Critical
       2000: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
   - type: Climbing
   - type: NoSlip
   - type: StatusEffects
@@ -1679,6 +1716,7 @@
       - CannotSuicide
       - EmagImmune
       - CanPilot
+      - SiliconEmotes
       - DoorBumpOpener
       - BypassInteractionRangeChecks
       - BypassDropChecks
