@@ -116,6 +116,24 @@
     {
       "name": "water_vapor-1"
     },
+      {
+          "name": "purple"
+      },
+      {
+          "name": "purple-1"
+      },
+      {
+          "name": "healium"
+      },
+      {
+          "name": "healium-1"
+      },
+      {
+          "name": "brown"
+      },
+      {
+          "name": "brown-1"
+      },
     {
       "name": "scrubber-connector"
     },

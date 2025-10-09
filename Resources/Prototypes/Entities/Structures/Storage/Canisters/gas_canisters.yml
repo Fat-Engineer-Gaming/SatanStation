@@ -681,6 +681,7 @@
   name: bz canister
   components:
   - type: Sprite
+    sprite: Structures/Storage/canister.rsi # TODO: fix the sprites at a later date
     layers:
     - state: purple
   - type: GasCanister
@@ -730,6 +731,7 @@
   name: healium canister
   components:
   - type: Sprite
+    sprite: Structures/Storage/canister.rsi
     layers:
     - state: healium
   - type: GasCanister
@@ -780,6 +782,7 @@
   name: nitrium canister
   components:
   - type: Sprite
+    sprite: Structures/Storage/canister.rsi
     layers:
     - state: brown
   - type: GasCanister
@@ -976,7 +979,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    state: purple-1
+    layers:
+    - sprite: Structures/Storage/canister.rsi
+      state: purple-1
 
 - type: entity
   parent: GasCanisterBrokenBase
@@ -984,7 +989,9 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    state: brown-1
+    layers:
+    - sprite: Structures/Storage/canister.rsi
+      state: brown-1
 
 - type: entity
   parent: GasCanisterBrokenBase
@@ -992,4 +999,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    state: brown-1
+    layers:
+    - sprite: Structures/Storage/canister.rsi
+      state: brown-1
