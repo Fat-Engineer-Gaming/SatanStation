@@ -13800,11 +13800,6 @@ entities:
       parent: 2
 - proto: PottedPlantRandom
   entities:
-  - uid: 95
-    components:
-    - type: Transform
-      pos: 2.5,-3.5
-      parent: 2
   - uid: 1567
     components:
     - type: Transform
