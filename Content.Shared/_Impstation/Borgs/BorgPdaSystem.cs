@@ -1,4 +1,4 @@
-﻿using Content.Shared.PDA;
+using Content.Shared.PDA;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Verbs;
 using Robust.Shared.GameObjects;
