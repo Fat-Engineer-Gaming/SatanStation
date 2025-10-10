@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Inhand sprites Created by HoofedEar. icon sprites taken from tgstation from https://github.com/tgstation/tgstation/pull/854914. sunrise detergent edited by miapyxel",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "cap"
+    },
+    {
+      "name": "sunrise"
+    },
+    {
+      "name": "sunrise-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "sunrise-inhand-right",
+      "directions": 4
+    }
+  ]
+}

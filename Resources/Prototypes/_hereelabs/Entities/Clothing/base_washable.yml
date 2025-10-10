@@ -4,6 +4,7 @@
   components:
   - type: WashableClothing
   - type: Temperature
+  - type: AtmosExposed
 
 - type: entity
   abstract: true

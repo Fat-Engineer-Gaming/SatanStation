@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingHeadBaseButcherable, ClothingWashableBase, BaseFoldable]
+  parent: [ClothingHeadBaseButcherable, BaseFoldable]
   id: ClothingHeadBandBase
   abstract: true
   components:

@@ -65,19 +65,24 @@ public abstract class SharedLaundrySystem : EntitySystem
 
         var comp = ent.Comp;
 
+        if (comp.CanDry)
+        {
+            if (comp.LaundryState == LaundryMachineState.Drying)
+                args.PushMarkup(Loc.GetString("laundry-machine-examined-time-remaining", ("time", (int)Math.Ceiling(comp.TimeRemaining.TotalMinutes))), 12);
+        }
+
         if (comp.CanWash)
             args.PushMarkup(Loc.GetString("laundry-machine-examined-wash-cycle", ("cycle", comp.WasherCycle)), 10);
 
         if (comp.CanDry)
         {
-            args.PushMarkup(Loc.GetString("laundry-machine-examined-dry-cycle", ("cycle", comp.DryerCycle)), 9);
+            // args.PushMarkup(Loc.GetString("laundry-machine-examined-dry-cycle", ("cycle", comp.DryerCycle)), 9);
             if (comp.LaundryState != LaundryMachineState.Drying)
                 args.PushMarkup(Loc.GetString("laundry-machine-examined-timer", ("time", comp.TimeSettingMinutes)), 8);
-            else
-                args.PushMarkup(Loc.GetString("laundry-machine-examined-time-remaining", ("time", (int)Math.Ceiling(comp.TimeRemaining.TotalMinutes))), 7);
         }
 
-        args.PushMarkup(Loc.GetString("laundry-machine-examined-mode", ("mode", comp.Mode)), 6);
+        if (comp.CanWash && comp.CanDry)
+            args.PushMarkup(Loc.GetString("laundry-machine-examined-mode", ("mode", comp.Mode)), 6);
         args.PushMarkup(Loc.GetString("laundry-machine-examined-state", ("state", comp.LaundryState)), 11);
     }
 
@@ -104,7 +109,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                 Text = Loc.GetString("laundry-machine-switch-wash-cycle", ("cycle", nextWashCycle)),
                 Priority = 10,
             });
-            args.Verbs.Add(new Verb()
+            /* args.Verbs.Add(new Verb()
             {
                 Act = () =>
                 {
@@ -112,16 +117,19 @@ public abstract class SharedLaundrySystem : EntitySystem
                 },
                 Text = Loc.GetString("laundry-machine-switch-dry-cycle", ("cycle", nextDryCycle)),
                 Priority = 9,
-            });
-            args.Verbs.Add(new Verb()
+            }); */
+            if (comp.CanDry && comp.CanWash)
             {
-                Act = () =>
+                args.Verbs.Add(new Verb()
                 {
-                    SwitchMode(uid, comp, nextMode, args.User);
-                },
-                Text = Loc.GetString("laundry-machine-switch-mode", ("mode", nextMode)),
-                Priority = 8,
-            });
+                    Act = () =>
+                    {
+                        SwitchMode(uid, comp, nextMode, args.User);
+                    },
+                    Text = Loc.GetString("laundry-machine-switch-mode", ("mode", nextMode)),
+                    Priority = 8,
+                });
+            }
 
             args.Verbs.Add(new Verb()
             {
@@ -279,11 +287,19 @@ public abstract class SharedLaundrySystem : EntitySystem
                 _ambientSound.SetSound(uid, comp.SpinSound);
                 _ambientSound.SetAmbience(uid, true);
                 comp.TimeRemaining = TimeSpan.FromMinutes(comp.TimeSettingMinutes);
-                StateJitterMachine(uid, LaundryMachineWashState.Washing);
+                StateJitterMachine(uid, LaundryMachineWashState.Washing, comp.WasherCycle);
                 _appearance.SetData(uid, LaundryMachineVisuals.Light, true);
                 break;
             case LaundryMachineState.Washing:
-                ChangeMachineWashState(ent, LaundryMachineWashState.WashFill);
+                switch (comp.WasherCycle)
+                {
+                    default:
+                        ChangeMachineWashState(ent, LaundryMachineWashState.WashFill);
+                        break;
+                    case WasherCycleSetting.RinseAndSpin:
+                        ChangeMachineWashState(ent, LaundryMachineWashState.RinseFill);
+                        break;
+                }
                 _appearance.SetData(uid, LaundryMachineVisuals.Light, true);
                 break;
         }
@@ -332,7 +348,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                 _ambientSound.SetSound(uid, comp.SpinSound);
                 _ambientSound.SetAmbience(uid, true);
                 comp.TimeRemaining = TimeSpan.FromMinutes(2);
-                StateJitterMachine(uid, newWashState);
+                StateJitterMachine(uid, newWashState, comp.WasherCycle);
                 break;
             case LaundryMachineWashState.WashDraining:
             case LaundryMachineWashState.RinseDraining:
@@ -341,10 +357,13 @@ public abstract class SharedLaundrySystem : EntitySystem
                 break;
             case LaundryMachineWashState.FastSpin:
                 _audio.PlayPvs(comp.StartSpinSound, uid);
-                _ambientSound.SetSound(uid, comp.FastSpinSound);
+                if (comp.WasherCycle != WasherCycleSetting.Delicate)
+                    _ambientSound.SetSound(uid, comp.FastSpinSound);
+                else
+                    _ambientSound.SetSound(uid, comp.SpinSound);
                 _ambientSound.SetAmbience(uid, true);
                 comp.TimeRemaining = TimeSpan.FromMinutes(2);
-                StateJitterMachine(uid, newWashState);
+                StateJitterMachine(uid, newWashState, comp.WasherCycle);
                 break;
         }
     }
@@ -359,7 +378,7 @@ public abstract class SharedLaundrySystem : EntitySystem
         RemComp<JitteringComponent>(uid);
     }
 
-    private void StateJitterMachine(EntityUid uid, LaundryMachineWashState washState)
+    private void StateJitterMachine(EntityUid uid, LaundryMachineWashState washState, WasherCycleSetting washerCycle)
     {
         switch (washState)
         {
@@ -371,7 +390,10 @@ public abstract class SharedLaundrySystem : EntitySystem
                 DoJitterMachine(uid, 4f, 8f);
                 break;
             case LaundryMachineWashState.FastSpin:
-                DoJitterMachine(uid, 4f, 16f);
+                if (washerCycle != WasherCycleSetting.Delicate)
+                    DoJitterMachine(uid, 4f, 16f);
+                else
+                    DoJitterMachine(uid, 4f, 8f);
                 break;
         }
     }
@@ -410,16 +432,27 @@ public abstract class SharedLaundrySystem : EntitySystem
     {
         Entity<LaundryMachineComponent> ent = (uid, comp);
 
-        switch (comp.Mode)
+        if (comp.CanWash && comp.CanDry)
         {
-            case LaundryMachineMode.Wash:
-            case LaundryMachineMode.WashAndDry:
-                ChangeMachineState(ent, LaundryMachineState.Washing);
-                break;
-            case LaundryMachineMode.Dry:
-                ChangeMachineState(ent, LaundryMachineState.Drying);
-                break;
+            switch (comp.Mode)
+            {
+                case LaundryMachineMode.Wash:
+                case LaundryMachineMode.WashAndDry:
+                    ChangeMachineState(ent, LaundryMachineState.Washing);
+                    break;
+                case LaundryMachineMode.Dry:
+                    ChangeMachineState(ent, LaundryMachineState.Drying);
+                    break;
+            }
         }
+        else
+        {
+            if (comp.CanWash)
+                ChangeMachineState(ent, LaundryMachineState.Washing);
+            else
+                ChangeMachineState(ent, LaundryMachineState.Drying);
+        }
+
         _audio.PlayPredicted(comp.StartSound, ent, user);
         _popup.PopupPredicted(Loc.GetString("laundry-machine-started"), uid, user);
 
@@ -483,11 +516,11 @@ public abstract class SharedLaundrySystem : EntitySystem
         switch (comp.LaundryState)
         {
             case LaundryMachineState.Drying:
-                StateJitterMachine(uid, LaundryMachineWashState.Washing);
+                StateJitterMachine(uid, LaundryMachineWashState.Washing, comp.WasherCycle);
                 _ambientSound.SetAmbience(uid, true);
                 break;
             case LaundryMachineState.Washing:
-                StateJitterMachine(uid, comp.WashState);
+                StateJitterMachine(uid, comp.WashState, comp.WasherCycle);
 
                 switch (comp.WashState)
                 {

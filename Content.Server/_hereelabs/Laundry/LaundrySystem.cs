@@ -175,21 +175,33 @@ public sealed class LaundrySystem : SharedLaundrySystem
                 }
                 break;
             case LaundryMachineWashState.FastSpin:
-                // do fast-spin behavior
-                DrainDrum(uid, 4 * deltaTime, false);
-                MachineSpin(uid, comp, 2 * deltaTime);
+                if (comp.WasherCycle != WasherCycleSetting.Delicate)
+                {
+                    // do fast-spin behavior
+                    DrainDrum(uid, 4 * deltaTime, false);
+                    MachineSpin(uid, comp, 2 * deltaTime);
+                }
+                else
+                {
+                    // delicate behavior
+                    DrainDrum(uid, 2 * deltaTime, false);
+                    MachineSpin(uid, comp, deltaTime);
+                }
 
                 comp.TimeRemaining -= TimeSpan.FromSeconds(deltaTime);
                 if (comp.TimeRemaining <= _zeroTimeSpan)
                 {
-                    switch (comp.Mode)
+                    if (comp.CanWash && comp.CanDry)
                     {
-                        case LaundryMachineMode.Wash:
-                            StopMachine(uid, comp);
-                            break;
-                        case LaundryMachineMode.WashAndDry:
-                            ChangeMachineState(ent, LaundryMachineState.Delay);
-                            break;
+                        switch (comp.Mode)
+                        {
+                            case LaundryMachineMode.Wash:
+                                StopMachine(uid, comp);
+                                break;
+                            case LaundryMachineMode.WashAndDry:
+                                ChangeMachineState(ent, LaundryMachineState.Delay);
+                                break;
+                        }
                     }
                 }
                 break;
@@ -201,7 +213,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
         var comp = ent.Comp;
 
         /// do drying behavior
-        MachineSpin(uid, comp, deltaTime);
+        MachineSpin(uid, comp, deltaTime, false);
         DrainDrum(uid, deltaTime, false);
         MachineHeat(uid, comp, deltaTime);
 
@@ -250,7 +262,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
             _puddle.TrySpillAt(uid, removed, out var _, sound);
         }
     }
-    private void MachineSpin(EntityUid uid, LaundryMachineComponent comp, float deltaTime)
+    private void MachineSpin(EntityUid uid, LaundryMachineComponent comp, float deltaTime, bool dripWashables = true)
     {
         if (!_solutions.EnsureSolutionEntity(uid, "drum", out var soln))
             return;
@@ -268,16 +280,19 @@ public sealed class LaundrySystem : SharedLaundrySystem
             /// splash solution onto everything inside
             var removed = _solutions.SplitSolution(soln.Value, solution.Volume * portion * deltaTime);
             _reactive.DoEntityReaction(containedUid, removed, ReactionMethod.Touch);
-            if (TryComp<WashableClothingComponent>(containedUid, out var washable))
+            if (dripWashables)
             {
-                /// force washable to drip
-                WashableDrip((containedUid, washable), DRIP_AMOUNT * deltaTime);
+                if (TryComp<WashableClothingComponent>(containedUid, out var washable))
+                {
+                    /// force washable to drip
+                    WashableDrip((containedUid, washable), DRIP_AMOUNT * deltaTime);
+                }
             }
             _solutions.AddSolution(soln.Value, removed);
 
             /// damage things inside
             var damageFactor = 1f;
-            if (comp.WashState == LaundryMachineWashState.FastSpin)
+            if (comp.WashState == LaundryMachineWashState.FastSpin && comp.WasherCycle != WasherCycleSetting.Delicate)
                 damageFactor = 2f;
 
             _damageable.TryChangeDamage(containedUid, comp.Damage * damageFactor * deltaTime, interruptsDoAfters: false);
