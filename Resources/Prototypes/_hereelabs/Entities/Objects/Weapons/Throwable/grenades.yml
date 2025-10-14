@@ -11,7 +11,7 @@
     - timer
   - type: Explosive
     explosionType: Default
-    totalIntensity: 100
+    totalIntensity: 40
     intensitySlope: 7
     maxIntensity: 62
     canCreateVacuum: true

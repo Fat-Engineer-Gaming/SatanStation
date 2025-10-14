@@ -19,6 +19,11 @@
   - type: SubFloorHide
   - type: CollideOnAnchor
   - type: Anchorable
+  - type: RCDDeconstructable
+    cost: 1
+    delay: 2
+    fx: EffectRCDDeconstruct2
+    rpd: true
   - type: Rotatable
   - type: Destructible
     thresholds:

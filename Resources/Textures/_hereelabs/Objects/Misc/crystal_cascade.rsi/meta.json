@@ -1,0 +1,38 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "https://github.com/tgstation/tgstation/pull/66659/files#diff-aad0ffec1769086c04097e9a31a1667195dc8b5f96cb8d724b15221f829ccaf8",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "crystal_cascade_33"
+        },
+        {
+            "name": "crystal_cascade_32"
+        },
+        {
+            "name": "crystal_cascade_31"
+        },
+        {
+            "name": "crystal_cascade_23"
+        },
+        {
+            "name": "crystal_cascade_22"
+        },
+        {
+            "name": "crystal_cascade_21"
+        },
+        {
+            "name": "crystal_cascade_13"
+        },
+        {
+            "name": "crystal_cascade_12"
+        },
+        {
+            "name": "crystal_cascade_11"
+        }
+    ]
+}
