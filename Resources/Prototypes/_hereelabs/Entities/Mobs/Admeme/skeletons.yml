@@ -1,0 +1,187 @@
+﻿#- type: startingGear
+#  id: SkeletonExample
+#  equipment:
+#    jumpsuit:
+#    back:
+#    head:
+#    mask:
+#    eyes:
+#    ears:
+#    gloves:
+#    outerClothing:
+#    shoes:
+#    id:
+#    pocket1:
+#    pocket2:
+#    belt:
+#    neck:
+#  inhand:
+#  -
+#  storage:
+#    back:
+#    -
+
+- type: startingGear
+  id: SkeletonAdminBasic
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAgent
+    back: ClothingBackpackSatchelAdmin
+    eyes: ClothingEyesHudOmni
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsCombatFilled
+    id: AdminPDA
+    pocket1: WizardsGrimoire
+    pocket2: MeleeDebugGib
+  storage:
+    back:
+    - ClothingOuterWizard
+    - ClothingHeadHatWizard
+
+- type: startingGear
+  id: SkeletonRattler
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSolFatigueGrey
+    head: ClothingHeadHatFedoraGrey
+    back: ClothingBackpackSatchelSyndicate
+    mask: CigaretteSpent
+    ears: ClothingHeadsetAltFreelancer
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsSyndieFilled
+    id: SyndicateIDCard
+    pocket1: MagazineRifle
+    pocket2: MagazineRifle
+  inhand:
+  - WeaponRifleLecter
+  storage:
+    back:
+    - AccessBreakerUnlimited
+    - DeathAcidifierImplanter
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifle
+
+- type: startingGear
+  id: SkeletonDrunkDriver
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCentcomAgent
+    back: ClothingBackpackSatchelAdmin
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsCombatFilled
+    id: AdminPDA
+    pocket1: DrinkBeerBottleFull
+    pocket2: DrinkBeerBottleFull
+  storage:
+    back:
+    - DrinkBeerBottleFull # DRIVING IN MY SHUTTLE, RIGHT AFTER A BEEEEER
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DrinkBeerBottleFull
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - DebugShuttleFlatpack
+    - Omnitool
+    - ShuttleConsoleFlatpackSmall
+
+- type: entity
+  name: Admin Skeleton
+  description: A fragment of the mythical Administrator.
+  parent: BaseMobSkeletonPerson
+  id: MobSkeletonAdminAbuse
+  components:
+  - type: ThermalVision
+  - type: Insulated
+  - type: Magboots
+  - type: FlashImmunity
+  - type: NightVision
+  - type: Loadout
+    prototypes: [ SkeletonAdminBasic ]
+
+- type: entity
+  name: Rattler
+  description: RATTLE HIM BOYS!!!
+  parent: BaseMobSkeletonPerson
+  id: MobSkeletonRattler
+  components:
+  - type: Loadout
+    prototypes: [ SkeletonRattler ]
+  - type: GhostRole
+    name: Rattler
+    description: Rattle him boys!
+    rules: You are a rattler. You must rattle everyone aside from your fellow goons.
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: default
+
+- type: entity
+  name: Drunk Driver
+  description: DRIVING IN MY SHUTTLE, RIGHT AFTER A BEER.
+  parent: BaseMobSkeletonPerson
+  id: MobSkeletonDrunkDriver
+  components:
+  - type: Loadout
+    prototypes: [ SkeletonDrunkDriver ]
+  - type: Insulated
+  - type: Magboots

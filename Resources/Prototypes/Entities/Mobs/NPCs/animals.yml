@@ -2736,6 +2736,9 @@
     enterDelay: 2
   - type: AlwaysRevolutionaryConvertible #imp
 # imp edit end
+# devil edit start
+  - type: Cocooner
+# devil edit end
 
 # Code unique spider prototypes or combine them all into one spider and get a
 # random sprite state when you spawn it.
@@ -2844,16 +2847,20 @@
         state: tarantula
   - type: GoobAbsorbable # big enough to restore a good amount of biomass
     biomassRestored: 0.7
-  - type: NightVision # EE edit
-    isActive: true
-    toggleAction: null
-    color: "#50595C"
-    activateSound: null
-    deactivateSound: null
+  - type: ThermalVision
   - type: VentCrawler
     enterDelay: 3
   - type: Carriable #DeltaV
   # imp edit end
+  # devil edit start
+  - type: Puller
+    needsHands: false
+  - type: Cocooner
+  - type: BloodSucker
+    injectWhenSuck: true
+    injectReagent: Mechanotoxin
+    webRequired: true
+  # devil edit end
 
 - type: entity
   parent: MobSpiderBase
@@ -2862,7 +2869,7 @@
   components:
   - type: NpcFactionMember
     factions:
-      - Xeno
+      - Spider
   - type: InputMover
   - type: MobMover
   - type: HTN
@@ -2921,6 +2928,7 @@
   - MobSpiderAngryBase
   - MobGiantSpider
   id: MobGiantSpiderAngry
+  suffix: hostile
 
 - type: entity
   name: clown spider
