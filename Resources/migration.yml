@@ -732,3 +732,26 @@ BaseUplinkRadio20TC: BaseUplinkRadio100TC
 BaseUplinkRadio25TC: BaseUplinkRadio125TC
 BaseUplinkRadio40TC: BaseUplinkRadio200TC
 BaseUplinkRadio60TC: BaseUplinkRadio300TC
+
+## migrations for removed protos. should making porting old maps easier
+DrinkBeer: DrinkBeerBottleFull
+WindoorBrigLocked: WindoorSecureBrigLocked
+WindoorChemistryLocked: WindoorSecureChemistryLocked
+chem_dispenser: ChemDispenser
+WindoorCommandLocked: WindoorSecureCommandLocked
+WindoorSecurityLocked: WindoorSecureSecurityLocked
+WindoorArmoryLocked: WindoorSecureArmoryLocked
+WindoorScienceLocked: WindoorSecureScienceLocked
+WindoorMedicalLocked: WindoorSecureMedicalLocked
+VehiclePussyWagonDestroyed: null
+SpawnVehiclePussywagon: null
+VehicleKeyPussyWagon: null
+AMEController: AmeController
+d100Dice: d20Dice
+HatBandBlack: ClothingHeadHatBeaverHat
+WindoorEngineeringLocked: WindoorSecureEngineeringLocked
+AMEJar: AmeJar
+MicroLaserStockPart: null
+CrateFunInstruments: null
+CrateFunBrass: null
+HatBandSkull: null
