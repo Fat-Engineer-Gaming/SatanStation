@@ -1,5 +1,5 @@
 ﻿#- type: startingGear
-#  id: SkeletonExample
+#  id: SkeletonExampleGear
 #  equipment:
 #    jumpsuit:
 #    back:
@@ -22,7 +22,7 @@
 #    -
 
 - type: startingGear
-  id: SkeletonAdminBasic
+  id: SkeletonAdminBasicGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitCentcomAgent
     back: ClothingBackpackSatchelAdmin
@@ -38,7 +38,7 @@
     - ClothingHeadHatWizard
 
 - type: startingGear
-  id: SkeletonRattler
+  id: SkeletonRattlerGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitSolFatigueGrey
     head: ClothingHeadHatFedoraGrey
@@ -63,7 +63,7 @@
     - MagazineRifle
 
 - type: startingGear
-  id: SkeletonDrunkDriver
+  id: SkeletonDrunkDriverGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitCentcomAgent
     back: ClothingBackpackSatchelAdmin
@@ -144,6 +144,22 @@
     - Omnitool
     - ShuttleConsoleFlatpackSmall
 
+- type: startingGear
+  id: CManGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMan
+    outerClothing: ClothingUniformCoatCMan
+    back: ClothingBackpackSatchelAdmin
+    eyes: ClothingEyesHudOmni
+    head: ClothingUniformFedoraCMan
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsCombatFilled
+    id: AdminPDA
+    pocket1: WizardsGrimoire
+    pocket2: MeleeDebugGib
+  inhand:
+  - GunCaseBlaster
+
 - type: entity
   name: Admin Skeleton
   description: A fragment of the mythical Administrator.
@@ -156,7 +172,7 @@
   - type: FlashImmunity
   - type: NightVision
   - type: Loadout
-    prototypes: [ SkeletonAdminBasic ]
+    prototypes: [ SkeletonAdminBasicGear ]
 
 - type: entity
   name: Rattler
@@ -165,7 +181,7 @@
   id: MobSkeletonRattler
   components:
   - type: Loadout
-    prototypes: [ SkeletonRattler ]
+    prototypes: [ SkeletonRattlerGear ]
   - type: GhostRole
     name: Rattler
     description: Rattle him boys!
@@ -182,6 +198,20 @@
   id: MobSkeletonDrunkDriver
   components:
   - type: Loadout
-    prototypes: [ SkeletonDrunkDriver ]
+    prototypes: [ SkeletonDrunkDriverGear ]
   - type: Insulated
   - type: Magboots
+
+- type: entity
+  name: The C-Man # The Calcium Man
+  description: A mysterious skeleton. It looks like they have something to say.
+  parent: BaseMobSkeletonPerson
+  id: MobSkeletonCman
+  components:
+  - type: ThermalVision
+  - type: Insulated
+  - type: Magboots
+  - type: FlashImmunity
+  - type: NightVision
+  - type: Loadout
+    prototypes: [ CManGear ]

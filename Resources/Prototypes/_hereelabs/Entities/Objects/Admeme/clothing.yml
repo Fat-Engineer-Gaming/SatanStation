@@ -1,0 +1,49 @@
+﻿- type: entity
+  id: ClothingUniformJumpsuitCMan
+  parent: [ ClothingUniformJumpsuitCentcomAgent, TierXContraband ]
+  name: C-Man's Jumpsuit
+  suffix: DO NOT MAP
+  description: A suit worn by someone mysterious. Why do you have this, anyways?
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
+        Heat: 0.5
+        Caustic: 0.5
+
+- type: entity
+  id: ClothingUniformCoatCMan
+  parent: [ ClothingOuterCoatJensen, TierXContraband ]
+  name: C-Man's Coat
+  suffix: DO NOT MAP
+  description: A coat worn by someone mysterious. Why do you have this, anyways?
+  components:
+  - type: WizardClothes
+  - type: Armor # same as the raid suit.
+    modifiers:
+      coefficients:
+        Blunt: 0.35
+        Slash: 0.35
+        Piercing: 0.35
+        Heat: 0.35
+        Caustic: 0.5
+
+- type: entity
+  id: ClothingUniformFedoraCMan
+  parent: [ ClothingHeadHatFedoraGrey, TierXContraband ]
+  name: C-Man's Fedora
+  suffix: DO NOT MAP
+  description: A fedora worn by someone mysterious. Why do you have this, anyways?
+  components:
+  - type: WizardClothes
+  - type: Armor # same as the raid suit.
+    modifiers:
+      coefficients:
+        Blunt: 0.35
+        Slash: 0.35
+        Piercing: 0.35
+        Heat: 0.35
+        Caustic: 0.5
