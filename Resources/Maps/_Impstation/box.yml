@@ -83150,14 +83150,6 @@ entities:
     - type: Transform
       pos: 74.3515,-18.443996
       parent: 8364
-- proto: EggSpider
-  entities:
-  - uid: 25453
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -6.576047,14.409379
-      parent: 8364
 - proto: EmergencyLight
   entities:
   - uid: 5095

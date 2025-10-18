@@ -732,3 +732,7 @@ BaseUplinkRadio20TC: BaseUplinkRadio100TC
 BaseUplinkRadio25TC: BaseUplinkRadio125TC
 BaseUplinkRadio40TC: BaseUplinkRadio200TC
 BaseUplinkRadio60TC: BaseUplinkRadio300TC
+
+# 2025-10-17
+## We use a different thing for this. Also come on man, why the fuck does this exist and it doesn't even come from spiders?
+EggSpider: null
