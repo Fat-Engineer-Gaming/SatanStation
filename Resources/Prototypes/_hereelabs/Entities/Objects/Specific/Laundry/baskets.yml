@@ -1,0 +1,36 @@
+- type: entity
+  id: LaundryBasket
+  name: laundry basket
+  components:
+  - type: Sprite
+    sprite: _Impstation/Structures/Storage/Crates/generic.rsi # temporary
+  - type: Item
+    size: Huge
+    sprite: _Impstation/Structures/Storage/Crates/generic.rsi # temporary
+  - type: Storage
+    grid:
+    - 0,0,7,5
+    maxItemSize: Huge
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UseDelay
+    delay: 0.5
+  - type: Dumpable
+  - type: MultiHandedItem
+
+- type: entity
+  id: LaundryBasketTall
+  parent: LaundryBasket
+  name: laundry basket
+  suffix: Tall
+  components:
+  - type: Sprite
+    sprite: _Impstation/Structures/Storage/Crates/generic.rsi # temporary
+  - type: Item
+    size: Huge
+    sprite: _Impstation/Structures/Storage/Crates/generic.rsi # temporary
+  - type: Storage
+    grid:
+    - 0,0,5,7

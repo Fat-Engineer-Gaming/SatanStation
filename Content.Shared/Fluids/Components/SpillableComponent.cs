@@ -24,6 +24,13 @@ public sealed partial class SpillableComponent : Component
     public FixedPoint2 MaxMeleeSpillAmount = FixedPoint2.New(20);
 
     /// <summary>
+    ///     devilstation !!
+    ///     How much will be spilled when manually spilling?
+    /// </summary>
+    [DataField]
+    public FixedPoint2 DoAfterSpillAmount = FixedPoint2.MaxValue;
+
+    /// <summary>
     ///     Should this item be spilled when thrown?
     /// </summary>
     [DataField]

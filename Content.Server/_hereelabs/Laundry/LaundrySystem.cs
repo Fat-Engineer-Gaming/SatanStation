@@ -9,6 +9,7 @@ using Content.Shared.Destructible;
 using Content.Shared.FixedPoint;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Storage.Components;
+using Content.Shared.Temperature;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Temperature.Components;
 using Content.Shared._hereelabs.Laundry;
@@ -44,6 +45,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
         SubscribeLocalEvent<WashableClothingComponent, ComponentInit>(OnWashableInit);
         SubscribeLocalEvent<WashableClothingComponent, ReactionEntityEvent>(OnWashableSplashed);
         SubscribeLocalEvent<WashableClothingComponent, DestructionEventArgs>(OnWashableDestruction);
+        SubscribeLocalEvent<WashableClothingComponent, OnTemperatureChangeEvent>(OnWashableTemperatureChange);
 
         _sawmill = _logManager.GetSawmill("laundry.server");
     }
@@ -351,7 +353,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
             return;
 
         /// drip
-        if (solution.Volume >= ent.Comp.DripVolume)
+        if (solution.Volume > ent.Comp.DripVolume)
             WashableDrip(ent, DRIP_AMOUNT * deltaTime);
 
         /// temperature dry
@@ -456,7 +458,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
 
         WashableSpill(ent, dripped, sound);
     }
-    public void WashableSpill(Entity<WashableClothingComponent> ent, Solution solution, bool sound = false)
+    private void WashableSpill(Entity<WashableClothingComponent> ent, Solution solution, bool sound = false)
     {
         if (TryComp<InsideEntityStorageComponent>(ent.Owner, out var insideEntStorage))
         {
@@ -503,14 +505,13 @@ public sealed class LaundrySystem : SharedLaundrySystem
             if (dryStrength <= 0f)
                 continue;
 
-            _sawmill.Debug($"reagent {reagentQuantity.Reagent.Prototype}: taking {dryStrength * deltaTime}");
-            _sawmill.Debug($"before volume: {solution.Volume}");
+            /// _sawmill.Debug($"reagent {reagentQuantity.Reagent.Prototype}: taking {dryStrength * deltaTime}");
+            /// _sawmill.Debug($"before volume: {solution.Volume}");
 
             var removed = _solutions.RemoveReagent(soln.Value, reagentQuantity.Reagent, dryStrength * deltaTime);
 
-            _sawmill.Debug($"reagent {reagentQuantity.Reagent.Prototype}: removed {removed}");
-            _sawmill.Debug($"after  volume: {solution.Volume}");
-
+            /// _sawmill.Debug($"reagent {reagentQuantity.Reagent.Prototype}: removed {removed}");
+            /// _sawmill.Debug($"after  volume: {solution.Volume}");
 
             driedSolution.AddReagent(reagentQuantity.Reagent, removed);
         }
@@ -541,6 +542,13 @@ public sealed class LaundrySystem : SharedLaundrySystem
     private void OnWashableDestruction(Entity<WashableClothingComponent> ent, ref DestructionEventArgs args)
     {
         WashableDrip(ent, -1, true);
+    }
+    private void OnWashableTemperatureChange(Entity<WashableClothingComponent> ent, ref OnTemperatureChangeEvent args)
+    {
+        if (!TryGetWashableSolution(ent, out var soln, out var _) || !soln.HasValue)
+            return;
+
+        _solutions.SetTemperature(soln.Value, args.CurrentTemperature);
     }
 
     #endregion

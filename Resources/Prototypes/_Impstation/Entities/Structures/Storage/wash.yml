@@ -4,6 +4,7 @@
   parent: [ CrateBaseSecure, BaseMachinePowered ]
   id: WashingMachine
   name: laundry machine
+  suffix: Non-powered
   description: You could use this to wash and dry your clothes. It's recommended to lock before using.
   components:
   - type: Icon
@@ -101,3 +102,5 @@
   #  node: cratesecure
   #  containers:
   #  - entity_storage
+
+# TODO : powered variant of laundry machine

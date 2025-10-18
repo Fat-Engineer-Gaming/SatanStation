@@ -107,7 +107,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                     SwitchWashCycle(uid, comp, nextWashCycle, args.User);
                 },
                 Text = Loc.GetString("laundry-machine-switch-wash-cycle", ("cycle", nextWashCycle)),
-                Priority = 10,
+                Priority = 15,
             });
             /* args.Verbs.Add(new Verb()
             {
@@ -116,7 +116,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                     SwitchDryCycle(uid, comp, nextDryCycle, args.User);
                 },
                 Text = Loc.GetString("laundry-machine-switch-dry-cycle", ("cycle", nextDryCycle)),
-                Priority = 9,
+                Priority = 14,
             }); */
             if (comp.CanDry && comp.CanWash)
             {
@@ -127,7 +127,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                         SwitchMode(uid, comp, nextMode, args.User);
                     },
                     Text = Loc.GetString("laundry-machine-switch-mode", ("mode", nextMode)),
-                    Priority = 8,
+                    Priority = 13,
                 });
             }
 
@@ -138,7 +138,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                     StartMachine(uid, comp, args.User);
                 },
                 Text = Loc.GetString("laundry-machine-verb-start"),
-                Priority = 7,
+                Priority = 12,
             });
         }
         else
@@ -152,7 +152,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                         ResumeMachine(uid, comp, args.User);
                     },
                     Text = Loc.GetString("laundry-machine-verb-resume"),
-                    Priority = 10,
+                    Priority = 15,
                 });
             }
             else
@@ -164,7 +164,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                         PauseMachine(uid, comp, args.User);
                     },
                     Text = Loc.GetString("laundry-machine-verb-pause"),
-                    Priority = 10,
+                    Priority = 14,
                 });
             }
 
@@ -175,7 +175,7 @@ public abstract class SharedLaundrySystem : EntitySystem
                     StopMachine(uid, comp, args.User);
                 },
                 Text = Loc.GetString("laundry-machine-verb-stop"),
-                Priority = 9,
+                Priority = 13,
             });
         }
     }
@@ -268,7 +268,12 @@ public abstract class SharedLaundrySystem : EntitySystem
         var uid = ent.Owner;
 
         if (comp.Paused)
+        {
+            if (newState == LaundryMachineState.Off)
+                _appearance.SetData(uid, LaundryMachineVisuals.Light, false);
+
             return;
+        }
 
         switch (newState)
         {
