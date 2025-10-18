@@ -178,13 +178,13 @@ public sealed class LaundrySystem : SharedLaundrySystem
                 if (comp.WasherCycle != WasherCycleSetting.Delicate)
                 {
                     // do fast-spin behavior
-                    DrainDrum(uid, 4 * deltaTime, false);
-                    MachineSpin(uid, comp, 2 * deltaTime);
+                    DrainDrum(uid, deltaTime, false);
+                    MachineSpin(uid, comp, 2 * deltaTime, true);
                 }
                 else
                 {
                     // delicate behavior
-                    DrainDrum(uid, 2 * deltaTime, false);
+                    DrainDrum(uid, deltaTime, false);
                     MachineSpin(uid, comp, deltaTime);
                 }
 
@@ -481,7 +481,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
     }
     public Solution? WashableDry(Entity<WashableClothingComponent> ent, float deltaTime, TemperatureComponent temperatureComponent)
     {
-        if (!TryGetWashableSolution(ent, out var _, out var solution))
+        if (!TryGetWashableSolution(ent, out var soln, out var solution) || !soln.HasValue)
             return null;
 
         Solution driedSolution = new();
@@ -494,9 +494,24 @@ public sealed class LaundrySystem : SharedLaundrySystem
             var evaporationSpeed = reagentProto.ImpEvaporates ?
                 reagentProto.ImpEvaporationAmount :
                 (float)reagentProto.EvaporationSpeed;
-            var dryStrength = Math.Min((temperatureComponent.CurrentTemperature - ent.Comp.DryTemperature) * evaporationSpeed / 150f, 3f);
+            if (evaporationSpeed <= 0f)
+                continue;
 
-            var removed = solution.RemoveReagent(reagentQuantity.Reagent, dryStrength * deltaTime);
+            evaporationSpeed = Math.Clamp(evaporationSpeed, 0f, 1f);
+
+            var dryStrength = Math.Min((temperatureComponent.CurrentTemperature - ent.Comp.DryTemperature) * evaporationSpeed / 150f, 3f);
+            if (dryStrength <= 0f)
+                continue;
+
+            _sawmill.Debug($"reagent {reagentQuantity.Reagent.Prototype}: taking {dryStrength * deltaTime}");
+            _sawmill.Debug($"before volume: {solution.Volume}");
+
+            var removed = _solutions.RemoveReagent(soln.Value, reagentQuantity.Reagent, dryStrength * deltaTime);
+
+            _sawmill.Debug($"reagent {reagentQuantity.Reagent.Prototype}: removed {removed}");
+            _sawmill.Debug($"after  volume: {solution.Volume}");
+
+
             driedSolution.AddReagent(reagentQuantity.Reagent, removed);
         }
 

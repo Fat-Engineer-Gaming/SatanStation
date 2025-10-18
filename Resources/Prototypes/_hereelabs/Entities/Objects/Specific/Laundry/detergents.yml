@@ -1,0 +1,56 @@
+- type: entity
+  abstract: true
+  parent: Jug
+  id: JugDetergentBase
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
+    layers:
+    - state: sunrise
+    - state: cap
+      map: ["enum.OpenableVisuals.Layer"]
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        enum.OpenableVisuals.Layer:
+          true: {state: "cap", visible: false}
+          false: {state: "cap", visible: true}
+  - type: Item
+    size: Normal
+    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
+    inhandVisuals:
+      left:
+      - state: sunrise-inhand-left
+      right:
+      - state: sunrise-inhand-right
+  - type: SolutionContainerVisuals
+    maxFillLevels: 0 # imp
+    inHandsMaxFillLevels: 0
+  - type: StaticPrice
+    price: 20
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: LaundryDetergent
+          Quantity: 200
+  - type: Sealable
+  - type: Openable
+    sound:
+      collection: bottleOpenSounds
+    closeable: true
+    closeSound:
+      collection: bottleCloseSounds
+
+- type: entity
+  parent: JugDetergentBase
+  id: JugDetergentSunrise
+  name: Sunrise Laundry Detergent
+  description: Get your clothes ready for the sun with Sunrise Laundry Detergent! Now with no lead.
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
+    layers:
+    - state: sunrise
+    - state: cap
+      map: ["enum.OpenableVisuals.Layer"]
