@@ -36,7 +36,7 @@
 
 - type: entity
   abstract: true
-  parent: ClothingNeckBase
+  parent: [ ClothingNeckBase, ClothingWashableBase ]
   id: ClothingScarfBase
   components:
   - type: Tag

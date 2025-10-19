@@ -1,0 +1,31 @@
+- type: entity
+  parent: DrinkGlass
+  id: DrinkSoapGlass
+  suffix: soap
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: SoapReagent
+          Quantity: 30
+  - type: Icon
+    sprite: Objects/Consumable/Drinks/glass_clear.rsi
+    state: icon
+
+- type: entity
+  parent: DrinkGlass
+  id: DrinkLaundryDetergentGlass
+  suffix: laundry detergent
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: LaundryDetergent
+          Quantity: 30
+  - type: Icon
+    sprite: Objects/Consumable/Drinks/glass_clear.rsi
+    state: icon

@@ -1,8 +1,11 @@
+# a loooot of devilstation changes here
+
 - type: entity
-  parent: CrateBaseWeldable
+  parent: [ CrateBaseSecure, BaseMachinePowered ]
   id: WashingMachine
-  name: washing machine
-  description: You could use this to wash your clothes, but it looks like most of the wiring was gutted out...
+  name: laundry machine
+  suffix: Non-powered
+  description: You could use this to wash and dry your clothes. It's recommended to lock before using.
   components:
   - type: Icon
     sprite: _Impstation/Structures/Storage/Wash.rsi
@@ -17,12 +20,92 @@
       map: [ open_crate ]
     - state: washOff
       shader: unshaded
+      map: ["light"]
     - state: paper
       sprite: Structures/Storage/Crates/labels.rsi
       map: [ "enum.PaperLabelVisuals.Layer" ]
       offset: 0.0625, 0.0625
       rotation: 180 #look this is about good as it's gonna get without new sprites
+      visible: false
   - type: Transform
     anchored: true
   - type: Physics
     bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: GenericVisualizer
+    visuals:
+      enum.LaundryMachineVisuals.Light:
+        light:
+          True: { state: washOn, shader: "unshaded" }
+          False: { state: washOff, shader: "unshaded" }
+  - type: SolutionContainerManager
+    solutions:
+      drum:
+        maxVol: 250
+      tank:
+        maxVol: 400
+        reagents:
+          - data: []
+            ReagentId: Water
+            Quantity: 400
+  - type: ExaminableSolution
+    solution: tank
+    exactVolume: true
+  - type: RefillableSolution
+    solution: tank
+  - type: DrawableSolution
+    solution: tank
+  - type: InjectableSolution
+    solution: tank
+  - type: DumpableSolution
+    solution: tank
+  - type: Lock
+    locked: false
+    insideToggleTime: 60
+    useAccess: false
+  - type: DamageOtherOnHit # imp
+    damage:
+      types:
+        Blunt: 12
+    staminaCost: 50
+  - type: LaundryMachine
+    damage:
+      types:
+        Blunt: 1
+    openChanceWhenUnlocked: 0.02
+  - type: AmbientSound
+    enabled: false
+    volume: 0
+    range: 6
+    sound:
+      path: /Audio/_hereelabs/Machines/laundry_spin.ogg
+  - type: EntityStorage
+    openOnMove: false
+  - type: Climbable
+  - type: ContainerContainer
+    containers:
+      detergentSlot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      detergentSlot:
+        whitelist:
+          components:
+          - FitsInDispenser
+  #- type: Construction
+  #  graph: CrateSecure
+  #  node: cratesecure
+  #  containers:
+  #  - entity_storage
+
+# TODO : powered variant of laundry machine
