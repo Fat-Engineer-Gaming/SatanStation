@@ -9,7 +9,9 @@
   - type: Sprite
     state: icon
   - type: WashableClothing # devil !
-    capacity: 2
+    capacity: 10
+    dripVolume: 5
+    wetnessScale: 0.5
 
 - type: entity
   abstract: true

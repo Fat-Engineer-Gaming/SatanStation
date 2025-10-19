@@ -139,6 +139,7 @@
     - ElectronicsStatic
     - ImpAutoStatic # Imp
     - ReportingStatic # DeltaV
+    - LaundryStatic # Devil !
     dynamicPacks:
     - ImpAutoDynamic # Imp
   - type: EmagLatheRecipes

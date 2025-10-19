@@ -25,6 +25,7 @@
       map: [ "enum.PaperLabelVisuals.Layer" ]
       offset: 0.025, -0.25
       rotation: 180 #look this is about good as it's gonna get without new sprites
+      visible: false
   - type: Transform
     anchored: true
   - type: Physics
@@ -60,6 +61,8 @@
   - type: ExaminableSolution
     solution: tank
     exactVolume: true
+  - type: RefillableSolution
+    solution: tank
   - type: DrawableSolution
     solution: tank
   - type: InjectableSolution

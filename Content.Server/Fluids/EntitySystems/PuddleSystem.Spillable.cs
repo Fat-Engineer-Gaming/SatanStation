@@ -144,10 +144,10 @@ public sealed partial class PuddleSystem
             return;
 
         //solution gone by other means before doafter completes
-        if (!_solutionContainerSystem.TryGetDrainableSolution(entity.Owner, out var soln, out var solution) || solution.Volume == 0 || entity.Comp.DoAfterSpillAmount <= 0)
+        if (!_solutionContainerSystem.TryGetDrainableSolution(entity.Owner, out var soln, out var solution) || solution.Volume == 0 || entity.Comp.SpillAmount <= 0) /// devilstation !
             return;
 
-        var puddleSolution = _solutionContainerSystem.SplitSolution(soln.Value, FixedPoint2.Min(solution.Volume, entity.Comp.DoAfterSpillAmount));
+        var puddleSolution = _solutionContainerSystem.SplitSolution(soln.Value, FixedPoint2.Min(solution.Volume, entity.Comp.SpillAmount)); /// devilstation !
         TrySpillAt(Transform(entity).Coordinates, puddleSolution, out _);
         args.Handled = true;
     }

@@ -33,6 +33,9 @@ public sealed partial class LaundryMachineComponent : Component
     [DataField, AutoNetworkedField]
     public float TemperatureCelcius = 80f;
 
+    [DataField("openChanceWhenUnlocked"), AutoNetworkedField]
+    public float UnlockedOpenChance = 0.01f;
+
     [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
     public TimeSpan TimeRemaining = TimeSpan.Zero;
 

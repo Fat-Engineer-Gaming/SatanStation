@@ -3,26 +3,12 @@
   parent: Jug
   id: JugDetergentBase
   components:
-  - type: Sprite
-    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
-    layers:
-    - state: sunrise
-    - state: cap
-      map: ["enum.OpenableVisuals.Layer"]
   - type: GenericVisualizer
     visuals:
       enum.OpenableVisuals.Opened:
         enum.OpenableVisuals.Layer:
-          true: {state: "cap", visible: false}
-          false: {state: "cap", visible: true}
-  - type: Item
-    size: Normal
-    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
-    inhandVisuals:
-      left:
-      - state: sunrise-inhand-left
-      right:
-      - state: sunrise-inhand-right
+          True: {state: "cap", visible: False}
+          False: {state: "cap", visible: True}
   - type: SolutionContainerVisuals
     maxFillLevels: 0 # imp
     inHandsMaxFillLevels: 0
@@ -54,3 +40,88 @@
     - state: sunrise
     - state: cap
       map: ["enum.OpenableVisuals.Layer"]
+      visible: True
+  - type: Item
+    size: Normal
+    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
+    inhandVisuals:
+      left:
+      - state: sunrise-inhand-left
+      right:
+      - state: sunrise-inhand-right
+
+- type: entity
+  parent: JugDetergentBase
+  id: JugDetergentMoonlight
+  name: Moonlight Laundry Detergent
+  description: Get your clothes ready for the night with Moonlight Laundry Detergent! Now with no lead.
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
+    layers:
+    - state: moonlight
+    - state: cap
+      map: ["enum.OpenableVisuals.Layer"]
+      visible: True
+  - type: Item
+    size: Normal
+    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
+    inhandVisuals:
+      left:
+      - state: moonlight-inhand-left
+      right:
+      - state: moonlight-inhand-right
+
+- type: entity
+  parent: BaseItem
+  id: DetergentPod
+  name: laundry detergent pod
+  suffix: Empty
+  description: A pack of liquid usually used to hold laundry detergent.
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Objects/Specific/Laundry/detergent.rsi
+    layers:
+    - state: pod1
+      map: ["enum.SolutionContainerLayers.Fill"]
+      visible: false
+    - state: pod
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 10
+  - type: SolutionContainerVisuals
+    maxFillLevels: 3
+    fillBaseName: pod
+  - type: SolutionContainerManager
+    solutions:
+      pod:
+        maxVol: 20
+  - type: ExaminableSolution
+    solution: pod
+  - type: DrawableSolution
+    solution: pod
+  - type: InjectableSolution
+    solution: pod
+  - type: Appearance
+  - type: BadFood
+  - type: Edible
+    solution: pod
+    transferAmount: 20
+    delay: 2
+    requireDead: false
+  - type: SolutionSpiker
+    sourceSolution: pod
+    ignoreEmpty: true
+
+- type: entity
+  parent: DetergentPod
+  id: DetergentPodFull
+  suffix: Full
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      pod:
+        maxVol: 20
+        reagents:
+        - ReagentId: LaundryDetergent
+          Quantity: 20

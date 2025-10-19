@@ -4,16 +4,19 @@ using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
 using Content.Shared.FixedPoint;
+using Content.Shared.Lock;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Temperature;
+using Content.Shared._hereelabs.Laundry;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Temperature.Components;
-using Content.Shared._hereelabs.Laundry;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server._hereelabs.Laundry;
 
@@ -24,12 +27,15 @@ public sealed class LaundrySystem : SharedLaundrySystem
     [Dependency] private readonly ReactiveSystem _reactive = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
+    [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private ISawmill _sawmill = default!;
 
     private const float UPDATE_TIME = 1f;
+    private const float UNLOCKED_OPEN_CHANCE = 0.01f;
     private readonly TimeSpan _zeroTimeSpan = TimeSpan.FromSeconds(0);
     private readonly TimeSpan _oneTimeSpan = TimeSpan.FromSeconds(1);
 
@@ -271,6 +277,12 @@ public sealed class LaundrySystem : SharedLaundrySystem
         if (!TryComp<EntityStorageComponent>(uid, out var entStorage))
             return;
 
+        if (!_lock.IsLocked(uid) && _random.Prob(comp.UnlockedOpenChance))
+        {
+            _entityStorage.OpenStorage(uid, entStorage);
+            return;
+        }
+
         var contained = entStorage.Contents.ContainedEntities;
         var solution = soln.Value.Comp.Solution;
 
@@ -293,11 +305,14 @@ public sealed class LaundrySystem : SharedLaundrySystem
             _solutions.AddSolution(soln.Value, removed);
 
             /// damage things inside
-            var damageFactor = 1f;
-            if (comp.WashState == LaundryMachineWashState.FastSpin && comp.WasherCycle != WasherCycleSetting.Delicate)
-                damageFactor = 2f;
+            if (!TryComp<ClothingComponent>(containedUid, out var _))
+            {
+                var damageFactor = 1f;
+                if (comp.WashState == LaundryMachineWashState.FastSpin && comp.WasherCycle != WasherCycleSetting.Delicate)
+                    damageFactor = 2f;
 
-            _damageable.TryChangeDamage(containedUid, comp.Damage * damageFactor * deltaTime, interruptsDoAfters: false);
+                _damageable.TryChangeDamage(containedUid, comp.Damage * damageFactor * deltaTime, interruptsDoAfters: false);
+            }
         }
     }
     private void MachineHeat(EntityUid uid, LaundryMachineComponent comp, float deltaTime)

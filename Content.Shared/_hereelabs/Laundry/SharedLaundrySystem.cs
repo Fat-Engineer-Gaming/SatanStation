@@ -15,7 +15,6 @@ using Content.Shared.Throwing;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Random;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared._hereelabs.Laundry;
@@ -433,9 +432,17 @@ public abstract class SharedLaundrySystem : EntitySystem
         Dirty(ent);
     }
 
-    private void StartMachine(EntityUid uid, LaundryMachineComponent comp, EntityUid? user = null)
+    private bool StartMachine(EntityUid uid, LaundryMachineComponent comp, EntityUid? user = null)
     {
         Entity<LaundryMachineComponent> ent = (uid, comp);
+        if (!TryComp<EntityStorageComponent>(uid, out var entStorage))
+            return false;
+
+        if (entStorage.Open)
+        {
+            _popup.PopupPredicted(Loc.GetString("laundry-machine-start-must-close", ("machine", uid)), uid, user);
+            return false;
+        }
 
         if (comp.CanWash && comp.CanDry)
         {
@@ -462,6 +469,8 @@ public abstract class SharedLaundrySystem : EntitySystem
         _popup.PopupPredicted(Loc.GetString("laundry-machine-started"), uid, user);
 
         Dirty(ent);
+
+        return true;
     }
 
     protected void StopMachine(EntityUid uid, LaundryMachineComponent comp, EntityUid? user = null)
@@ -508,7 +517,7 @@ public abstract class SharedLaundrySystem : EntitySystem
 
         if (entStorage.Open)
         {
-            _popup.PopupPredicted(Loc.GetString("laundry-machine-resume-must-close", ("machine", Identity.Entity(uid, EntityManager))), uid, user);
+            _popup.PopupPredicted(Loc.GetString("laundry-machine-resume-must-close", ("machine", uid)), uid, user);
             return false;
         }
 
@@ -557,7 +566,7 @@ public abstract class SharedLaundrySystem : EntitySystem
             return;
 
         args.PushMarkup(Loc.GetString($"washable-clothing-examined-status-{GetWashableWetness(ent).ToString().ToLower()}"), 10);
-        if (solution.Volume >= comp.DripVolume)
+        if (solution.Volume > comp.DripVolume)
             args.PushMarkup(Loc.GetString("washable-clothing-examined-dripping"), 9);
 
 

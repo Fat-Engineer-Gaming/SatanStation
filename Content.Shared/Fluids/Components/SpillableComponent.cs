@@ -28,7 +28,7 @@ public sealed partial class SpillableComponent : Component
     ///     How much will be spilled when manually spilling?
     /// </summary>
     [DataField]
-    public FixedPoint2 DoAfterSpillAmount = FixedPoint2.MaxValue;
+    public FixedPoint2 SpillAmount = FixedPoint2.MaxValue;
 
     /// <summary>
     ///     Should this item be spilled when thrown?

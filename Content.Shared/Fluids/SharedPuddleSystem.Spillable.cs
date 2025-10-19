@@ -46,6 +46,9 @@ public abstract partial class SharedPuddleSystem
         if (solution.Volume == FixedPoint2.Zero)
             return;
 
+        if (entity.Comp.SpillAmount <= 0) /// devilstation !
+            return;
+
         Verb verb = new()
         {
             Text = Loc.GetString("spill-target-verb-get-data-text")
@@ -57,7 +60,7 @@ public abstract partial class SharedPuddleSystem
             var target = args.Target;
             verb.Act = () =>
             {
-                var puddleSolution = _solutionContainerSystem.SplitSolution(soln.Value, solution.Volume);
+                var puddleSolution = _solutionContainerSystem.SplitSolution(soln.Value, FixedPoint2.Min(solution.Volume, entity.Comp.SpillAmount)); /// devilstation !
                 TrySpillAt(Transform(target).Coordinates, puddleSolution, out _);
 
                 if (TryComp<InjectorComponent>(entity, out var injectorComp))

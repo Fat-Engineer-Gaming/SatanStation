@@ -8,6 +8,10 @@
   laundryCleaningStrength: 2.0
   boilingPoint: 100.0
   meltingPoint: -2.0
+  slipData:
+    requiredSlipSpeed: 3.5
+  friction: 0.3
+  recognizable: true
   metabolisms:
     Poison:
       effects:
@@ -19,15 +23,15 @@
         - !type:ReagentThreshold
           min: 2.5
       - !type:ModifyHeartDamage
-        amount: 0.1
-        probability: 0.10
+        amount: 0.05
+        probability: 0.20
         conditions:
         - !type:ReagentThreshold
           min: 30
       - !type:Jitter
         conditions:
         - !type:ReagentThreshold
-          min: 20
+          min: 5
       - !type:ChemVomit
         probability: 0.20
         conditions:
@@ -35,6 +39,6 @@
           min: 2.5
   tileReactions:
   - !type:CleanTileReaction
-    cleanCost: 2
+    cleanCost: 5
   - !type:CleanDecalsReaction
-    cleanCost: 2
+    cleanCost: 5

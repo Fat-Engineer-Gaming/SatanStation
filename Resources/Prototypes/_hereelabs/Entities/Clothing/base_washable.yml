@@ -15,6 +15,5 @@
     solution: soaked
     spillWhenThrown: false
     preventMelee: false
-    spillDelay: 1
     maxMeleeSpillAmount: 1
-    doAfterSpillAmount: 1
+    spillAmount: 1
