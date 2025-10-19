@@ -285,6 +285,8 @@ public sealed class LaundrySystem : SharedLaundrySystem
 
         var contained = entStorage.Contents.ContainedEntities;
         var solution = soln.Value.Comp.Solution;
+        if (solution.Volume <= 0 || contained.Count <= 0)
+            return;
 
         var containedLen = contained.Count;
         var portion = solution.Volume / containedLen * MACHINE_WASH_PORTION;
@@ -547,7 +549,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
             return;
         if (args.Source is null)
             return;
-        if (args.Source.Contents.Count <= 0)
+        if (args.Source.Contents.Count <= 0 || args.Source.Volume <= 0)
             return;
 
         Solution splashSolution = args.Source.SplitSolution(args.Source.Volume / args.Source.Contents.Count);
