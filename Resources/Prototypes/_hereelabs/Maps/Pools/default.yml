@@ -2,10 +2,10 @@
   id: DefaultMapPoolDevil
   maps:
   - Uoui
-  #- PackedDevil
+  - PackedDevil
   - ReachDevil
   - WaystationDevil
-  #- SalternDevil
+  - SalternDevil
   #- MooseDevil
   #- SplitDevil
   #- GlacierDevil
