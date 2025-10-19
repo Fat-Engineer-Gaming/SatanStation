@@ -1,0 +1,11 @@
+- type: reaction
+  id: LaundryDetergent
+  reactants:
+    SpaceCleaner:
+      amount: 2
+    FoamingAgent:
+      amount: 1
+    Enzyme:
+      amount: 1
+  products:
+    LaundryDetergent: 4
