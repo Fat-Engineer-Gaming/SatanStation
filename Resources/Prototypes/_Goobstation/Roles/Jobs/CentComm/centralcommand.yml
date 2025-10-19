@@ -156,10 +156,10 @@
     belt: ClothingBeltSheathFilledNavyOfficer
     suitstorage: WeaponRifleLecter
     pocket1: WeaponRevolverMateba
+    pocket2: NukeOverride
   storage:
     back:
     - WeaponPulsePistol
-    - HandheldFaxOfficial
     - BoxFolderNuclearCodes # ka-BOOM
     - MagazineRifleUranium
     - MagazineRifleUranium

@@ -9,6 +9,12 @@ namespace Content.Shared.Nuke;
 public sealed partial class NukeDiskComponent : Component
 {
     /// <summary>
+    /// Determines whether the item can override the nukes safety. - Goobstation
+    /// </summary>
+    [DataField]
+    public bool Override = false;
+
+    /// <summary>
     /// Used to modify the nuke's countdown timer.
     /// </summary>
     [DataField]

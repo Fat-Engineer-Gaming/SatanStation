@@ -140,7 +140,7 @@
       emergencyLightColor: PaleVioletRed
       forceEnableEmergencyLights: true
       shuttleTime: 600
-    silver:
+    silver: # Devilstation
       announcement: alert-level-silver-announcement
       selectable: false
       sound: /Audio/_Impstation/Misc/epsilon-clean.ogg
@@ -149,3 +149,13 @@
       emergencyLightColor: Silver
       forceEnableEmergencyLights: true
       shuttleTime: 600
+    omicron: # Goobstation
+      announcement: alert-level-omicron-announcement
+      selectable: false
+      sound:
+        path: /Audio/_Goobstation/Misc/omicron.ogg
+      disableSelection: true
+      color: Ivory
+      emergencyLightColor: Ivory
+      forceEnableEmergencyLights: true
+      shuttleTime: 2400

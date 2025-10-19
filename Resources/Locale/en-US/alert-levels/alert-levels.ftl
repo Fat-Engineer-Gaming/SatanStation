@@ -34,3 +34,7 @@ alert-level-delta-instructions = If unintentional, crewmembers are advised to pr
 alert-level-epsilon = Epsilon
 alert-level-epsilon-announcement = Central Command has ordered the Epsilon security level on the station. Consider all contracts terminated.
 alert-level-epsilon-instructions = Consider all contracts terminated.
+
+alert-level-omicron = Omicron
+alert-level-omicron-announcement = Station override activated. Await further orders from Central Command staff, stay in your departments. Any force, either lethal or non-lethal, will be met with immediate contract termination.
+alert-level-omicron-instructions = Await further orders from Central Command.
