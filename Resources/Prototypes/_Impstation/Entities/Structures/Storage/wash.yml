@@ -82,6 +82,7 @@
     damage:
       types:
         Blunt: 1
+    openChanceWhenUnlocked: 0.02
   - type: AmbientSound
     enabled: false
     volume: 0

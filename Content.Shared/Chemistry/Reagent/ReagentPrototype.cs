@@ -183,7 +183,7 @@ namespace Content.Shared.Chemistry.Reagent
         public float LaundryCleaningStrength = 0f;
 
         /// <summary>
-        ///     How much does this reagent resist cleaning reagents in clothing?
+        ///     How much does this reagent resist cleaning reagents in clothing? Should NEVER be zero.
         /// </summary>
         [DataField]
         public float LaundryCleanResistance = 1f;
