@@ -30,6 +30,8 @@
     - ClothMade
     - Recyclable
     - WhitelistChameleon
+  - type: WashableClothing # devil !
+    washFactor: 2
 
 - type: entity
   parent: [ClothingHeadBandBase, ClothingMaskBandBlack]

@@ -177,6 +177,18 @@ namespace Content.Shared.Chemistry.Reagent
         public float ImpEvaporationAmount = 0.3f;
 
         /// <summary>
+        ///     How strong does this reagent clean non-absorbent reagents in clothing?
+        /// </summary>
+        [DataField]
+        public float LaundryCleaningStrength = 0f;
+
+        /// <summary>
+        ///     How much does this reagent resist cleaning reagents in clothing? Should NEVER be zero.
+        /// </summary>
+        [DataField]
+        public float LaundryCleanResistance = 1f;
+
+        /// <summary>
         /// Is this reagent considered contraband? And how severe is it?
         /// </summary> Also, this is an imp edit
         [DataField]

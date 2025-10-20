@@ -156,10 +156,12 @@
     - id: ClothingOuterSuitAtmosFire
     - id: ClothingHeadHelmetAtmosFire
     - id: GasAnalyzer
+    - id: RPD #funkystation
     - id: MedkitOxygenFilled
     - id: HolofanProjector
     - id: RCD
     - id: RCDAmmo
+    - id: RCDAmmo # two RCD types, two ammos.
     - id: AirGrenade
 
 - type: entityTable
