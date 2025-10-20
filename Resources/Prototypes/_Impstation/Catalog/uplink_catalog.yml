@@ -145,7 +145,7 @@
   description: uplink-satchel-syndicate-desc
   productEntity: ClothingBackpackSatchelSyndicate
   cost:
-    Telecrystal: 4 # THERE. I FIXED IT. ARE YOU HAPPY??
+    Telecrystal: 4
   categories:
     - UplinkWearables
 
