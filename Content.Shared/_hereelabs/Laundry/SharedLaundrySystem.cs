@@ -47,6 +47,7 @@ public abstract class SharedLaundrySystem : EntitySystem
     private readonly int _dryerCycleCount = Enum.GetValues<DryerCycleSetting>().Length;
 
     public readonly FixedPoint2 DRIP_AMOUNT = 0.08;
+    public readonly FixedPoint2 CLEANING_REAGENT_WASH_REMOVE = 0.01;
     public const float CLEAN_STRENGTH_FACTOR = 0.25f;
     public const float WASH_STRENGTH_FACTOR = 0.75f;
     public const float MACHINE_WASH_PORTION = 0.25f;
@@ -678,7 +679,7 @@ public abstract class SharedLaundrySystem : EntitySystem
             }
         }
 
-        /// absorbent reagents (like water) to wash away other non-absorbent or non-cleaning reagents
+        /// absorbent reagents (like water) to wash away other non-absorbent reagents, cleaning reagents will slowly disappear when washing
         solutionContents = solution.Contents.ToArray();
 
         Solution washedAwaySolution = new();
@@ -699,6 +700,12 @@ public abstract class SharedLaundrySystem : EntitySystem
                 if (!reagentProto.Absorbent)
                 {
                     var removed = solution.RemoveReagent(reagentQuantity.Reagent, washStrength * WASH_STRENGTH_FACTOR);
+                    if (reagentProto.LaundryCleaningStrength > 0)
+                    {
+                        if (removed < CLEANING_REAGENT_WASH_REMOVE)
+                            continue;
+                        removed -= CLEANING_REAGENT_WASH_REMOVE;
+                    }
                     washedAwaySolution.AddReagent(reagentQuantity.Reagent, removed);
                 }
             }
