@@ -2747,7 +2747,6 @@
     tags: []
   - type: VentCrawler
     enterDelay: 2
-  - type: AlwaysRevolutionaryConvertible #imp
 # imp edit end
   - type: AlwaysRevolutionaryConvertible
 # imp edit end
@@ -2857,8 +2856,6 @@
   - type: Carriable #DeltaV
   # imp edit end
   # devil edit start
-  - type: Puller
-    needsHands: false
   - type: Cocooner
   - type: BloodSucker
     injectWhenSuck: true
