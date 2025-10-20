@@ -96,9 +96,8 @@
   name: wooden bucket
   description: It's a boring old wooden bucket. At least it's not plastic.
   components:
-  - type: Drink
-    solution: bucket
-    ignoreEmpty: true
+  - type: Edible
+    utensil: Spoon
   - type: Clickable
   - type: Sprite
     sprite: _hereelabs/Objects/Tools/Makeshift/bucket.rsi

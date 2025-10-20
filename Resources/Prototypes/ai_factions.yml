@@ -148,6 +148,7 @@
   - Dino # imp
   - Penguin # imp
   - Replicator # imp
+  - Dog # imp
   - Dragon
   - Xenoborg
   - Amalgam
@@ -191,6 +192,7 @@
   - Replicator # imp
   - Amalgam
   - Spider
+  - Dog # imp
 
 - type: npcFaction
   id: Wizard
@@ -215,6 +217,7 @@
   - Replicator # imp
   - Amalgam
   - Spider
+  - Dog # imp
 
 - type: npcFaction
   id: Xenoborg

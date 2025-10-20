@@ -18,6 +18,7 @@
     - Replicator
     - Xenoborg
     - Spider
+    - Dog
 
 - type: npcFaction
   id: Penguin
@@ -52,3 +53,12 @@
   - Penguin
   - AllHostile
   - Spider
+  - Dog
+
+- type: npcFaction
+  id: Dog
+  hostile:
+  - Courier
+
+- type: npcFaction
+  id: Courier
