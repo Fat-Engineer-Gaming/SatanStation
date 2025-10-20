@@ -112,11 +112,11 @@ public sealed partial class BrainDamageThresholdsSystem : EntitySystem
 
         if (targetEffect is { } effect)
         {
-            _alerts.ShowAlert(ent, effect);
+            _alerts.ShowAlert(ent.Owner, effect);
         }
         else
         {
-            _alerts.ClearAlertCategory(ent, ent.Comp1.DamageAlertCategory);
+            _alerts.ClearAlertCategory(ent.Owner, ent.Comp1.DamageAlertCategory);
         }
     }
 

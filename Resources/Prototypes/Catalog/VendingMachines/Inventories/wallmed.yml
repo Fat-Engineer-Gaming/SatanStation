@@ -1,5 +1,5 @@
 - type: vendingMachineInventory
-  id: NanoMedInventory
+  id: unusedNanoMedInventory
   startingInventory:
     Brutepack: 3
     Ointment: 3

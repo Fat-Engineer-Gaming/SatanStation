@@ -30,11 +30,11 @@ public sealed class HeartrateAlertsSystem : EntitySystem
         if (heartrate.Running)
         {
             var strain = FixedPoint2.Min(_heart.HeartStrain((ent, heartrate)), ent.Comp.MaxStrain);
-            _alerts.ShowAlert(ent, ent.Comp.StrainAlert, (short)strain.Int());
+            _alerts.ShowAlert(ent.Owner, ent.Comp.StrainAlert, (short)strain.Int());
         }
         else
         {
-            _alerts.ShowAlert(ent, ent.Comp.StoppedAlert);
+            _alerts.ShowAlert(ent.Owner, ent.Comp.StoppedAlert);
         }
 
     }
@@ -51,7 +51,7 @@ public sealed class HeartrateAlertsSystem : EntitySystem
 
     private void OnComponentShutdown(Entity<HeartrateAlertsComponent> ent, ref ComponentShutdown args)
     {
-        _alerts.ClearAlertCategory(ent, ent.Comp.AlertCategory);
+        _alerts.ClearAlertCategory(ent.Owner, ent.Comp.AlertCategory);
     }
 
     private void OnHeartStopped(Entity<HeartrateAlertsComponent> ent, ref HeartStoppedEvent args)

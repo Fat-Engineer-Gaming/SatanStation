@@ -129,6 +129,7 @@
     - AtmosStatic
     - CablesStatic
     - PaperworkStatic
+    - TowelsStatic
     - CargoStatic
     - MaterialsStatic
     - BasicChemistryStatic
@@ -145,6 +146,7 @@
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
+    - SyndicateAmmoStatic
     - ImpAutoEmagged # imp
   - type: BlueprintReceiver
     whitelist:
@@ -224,7 +226,6 @@
     - Janitor
     - Instruments
     - Equipment
-    - FauxTiles
     - ImpProtoDynamic # Imp
     - NFService # Frontier
   - type: EmagLatheRecipes
@@ -275,7 +276,6 @@
     - CargoBoardsStatic
     - MedicalBoardsStatic
     - EngineeringBoardsStatic
-    - CircuitFloorsStatic
     - ImpCircuitStatic # Imp
     - OffbrandCircuitboardsStatic # Offbrand
     dynamicPacks:
@@ -420,8 +420,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    unlitIdleState: unlit
-    unlitRunningState: unlit-building
+    unlitIdleState: unlit #imp
+    unlitRunningState: unlit-building #imp
     staticPacks:
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
@@ -437,6 +437,9 @@
     - SecurityAmmo
     - SecurityWeapons
     - SecurityDisablers
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - SyndicateAmmoStatic
   - type: MaterialStorage
     whitelist:
       tags:
@@ -471,10 +474,13 @@
     - type: Lathe
       idleState: icon
       runningState: icon
-      unlitIdleState: unlit
-      unlitRunningState: unlit-building
+      unlitIdleState: unlit #imp
+      unlitRunningState: unlit-building #imp
       staticPacks:
       - SecurityAmmoStatic
+    - type: EmagLatheRecipes
+      emagStaticPacks:
+      - SyndicateAmmoStatic
     - type: MaterialStorage
       whitelist:
         tags:
@@ -505,8 +511,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    unlitIdleState: unlit
-    unlitRunningState: unlit-building
+    unlitIdleState: unlit #imp
+    unlitRunningState: unlit-building #imp
     staticPacks:
     - TopicalsStatic
     - ChemistryStatic
@@ -550,6 +556,7 @@
     idleState: icon
     runningState: building
     staticPacks:
+    - TowelsStatic
     - ClothingCivilian
     - ClothingCargo
     - ClothingCommand
@@ -744,7 +751,16 @@
     idleState: icon
     runningState: building
     staticPacks:
-    - FloorTilesStatic
+    - FloorDarkTilesStatic
+    - FloorSteelTilesStatic
+    - FloorWhiteTilesStatic
+    - FloorMaintsTilesStatic
+    - FloorWoodTilesStatic
+    - FloorConcreteTilesStatic
+    - CircuitFloorsStatic
+    - FloorMarbleTilesStatic
+    dynamicPacks:
+    - FauxTiles
   - type: MaterialStorage
     whitelist:
       tags:
