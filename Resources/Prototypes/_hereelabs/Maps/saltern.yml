@@ -24,6 +24,7 @@
             ChiefEngineer: [ 1, 1 ]
             ResearchDirector: [ 1, 1 ]
             Quartermaster: [ 1, 1 ]
+            HospitalityDirector: [ 1, 1 ]
             #service (8 - 9)
             Bartender: [ 1, 1 ]
             Botanist: [ 1, 2 ]

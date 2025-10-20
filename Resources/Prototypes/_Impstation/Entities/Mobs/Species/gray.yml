@@ -34,9 +34,9 @@
         - MobLayer
   - type: Vocal
     sounds:
-      Male: UnisexGray
-      Female: UnisexGray
-      Unsexed: UnisexGray
+      Male: UnisexHuman
+      Female: UnisexHuman
+      Unsexed: UnisexHuman
   - type: GrayAccent
   - type: Damageable
     damageContainer: Biological
@@ -103,7 +103,7 @@
             sprite: _Impstation/Mobs/Species/Gray/displacement.rsi
             state: feet
   - type: Speech
-    speechSounds: PVC
+    speechSounds: Slime
   - type: TypingIndicator
     proto: gray
   - type: HumanoidAppearance

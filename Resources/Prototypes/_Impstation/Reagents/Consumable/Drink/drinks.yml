@@ -61,6 +61,14 @@
   metamorphicFillBaseName: fill-
   metamorphicChangeColor: true
   metabolisms:
+    Alcohol:
+      effects:
+      - !type:Drunk
+        boozePower: 12 #88w88
+        conditions:
+        - !type:OrganType
+          type: Arachnid
+          shouldHave: true
     Drink:
       effects:
       - !type:SatiateThirst

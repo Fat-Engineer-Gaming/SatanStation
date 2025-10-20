@@ -1,0 +1,119 @@
+- type: entity
+  save: false
+  parent:
+  - BaseMob
+  name: lanius
+  description: These anaerobic beings seem friendly enough.
+  id: FTLMobLanius
+  components:
+  - type: Inventory
+    templateId: human
+  - type: InventorySlots
+  - type: StatusIcon
+    bounds: -0.5,-0.5,0.5,0.5
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: TypingIndicator
+    typingIndicatorPrototype: holo
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      60: 0.7
+      80: 0.5
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 185
+        restitution: 0.0
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: FloorOcclusion
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          MeatBulletImpact
+    soundTypes:
+      Heat:
+        collection:
+          MeatLaserImpact
+  - type: Sprite
+    sprite: /Textures/_hereelabs/Mobs/Aliens/lanius.rsi
+    state: lanius
+    drawdepth: Mobs
+    noRot: true
+  - type: InputMover
+  - type: MobMover
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: Body
+    prototype: Human
+    requiredLegs: 0
+  - type: Identity
+  - type: Lanius
+    BreathVolume: 1000.0
+    UpdateInterval: 0
+    #UpdateIntervalMultiplier: 1.0
+  - type: Hands
+  - type: ComplexInteraction
+  - type: FloatingVisuals
+  - type: Climbing
+  - type: AnimationPlayer
+  - type: Buckle
+  - type: CombatMode
+    canDisarm: true
+  - type: SleepEmitSound
+  - type: StandingState
+  - type: Dna
+  - type: MindContainer
+    showExamineInfo: false
+  - type: Puller
+  - type: Speech
+    speechSounds: Alto
+  - type: DamageForceSay
+  - type: Vocal
+    sounds:
+      Male: MaleHuman
+      Female: MaleHuman
+      Unsexed: MaleHuman
+  - type: Emoting
+  - type: BodyEmotes
+    soundsId: GeneralBodyEmotes
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: Male
+  - type: CanEscapeInventory # Carrying system from nyanotrasen.
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: Damageable
+    damageContainer: Biological
+  - type: MobState
+  - type: MobStateActions
+    actions:
+      Critical:
+      - ActionCritSuccumb
+      - ActionCritFakeDeath
+      - ActionCritLastWords
+  - type: Deathgasp
+  - type: HealthExaminable
+    examinableTypes:
+    - Blunt
+    - Slash
+    - Piercing
+    - Heat
+    - Shock
+  - type: DamageOnHighSpeedImpact
+    damage:
+      types:
+        Blunt: 5
+    soundHit:
+      path: /Audio/Effects/hit_kick.ogg

@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingNeckBase
+  parent: [ ClothingNeckBase, ClothingWashableBase ]
   id: ClothingNeckPinBase
   abstract: true
   name: pin
@@ -19,6 +19,8 @@
   - type: WearerGetsExamineText # imp
     thing: obvious-thing-pin
     examineText: obvious-desc-default
+  - type: WashableClothing # devil !
+    washFactor: 2
 
 - type: entity
   parent: ClothingNeckPinBase

@@ -218,7 +218,7 @@
 - type: entity
   id: MobReplicator
   parent: BaseMobReplicator
-  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest
+#  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest (no i do what i want -Fat Engi)
   components:
   - type: Replicator
     upgradeActions:
@@ -267,8 +267,9 @@
   id: MobReplicatorTier2
   name: deconstructor
   parent: BaseMobReplicator
-  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest
-  suffix: Level 2
+#  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest (no i do what i want -Fat Engi)
+  description: A silicon from a place unknown- This one seems to have a number of tools.
+  suffix: Level 2, Manipulator.
   components:
   - type: Replicator
     upgradeStage: 1
@@ -317,8 +318,9 @@
   id: MobReplicatorTier2Alt
   name: defender
   parent: BaseMobReplicator
-  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest
-  suffix: Level 2 Alt
+#  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest (no i do what i want -Fat Engi)
+  suffix: Level 2, Defender
+  description: A silicon from a place unknown- This one seems to be a bit more hostile.
   components:
   - type: CombatMode
   - type: Replicator
@@ -368,8 +370,8 @@
   id: MobReplicatorTier3
   name: protector
   parent: BaseMobReplicator
-  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest
-  description: Oh boy.
+#  categories: [HideSpawnMenu] # I don't want admins spawning a replicator that's unlinked to a nest (no i do what i want -Fat Engi)
+  description: A silicon from a place unknown- This one seems far bigger then the ones you might have seen before.
   suffix: Level 3
   components:
   - type: CombatMode

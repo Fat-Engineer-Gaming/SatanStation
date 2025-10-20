@@ -1,7 +1,8 @@
 - type: species
   id: Gray
   name: Gray
-  roundStart: false # Disabled until I can find new voicelines
+  roundStart: true
+  randomViable: true
   prototype: MobGray
   sprites: MobGraySprites
   defaultSkinTone: "#b8b8b8"

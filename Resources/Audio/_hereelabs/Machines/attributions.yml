@@ -1,0 +1,18 @@
+- files:
+  - laundry_fillwater
+  copyright: 'Sink Water Noises.wav by RutgerMuller -- https://freesound.org/s/50754/ -- License: Creative Commons 0'
+  license: CC0-1.0
+  source: https://freesound.org/people/RutgerMuller/sounds/50754/
+
+- files:
+  - laundry_spin
+  - laundry_spinstart
+  copyright: 'Washing Machine Spin Cycle.aif by timgormly -- https://freesound.org/s/151279/ -- License: Creative Commons 0'
+  license: CC0-1.0
+  source: https://freesound.org/people/timgormly/sounds/151279/
+
+- files:
+  - laundry_spinfast
+  copyright: 'washing machine Fast Spin .wav by afnan808 -- https://freesound.org/s/384118/ -- License: Creative Commons 0'
+  license: CC0-1.0
+  source: https://freesound.org/people/afnan808/sounds/384118/

@@ -1,0 +1,19 @@
+- type: entity
+  abstract: true
+  id: ClothingWashableBaseNonSpillable
+  components:
+  - type: WashableClothing
+  - type: Temperature
+  - type: AtmosExposed
+
+- type: entity
+  abstract: true
+  parent: ClothingWashableBaseNonSpillable
+  id: ClothingWashableBase
+  components:
+  - type: Spillable
+    solution: soaked
+    spillWhenThrown: false
+    preventMelee: false
+    maxMeleeSpillAmount: 1
+    spillAmount: 1

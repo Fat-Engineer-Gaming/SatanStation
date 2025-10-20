@@ -127,6 +127,7 @@
       borg_module: !type:Container { }
       part-container: !type:Container
       program-container: !type:Container # Impstation - Borg PDAs
+      Cartridge-Slot: !type:ContainerSlot # Impstation - Borg PDAs
   - type: PowerCellSlot
     cellSlotId: cell_slot
     fitsInCharger: true
@@ -441,6 +442,10 @@
       Unsexed: UnisexSiliconSyndicate
   - type: PointLight
     color: "#dd200b"
+  # imp edit start
+  - type: TypingIndicator
+    proto: syndibot
+  # imp edit end
 
 - type: entity
   parent: BaseBorgChassisNotIonStormable

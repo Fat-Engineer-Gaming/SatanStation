@@ -1,7 +1,7 @@
 # a ClothingShoesBase for footwear that's entirely leather or synthetic since moths eat cloth and occasionally paper
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ]
   id: ClothingShoesBaseInedible
   components:
   - type: Clothing
@@ -24,6 +24,8 @@
     tags:
     - WhitelistChameleon
   - type: ProtectedFromStepTriggers
+  - type: WashableClothing # devil !
+    washFactor: 2
 
 # a variant for military boots that are all leather or synthetic so moths can't eat them if you want lore-friendly shoes
 

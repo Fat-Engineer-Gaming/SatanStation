@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ]
   id: ClothingShoesBase
   components:
   - type: Clothing
@@ -19,12 +19,18 @@
         reagents:
         - ReagentId: Fiber
           Quantity: 10
+  - type: WashableClothing # devil !
+    washFactor: 2
   - type: Tag
     tags:
     - ClothMade
     - Recyclable
     - WhitelistChameleon
   - type: ProtectedFromStepTriggers
+  - type: HideLayerClothing # imp
+    slots:
+    - LFoot
+    - RFoot
 
 - type: entity
   abstract: true

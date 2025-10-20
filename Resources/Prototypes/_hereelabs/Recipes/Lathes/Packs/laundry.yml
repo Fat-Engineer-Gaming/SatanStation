@@ -1,0 +1,6 @@
+- type: latheRecipePack
+  id: LaundryStatic
+  recipes:
+  - LaundryBasketWide
+  - LaundryBasketTall
+  - LaundryDetergentPod

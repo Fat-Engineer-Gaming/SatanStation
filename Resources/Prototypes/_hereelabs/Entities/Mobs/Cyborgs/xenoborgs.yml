@@ -395,3 +395,83 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHighPrinted
 
+- type: entity
+  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
+  id: XenoborgBomber
+  name: bomber xenoborg
+  suffix: with brain
+  description: A man-machine hybrid that will accomplish its creators goals at all costs, whoever and whatever that is. This type seems rather small, and has a tiny bomb attached to it... wait, is it ticking?
+  components:
+  - type: BorgTransponder
+    name: bomber xenoborg
+    sprite:
+      sprite: Mobs/Silicon/chassis.rsi
+      state: xenoborg_bomber_moving # dont know why it isn't moving automatically, just gonna have this be the default.
+  - type: Sprite
+    layers:
+    - state: xenoborg_bomber_moving
+    - state: xenoborg_bomber_e
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: xenoborg_bomber_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 4
+    hasMindState: xenoborg_bomber_e
+    noMindState: xenoborg_bomber_e_r
+    moduleWhitelist:
+      tags:
+      - XenoborgModuleGeneric
+  - type: FlashImmunity
+  - type: MobThresholds # Smol
+    thresholds:
+      0: Alive
+      10: Critical # die
+      15: Dead
+    stateAlertDict:
+      Alive: BorgHealth
+      Critical: BorgCrit
+      Dead: BorgDead
+    showOverlays: false
+    allowRevives: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 190
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Machines/warning_buzzer_xenoborg.ogg
+          params:
+            volume: 5
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:EmptyContainersBehaviour
+        containers:
+        - borg_brain
+        - cell_slot
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Repairable
+    doAfterDelay: 2 # smol boi
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMIFilled
+      borg_module:
+      - XenoborgModuleBasic
+      - BorgModuleXenoborgBomber
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmall # Make it count!

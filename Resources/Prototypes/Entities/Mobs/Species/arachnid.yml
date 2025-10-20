@@ -6,6 +6,11 @@
   abstract: true
   components:
   - type: GoobAbsorbable
+  - type: Cocooner
+  - type: BloodSucker
+    injectWhenSuck: true
+    injectReagent: Mechanotoxin
+    webRequired: true
   - type: Body
     prototype: Arachnid
     requiredLegs: 2 # It would be funny if arachnids could use their little back limbs to move around once they lose their legs, but just something to consider post-woundmed
