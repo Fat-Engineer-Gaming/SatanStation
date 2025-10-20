@@ -20,6 +20,7 @@ using Content.Shared._hereelabs.Laundry;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared._hereelabs.Laundry;
@@ -39,6 +40,7 @@ public abstract class SharedLaundrySystem : EntitySystem
     [Dependency] protected readonly SharedSolutionContainerSystem _solutions = default!;
     [Dependency] protected readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] protected readonly SharedPuddleSystem _puddle = default!;
+    [Dependency] protected readonly IRobustRandom _random = default!;
 
     private readonly int _modeCount = Enum.GetValues<LaundryMachineMode>().Length;
     private readonly int _washerCycleCount = Enum.GetValues<WasherCycleSetting>().Length;
@@ -566,8 +568,8 @@ public abstract class SharedLaundrySystem : EntitySystem
 
     private void OnWashableExamined(Entity<WashableClothingComponent> ent, ref ExaminedEvent args)
     {
-        if (!args.IsInDetailsRange)
-            return;
+        //if (!args.IsInDetailsRange)
+        //    return;
 
         var comp = ent.Comp;
         if (!TryGetWashableSolution(ent, out var _, out var solution))
@@ -743,20 +745,27 @@ public abstract class SharedLaundrySystem : EntitySystem
     }
     private void OnWashableBeforeBleedPuddleSpawn(Entity<WashableClothingComponent> ent, ref InventoryRelayedEvent<BeforeBleedPuddleSpawnEvent> args)
     {
-        if (args.Args.Cancelled)
-            return;
-
         var trueArgs = args.Args;
-        if (!trueArgs.BleedSolutionEntity.HasValue)
+        if (args.Args.Cancelled || trueArgs.BleedSolution.Volume <= 0 || !trueArgs.BleedSolutionEntity.HasValue)
             return;
 
+        /// try chance
+        if (!_random.Prob(ent.Comp.BleedChance))
+            return;
+
+        /// take portion
         var quantity = trueArgs.BleedSolution.Volume * ent.Comp.BleedPortion;
         if (quantity <= 0)
             return;
 
         var takenSolution = _solutions.SplitSolution(trueArgs.BleedSolutionEntity.Value, quantity);
 
+        /// bleed onto clothes
         WashableWash(ent, takenSolution);
+
+        /// add back if it can't bleed onto clothes all the way (clothes are too soaked)
+        if (takenSolution.Volume > 0)
+            _solutions.AddSolution(trueArgs.BleedSolutionEntity.Value, takenSolution);
     }
 
     #endregion

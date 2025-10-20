@@ -8,9 +8,11 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Inventory;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Server._hereelabs.Medical;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
@@ -30,6 +32,7 @@ namespace Content.Server.Medical
         [Dependency] private readonly ThirstSystem _thirst = default!;
         [Dependency] private readonly ForensicsSystem _forensics = default!;
         [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
+        [Dependency] private readonly InventorySystem _inventory = default!;
 
         private static readonly ProtoId<SoundCollectionPrototype> VomitCollection = "Vomit";
 
@@ -39,12 +42,12 @@ namespace Content.Server.Medical
         /// <summary>
         /// Make an entity vomit, if they have a stomach.
         /// </summary>
-        public void Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f)
+        public bool Vomit(EntityUid uid, float thirstAdded = -40f, float hungerAdded = -40f)
         {
             // Main requirement: You have a stomach
             var stomachList = _body.GetBodyOrganEntityComps<StomachComponent>(uid);
             if (stomachList.Count == 0)
-                return;
+                return false;
 
             // Vomiting makes you hungrier and thirstier
             if (TryComp<HungerComponent>(uid, out var hunger))
@@ -71,6 +74,8 @@ namespace Content.Server.Medical
                     _solutionContainer.UpdateChemicals(stomach.Comp1.Solution.Value);
                 }
             }
+            Solution? vomitChemstreamUnscaled = null; // devil !!
+
             // Adds a tiny amount of the chem stream from earlier along with vomit
             if (TryComp<BloodstreamComponent>(uid, out var bloodStream))
             {
@@ -82,6 +87,7 @@ namespace Content.Server.Medical
                 if (_solutionContainer.ResolveSolution(uid, bloodStream.ChemicalSolutionName, ref bloodStream.ChemicalSolution))
                 {
                     var vomitChemstreamAmount = _solutionContainer.SplitSolution(bloodStream.ChemicalSolution.Value, vomitAmount);
+                    vomitChemstreamUnscaled = vomitChemstreamAmount.Clone();
                     vomitChemstreamAmount.ScaleSolution(chemMultiplier);
                     solution.AddSolution(vomitChemstreamAmount, _proto);
 
@@ -92,7 +98,22 @@ namespace Content.Server.Medical
                 solution.AddReagent(new ReagentId("Vomit", _bloodstream.GetEntityBloodData(uid)), vomitAmount); // TODO: Dehardcode vomit prototype
             }
 
-            if (_puddle.TrySpillAt(uid, solution, out var puddle, false))
+            /// devil !!
+            var ev = new BeforeVomitEvent(solution);
+            RaiseLocalEvent(uid, ref ev);
+            if (TryComp<InventoryComponent>(uid, out var inv))
+                _inventory.RelayEvent((uid, inv), ref ev);
+            if (ev.Cancelled)
+            {
+                if (bloodStream is not null && vomitChemstreamUnscaled is not null && _solutionContainer.ResolveSolution(uid, bloodStream.ChemicalSolutionName, ref bloodStream.ChemicalSolution))
+                {
+                    /// add back the original solution
+                    _solutionContainer.AddSolution(bloodStream.ChemicalSolution.Value, vomitChemstreamUnscaled);
+                }
+                return false;
+            }
+
+            if (ev.SpawnPuddle && _puddle.TrySpillAt(uid, solution, out var puddle, false))
             {
                 _forensics.TransferDna(puddle, uid, false);
             }
@@ -100,6 +121,8 @@ namespace Content.Server.Medical
             // Force sound to play as spill doesn't work if solution is empty.
             _audio.PlayPvs(_vomitSound, uid);
             _popup.PopupEntity(Loc.GetString("disease-vomit", ("person", Identity.Entity(uid, EntityManager))), uid);
+
+            return true;
         }
     }
 }

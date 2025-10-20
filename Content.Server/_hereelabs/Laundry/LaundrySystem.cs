@@ -7,12 +7,18 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
+using Content.Shared.FixedPoint;
+using Content.Shared.Inventory;
 using Content.Shared.Lock;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Standing;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Storage.Components;
+using Content.Shared.Tag;
 using Content.Shared.Temperature;
 using Content.Shared._hereelabs.Laundry;
 using Content.Server.Temperature.Components;
+using Content.Server._hereelabs.Medical;
 using Robust.Shared.Random;
 
 namespace Content.Server._hereelabs.Laundry;
@@ -24,8 +30,9 @@ public sealed class LaundrySystem : SharedLaundrySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -47,6 +54,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
         SubscribeLocalEvent<WashableClothingComponent, ReactionEntityEvent>(OnWashableSplashed);
         SubscribeLocalEvent<WashableClothingComponent, DestructionEventArgs>(OnWashableDestruction);
         SubscribeLocalEvent<WashableClothingComponent, OnTemperatureChangeEvent>(OnWashableTemperatureChange);
+        SubscribeLocalEvent<WashableClothingComponent, InventoryRelayedEvent<BeforeVomitEvent>>(OnWashableBeforeVomit);
 
         _sawmill = _logManager.GetSawmill("laundry.server");
     }
@@ -441,6 +449,76 @@ public sealed class LaundrySystem : SharedLaundrySystem
             return;
 
         _solutions.SetTemperature(soln.Value, args.CurrentTemperature);
+    }
+    private void OnWashableBeforeVomit(Entity<WashableClothingComponent> ent, ref InventoryRelayedEvent<BeforeVomitEvent> args)
+    {
+        var trueArgs = args.Args;
+        if (trueArgs.Cancelled)
+            return;
+
+        if (!TryComp<ClothingComponent>(ent.Owner, out var clothing))
+            return;
+
+        (var chance, var portion) = GetVomitDirtyChanceAndPortion(ent, clothing);
+
+        if (!_random.Prob(chance))
+            return;
+
+        var vomitPortion = trueArgs.Vomit.SplitSolution(portion);
+
+        WashableWash(ent, vomitPortion);
+
+        if (vomitPortion.Volume > 0)
+            trueArgs.Vomit.AddSolution(vomitPortion, _prototypeManager);
+    }
+
+    private (float, FixedPoint2) GetVomitDirtyChanceAndPortion(Entity<WashableClothingComponent> ent, ClothingComponent clothing)
+    {
+        const string maskTag = "Mask";
+        const string breathMaskTag = "BreathMask";
+
+        if (TryComp<StandingStateComponent>(ent, out var standingState) && !standingState.Standing)
+        {
+            switch (clothing.InSlotFlag)
+            {
+                case SlotFlags.HEAD:
+                    if (HasComp<IngestionBlockerComponent>(ent) || _tag.HasAnyTag(ent.Owner, maskTag, breathMaskTag))
+                        return (1f, 0.9f);
+                    break;
+                case SlotFlags.MASK:
+                    if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+                        return (0.2f, 0.1f);
+                    return (1f, 0.9f);
+            }
+
+            return (0.25f, 0.25f);
+        }
+
+        switch (clothing.InSlotFlag)
+        {
+            case SlotFlags.HEAD:
+                if (HasComp<IngestionBlockerComponent>(ent) || _tag.HasAnyTag(ent.Owner, maskTag, breathMaskTag))
+                    return (1f, 0.9f);
+                break;
+            case SlotFlags.MASK:
+                if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+                    return (0.2f, 0.1f);
+                return (1f, 0.9f);
+            case SlotFlags.INNERCLOTHING:
+                return (0.16f, 0.12f);
+            case SlotFlags.OUTERCLOTHING:
+                return (0.16f, 0.12f);
+            case SlotFlags.GLOVES:
+                return (0.12f, 0.16f);
+            case SlotFlags.NECK:
+                return (0.1f, 0.1f);
+            case SlotFlags.BELT:
+                return (0.08f, 0.09f);
+            case SlotFlags.FEET:
+                return (0.16f, 0.16f);
+        }
+
+        return (0f, 0f);
     }
 
     #endregion
