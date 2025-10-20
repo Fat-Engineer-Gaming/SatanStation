@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ Clothing, ClothingWashableBase ]
+  parent: [ Clothing, ClothingWashableBase ] # devil !!
   id: ClothingShoesBase
   components:
   - type: Clothing
@@ -21,6 +21,8 @@
           Quantity: 10
   - type: WashableClothing # devil !
     washFactor: 2
+    bleedChance: 0.12
+    bleedPortion: 0.08
   - type: Tag
     tags:
     - ClothMade

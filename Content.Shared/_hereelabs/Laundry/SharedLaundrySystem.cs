@@ -750,7 +750,7 @@ public abstract class SharedLaundrySystem : EntitySystem
         if (!trueArgs.BleedSolutionEntity.HasValue)
             return;
 
-        var quantity = trueArgs.BleedSolution.Volume * 0.5f;
+        var quantity = trueArgs.BleedSolution.Volume * ent.Comp.BleedPortion;
         if (quantity <= 0)
             return;
 

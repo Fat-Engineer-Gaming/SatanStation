@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ Clothing, ClothingWashableBase ]
+  parent: [ Clothing, ClothingWashableBase ] # devil !
   id: UnsensoredClothingUniformBase
   components:
   - type: Sprite
@@ -31,6 +31,9 @@
     - ClothMade
     - Recyclable
     - WhitelistChameleon
+  - type: WashableClothing # devil !
+    bleedChance: 0.24
+    bleedPortion: 0.5
 
 - type: entity
   abstract: true

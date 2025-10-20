@@ -36,7 +36,7 @@
 
 - type: entity
   abstract: true
-  parent: [ ClothingNeckBase, ClothingWashableBase ]
+  parent: [ ClothingNeckBase, ClothingWashableBase ] # devil !
   id: ClothingScarfBase
   components:
   - type: Tag
@@ -50,3 +50,6 @@
     heatingCoefficient: 1.025
     coolingCoefficient: 0.75
   # imp edit end
+  - type: WashableClothing # devil !
+    bleedChance: 0.16
+    bleedPortion: 0.1

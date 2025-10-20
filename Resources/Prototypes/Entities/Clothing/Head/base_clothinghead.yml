@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ Clothing, ClothingWashableBase ]
+  parent: [ Clothing, ClothingWashableBase ] # devil !!
   id: ClothingHeadBase
   components:
   - type: Clothing
@@ -25,6 +25,9 @@
     - ClothMade
     - WhitelistChameleon
     - DroneUsable # imp
+  - type: WashableClothing # devil !!
+    bleedChance: 0.12
+    bleedPortion: 0.1
 
 - type: entity
   abstract: true
