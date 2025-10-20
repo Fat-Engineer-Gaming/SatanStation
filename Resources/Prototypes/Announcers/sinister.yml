@@ -58,6 +58,8 @@
       path: alerts/white.ogg
     - id: alertPuce # don't eat anything
       path: alerts/puce.ogg
+    - id: alertOmega # Engineering fucked up hard oh my god
+      path: alerts/omega.ogg
     - id: alertOmicron # cc did a thing
       path: alerts/omicron.ogg
 
