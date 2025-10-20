@@ -32,6 +32,7 @@ using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared._EE.Overlays.Switchable; // EE Edit
 using Content.Shared._Impstation.SalvoHud; // imp edit
+using Content.Shared._hereelabs.Body.Events; // imp edit
 using Content.Shared.Mobs; // EE edit
 using Content.Shared.Wieldable;
 using Content.Shared.Zombies;
@@ -86,6 +87,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, IngestionAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, MobStateChangedEvent>(RefRelayInventoryEvent); // imp
         SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(RefRelayInventoryEvent); // imp
+        SubscribeLocalEvent<InventoryComponent, BeforeBleedPuddleSpawnEvent>(RefRelayInventoryEvent); // devil !!
 
         // Eye/vision events
         SubscribeLocalEvent<InventoryComponent, CanSeeAttemptEvent>(RelayInventoryEvent);
