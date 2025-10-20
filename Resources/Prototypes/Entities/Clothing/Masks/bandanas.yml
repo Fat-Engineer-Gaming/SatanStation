@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingMaskBaseButcherable, BaseFoldable]
+  parent: [ClothingMaskBaseButcherable, ClothingWashableBase, BaseFoldable]
   id: ClothingMaskBandanaBase
   abstract: true
   components:
@@ -38,6 +38,8 @@
     - Snout
     - SnoutCover # imp
     hideOnToggle: true
+  - type: WashableClothing # devil !
+    capacity: 2
 
 - type: entity
   parent: ClothingMaskBandanaBase

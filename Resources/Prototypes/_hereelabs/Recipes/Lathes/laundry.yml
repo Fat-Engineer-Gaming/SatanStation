@@ -1,0 +1,27 @@
+- type: latheRecipe
+  abstract: true
+  id: BaseLaundryBasketRecipe
+  categories:
+  - Tools
+  completetime: 4
+  materials:
+    Plastic: 600
+
+- type: latheRecipe
+  parent: BaseLaundryBasketRecipe
+  id: LaundryBasketWide
+  result: LaundryBasket
+
+- type: latheRecipe
+  parent: BaseLaundryBasketRecipe
+  id: LaundryBasketTall
+  result: LaundryBasketTall
+
+- type: latheRecipe
+  id: LaundryDetergentPod
+  result: DetergentPod
+  categories:
+  - Tools
+  completetime: 1
+  materials:
+    Plastic: 20

@@ -1,0 +1,12 @@
+- type: entity
+  parent: BarrelChemBlueEmpty
+  id: BarrelChemFilledLaundryDetergent
+  suffix: LaundryDetergent
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      tank:
+        maxVol: 500
+        reagents:
+        - ReagentId: LaundryDetergent
+          Quantity: 500

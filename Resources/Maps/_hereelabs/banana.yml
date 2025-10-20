@@ -1,10 +1,10 @@
 meta:
   format: 7
   category: Map
-  engineVersion: 266.0.0
+  engineVersion: 267.2.0
   forkId: ""
   forkVersion: ""
-  time: 09/18/2025 00:17:56
+  time: 10/19/2025 07:24:22
   entityCount: 3702
 maps:
 - 1
@@ -2702,6 +2702,7 @@ entities:
   - uid: 72
     components:
     - type: Transform
+      rot: 1.5707963267948966 rad
       pos: -38.5,-14.5
       parent: 2
 - proto: AirlockKitchenGlassLocked
@@ -8831,6 +8832,14 @@ entities:
     - type: Transform
       pos: -22.447153,-6.379816
       parent: 2
+    - type: SolutionContainerManager
+      solutions:
+        soaked:
+          maxVol: 20
+          name: soaked
+          reagents: []
+      containers: []
+    - type: Reactive
 - proto: ClothingEyesGlassesChemical
   entities:
   - uid: 1223
@@ -8852,6 +8861,24 @@ entities:
     - type: Transform
       pos: -27.455273,5.48047
       parent: 2
+    - type: SolutionContainerManager
+      solutions:
+        food:
+          temperature: 293.15
+          canReact: True
+          maxVol: 10
+          name: null
+          reagents:
+          - data: []
+            ReagentId: Fiber
+            Quantity: 10
+        soaked:
+          temperature: 293.15
+          canReact: True
+          maxVol: 20
+          name: soaked
+          reagents: []
+    - type: Reactive
 - proto: ClothingOuterHardsuitCourier
   entities:
   - uid: 1227
@@ -8861,6 +8888,14 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
+    - type: SolutionContainerManager
+      solutions:
+        soaked:
+          maxVol: 10
+          name: soaked
+          reagents: []
+      containers: []
+    - type: Reactive
 - proto: ColdPack1
   entities:
   - uid: 1229
@@ -25175,11 +25210,39 @@ entities:
     - type: Transform
       pos: -47.5,-16.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        detergentSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
   - uid: 3626
     components:
     - type: Transform
       pos: -48.5,-16.5
       parent: 2
+    - type: ContainerContainer
+      containers:
+        detergentSlot: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
+        entity_storage: !type:Container
+          showEnts: False
+          occludes: True
+          ents: []
+        paper_label: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: null
 - proto: WaterCooler
   entities:
   - uid: 3627

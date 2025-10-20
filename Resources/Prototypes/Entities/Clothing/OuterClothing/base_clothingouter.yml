@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ]
   id: ClothingOuterBase
   components:
   - type: Clothing
@@ -8,6 +8,10 @@
     - outerClothing
   - type: Sprite
     state: icon
+  - type: WashableClothing # devil !
+    capacity: 10
+    dripVolume: 5
+    wetnessScale: 0.5
 
 - type: entity
   abstract: true
