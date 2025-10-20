@@ -178,9 +178,9 @@
   - type: Storage
     maxItemSize: Ginormous
     grid:
-    - 0,0,29,11
+    - 0,0,29,7
   - type: ClothingSpeedModifier
-    sprintModifier: 1.2 # makes its stats identical to other variants of bag of holding
+    sprintModifier: 1.4 # makes its stats identical to other variants of bag of holding
   - type: HeldSpeedModifier
 
 # Remove BaseItem Power Requirement
@@ -228,6 +228,182 @@
         - MidImpassable
         - LowImpassable
   - type: Anchorable
+
+- type: entity
+  id: STRIDERTechFab
+  parent: [ DroneBaseLatheLube ] # imp
+  name: Drone techfab
+  description: This device can print almost anything you want.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/techfab.rsi
+    layers:
+    - state: icon
+      map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: sec
+    - state: unlit
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - state: inserting
+      map: ["enum.MaterialStorageVisualLayers.Inserting"]
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Machine
+    board: SecurityTechFabCircuitboard
+  - type: Lathe
+    idleState: icon
+    runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
+    staticPacks:
+    - SecurityEquipmentStatic
+    - SecurityPracticeStatic
+    - SecurityAmmoStatic
+    - SecurityWeaponsStatic
+    - SteelBriefcaseImp # Imp
+    - ScienceBoardsStatic
+    - ServiceBoardsStatic
+    - CargoBoardsStatic
+    - MedicalBoardsStatic
+    - EngineeringBoardsStatic
+    - CircuitFloorsStatic
+    - ImpCircuitStatic # Imp
+    - OffbrandCircuitboardsStatic # Offbrand
+    - ImpCircuitEmagged
+    - TopicalsStatic
+    - ChemistryStatic
+    - MedicalStatic
+    - RollerBedsStatic
+    - MedicalClothingStatic
+    - EmptyMedkitsStatic
+    - SurgeryStatic
+    - OffbrandSurgeryStatic # Offbrand
+    - ImpMedStatic # Imp
+    - OffbrandMedicalStatic # Offbrand
+    - ClothingCivilian
+    - ClothingCargo
+    - ClothingCommand
+    - ClothingEngineering
+    - ClothingMedical
+    - ClothingScience
+    - ClothingSecurity
+    - ClothingService
+    - WinterCoats
+    - Ties
+    - Scarves
+    - Carpets
+    - Bedsheets
+    - PrideFlags # imp
+    - BeltsDeltaV # DeltaV
+    - ClothingJustice # DeltaV
+    - ClothingCentComm
+    - ClothingSyndie
+    - ImpClothesEmagged # Imp
+    - OreSmelting
+    - RGlassSmelting
+    dynamicPacks:
+    - Chemistry
+    - ImpMedDynamic # Imp
+    - EngineeringBoards
+    - CargoBoards
+    - MedicalBoards
+    - ServiceBoards
+    - ScienceBoards
+    - CameraBoards
+    - MechBoards
+    - ShuttleBoards
+    - ImpCircuitDynamic # imp
+    - UpgradeKits # Goobstation
+    - SalvageSecurityBoards
+    - SalvageSecurityWeapons
+    - SecurityEquipment
+    - SecurityBoards
+    - SecurityExplosives
+    - SecurityAmmo
+    - SecurityWeapons
+    - SecurityDisablers
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Ore
+        - Sheet
+        - Metal
+        - Wooden
+        - Plastic
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
+  - type: LatheAnnouncing
+    channels: [Security]
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access: [["CentCom"]]
+
+- type: entity
+  abstract: true
+  parent: DroneBaseLathe
+  id: DroneBaseLatheLube
+  categories: [HideSpawnMenu]
+  components:
+  - type: ReagentSpeed
+    solution: lube
+    modifiers:
+      SpaceLube: 0.25
+      SpaceGlue: 5
+  - type: SolutionContainerManager
+    solutions:
+      lube:
+        maxVol: 250
+  - type: Spillable
+    solution: lube
+  - type: RefillableSolution
+    solution: lube
+  - type: ExaminableSolution
+    solution: lube
+
+- type: entity
+  id: DroneBaseLathe
+  parent: [ DroneBaseItem, ConstructibleMachine ]
+  abstract: true
+  name: lathe
+  categories: [HideSpawnMenu]
+  components:
+  - type: Appearance
+  - type: WiresVisuals
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
+  - type: Lathe
+  - type: MaterialStorage
+  - type: WiresPanel
+  - type: ActivatableUI
+    key: enum.LatheUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.LatheUiKey.Key:
+        type: LatheBoundUserInterface
+      enum.ResearchClientUiKey.Key:
+        type: ResearchClientBoundUserInterface
+  - type: Transform
+    anchored: false
+  - type: Pullable
+  - type: StaticPrice
+    price: 800
+  - type: ResearchClient
+  - type: TechnologyDatabase
+  - type: AutomationSlots # Goobstation
+    slots:
+    - !type:AutomatedMaterialStorage
+      input: AutomationSlotMaterials
+      output: null
 
 
 #################
@@ -596,7 +772,7 @@
 - type: entity
   id: DroneMjollnir
   parent: [ BaseItem, BaseMagicalContraband ]
-  name: Drone Mjollnir
+  name: S.T.R.I.D.E.R Internal Combat Hammer
   categories: [HideSpawnMenu]
   description: A weapon worthy of a god, able to strike with the force of a lightning bolt. It crackles with barely contained energy.
   components:
@@ -604,7 +780,6 @@
     useDelayOnWield: false
   - type: ScaleVisuals
     scale: 0.5, 0.5
-  - type: MeleeRequiresWield
   - type: LandAtCursor
   - type: Sprite
     sprite: Objects/Weapons/Melee/mjollnir.rsi
@@ -620,7 +795,6 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 25
         Structural: 150
     soundHit:
       path: /Audio/Effects/tesla_consume.ogg
@@ -629,14 +803,16 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 15
-        Shock: 5
-        Structural: 125
+        Blunt: 12
+        Shock: 22
+        Radiation: 16
+        Asphyxiation: 25
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 10
-        Structural: 125
+        Blunt: 12
+        Shock: 8
+        Radiation: 8
   - type: Item
     size: Small
 
@@ -711,18 +887,6 @@
 ########################
 
 - type: entity
-  id: DroneModuleAutolatheHyper
-  name: Drone AutolatheHyper
-  categories: [HideSpawnMenu]
-  parent: DroneAutolatheHyperConvection
-  components:
-    - type: Item
-      size: Large
-    - type: ApcPowerReceiver
-      needsPower: false
-    - type: Anchorable
-
-- type: entity
   id: DroneModuleRDComputer
   name: Drone R&D Computer
   categories: [HideSpawnMenu]
@@ -766,8 +930,8 @@
       - DroneMjollnir
       - WeaponPistolCHIMPUpgraded
       - AnomalyScanner
+      - STRIDERTechFab
       - DroneJukebox
-      - DroneModuleAutolatheHyper
       - DroneIdTerminal
       - DroneComputerResearchAndDevelopment
       - DroneMaterialSilo
@@ -785,95 +949,6 @@
     priority: -4
   - type: InstantAction
     event: !type:ToggleIntrinsicUIEvent { key: enum.JukeboxUiKey.Key }
-
-
-- type: entity
-  save: false
-  abstract: true
-  id: CGB-Drone
-  description: It looks like a Maintenance Drone but ALOT bigger, This one looks special compared to the others... take good care of it. <3
-  components:
-    - type: Reactive
-      groups:
-        Acidic:
-          - Touch
-    - type: Input
-      context: human
-    - type: DamageOnHighSpeedImpact
-      damage:
-        types:
-          Blunt: 5
-      soundHit:
-        collection: MetalThud
-    - type: Clickable
-    - type: Damageable
-      damageContainer: Inorganic
-    - type: Bloodstream
-      bloodReagent: Blood
-      bloodlossDamage:
-        types:
-          Bloodloss: 0.1
-      bloodlossHealDamage:
-        types:
-          Bloodloss: -5
-    - type: InteractionOutline
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape:
-            radius: 0.4
-          density: 50
-          mask:
-            - MobMask
-          layer:
-            - MobLayer
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 4
-      baseSprintSpeed: 3
-    - type: Sprite
-      noRot: true
-      drawdepth: Mobs
-    - type: Physics
-      bodyType: KinematicController
-    - type: Hands
-      showInHands: false
-    - type: ComplexInteraction
-    - type: Body
-      prototype: Drone
-      thermalVisibility: false
-    - type: IntrinsicRadioReceiver
-    - type: IntrinsicRadioTransmitter
-      channels:
-        - Binary
-        - Common
-        - Command
-        - Engineering
-        - Medical
-        - Science
-        - Security
-        - Supply
-    - type: ActiveRadio
-      channels:
-        - Binary
-        - Common
-        - Command
-        - Engineering
-        - Medical
-        - Science
-        - Security
-        - Supply
-    - type: DoAfter
-    - type: BodyEmotes
-      soundsid: GeneralBodyEmotes
-    - type: DamageExaminable
-    - type: IdExaminable
-    - type: Examiner
-    - type: Puller
-      needsHands: false
-    - type: CombatMode
-    - type: StandingState
-    - type: Alerts
-    - type: ProtectedFromStepTriggers
 
 - type: entity
   save: false
@@ -937,6 +1012,8 @@
       sounds:
       Unsexed: UnisexSilicon
       wilhelmProbability: 0
+    - type: BodyEmotes
+      soundsId: GeneralBodyEmotes
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -947,6 +1024,7 @@
         - Binary
         - Common
         - Command
+        - CentCom
         - Engineering
         - Medical
         - Science
@@ -957,6 +1035,7 @@
         - Binary
         - Common
         - Command
+        - CentCom
         - Engineering
         - Medical
         - Science
@@ -968,12 +1047,10 @@
     - type: Stripping
     - type: IgnoreUIRange
     - type: SolutionScanner
-    - type: CrewMonitoringConsole
     - type: DamageExaminable
     - type: IdExaminable
     - type: Examiner
     - type: Puller
-      needsHands: false
     - type: CombatMode
     - type: StandingState
     - type: Alerts
@@ -1041,6 +1118,8 @@
       sounds:
       Unsexed: UnisexSilicon
       wilhelmProbability: 0
+    - type: BodyEmotes
+      soundsId: GeneralBodyEmotes
     - type: Body
       prototype: Drone
       thermalVisibility: false
@@ -1147,8 +1226,8 @@
       enum.CrewMonitoringUIKey.Key:
         toggleAction: ActionAGhostShowCrewMonitoring
   - type: CommunicationsConsole
-    title: comms-console-announcement-title-command
-    color: "#eae100"
+    title: S.T.R.I.D.E.R.
+    color: "#00aaff"
     delay: 10
     initialDelay: 0
   - type: CrewMonitoringConsole
@@ -1268,6 +1347,7 @@
     - Xenoborg
     - Silicon
     - SAN
+    - CentCom
     - GenpopLeave
     - Reporter
     - HospitalityDirector
@@ -1382,10 +1462,9 @@
         toggleAction: ActionAGhostShowRadar
       enum.CrewMonitoringUIKey.Key:
         toggleAction: ActionAGhostShowCrewMonitoring
-
   - type: CommunicationsConsole
-    title: comms-console-announcement-title-command
-    color: "#eae100"
+    title: S.T.R.I.D.E.R.
+    color: "#00aaff"
     delay: 10
     initialDelay: 0
   - type: CrewMonitoringConsole
@@ -1460,7 +1539,7 @@
           On: { state: drone }
   - type: Repairable
     fuelCost: 40
-    doAfterDelay: 0.25
+    doAfterDelay: 1
   - type: ActionGrant
     actions:
     - ActionDroneOpenMap
@@ -1501,6 +1580,7 @@
     - Xenoborg
     - Silicon
     - SAN
+    - CentCom
     - GenpopLeave
     - Reporter
     - HospitalityDirector
