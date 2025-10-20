@@ -1,12 +1,12 @@
 - type: soundCollection
-  id: VulpkaninBarks
+  id: DV_VulpkaninBarks
   files:
   - /Audio/_DV/Voice/Vulpkanin/dog_bark1.ogg
   - /Audio/_DV/Voice/Vulpkanin/dog_bark2.ogg
   - /Audio/_DV/Voice/Vulpkanin/dog_bark3.ogg
 
 - type: soundCollection
-  id: VulpkaninGrowls
+  id: DV_VulpkaninGrowls
   files:
   - /Audio/_DV/Voice/Vulpkanin/dog_growl1.ogg
   - /Audio/_DV/Voice/Vulpkanin/dog_growl2.ogg
@@ -16,18 +16,18 @@
   - /Audio/_DV/Voice/Vulpkanin/dog_growl6.ogg
 
 - type: soundCollection
-  id: VulpkaninSnarls
+  id: DV_VulpkaninSnarls
   files:
   - /Audio/_DV/Voice/Vulpkanin/dog_snarl1.ogg
   - /Audio/_DV/Voice/Vulpkanin/dog_snarl2.ogg
   - /Audio/_DV/Voice/Vulpkanin/dog_snarl3.ogg
 
 - type: soundCollection
-  id: VulpkaninWhines
+  id: DV_VulpkaninWhines
   files:
   - /Audio/_DV/Voice/Vulpkanin/dog_whine.ogg
 
 - type: soundCollection
-  id: VulpkaninHowls
+  id: DV_VulpkaninHowls
   files:
   - /Audio/_DV/Voice/Vulpkanin/howl.ogg

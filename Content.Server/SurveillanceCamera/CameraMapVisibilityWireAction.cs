@@ -1,5 +1,6 @@
 ﻿using Content.Server.Wires;
 using Content.Shared.Wires;
+using Content.Shared.SurveillanceCamera.Components;
 
 namespace Content.Server.SurveillanceCamera;
 

@@ -2,7 +2,7 @@
 
 # Ears Markings
 - type: marking
-  id: VulpEar
+  id: DV_VulpEar
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -13,7 +13,7 @@
       state: vulp-inner
 
 - type: marking
-  id: VulpEarFade
+  id: DV_VulpEarFade
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -24,7 +24,7 @@
       state: vulp-fade
 
 - type: marking
-  id: VulpEarSharp
+  id: DV_VulpEarSharp
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -35,7 +35,7 @@
       state: vulp-sharp
 
 - type: marking
-  id: VulpEarJackal
+  id: DV_VulpEarJackal
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -46,7 +46,7 @@
       state: jackal-inner
 
 - type: marking
-  id: VulpEarTerrier
+  id: DV_VulpEarTerrier
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -57,7 +57,7 @@
       state: terrier-inner
 
 - type: marking
-  id: VulpEarWolf
+  id: DV_VulpEarWolf
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -68,7 +68,7 @@
       state: wolf-inner
 
 - type: marking
-  id: VulpEarFennec
+  id: DV_VulpEarFennec
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -79,7 +79,7 @@
       state: fennec-inner
 
 - type: marking
-  id: VulpEarFox
+  id: DV_VulpEarFox
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -88,7 +88,7 @@
       state: fox
 
 - type: marking
-  id: VulpEarOtie
+  id: DV_VulpEarOtie
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -99,7 +99,7 @@
       state: otie-inner
 
 - type: marking
-  id: VulpEarTajaran
+  id: DV_VulpEarTajaran
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -110,7 +110,7 @@
       state: msai-inner
 
 - type: marking
-  id: VulpEarShock
+  id: DV_VulpEarShock
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -119,7 +119,7 @@
       state: shock
 
 - type: marking
-  id: VulpEarCoyote
+  id: DV_VulpEarCoyote
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -128,7 +128,7 @@
       state: coyote
 
 - type: marking
-  id: VulpEarDalmatian
+  id: DV_VulpEarDalmatian
   bodyPart: HeadTop
   markingCategory: HeadTop
   speciesRestriction: [Vulpkanin]
@@ -138,7 +138,7 @@
 
 # Head Markings (Snout)
 - type: marking
-  id: VulpSnoutAlt
+  id: DV_VulpSnoutAlt
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -149,7 +149,7 @@
       state: nose
 
 - type: marking
-  id: VulpSnout
+  id: DV_VulpSnout
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -160,7 +160,7 @@
       state: nose
 
 - type: marking
-  id: VulpSnoutSharp
+  id: DV_VulpSnoutSharp
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -171,7 +171,7 @@
       state: nose
 
 - type: marking
-  id: VulpSnoutFade
+  id: DV_VulpSnoutFade
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -182,7 +182,7 @@
       state: nose
 
 - type: marking
-  id: VulpSnoutNose
+  id: DV_VulpSnoutNose
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -191,7 +191,7 @@
       state: nose
 
 - type: marking
-  id: VulpSnoutMask
+  id: DV_VulpSnoutMask
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -202,7 +202,7 @@
       state: nose
 
 - type: marking
-  id: VulpSnoutVulpine
+  id: DV_VulpSnoutVulpine
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -213,7 +213,7 @@
       state: vulpine-lines
 
 - type: marking
-  id: VulpSnoutSwift
+  id: DV_VulpSnoutSwift
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -222,7 +222,7 @@
       state: vulpine-lines
 
 - type: marking
-  id: VulpSnoutBlaze
+  id: DV_VulpSnoutBlaze
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -231,7 +231,7 @@
       state: blaze
 
 - type: marking
-  id: VulpSnoutPatch
+  id: DV_VulpSnoutPatch
   bodyPart: Snout
   markingCategory: Snout
   speciesRestriction: [Vulpkanin]
@@ -241,7 +241,7 @@
 
 # Head Markings (Head)
 - type: marking
-  id: VulpHeadTiger
+  id: DV_VulpHeadTiger
   bodyPart: Head
   markingCategory: Head
   speciesRestriction: [Vulpkanin]
@@ -250,7 +250,7 @@
       state: tiger_head
 
 - type: marking
-  id: VulpHeadTigerFace
+  id: DV_VulpHeadTigerFace
   bodyPart: Head
   markingCategory: Head
   speciesRestriction: [Vulpkanin]
@@ -259,7 +259,7 @@
       state: tiger_face
 
 - type: marking
-  id: VulpHeadSlash
+  id: DV_VulpHeadSlash
   bodyPart: Head
   markingCategory: Head
   speciesRestriction: [Vulpkanin]
@@ -269,7 +269,7 @@
 
 # Tail Markings
 - type: marking
-  id: VulpTail
+  id: DV_VulpTail
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -280,7 +280,7 @@
       state: vulp-fade
 
 - type: marking
-  id: VulpTailTip
+  id: DV_VulpTailTip
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -291,7 +291,7 @@
       state: vulp-tip
 
 - type: marking
-  id: VulpTailAlt
+  id: DV_VulpTailAlt
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -302,7 +302,7 @@
       state: vulp_alt-fade
 
 - type: marking
-  id: VulpTailAltTip
+  id: DV_VulpTailAltTip
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -313,7 +313,7 @@
       state: vulp_alt-tip
 
 - type: marking
-  id: VulpTailLong
+  id: DV_VulpTailLong
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -324,7 +324,7 @@
       state: long-tip
 
 - type: marking
-  id: VulpTailFox
+  id: DV_VulpTailFox
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -335,7 +335,7 @@
       state: fox-fade
 
 - type: marking
-  id: VulpTailFoxTip
+  id: DV_VulpTailFoxTip
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -346,7 +346,7 @@
       state: fox-tip
 
 - type: marking
-  id: VulpTailBushy
+  id: DV_VulpTailBushy
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -355,7 +355,7 @@
       state: bushfluff
 
 - type: marking
-  id: VulpTailCoyote
+  id: DV_VulpTailCoyote
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -364,7 +364,7 @@
       state: coyote
 
 - type: marking
-  id: VulpTailHusky
+  id: DV_VulpTailHusky
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -375,7 +375,7 @@
       state: husky-outer
 
 - type: marking
-  id: VulpTailHuskyAlt
+  id: DV_VulpTailHuskyAlt
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -384,7 +384,7 @@
       state: husky
 
 - type: marking
-  id: VulpTailFox2
+  id: DV_VulpTailFox2
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -393,7 +393,7 @@
       state: fox2
 
 - type: marking
-  id: VulpTailFox3
+  id: DV_VulpTailFox3
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -404,7 +404,7 @@
       state: fox3-tip
 
 - type: marking
-  id: VulpTailFennec
+  id: DV_VulpTailFennec
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -413,7 +413,7 @@
       state: fennec
 
 - type: marking
-  id: VulpTailOtie
+  id: DV_VulpTailOtie
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -422,7 +422,7 @@
       state: otie
 
 - type: marking
-  id: VulpTailFluffy
+  id: DV_VulpTailFluffy
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -433,7 +433,7 @@
 # Tail Markings (wagging variants)
 
 - type: marking
-  id: VulpTailAnimated
+  id: DV_VulpTailAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -444,7 +444,7 @@
       state: vulp_wag-tip #fade
 
 - type: marking
-  id: VulpTailTipAnimated
+  id: DV_VulpTailTipAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -455,7 +455,7 @@
       state: vulp_wag-tip
 
 - type: marking
-  id: VulpTailFoxAnimated
+  id: DV_VulpTailFoxAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -466,7 +466,7 @@
       state: fox_wag-fade
 
 - type: marking
-  id: VulpTailFoxTipAnimated
+  id: DV_VulpTailFoxTipAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -477,7 +477,7 @@
       state: fox_wag-tip
 
 - type: marking
-  id: VulpTailBushyAnimated
+  id: DV_VulpTailBushyAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -486,7 +486,7 @@
       state: bushfluff_wag
 
 - type: marking
-  id: VulpTailCoyoteAnimated
+  id: DV_VulpTailCoyoteAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -495,7 +495,7 @@
       state: coyote_wag
 
 - type: marking
-  id: VulpTailCorgiAnimated
+  id: DV_VulpTailCorgiAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -504,7 +504,7 @@
       state: corgi_wag
 
 - type: marking
-  id: VulpTailDalmatianAnimated
+  id: DV_VulpTailDalmatianAnimated
   bodyPart: Tail
   markingCategory: Tail
   speciesRestriction: [Vulpkanin]
@@ -514,7 +514,7 @@
 
 # Body Markings (Chest)
 - type: marking
-  id: VulpBellyCrest
+  id: DV_VulpBellyCrest
   bodyPart: Chest
   markingCategory: Chest
   speciesRestriction: [Vulpkanin]
@@ -523,7 +523,7 @@
       state: belly_crest
 
 - type: marking
-  id: VulpBellyFull
+  id: DV_VulpBellyFull
   bodyPart: Chest
   markingCategory: Chest
   speciesRestriction: [Vulpkanin]
@@ -532,7 +532,7 @@
       state: belly_full
 
 - type: marking
-  id: VulpBellyFox
+  id: DV_VulpBellyFox
   bodyPart: Chest
   markingCategory: Chest
   speciesRestriction: [Vulpkanin]
@@ -542,7 +542,7 @@
 
 # Body Markings (Female chest)
 - type: marking
-  id: VulpBellyFullFemale
+  id: DV_VulpBellyFullFemale
   bodyPart: Chest
   markingCategory: Chest
   speciesRestriction: [Vulpkanin]
@@ -551,7 +551,7 @@
       state: belly_full_female
 
 - type: marking
-  id: VulpBellyFoxFemale
+  id: DV_VulpBellyFoxFemale
   bodyPart: Chest
   markingCategory: Chest
   speciesRestriction: [Vulpkanin]
@@ -562,7 +562,7 @@
 # # Body Markings (Overlay)
 # Eventually layering will allow to have markings on the body not layering above jumpsuits
 # - type: marking
-#   id: VulpBodyPointsCrest
+#   id: DV_VulpBodyPointsCrest
 #   markingCategory: Overlay
 #   bodyPart: RFoot
 #   speciesRestriction: [Vulpkanin]
@@ -571,7 +571,7 @@
 #       state: points_crest
 #
 # - type: marking
-#   id: VulpBodyPointsFade
+#   id: DV_VulpBodyPointsFade
 #   markingCategory: Overlay
 #   bodyPart: RFoot
 #   speciesRestriction: [Vulpkanin]
@@ -580,7 +580,7 @@
 #       state: points_fade
 #
 # - type: marking
-#   id: VulpBodyPointsSharp
+#   id: DV_VulpBodyPointsSharp
 #   markingCategory: Overlay
 #   bodyPart: RFoot
 #   speciesRestriction: [Vulpkanin]
@@ -590,7 +590,7 @@
 
 # Leg Markings
 - type: marking
-  id: VulpPointsFeet
+  id: DV_VulpPointsFeet
   markingCategory: Overlay
   bodyPart: RFoot
   speciesRestriction: [Vulpkanin]
@@ -599,7 +599,7 @@
       state: points_feet
 
 - type: marking
-  id: VulpPointsCrestLegs
+  id: DV_VulpPointsCrestLegs
   markingCategory: Legs
   bodyPart: LLeg
   speciesRestriction: [Vulpkanin]
@@ -608,7 +608,7 @@
       state: points_crest-legs
 
 - type: marking
-  id: VulpPointsFadeLegs
+  id: DV_VulpPointsFadeLegs
   markingCategory: Legs
   bodyPart: LLeg
   speciesRestriction: [Vulpkanin]
@@ -617,7 +617,7 @@
       state: points_fade-legs
 
 - type: marking
-  id: VulpPointsSharpLegs
+  id: DV_VulpPointsSharpLegs
   markingCategory: Legs
   bodyPart: LLeg
   speciesRestriction: [Vulpkanin]
@@ -627,7 +627,7 @@
 
 # Arm Markings
 - type: marking
-  id: VulpPointsHands
+  id: DV_VulpPointsHands
   markingCategory: Overlay
   bodyPart: RHand
   speciesRestriction: [Vulpkanin]
@@ -636,7 +636,7 @@
       state: points_hands
 
 - type: marking
-  id: VulpPointsCrestArms
+  id: DV_VulpPointsCrestArms
   markingCategory: Arms
   bodyPart: LArm
   speciesRestriction: [Vulpkanin]
@@ -645,7 +645,7 @@
       state: points_crest-arms
 
 - type: marking
-  id: VulpPointsFadeArms
+  id: DV_VulpPointsFadeArms
   markingCategory: Arms
   bodyPart: LArm
   speciesRestriction: [Vulpkanin]
@@ -654,7 +654,7 @@
       state: points_fade-arms
 
 - type: marking
-  id: VulpPointsSharpArms
+  id: DV_VulpPointsSharpArms
   markingCategory: Arms
   bodyPart: LArm
   speciesRestriction: [Vulpkanin]
@@ -664,7 +664,7 @@
 
 # Hairs
 - type: marking
-  id: VulpHairAdhara
+  id: DV_VulpHairAdhara
   bodyPart: Hair
   speciesRestriction: [Vulpkanin]
   markingCategory: Hair
@@ -673,7 +673,7 @@
       state: adhara
 
 - type: marking
-  id: VulpHairAnita
+  id: DV_VulpHairAnita
   bodyPart: Hair
   speciesRestriction: [Vulpkanin]
   markingCategory: Hair
@@ -682,7 +682,7 @@
       state: anita
 
 - type: marking
-  id: VulpHairApollo
+  id: DV_VulpHairApollo
   bodyPart: Hair
   speciesRestriction: [Vulpkanin]
   markingCategory: Hair
@@ -691,7 +691,7 @@
       state: apollo
 
 - type: marking
-  id: VulpHairBelle
+  id: DV_VulpHairBelle
   bodyPart: Hair
   speciesRestriction: [Vulpkanin]
   markingCategory: Hair
@@ -700,7 +700,7 @@
       state: belle
 
 - type: marking
-  id: VulpHairBraided
+  id: DV_VulpHairBraided
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -709,7 +709,7 @@
       state: braided
 
 - type: marking
-  id: VulpHairBun
+  id: DV_VulpHairBun
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -718,7 +718,7 @@
       state: bun
 
 - type: marking
-  id: VulpHairCleanCut
+  id: DV_VulpHairCleanCut
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -727,7 +727,7 @@
       state: clean_cut
 
 - type: marking
-  id: VulpHairCurl
+  id: DV_VulpHairCurl
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -736,7 +736,7 @@
       state: curl
 
 - type: marking
-  id: VulpHairHawk
+  id: DV_VulpHairHawk
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -745,7 +745,7 @@
       state: hawk
 
 - type: marking
-  id: VulpHairJagged
+  id: DV_VulpHairJagged
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -754,7 +754,7 @@
       state: jagged
 
 - type: marking
-  id: VulpHairJeremy
+  id: DV_VulpHairJeremy
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -763,7 +763,7 @@
       state: jeremy
 
 - type: marking
-  id: VulpHairKajam
+  id: DV_VulpHairKajam
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -772,7 +772,7 @@
       state: kajam
 
 - type: marking
-  id: VulpHairKeid
+  id: DV_VulpHairKeid
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -781,7 +781,7 @@
       state: keid
 
 - type: marking
-  id: VulpHairKleeia
+  id: DV_VulpHairKleeia
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -790,7 +790,7 @@
       state: kleeia
 
 - type: marking
-  id: VulpHairMizar
+  id: DV_VulpHairMizar
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -799,7 +799,7 @@
       state: mizar
 
 - type: marking
-  id: VulpHairPunkBraided
+  id: DV_VulpHairPunkBraided
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -808,7 +808,7 @@
       state: punkbraided
 
 - type: marking
-  id: VulpHairRaine
+  id: DV_VulpHairRaine
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -817,7 +817,7 @@
       state: raine
 
 - type: marking
-  id: VulpHairRough
+  id: DV_VulpHairRough
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -826,7 +826,7 @@
       state: rough
 
 - type: marking
-  id: VulpHairShort
+  id: DV_VulpHairShort
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -835,7 +835,7 @@
       state: short
 
 - type: marking
-  id: VulpHairShort2
+  id: DV_VulpHairShort2
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -844,7 +844,7 @@
       state: short2
 
 - type: marking
-  id: VulpHairSpike
+  id: DV_VulpHairSpike
   bodyPart: Hair
   markingCategory: Hair
   speciesRestriction: [Vulpkanin]
@@ -854,7 +854,7 @@
 
 # Facial Hairs
 - type: marking
-  id: VulpFacialHairRuff
+  id: DV_VulpFacialHairRuff
   bodyPart: FacialHair
   markingCategory: FacialHair
   speciesRestriction: [Vulpkanin]
@@ -863,7 +863,7 @@
       state: ruff
 
 - type: marking
-  id: VulpFacialHairElder
+  id: DV_VulpFacialHairElder
   bodyPart: FacialHair
   markingCategory: FacialHair
   speciesRestriction: [Vulpkanin]
@@ -872,7 +872,7 @@
       state: elder
 
 - type: marking
-  id: VulpFacialHairElderChin
+  id: DV_VulpFacialHairElderChin
   bodyPart: FacialHair
   markingCategory: FacialHair
   speciesRestriction: [Vulpkanin]
@@ -881,7 +881,7 @@
       state: elder_chin
 
 - type: marking
-  id: VulpFacialHairKita
+  id: DV_VulpFacialHairKita
   bodyPart: FacialHair
   markingCategory: FacialHair
   speciesRestriction: [Vulpkanin]

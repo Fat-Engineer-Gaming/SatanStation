@@ -14,7 +14,7 @@
       part: TorsoArachnid
       organs:
         heart: OrganArachnidHeart
-        lungs: OrganArachnidLungs  #imp edit
+        lungs: OrganHumanLungs
         stomach: OrganArachnidStomach
         liver: OrganArachnidLiver
         kidneys: OrganArachnidKidneys

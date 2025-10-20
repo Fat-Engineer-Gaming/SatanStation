@@ -430,17 +430,13 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         ent.Comp.BleedAmount = Math.Clamp(ent.Comp.BleedAmount, 0, ent.Comp.MaxBleedAmount);
 
         DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.BleedAmount));
-
-        // Begin Offbrand
-        var evt = new Content.Shared._Offbrand.Wounds.GetBleedLevelEvent(ent.Comp.BleedAmount);
-        RaiseLocalEvent(ent, ref evt);
-
-        if (evt.BleedLevel == 0)
-            _alertsSystem.ClearAlert(ent, ent.Comp.BleedingAlert);
+        
+        if (ent.Comp.BleedAmount == 0)
+            _alertsSystem.ClearAlert(ent.Owner, ent.Comp.BleedingAlert);
         else
         {
-            var severity = (short)Math.Clamp(Math.Round(evt.BleedLevel, MidpointRounding.ToZero), 0, 10);
-            _alertsSystem.ShowAlert(ent, ent.Comp.BleedingAlert, severity);
+            var severity = (short)Math.Clamp(Math.Round(ent.Comp.BleedAmount, MidpointRounding.ToZero), 0, 10);
+            _alertsSystem.ShowAlert(ent.Owner, ent.Comp.BleedingAlert, severity);
         }
         // End Offbrand
 

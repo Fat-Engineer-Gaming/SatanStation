@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-using Content.Server.Body.Components;
+using Content.Shared.Body.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.EUI;
 using Content.Shared._Offbrand.MMI;
