@@ -68,6 +68,8 @@
       weight: 0.5
     - id: BarrelChemFilledLube
       weight: 0.5
+    - id: BarrelChemFilledLaundryDetergent # devil !!
+      weight: 0.25
 
 - type: entityTable
   id: RandomChemicalBarrelFunny
