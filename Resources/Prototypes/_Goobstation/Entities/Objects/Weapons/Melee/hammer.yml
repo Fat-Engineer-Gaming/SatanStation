@@ -13,7 +13,6 @@
     damage:
       types:
         Blunt: 12
-    heavyStaminaCost: 12
     soundHit:
       collection: MetalThud
   - type: Item

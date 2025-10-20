@@ -54028,20 +54028,6 @@ entities:
     - type: Transform
       pos: -16.34428,-41.91539
       parent: 2
-- proto: EggSpider
-  entities:
-  - uid: 6031
-    components:
-    - type: Transform
-      parent: 2004
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 11954
-    components:
-    - type: Transform
-      pos: 67.68143,-50.99232
-      parent: 2
 - proto: EmergencyLight
   entities:
   - uid: 1969

@@ -1,0 +1,32 @@
+﻿- type: entity
+  parent: BaseFlatpack
+  id: DebugShuttleFlatpack
+  suffix: DO NOT MAP.
+  name: Debug Thruster Flatpack
+  description: A flatpack used for constructing a... wait, where is this thruster getting its power from?
+  components:
+  - type: Flatpack
+    entity: DebugThruster
+  - type: Item
+    size: Tiny
+
+- type: entity
+  parent: BaseFlatpack
+  id: ShuttleConsoleFlatpackSmall
+  suffix: Small, DO NOT MAP.
+  name: Shuttle Console Flatpack
+  description: A flatpack used for constructing a Shuttle Console... why is it so small though...
+  components:
+  - type: Flatpack
+    entity: ComputerShuttle
+  - type: Item
+    size: Tiny
+
+- type: entity
+  parent: BaseFlatpack
+  id: ShuttleConsoleFlatpack
+  name: Shuttle Console Flatpack
+  description: A flatpack used for constructing a Shuttle Console.
+  components:
+  - type: Flatpack
+    entity: ComputerShuttle

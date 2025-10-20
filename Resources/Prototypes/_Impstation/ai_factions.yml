@@ -17,6 +17,7 @@
     - Heretic
     - Replicator
     - Xenoborg
+    - Spider
     - Dog
 
 - type: npcFaction
@@ -51,6 +52,7 @@
   - Dino
   - Penguin
   - AllHostile
+  - Spider
   - Dog
 
 - type: npcFaction

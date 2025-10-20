@@ -137,4 +137,4 @@ evolutionmenu-utility-spacesuit-desc =
 
 evolutionmenu-utility-mimic-name = Voice Mimicry
 evolutionmenu-utility-mimic-desc =
-    We shape our mouth and tounge to allow us to make the illusion of sounding like our prey.
+    We shape our mouth and tongue to allow us to make the illusion of sounding like our prey.

@@ -1,0 +1,9 @@
+﻿- type: entity
+  id: ClothingBeltSheathFilledNavyOfficer
+  parent: ClothingBeltSheath
+  suffix: Filled, Navy Officer
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - NavyOfficerSabre

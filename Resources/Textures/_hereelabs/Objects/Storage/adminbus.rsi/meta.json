@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "size": {
+    "x": 150,
+    "y": 81
+  },
+  "copyright": "Taken from this link specifically, it's origins is beyond me. -Fat Engi (https://spacestation13.fandom.com/wiki/Admin_bus?file=TG_station_tweat%3Badmin_bus_%28ROFL%29.jpg).",
+  "license": "CC-BY-SA-3.0",
+  "states": [
+	{
+      "name": "adminbus",
+      "directions": 4
+    }
+  ]
+}

@@ -53561,13 +53561,6 @@ entities:
     - type: Transform
       pos: -8.245198,-315.20163
       parent: 2
-- proto: EggSpider
-  entities:
-  - uid: 7303
-    components:
-    - type: Transform
-      pos: 3.6699882,-35.680645
-      parent: 2
 - proto: EmergencyLight
   entities:
   - uid: 5740
