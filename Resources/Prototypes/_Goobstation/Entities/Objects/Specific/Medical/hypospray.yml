@@ -1,0 +1,135 @@
+﻿# SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
+# SPDX-FileCopyrightText: 2024 a_person <40855173+a-person5660@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
+# SPDX-FileCopyrightText: 2025 BramvanZijp <56019239+BramvanZijp@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
+# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Cartridge Autoinjectors
+
+# Autoinjectors
+
+- type: entity
+  name: amnestic spray
+  parent: [Hypospray, BaseCentcommContraband]
+  id: AmnestizineHypospray
+  suffix: DO NOT MAP
+  description: Prevents the subject from remembering anything prior or during the injection. Can passively recharge.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 100
+        reagents:
+        - ReagentId: Amnestizine
+          Quantity: 100
+  - type: UseDelay
+    delay: 0.1 # UseDelays are for LOSERs
+  - type: SolutionRegeneration
+    solution: hypospray
+    generated:
+      reagents:
+      - ReagentId: Amnestizine
+        Quantity: 0.5
+
+# Medipens
+
+- type: entity
+  name: centcomm advanced stimulant
+  parent: [ChemicalMedipen, BaseCentcommContraband]
+  id: CentcommStimpack
+  suffix: DO NOT MAP
+  description: According to a Nanotrasen funded study, it has zero addictive properties.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: ntstimpen
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 50
+        reagents:
+        - ReagentId: Stimulants
+          Quantity: 50
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: ntstimpen_empty
+  - type: Hypospray
+    solutionName: pen
+    transferAmount: 50
+    onlyAffectsMobs: false
+    injectOnly: true
+  - type: StaticPrice
+    price: 500
+  - type: Tag
+    tags: []
+
+- type: entity
+  name: biohazard medipen
+  parent: ChemicalMedipen
+  id: AmbuzolMedipen
+  suffix: DO NOT MAP
+  description: A safe and effective way to treat infections. Does not prevent re-infection.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: ambuzolpen
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: ambuzolpen_empty
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 15
+        reagents:
+        - ReagentId: Ambuzol
+          Quantity: 10
+        - ReagentId: Ultravasculine
+          Quantity: 5
+  - type: Tag
+    tags:
+    - EmergencyMedipen
+
+- type: entity
+  name: advanced biohazard medipen
+  parent: ChemicalMedipen
+  id: AmbuzolPlusMedipen
+  suffix: DO NOT MAP
+  description: A safer and extremely effective way to treat any infections. Prevents re-infection.
+  components:
+  - type: Sprite
+    sprite: _Goobstation/Objects/Specific/Medical/medipen.rsi
+    layers:
+    - state: ambuzolpluspen
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: ambuzolpen_empty
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 10
+        reagents:
+        - ReagentId: AmbuzolPlus
+          Quantity: 5
+        - ReagentId: Diphenhydramine
+          Quantity: 15
+  - type: Tag
+    tags:
+    - EmergencyMedipen

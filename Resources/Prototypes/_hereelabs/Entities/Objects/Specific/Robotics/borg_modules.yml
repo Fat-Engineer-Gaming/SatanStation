@@ -41,7 +41,6 @@
     - item: Flash
     - item: StunBatonBorg
     - item: JawsOfLife
-    - item: WelderExperimental
     - item: SonicJackhammer
     - item: JetpackXenoborg
   - type: BorgModuleIcon
@@ -61,9 +60,7 @@
     hands:
     - item: WeaponPulseRifleCyborg
     - item: PhoronSabre
-    - item: Flash
     - item: JawsOfLife
-    - item: WelderExperimental
     - item: SonicJackhammer
     - item: JetpackXenoborg
   - type: BorgModuleIcon
@@ -102,5 +99,3 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
         color: "#7B0F12"
-  - type: StaticPrice
-    price: 2000

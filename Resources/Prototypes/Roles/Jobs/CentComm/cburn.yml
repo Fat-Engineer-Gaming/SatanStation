@@ -32,15 +32,15 @@
     shoes: ClothingShoesBootsCombatFilled
     id: CBURNPDA
     pocket1: RadioHandheld
-    pocket2: WeaponLaserGun
-    belt: ClothingBeltBandolier
+    pocket2: WeaponPulsePistol
+    belt: ClothingBeltSecurityFilled
   storage:
     back:
-    - WeaponShotgunDoubleBarreled
+    - WeaponShotgunKammerer
     - BoxShotgunIncendiary
-    - GrenadeFlashBang
     - PillAmbuzolPlus
     - PillAmbuzol
+    - CburnSpear # SPEAAR
 
 - type: chameleonOutfit
   id: CBURNChameleonOutfit

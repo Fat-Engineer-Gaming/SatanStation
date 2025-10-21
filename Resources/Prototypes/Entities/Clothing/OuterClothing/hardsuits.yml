@@ -1028,6 +1028,8 @@
     damageCoefficient: 0.2
   - type: FireProtection
     reduction: 0.8
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.0001 # it'd be REALLLYYYY funny if that rolls
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.15 # Needs 21 hits with a disabler to stun :godo:
   - type: Armor
@@ -1077,7 +1079,7 @@
         Radiation: 0.1
         Caustic: 0.1
   - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.25
+    zombificationResistanceCoefficient: 0.10 # mfw the CBURN operatives get infected
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0

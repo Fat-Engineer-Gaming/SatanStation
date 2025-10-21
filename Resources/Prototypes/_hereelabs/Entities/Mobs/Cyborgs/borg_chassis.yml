@@ -52,6 +52,7 @@
     moduleWhitelist:
         tags:
         - BorgModuleGeneric
+        - BorgModuleEngineering
         - BorgModuleCentComm
   - type: FlashImmunity
   - type: MobThresholds # tankier
@@ -93,18 +94,26 @@
     channels:
     - Binary
     - Common
-    - Science
-    - CentCom
-    - Security
     - Command
+    - CentCom
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
   - type: ActiveRadio
     channels:
     - Binary
     - Common
-    - Science
-    - CentCom
-    - Security
     - Command
+    - CentCom
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
   - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
@@ -114,6 +123,7 @@
         - MMIFilled
         borg_module:
         - BorgModuleERT
+        - BorgModuleAdvancedTool
   - type: ItemSlots
     slots:
       cell_slot:
@@ -135,7 +145,7 @@
     - Borg
     - CentralCommand
   - type: AccessReader
-    access: [ [ "Command" ], [ "Research" ] ]
+    access: [["CentralCommand"]]
   - type: ShowJobIcons
 
 - type: entity
@@ -192,6 +202,7 @@
     moduleWhitelist:
       tags:
       - BorgModuleGeneric
+      - BorgModuleEngineering
       - BorgModuleCentComm
   - type: FlashImmunity
   - type: MobThresholds # tankier
@@ -231,20 +242,28 @@
         acts: [ "Destruction" ]
   - type: IntrinsicRadioTransmitter
     channels:
-    - Binary
     - Common
-    - Science
-    - CentCom
-    - Security
     - Command
+    - CentCom
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    - Binary
   - type: ActiveRadio
     channels:
-    - Binary
     - Common
-    - Science
-    - CentCom
-    - Security
     - Command
+    - CentCom
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    - Binary
   - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
@@ -254,6 +273,7 @@
       - MMIFilled
       borg_module:
       - BorgModuleCommando
+      - BorgModuleAdvancedTool
   - type: ItemSlots
     slots:
       cell_slot:
@@ -275,5 +295,43 @@
     - Borg
     - CentralCommand
   - type: AccessReader
-    access: [ [ "Command" ], [ "Research" ] ]
+    access: [["CentralCommand"]]
   - type: ShowJobIcons
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
+
+- type: entity
+  id: PlayerBorgErtGhostRole
+  parent: BorgChassisErt
+  suffix: Ghost role
+  components:
+  - type: GhostRole
+    name: ghost-role-information-centcomm-cyborg-ert-name
+    description: ghost-role-information-centcomm-cyborg-ert-description
+    rules: ghost-role-information-higher-standard-silicon-rules
+    raffle:
+      settings: default
+    requirements:
+    - !type:RoleTimeRequirement
+      role: JobBorg
+      time: 3600 #1 hour
+  - type: GhostTakeoverAvailable
+
+- type: entity
+  id: PlayerBorgDeathsquadGhostRole
+  parent: BorgChassisDeathsquad
+  suffix: Ghost role
+  components:
+  - type: GhostRole
+    name: ghost-role-information-centcomm-cyborg-commando-name
+    description: ghost-role-information-centcomm-cyborg-commando-description
+    rules: ghost-role-information-higher-standard-silicon-rules
+    raffle:
+      settings: default
+    requirements:
+    - !type:RoleTimeRequirement
+      role: JobBorg
+      time: 3600 #1 hour
+  - type: GhostTakeoverAvailable

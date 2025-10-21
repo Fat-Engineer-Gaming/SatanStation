@@ -14,7 +14,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplanter, CentcommFreedomImplanter ]
   requirements: #imp edit
   - !type:OverallPlaytimeRequirement
     time: 4h
@@ -34,7 +34,7 @@
     id: DeathsquadPDA
     pocket1: PhoronSabre
     pocket2: WeaponRevolverMatebaAP
-    belt: ClothingBeltMilitaryWebbingMedFilled
+    belt: ClothingBeltDeathsquadWebbingFilled # Centcomm Doesn't use syndicate tech.
   storage:
     back:
     - SpeedLoaderMagnumAP
@@ -42,8 +42,7 @@
     - ToolDebug # spanish army knife
     - WelderExperimental
     - Hypospray
-    - DeathAcidifierImplanter # crew will try to steal their amazing hardsuits
-    - FreedomImplanter
+    - AmnestizineHypospray
   inhand:
   - WeaponPulseRifle
 
