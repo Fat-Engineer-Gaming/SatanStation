@@ -172,7 +172,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
   id: ClothingOuterHardsuitMercenary
-  name: mercenary hardsuit
+  name: MERC-05 "Contractor" hardsuit
   description: A stylish hardsuit lined with lightweight armor-plating.
   components:
   - type: Sprite

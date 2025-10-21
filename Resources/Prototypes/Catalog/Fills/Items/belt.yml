@@ -131,7 +131,7 @@
 - type: entity
   id: ClothingBeltSheathFilled
   parent: ClothingBeltSheath
-  suffix: Filled
+  suffix: Filled, Captain # Goobstation
   components:
   - type: ContainerFill
     containers:
@@ -188,7 +188,7 @@
 - type: entity
   id: ClothingBeltHolsterFilled
   parent: ClothingBeltHolster
-  suffix: Filled
+  suffix: Filled, Inspector # Goobstation
   components:
   - type: StorageFill
     contents:

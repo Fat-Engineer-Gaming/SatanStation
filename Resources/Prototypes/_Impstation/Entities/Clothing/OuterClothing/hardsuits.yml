@@ -2,7 +2,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseServiceContraband]
   id: ClothingOuterHardsuitJanitor
-  name: janitorial hardsuit
+  name: JN-03 "Cleanser" hardsuit
   description: For your spill-cleaning, light-changing, and trash-picking needs in the vacuum of space!
   components:
   - type: Sprite
@@ -29,7 +29,7 @@
 - type: entity
   parent: ClothingOuterHardsuitMime
   id: ClothingOuterHardsuitMimeBlack
-  name: black mime hardsuit
+  name: 000 "     " hardsuit
   description: A custom-made mime hardsuit.
   components:
   - type: Tag
@@ -48,7 +48,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
   id: ClothingOuterHardsuitCourier
-  name: courier hardsuit
+  name: ML-03 "Carrier" hardsuit
   description: For urgent deliveries, no matter the weather.
   components:
   - type: Sprite
@@ -71,7 +71,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, Tier3Contraband]
   id: ClothingOuterHardsuitRepomen
-  name: Cybersun repoman's hardsuit
+  name: CYB-08 "Repo" hardsuit
   description: A daunting hardsuit used by the infamous Cybersun repomen. Its design allows for better maneuverability with insulation from hazardous environments. And for ripping still-beating hearts from chests.
   components:
   - type: Sprite
@@ -133,7 +133,7 @@
 - type: entity
   parent: [ BaseMajorContraband, ClothingOuterHardsuitSyndieCommander ]
   id: ClothingOuterDesperado
-  name: desperado hardsuit
+  name: SYD-20 "Doom-maker" hardsuit
   description: An incredibly tough hardsuit woven together with Goliath plating and some helpfully reclaimed NT equipment. Makes you respectable, both as a person and as a threat.
   components:
   - type: Sprite
@@ -147,7 +147,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, TierXContraband]
   id: ClothingOuterHardsuitDino
-  name: dinosaur commander's hardsuit
+  name: DINO-00 "Prehistoric" hardsuit
   description: Risen from the ashes of prehistory, forged in the temporal flux of one second in the past, this hardsuit embodies the true warrior spirit of the Dino Wars.
   components:
   - type: Sprite

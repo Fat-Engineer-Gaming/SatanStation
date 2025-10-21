@@ -258,7 +258,7 @@
     slots:
       cell_slot:
         name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellMicroreactor
+        startingItem: PowerCellAntiqueProto
   - type: SiliconLawProvider
     laws: CentCommLawset
   - type: RandomMetadata

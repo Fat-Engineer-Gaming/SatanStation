@@ -37,13 +37,13 @@
     - state: icon-ert
   - type: ItemBorgModule
     hands:
-    - item: WeaponAdvancedLaser
+    - item: WeaponPulsePistol
     - item: Flash
     - item: StunBatonBorg
     - item: JawsOfLife
     - item: WelderExperimental
     - item: SonicJackhammer
-    - item: SelfRechargingFireExtinguisher
+    - item: JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: ert-module }
 
@@ -60,12 +60,12 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponPulseRifleCyborg
-    - item: EnergySwordBlue
+    - item: PhoronSabre
     - item: Flash
     - item: JawsOfLife
     - item: WelderExperimental
     - item: SonicJackhammer
-    - item: SelfRechargingFireExtinguisher
+    - item: JetpackXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-autopulser-module } # i'm not making another sprite, fuck you.
 
@@ -73,7 +73,7 @@
   parent: [ BaseBorgModule, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: BorgModuleXenoborgBomber
   name: martyr xenoborg module
-  description: "A module that comes with an explosive you probably don't want to handle yourself."
+  description: A module that comes with an explosive you probably don't want to handle yourself.
   components:
   - type: Sprite
     layers:

@@ -111,7 +111,8 @@
   id: Pulse
   damage:
     types:
-      Heat: 35
+      Heat: 20
+      Blunt: 5
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
