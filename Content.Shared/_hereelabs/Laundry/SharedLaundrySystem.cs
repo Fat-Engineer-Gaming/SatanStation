@@ -3,6 +3,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
@@ -10,13 +11,17 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Inventory;
 using Content.Shared.Jittering;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
+using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
+using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
 using Content.Shared._hereelabs.Body.Events;
 using Content.Shared._hereelabs.Laundry;
+using Content.Shared._hereelabs.Medical;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -36,6 +41,7 @@ public abstract class SharedLaundrySystem : EntitySystem
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     /// [Dependency] private readonly ThrowingSystem _throwing = default!;
     /// [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] protected readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] protected readonly SharedSolutionContainerSystem _solutions = default!;
     [Dependency] protected readonly IPrototypeManager _prototypeManager = default!;
@@ -64,6 +70,7 @@ public abstract class SharedLaundrySystem : EntitySystem
 
         SubscribeLocalEvent<WashableClothingComponent, ExaminedEvent>(OnWashableExamined);
         SubscribeLocalEvent<WashableClothingComponent, InventoryRelayedEvent<BeforeBleedPuddleSpawnEvent>>(OnWashableBeforeBleedPuddleSpawn);
+        SubscribeLocalEvent<WashableClothingComponent, InventoryRelayedEvent<BeforeVomitEvent>>(OnWashableBeforeVomit);
     }
 
     #region Machine
@@ -773,6 +780,79 @@ public abstract class SharedLaundrySystem : EntitySystem
         /// add back if it can't bleed onto clothes all the way (clothes are too soaked)
         if (takenSolution.Volume > 0)
             _solutions.AddSolution(trueArgs.BleedSolutionEntity.Value, takenSolution);
+    }
+    private void OnWashableBeforeVomit(Entity<WashableClothingComponent> ent, ref InventoryRelayedEvent<BeforeVomitEvent> args)
+    {
+        var trueArgs = args.Args;
+        if (trueArgs.Cancelled)
+            return;
+
+        if (!TryComp<ClothingComponent>(ent.Owner, out var clothing))
+            return;
+
+        (var chance, var portion) = GetVomitDirtyChanceAndPortion(ent, clothing);
+
+        if (!_random.Prob(chance))
+            return;
+
+        var vomitPortion = trueArgs.Vomit.SplitSolution(portion);
+
+        WashableWash(ent, vomitPortion);
+
+        if (vomitPortion.Volume > 0)
+            trueArgs.Vomit.AddSolution(vomitPortion, _prototypeManager);
+    }
+
+    private (float, FixedPoint2) GetVomitDirtyChanceAndPortion(Entity<WashableClothingComponent> ent, ClothingComponent clothing)
+    {
+        const string maskTag = "Mask";
+        const string breathMaskTag = "BreathMask";
+
+        /* idk how to do this rn fuck */
+        /*
+        if (TryComp<StandingStateComponent>(ent, out var standingState) && !_standing.IsDown())
+        {
+            switch (clothing.InSlotFlag)
+            {
+                case SlotFlags.HEAD:
+                    if (HasComp<IngestionBlockerComponent>(ent) || _tag.HasAnyTag(ent.Owner, maskTag, breathMaskTag))
+                        return (1f, 0.9f);
+                    break;
+                case SlotFlags.MASK:
+                    if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+                        return (0.2f, 0.1f);
+                    return (1f, 0.9f);
+            }
+
+            return (0.25f, 0.25f);
+        }
+        */
+
+        switch (clothing.InSlotFlag)
+        {
+            case SlotFlags.HEAD:
+                if (HasComp<IngestionBlockerComponent>(ent) || _tag.HasAnyTag(ent.Owner, maskTag, breathMaskTag))
+                    return (1f, 0.9f);
+                break;
+            case SlotFlags.MASK:
+                if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+                    return (0.2f, 0.1f);
+                return (1f, 0.9f);
+            case SlotFlags.INNERCLOTHING:
+                return (0.16f, 0.12f);
+            case SlotFlags.OUTERCLOTHING:
+                return (0.16f, 0.12f);
+            case SlotFlags.GLOVES:
+                return (0.12f, 0.16f);
+            case SlotFlags.NECK:
+                return (0.1f, 0.1f);
+            case SlotFlags.BELT:
+                return (0.08f, 0.09f);
+            case SlotFlags.FEET:
+                return (0.16f, 0.16f);
+        }
+
+        return (0f, 0f);
     }
 
     #endregion

@@ -2,7 +2,7 @@
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Inventory;
 
-namespace Content.Server._hereelabs.Medical;
+namespace Content.Shared._hereelabs.Medical;
 
 /// <summary>
 /// Raised on an entity before they spawn a puddle on the floor from bleeding.
