@@ -152,10 +152,6 @@
     - Lantern
     - Bible
     - CrowbarRed
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
     - Lighter
     - NullRodDefault # imp
 
@@ -184,10 +180,6 @@
     - Lantern
     - Bible
     - CrowbarRed
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
-    - FoodBakedBunHotX
     - Lighter
     - NullRodDefault # imp
 
@@ -328,9 +320,8 @@
   storage:
     back:
     - WeaponDisabler
-    - MedicatedSuture
-    - RegenerativeMesh
-    - BoxZiptie
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxHandcuff
     - CrowbarRed
     - MagazinePistol
 
@@ -352,9 +343,8 @@
   storage:
     back:
     - WeaponDisabler
-    - MedicatedSuture
-    - RegenerativeMesh
-    - BoxZiptie
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxHandcuff
     - CrowbarRed
     - MagazinePistol
 
@@ -378,9 +368,8 @@
   storage:
     back:
     - WeaponDisabler
-    - MedicatedSuture
-    - RegenerativeMesh
-    - BoxZiptie
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxHandcuff
     - CrowbarRed
     - MagazinePistol
 

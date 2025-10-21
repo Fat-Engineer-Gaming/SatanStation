@@ -73,7 +73,7 @@
 - type: entity
   id: RandomHumanoidSpawnerERTLeader
   name: ERT leader
-  suffix: ERTRole, Basic
+  suffix: ERTRole, Basic, Blue/Green
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -110,7 +110,7 @@
   id: RandomHumanoidSpawnerERTLeaderEVA
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT leader
-  suffix: ERTRole, Armored EVA
+  suffix: ERTRole, Armored EVA, Red
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -136,7 +136,7 @@
 - type: entity
   id: RandomHumanoidSpawnerERTLeaderEVALecter
   parent: RandomHumanoidSpawnerERTLeaderEVA
-  suffix: ERTRole, Lecter, EVA
+  suffix: ERTRole, Lecter, EVA, Red
   components:
     - type: RandomHumanoidSpawner
       settings: ERTLeaderEVALecter
