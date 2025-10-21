@@ -1,0 +1,10 @@
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformCDIHero
+  name: cdi hero's tunic
+  description: Great! I'll grab my stuff!
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Clothing/Uniforms/Jumpsuit/cdi-hero.rsi
+  - type: Clothing
+    sprite: _hereelabs/Clothing/Uniforms/Jumpsuit/cdi-hero.rsi

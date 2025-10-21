@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatCDIHero
+  name: cdi hero's cap
+  description: Gee, it sure is boring around here...
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Clothing/Head/Hats/cdi-hero.rsi
+  - type: Clothing
+    sprite: _hereelabs/Clothing/Head/Hats/cdi-hero.rsi

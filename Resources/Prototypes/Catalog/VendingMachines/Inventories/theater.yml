@@ -109,6 +109,12 @@
     ClothingShoesBling: 1 #imp
     ClothingShoesBootsCowboyFancy: 1 #imp
     ClothingOuterDogi: 1 #imp
+
+    # Devilstation begin
+    ClothingHeadHatCDIHero: 1
+    ClothingUniformCDIHero: 1
+    ClothingShoesBootsCDIHero: 1
+    # Devilstation end
   emaggedInventory:
     ClothingHeadHatCowboyBountyHunter: 1
     ClothingMaskBlushingClown: 1

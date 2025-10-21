@@ -1,0 +1,12 @@
+- type: entity
+  parent: [ClothingShoesBase]
+  id: ClothingShoesBootsCDIHero
+  name: cdi hero's boots
+  description: I won!
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Clothing/Shoes/Boots/cdi-hero.rsi
+  - type: Clothing
+    sprite: _hereelabs/Clothing/Shoes/Boots/cdi-hero.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.5
