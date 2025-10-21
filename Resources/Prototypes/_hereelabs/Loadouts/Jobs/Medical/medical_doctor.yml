@@ -1,0 +1,5 @@
+- type: loadout
+  id: MedicalGlassesHudCracked
+  equipment:
+    eyes: ClothingEyesGlassesHudMedicalCracked
+  groupBy: "job"
