@@ -2,19 +2,30 @@ using Content.Shared.Audio;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Clothing.Components;
 using Content.Shared.Construction.Components;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
-using Content.Shared.IdentityManagement;
+using Content.Shared.Fluids;
+using Content.Shared.Inventory;
 using Content.Shared.Jittering;
+using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
+using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
+using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
+using Content.Shared._hereelabs.Body.Events;
+using Content.Shared._hereelabs.Laundry;
+using Content.Shared._hereelabs.Medical;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Content.Shared._hereelabs.Laundry;
@@ -30,14 +41,19 @@ public abstract class SharedLaundrySystem : EntitySystem
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     /// [Dependency] private readonly ThrowingSystem _throwing = default!;
     /// [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] protected readonly ItemSlotsSystem _itemSlots = default!;
     [Dependency] protected readonly SharedSolutionContainerSystem _solutions = default!;
+    [Dependency] protected readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] protected readonly SharedPuddleSystem _puddle = default!;
+    [Dependency] protected readonly IRobustRandom _random = default!;
 
     private readonly int _modeCount = Enum.GetValues<LaundryMachineMode>().Length;
     private readonly int _washerCycleCount = Enum.GetValues<WasherCycleSetting>().Length;
     private readonly int _dryerCycleCount = Enum.GetValues<DryerCycleSetting>().Length;
 
     public readonly FixedPoint2 DRIP_AMOUNT = 0.08;
+    public readonly FixedPoint2 CLEANING_REAGENT_WASH_REMOVE = 0.01;
     public const float CLEAN_STRENGTH_FACTOR = 0.25f;
     public const float WASH_STRENGTH_FACTOR = 0.75f;
     public const float MACHINE_WASH_PORTION = 0.25f;
@@ -53,6 +69,8 @@ public abstract class SharedLaundrySystem : EntitySystem
         SubscribeLocalEvent<LaundryMachineComponent, EntRemovedFromContainerMessage>(OnMachineRemoveEntity);
 
         SubscribeLocalEvent<WashableClothingComponent, ExaminedEvent>(OnWashableExamined);
+        SubscribeLocalEvent<WashableClothingComponent, InventoryRelayedEvent<BeforeBleedPuddleSpawnEvent>>(OnWashableBeforeBleedPuddleSpawn);
+        SubscribeLocalEvent<WashableClothingComponent, InventoryRelayedEvent<BeforeVomitEvent>>(OnWashableBeforeVomit);
     }
 
     #region Machine
@@ -558,8 +576,8 @@ public abstract class SharedLaundrySystem : EntitySystem
 
     private void OnWashableExamined(Entity<WashableClothingComponent> ent, ref ExaminedEvent args)
     {
-        if (!args.IsInDetailsRange)
-            return;
+        //if (!args.IsInDetailsRange)
+        //    return;
 
         var comp = ent.Comp;
         if (!TryGetWashableSolution(ent, out var _, out var solution))
@@ -610,6 +628,231 @@ public abstract class SharedLaundrySystem : EntitySystem
             return ClothingWetness.Damp;
 
         return ClothingWetness.Dry;
+    }
+
+
+    public FixedPoint2 WashableWash(Entity<WashableClothingComponent> ent, Solution washSolution)
+    {
+        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+            return 0;
+
+        var incomingQuantity = FixedPoint2.Min(washSolution.Volume, solution.MaxVolume - solution.Volume);
+        if (incomingQuantity <= 0)
+            return 0;
+
+        var incomingSolution = washSolution.SplitSolution(incomingQuantity);
+        var solutionContents = solution.Contents.ToArray();
+
+        /// cleaning reagents
+        var cleaningStrength = 0f;
+        var cleaningVolume = 0f;
+
+        List<ReagentQuantity> cleaners = new();
+        foreach (var reagentQuantity in solutionContents)
+        {
+            var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
+            if (reagentProto.LaundryCleaningStrength > 0)
+            {
+                cleaningStrength += reagentProto.LaundryCleaningStrength;
+                cleaningVolume += (float)reagentQuantity.Quantity;
+                cleaners.Add(reagentQuantity);
+            }
+        }
+        if (cleaningVolume > 0)
+        {
+            cleaningStrength /= cleaningVolume;
+
+            List<ReagentQuantity> toClean = new();
+            foreach (var reagentQuantity in solutionContents)
+            {
+                var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
+                if (reagentProto.LaundryCleaningStrength <= 0 && !reagentProto.Absorbent)
+                    toClean.Add(reagentQuantity);
+            }
+
+            FixedPoint2 totalRemoved = 0;
+            foreach (var reagentQuantity in toClean)
+            {
+                var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
+                var removed = solution.RemoveReagent(reagentQuantity.Reagent, cleaningStrength * CLEAN_STRENGTH_FACTOR / reagentProto.LaundryCleanResistance);
+                totalRemoved += removed;
+            }
+            if (totalRemoved > 0)
+            {
+                foreach (var reagentQuantity in cleaners)
+                {
+                    solution.RemoveReagent(reagentQuantity.Reagent, totalRemoved * (reagentQuantity.Quantity / cleaningVolume) * CLEAN_STRENGTH_FACTOR);
+                }
+            }
+        }
+
+        /// absorbent reagents (like water) to wash away other non-absorbent reagents, cleaning reagents will slowly disappear when washing
+        solutionContents = solution.Contents.ToArray();
+
+        Solution washedAwaySolution = new();
+        FixedPoint2 washStrength = 0;
+
+        foreach (var reagentQuantity in solutionContents)
+        {
+            var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
+            if (reagentProto.Absorbent)
+                washStrength += reagentQuantity.Quantity;
+        }
+
+        if (washStrength > 0)
+        {
+            foreach (var reagentQuantity in solutionContents)
+            {
+                var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
+                if (!reagentProto.Absorbent)
+                {
+                    var removed = solution.RemoveReagent(reagentQuantity.Reagent, washStrength * WASH_STRENGTH_FACTOR);
+                    if (reagentProto.LaundryCleaningStrength > 0)
+                    {
+                        if (removed < CLEANING_REAGENT_WASH_REMOVE)
+                            continue;
+                        removed -= CLEANING_REAGENT_WASH_REMOVE;
+                    }
+                    washedAwaySolution.AddReagent(reagentQuantity.Reagent, removed);
+                }
+            }
+        }
+
+        WashableSpill(ent, washedAwaySolution);
+
+        return _solutions.AddSolution(soln.Value, incomingSolution);
+    }
+    public void WashableDrip(Entity<WashableClothingComponent> ent, FixedPoint2 amount, bool sound = false)
+    {
+        if (!TryGetWashableSolution(ent, out var soln, out var solution))
+            return;
+
+        if (amount < 0)
+            amount = solution.Volume;
+
+        var dripped = _solutions.SplitSolution(soln.Value, amount);
+
+        WashableSpill(ent, dripped, sound);
+    }
+    public void WashableSpill(Entity<WashableClothingComponent> ent, Solution solution, bool sound = false)
+    {
+        if (TryComp<InsideEntityStorageComponent>(ent.Owner, out var insideEntStorage))
+        {
+            var entStorageUid = insideEntStorage.Storage;
+            if (TryComp<EntityStorageComponent>(entStorageUid, out var _) && TryComp<LaundryMachineComponent>(entStorageUid, out var _))
+            {
+                /// try dripping into laundry machine drum
+                if (_solutions.EnsureSolutionEntity(entStorageUid, "drum", out var drumSoln))
+                {
+                    var transferred = _solutions.AddSolution(drumSoln.Value, solution);
+
+                    /// spill leftovers as a puddle
+                    if (transferred < solution.Volume)
+                        _puddle.TrySpillAt(ent.Owner, solution, out var _, sound);
+                    return;
+                }
+            }
+        }
+
+        /// spill dripped as puddle
+        _puddle.TrySpillAt(ent.Owner, solution, out var _, sound);
+    }
+    private void OnWashableBeforeBleedPuddleSpawn(Entity<WashableClothingComponent> ent, ref InventoryRelayedEvent<BeforeBleedPuddleSpawnEvent> args)
+    {
+        var trueArgs = args.Args;
+        if (args.Args.Cancelled || trueArgs.BleedSolution.Volume <= 0 || !trueArgs.BleedSolutionEntity.HasValue)
+            return;
+
+        /// try chance
+        if (!_random.Prob(ent.Comp.BleedChance))
+            return;
+
+        /// take portion
+        var quantity = trueArgs.BleedSolution.Volume * ent.Comp.BleedPortion;
+        if (quantity <= 0)
+            return;
+
+        var takenSolution = _solutions.SplitSolution(trueArgs.BleedSolutionEntity.Value, quantity);
+
+        /// bleed onto clothes
+        WashableWash(ent, takenSolution);
+
+        /// add back if it can't bleed onto clothes all the way (clothes are too soaked)
+        if (takenSolution.Volume > 0)
+            _solutions.AddSolution(trueArgs.BleedSolutionEntity.Value, takenSolution);
+    }
+    private void OnWashableBeforeVomit(Entity<WashableClothingComponent> ent, ref InventoryRelayedEvent<BeforeVomitEvent> args)
+    {
+        var trueArgs = args.Args;
+        if (trueArgs.Cancelled)
+            return;
+
+        if (!TryComp<ClothingComponent>(ent.Owner, out var clothing))
+            return;
+
+        (var chance, var portion) = GetVomitDirtyChanceAndPortion(ent, clothing);
+
+        if (!_random.Prob(chance))
+            return;
+
+        var vomitPortion = trueArgs.Vomit.SplitSolution(portion);
+
+        WashableWash(ent, vomitPortion);
+
+        if (vomitPortion.Volume > 0)
+            trueArgs.Vomit.AddSolution(vomitPortion, _prototypeManager);
+    }
+
+    private (float, FixedPoint2) GetVomitDirtyChanceAndPortion(Entity<WashableClothingComponent> ent, ClothingComponent clothing)
+    {
+        const string maskTag = "Mask";
+        const string breathMaskTag = "BreathMask";
+
+        /* idk how to do this rn fuck */
+        /*
+        if (TryComp<StandingStateComponent>(ent, out var standingState) && !_standing.IsDown())
+        {
+            switch (clothing.InSlotFlag)
+            {
+                case SlotFlags.HEAD:
+                    if (HasComp<IngestionBlockerComponent>(ent) || _tag.HasAnyTag(ent.Owner, maskTag, breathMaskTag))
+                        return (1f, 0.9f);
+                    break;
+                case SlotFlags.MASK:
+                    if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+                        return (0.2f, 0.1f);
+                    return (1f, 0.9f);
+            }
+
+            return (0.25f, 0.25f);
+        }
+        */
+
+        switch (clothing.InSlotFlag)
+        {
+            case SlotFlags.HEAD:
+                if (HasComp<IngestionBlockerComponent>(ent) || _tag.HasAnyTag(ent.Owner, maskTag, breathMaskTag))
+                    return (1f, 0.9f);
+                break;
+            case SlotFlags.MASK:
+                if (TryComp<MaskComponent>(ent, out var mask) && mask.IsToggled)
+                    return (0.2f, 0.1f);
+                return (1f, 0.9f);
+            case SlotFlags.INNERCLOTHING:
+                return (0.16f, 0.12f);
+            case SlotFlags.OUTERCLOTHING:
+                return (0.16f, 0.12f);
+            case SlotFlags.GLOVES:
+                return (0.12f, 0.16f);
+            case SlotFlags.NECK:
+                return (0.1f, 0.1f);
+            case SlotFlags.BELT:
+                return (0.08f, 0.09f);
+            case SlotFlags.FEET:
+                return (0.16f, 0.16f);
+        }
+
+        return (0f, 0f);
     }
 
     #endregion

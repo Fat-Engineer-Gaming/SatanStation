@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [ Clothing, ClothingWashableBase ] # devil !
   id: ClothingMaskBase
   components:
   - type: Sprite
@@ -14,6 +14,11 @@
     - Mask
   - type: StaticPrice
     price: 28 # Imp - Increase sell price to stop arbitrage test fails
+  - type: WashableClothing
+    capacity: 15
+    dripVolume: 7.5
+    wetnessScale: 0.75
+    washFactor: 2.5
 
 - type: entity
   abstract: true

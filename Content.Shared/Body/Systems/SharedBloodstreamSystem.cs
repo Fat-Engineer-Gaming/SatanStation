@@ -16,6 +16,7 @@ using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffectNew;
+using Content.Shared._hereelabs.Body.Events;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -408,9 +409,14 @@ public abstract class SharedBloodstreamSystem : EntitySystem
                 tempSolution.AddSolution(temp, _prototypeManager);
             }
 
-            _puddle.TrySpillAt(ent.Owner, tempSolution, out _, sound: false);
+            var ev = new BeforeBleedPuddleSpawnEvent(tempSolution, ent.Comp.TemporarySolution);
+            RaiseLocalEvent(ent, ref ev);
+            if (!ev.Cancelled && tempSolution.Volume > 0)
+            {
+                _puddle.TrySpillAt(ent.Owner, tempSolution, out _, sound: false);
 
-            tempSolution.RemoveAllSolution();
+                tempSolution.RemoveAllSolution();
+            }
         }
 
         SolutionContainer.UpdateChemicals(ent.Comp.TemporarySolution.Value);

@@ -1,7 +1,7 @@
 # a ClothingHandsBase for handwear that's entirely leather or synthetic since moths eat cloth and occasionally paper
 - type: entity
   abstract: true
-  parent: [ Clothing, ClothingWashableBase ]
+  parent: [ Clothing, ClothingWashableBase ] # devil!!
   id: ClothingHandsInedibleBase
   components:
   - type: Sprite
@@ -21,3 +21,6 @@
         Cold: 5 # imp edit for cold lightbulbs
   - type: PluralName # imp
     oneOf: plural-name-pair-1
+  - type: WashableClothing # devil !!
+    bleedChance: 0.12
+    bleedPortion: 0.05

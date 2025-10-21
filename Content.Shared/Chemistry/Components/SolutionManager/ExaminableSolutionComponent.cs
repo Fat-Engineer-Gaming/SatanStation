@@ -35,6 +35,24 @@ public sealed partial class ExaminableSolutionComponent : Component
     public bool ExaminableWhileClosed = true;
 
     /// <summary>
+    ///     If false, the examine text for the solution volume will be removed.
+    /// </summary>
+    [DataField]
+    public bool ShowVolume = true; /// devilstation!
+
+    /// <summary>
+    ///     If false, the examine text for the solution's physical description will be removed.
+    /// </summary>
+    [DataField]
+    public bool ShowPhysicalQuality = true; /// devilstation!
+
+    /// <summary>
+    ///     If false, the examine text for the solution volume will be removed.
+    /// </summary>
+    [DataField]
+    public bool ShowRecognizableReagents = true; /// devilstation!
+
+    /// <summary>
     ///     Examine text for the amount of solution.
     /// </summary>
     /// <seealso cref="ExaminedVolumeDisplay"/>

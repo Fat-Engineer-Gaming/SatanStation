@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: [ Clothing, ClothingWashableBase ]
+  parent: [ Clothing, ClothingWashableBase ] # devil !!
   id: ClothingBeltBase
   components:
   - type: Sprite
@@ -17,6 +17,9 @@
       Cloth: 50
   - type: StaticPrice
     price: 20
+  - type: WashableClothing # devil !!
+    bleedChance: 0.12
+    bleedPortion: 0.08
 
 - type: entity
   abstract: true
