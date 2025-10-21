@@ -28,6 +28,9 @@ ghost-role-information-silicon-rules = You are a [color=#6495ed][bold]Silicon[/b
 ghost-role-information-mouse-name = Mouse
 ghost-role-information-mouse-description = A hungry and mischievous mouse.
 
+ghost-role-information-cancer-mouse-name = Cancer Mouse
+ghost-role-information-cancer-mouse-description = An irradiated mouse, spread your affliction and seek food.
+
 ghost-role-information-mothroach-name = Mothroach
 ghost-role-information-mothroach-description = A cute but mischievous mothroach.
 
@@ -45,7 +48,8 @@ ghost-role-information-snoth-description = A little snoth who doesn't mind a bit
 
 ghost-role-information-giant-spider-name = Giant Spider
 ghost-role-information-giant-spider-description = This station's inhabitants look mighty tasty, and your sticky web is perfect to catch them!
-ghost-role-information-giant-spider-rules = You are a [color={role-type-team-antagonist-color}][bold]{role-type-team-antagonist-name}[/bold][/color] with all other giant spiders.
+ghost-role-information-giant-spider-rules = You are a fiercely territorial [color=red][bold]Team Antagonist[/bold][/color] with all other giant spiders.
+                                            You're a Free Agent regarding matters not related to your territory.
 
                                             You don't remember any of your previous life, and you don't remember anything you learned as a ghost.
 

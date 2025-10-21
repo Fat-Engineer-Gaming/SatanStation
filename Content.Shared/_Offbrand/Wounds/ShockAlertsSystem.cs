@@ -12,8 +12,9 @@ namespace Content.Shared._Offbrand.Wounds;
 
 public sealed class ShockAlertsSystem : EntitySystem
 {
-    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly PainSystem _pain = default!;
+
+    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
 
     public override void Initialize()
     {
@@ -44,11 +45,11 @@ public sealed class ShockAlertsSystem : EntitySystem
 
         if (targetEffect is { } effect)
         {
-            _alerts.ShowAlert(ent, effect);
+            _alertsSystem.ShowAlert(ent.Owner, effect);
         }
         else
         {
-            _alerts.ClearAlertCategory(ent, ent.Comp.AlertCategory);
+            _alertsSystem.ClearAlertCategory(ent.Owner, ent.Comp.AlertCategory);
         }
     }
 
@@ -59,7 +60,7 @@ public sealed class ShockAlertsSystem : EntitySystem
 
     private void OnComponentShutdown(Entity<ShockAlertsComponent> ent, ref ComponentShutdown args)
     {
-        _alerts.ClearAlertCategory(ent, ent.Comp.AlertCategory);
+        _alertsSystem.ClearAlertCategory(ent.Owner, ent.Comp.AlertCategory);
     }
 
     private void OnAfterShockChange(Entity<ShockAlertsComponent> ent, ref AfterShockChangeEvent args)

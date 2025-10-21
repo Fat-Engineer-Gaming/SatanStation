@@ -60,6 +60,8 @@
       path: alerts/puce.ogg
     - id: alertOmega # Engineering fucked up hard oh my god
       path: alerts/omega.ogg
+    - id: alertOmicron # cc did a thing
+      path: alerts/omicron.ogg
 
     # Events
     ## Wizard's Den

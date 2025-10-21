@@ -87,6 +87,7 @@
       Dead:
         Base: dead
   - type: Puller
+    needsHands: false
   - type: Butcherable
     butcheringType: Spike
     spawned:
@@ -118,6 +119,7 @@
     molsPerSecondPerUnitMass: 0.0005
   - type: Speech
     speechVerb: LargeMob
+  - type: ThermalVision
 
 - type: entity
   name: praetorian
@@ -393,6 +395,7 @@
   - type: NpcFactionMember
     factions:
     - Xeno
+    - SimpleHostile
   - type: MeleeWeapon
     angle: 0
     animation: WeaponArcBite
@@ -427,6 +430,7 @@
     - FootstepSound
   - type: GoobAbsorbable # imp edit
     biomassRestored: 0.2
+  - type: ThermalVision
 
 - type: entity
   name: space adder
@@ -513,6 +517,7 @@
       Dead:
         Base: dead
   - type: Puller
+    needsHands: false
   - type: Butcherable
     butcheringType: Spike
     spawned:

@@ -26,3 +26,26 @@
   hostile:
   - SCPFoundation
   - ClassD
+
+- type: npcFaction
+  id: Spider
+  hostile:
+  - NanoTrasen
+  - Dragon
+  - Mouse
+  - Passive
+  - PetsNT
+  - SimpleHostile
+  - SimpleNeutral
+  - Syndicate
+  - Xeno
+  - Zombie
+  - Revolutionary
+  - Wizard
+  - Xenoborg
+  - Changeling
+  - Heretic
+  - Dino
+  - Penguin
+  - Replicator
+  - Amalgam

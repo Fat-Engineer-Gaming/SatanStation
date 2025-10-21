@@ -79,7 +79,7 @@
 
 
 - type: emoteSounds
-  id: FemaleVulpkanin
+  id: DV_FemaleVulpkanin
   params:
     variation: 0.125
   sounds:
@@ -106,28 +106,28 @@
     Weh:
       collection: Weh
     Growl:
-      collection: VulpkaninGrowls
+      collection: DV_VulpkaninGrowls
     Snarl:
-      collection: VulpkaninSnarls
+      collection: DV_VulpkaninSnarls
     Bark:
-      collection: VulpkaninBarks
+      collection: DV_VulpkaninBarks
     Whine:
-      collection: VulpkaninWhines
+      collection: DV_VulpkaninWhines
     Howl:
-      collection: VulpkaninHowls
+      collection: DV_VulpkaninHowls
     Awoo:
-      collection: VulpkaninHowls
+      collection: DV_VulpkaninHowls
     Gasp:
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
     Gekker:
-      collection: VulpkaninGekker
+      collection: DV_VulpkaninGekker
     Yap:
-      collection: VulpkaninYap
+      collection: DV_VulpkaninYap
 
 - type: emoteSounds
-  id: MaleVulpkanin
+  id: DV_MaleVulpkanin
   params:
     variation: 0.125
   sounds:
@@ -154,25 +154,25 @@
     Weh:
       collection: Weh
     Growl:
-      collection: VulpkaninGrowls
+      collection: DV_VulpkaninGrowls
     Snarl:
-      collection: VulpkaninSnarls
+      collection: DV_VulpkaninSnarls
     Bark:
-      collection: VulpkaninBarks
+      collection: DV_VulpkaninBarks
     Whine:
-      collection: VulpkaninWhines
+      collection: DV_VulpkaninWhines
     Howl:
-      collection: VulpkaninHowls
+      collection: DV_VulpkaninHowls
     Awoo:
-      collection: VulpkaninHowls
+      collection: DV_VulpkaninHowls
     Gasp:
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
     Yap:
-      collection: VulpkaninYap
+      collection: DV_VulpkaninYap
     Gekker:
-      collection: VulpkaninGekker
+      collection: DV_VulpkaninGekker
 
 - type: emoteSounds
   id: MobDog

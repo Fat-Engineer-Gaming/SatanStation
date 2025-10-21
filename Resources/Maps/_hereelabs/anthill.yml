@@ -46545,13 +46545,6 @@ entities:
     - type: Transform
       pos: -50.15305,24.807764
       parent: 2
-- proto: EggSpider
-  entities:
-  - uid: 7092
-    components:
-    - type: Transform
-      pos: -16.148308,59.838753
-      parent: 2
 - proto: EmergencyLight
   entities:
   - uid: 7093
@@ -75632,7 +75625,7 @@ entities:
         In order to ensure the crew aboard this vessel are healthy enough to perform expected tasks, it is advised that the particle accelerator be kept at [bold]strength level 2[/bold] when dealing with the gravitational singularity.
 
 
-        Failure to adhere to this may result in injury, death, and a large deduction from your paycheck. 
+        Failure to adhere to this may result in injury, death, and a large deduction from your paycheck.
 
         ────────────────────────────────────
 

@@ -1,8 +1,8 @@
 - type: entity
   save: false
   name: Urist McVulp
-  parent: BaseMobVulpkanin
-  id: MobVulpkanin
+  parent: BaseDV_MobVulpkanin
+  id: DV_MobVulpkanin
   components:
     - type: CombatMode
     - type: InteractionPopup

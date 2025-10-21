@@ -1,17 +1,17 @@
 ﻿- type: body
   name: "vulpkanin"
-  id: Vulpkanin
+  id: DV_Vulpkanin
   root: torso
   slots:
     head:
-      part: HeadVulpkanin
+      part: DV_HeadVulpkanin
       connections:
       - torso
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
     torso:
-      part: TorsoVulpkanin
+      part: DV_TorsoVulpkanin
       connections: # Goobstation - fix some species having their hands the wrong way around
       - right arm
       - left arm
@@ -21,30 +21,30 @@
       organs:
         heart: OrganAnimalHeart
         lungs: OrganHumanLungs
-        stomach: OrganVulpkaninStomach
+        stomach: DV_OrganVulpkaninStomach
         liver: OrganAnimalLiver
         kidneys: OrganHumanKidneys
     right arm:
-      part: RightArmVulpkanin
+      part: DV_RightArmVulpkanin
       connections:
       - right hand
     left arm:
-      part: LeftArmVulpkanin
+      part: DV_LeftArmVulpkanin
       connections:
       - left hand
     right hand:
-      part: RightHandVulpkanin
+      part: DV_RightHandVulpkanin
     left hand:
-      part: LeftHandVulpkanin
+      part: DV_LeftHandVulpkanin
     right leg:
-      part: RightLegVulpkanin
+      part: DV_RightLegVulpkanin
       connections:
       - right foot
     left leg:
-      part: LeftLegVulpkanin
+      part: DV_LeftLegVulpkanin
       connections:
       - left foot
     right foot:
-      part: RightFootVulpkanin
+      part: DV_RightFootVulpkanin
     left foot:
-      part: LeftFootVulpkanin
+      part: DV_LeftFootVulpkanin

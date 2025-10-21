@@ -151,8 +151,8 @@
   - type: ShowSyndicateIcons
   - type: ThermalVision
     isEquipment: true
-    pulseTime: 2
-    toggleAction: PulseThermalVision
+    lightRadius: 15
+    color: "#00aaff"
   - type: IdentityBlocker
     coverage: EYES
   - type: PluralName # imp
@@ -178,9 +178,9 @@
   - type: Storage
     maxItemSize: Ginormous
     grid:
-    - 0,0,29,11
+    - 0,0,29,7
   - type: ClothingSpeedModifier
-    sprintModifier: 1.2 # makes its stats identical to other variants of bag of holding
+    sprintModifier: 1.4 # makes its stats identical to other variants of bag of holding
   - type: HeldSpeedModifier
 
 # Remove BaseItem Power Requirement
@@ -229,36 +229,18 @@
         - LowImpassable
   - type: Anchorable
 
-
-###########################################
-# Start of DroneProtolatheHyperConvection #
-###########################################
-
 - type: entity
-  id: DroneProtolatheHyperConvection
-  parent: [DroneProtolathe, BaseHyperlathe]
-  name: hyper convection protolathe
-  categories: [HideSpawnMenu]
-  description: A highly-experimental protolathe that harnesses the power of extreme heat to slowly create objects more cost-effectively.
+  id: STRIDERTechFab
+  parent: [ DroneBaseLatheLube ] # imp
+  name: Drone techfab
+  description: This device can print almost anything you want.
   components:
   - type: Sprite
-    sprite: Structures/Machines/protolathe_hypercon.rsi
-  - type: Machine
-    board: ProtolatheHyperConvectionMachineCircuitboard
-
-- type: entity
-  id: DroneProtolathe
-  parent: [ DroneBaseLatheLube, BaseScienceContraband ] # imp
-  name: protolathe
-  categories: [HideSpawnMenu]
-  description: Converts raw materials into advanced items.
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/protolathe.rsi
-    snapCardinals: true
+    sprite: Structures/Machines/techfab.rsi
     layers:
     - state: icon
       map: ["enum.LatheVisualLayers.IsRunning"]
+    - state: sec
     - state: unlit
       shader: unshaded
       map: ["enum.PowerDeviceVisualLayers.Powered"]
@@ -267,51 +249,95 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Machine
-    board: ProtolatheMachineCircuitboard
-  - type: Item
-    size: Large
-  - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
-  - type: OreSiloClient
+    board: SecurityTechFabCircuitboard
   - type: Lathe
     idleState: icon
-    runningState: building
+    runningState: icon
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
-    - ChemistryStatic
-    - SurgeryStatic
-    - ImpProtoStatic # Imp
-    - ReportingStatic # DeltaV
+    - SecurityEquipmentStatic
+    - SecurityPracticeStatic
+    - SecurityAmmoStatic
+    - SecurityWeaponsStatic
     - SteelBriefcaseImp # Imp
+    - ScienceBoardsStatic
+    - ServiceBoardsStatic
+    - CargoBoardsStatic
+    - MedicalBoardsStatic
+    - EngineeringBoardsStatic
+    - CircuitFloorsStatic
+    - ImpCircuitStatic # Imp
+    - OffbrandCircuitboardsStatic # Offbrand
+    - ImpCircuitEmagged
+    - TopicalsStatic
+    - ChemistryStatic
+    - MedicalStatic
+    - RollerBedsStatic
+    - MedicalClothingStatic
+    - EmptyMedkitsStatic
+    - SurgeryStatic
+    - OffbrandSurgeryStatic # Offbrand
+    - ImpMedStatic # Imp
+    - OffbrandMedicalStatic # Offbrand
+    - ClothingCivilian
+    - ClothingCargo
+    - ClothingCommand
+    - ClothingEngineering
+    - ClothingMedical
+    - ClothingScience
+    - ClothingSecurity
+    - ClothingService
+    - WinterCoats
+    - Ties
+    - Scarves
+    - Carpets
+    - Bedsheets
+    - PrideFlags # imp
+    - BeltsDeltaV # DeltaV
+    - ClothingJustice # DeltaV
+    - ClothingCentComm
+    - ClothingSyndie
+    - ImpClothesEmagged # Imp
+    - OreSmelting
+    - RGlassSmelting
     dynamicPacks:
-    - AdvancedTools
-    - ScienceEquipment
-    - ScienceExplosives
-    - ScienceClothing
-    - PowerCells
-    - ScienceWeapons
-    - Mining
-    - AtmosTools
-    - EngineeringWeapons
     - Chemistry
-    - Janitor
-    - Instruments
-    - Equipment
-    - FauxTiles
-    - ImpProtoDynamic # Imp
-    - NFService # Frontier
-    - SecurityAmmo
-    - SecurityExplosives
+    - ImpMedDynamic # Imp
+    - EngineeringBoards
+    - CargoBoards
+    - MedicalBoards
+    - ServiceBoards
+    - ScienceBoards
+    - CameraBoards
+    - MechBoards
+    - ShuttleBoards
+    - ImpCircuitDynamic # imp
+    - UpgradeKits # Goobstation
+    - SalvageSecurityBoards
+    - SalvageSecurityWeapons
     - SecurityEquipment
+    - SecurityBoards
+    - SecurityExplosives
+    - SecurityAmmo
     - SecurityWeapons
-  - type: EmagLatheRecipes
-    emagDynamicPacks:
-    - ImpProtoEmagged # Imp
+    - SecurityDisablers
+  - type: MaterialStorage
+    whitelist:
+      tags:
+        - Ore
+        - Sheet
+        - Metal
+        - Wooden
+        - Plastic
+        - RawMaterial
+        - Ingot
+  - type: OreSiloClient
+  - type: LatheAnnouncing
+    channels: [Security]
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access: [["CentCom"]]
 
 - type: entity
   abstract: true
@@ -378,9 +404,7 @@
     - !type:AutomatedMaterialStorage
       input: AutomationSlotMaterials
       output: null
-#########################################
-# End of DroneProtolatheHyperConvection #
-#########################################
+
 
 #################
 # Drone Jukebox #
@@ -405,6 +429,7 @@
     selectState: select
   - type: Item
     size: Normal
+  - type: Anchorable
   - type: Machine
     board: JukeboxCircuitBoard
   - type: Appearance
@@ -711,160 +736,6 @@
     guides:
     - Science
 
-######################
-# DroneComputerComms #
-######################
-- type: entity
-  parent: [BaseItem, DroneComputerAiAccess, BaseGrandTheftContraband ]
-  id: DroneComputerComms
-  name: drone communications computer # imp
-  categories: [HideSpawnMenu]
-  description: A computer used to make station wide announcements via keyboard, set the appropriate alert level, and call the emergency shuttle.
-  components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-      sprite: _Impstation/Structures/Machines/computers.rsi # imp
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-      sprite: _Impstation/Structures/Machines/computers.rsi # imp
-    - map: ["computerLayerScreen"]
-      state: comm
-    - map: ["computerLayerKeys"]
-      state: generic_keys
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
-      sprite: _Impstation/Structures/Machines/computers.rsi # imp
-  - type: AccessReader
-    access: [[ "StationAI" ]]
-  - type: Transform
-    anchored: false
-  - type: CommunicationsConsole
-    title: comms-console-announcement-title-command # imp
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    transmitFrequencyId: ShuttleTimer
-  - type: ActivatableUI
-    key: enum.CommunicationsConsoleUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.CommunicationsConsoleUiKey.Key:
-        type: CommunicationsConsoleBoundUserInterface
-      enum.WiresUiKey.Key:
-        type: WiresBoundUserInterface
-  - type: Computer
-    board: CommsComputerCircuitboard
-  - type: PointLight
-    radius: 2.4 #imp
-    energy: 1.6
-    color: "#3c5eb5"
-  - type: Item
-    size: Large
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrong
-
-################################
-# ResearchAndDevelopmentServer #
-################################
-
-- type: entity
-  id: DroneResearchAndDevelopmentServer
-  parent: [DroneBaseItem, ConstructibleMachine, BaseCommandContraband ]
-  name: Drone R&D server
-  categories: [HideSpawnMenu]
-  description: Contains the collective knowledge of the drones internal Database. Destroying it would causing issues you wouldn't be able to solve. You don't want that do you?
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/server.rsi
-    snapCardinals: true
-    layers:
-      - state: server-off
-      - state: server-on
-        visible: false
-        map: ["enum.PowerDeviceVisualLayers.Powered"]
-      - state: variant-research
-      - state: server_o
-        map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: PointLight
-    enabled: false
-    castShadows: false
-    radius: 1.5
-    energy: 1.6
-    color: "#b211b2"
-  - type: LitOnPowered
-  - type: Item
-    size: Large
-  - type: ResearchServer
-  - type: TechnologyDatabase
-    supportedDisciplines:
-    - Industrial
-    - Arsenal
-    - Experimental
-    - CivilianServices
-  - type: ExtensionCableReceiver
-  - type: WiresPanel
-  - type: WiresVisuals
-  - type: Machine
-    board: ResearchAndDevelopmentServerMachineCircuitboard
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-        enum.PowerDeviceVisuals.Powered:
-          enum.PowerDeviceVisualLayers.Powered:
-            True: {visible: true}
-            False: {visible: true}
-  - type: AmbientOnPowered
-  - type: AmbientSound
-    volume: -9
-    range: 0
-    enabled: false
-    sound:
-      path: /Audio/Ambience/Objects/server_fans.ogg
-  - type: GuideHelp
-    guides:
-    - Science
-
-##############################################
-# DroneBaseResearchAndDevelopmentPointSource #
-##############################################
-
-- type: entity
-  id: DroneBaseResearchAndDevelopmentPointSource
-  parent: DroneBaseItem
-  name: "Drone R&D point source"
-  categories: [HideSpawnMenu]
-  # We should make this abstract once there are actual point sources.
-  components:
-  - type: Sprite
-    sprite: Structures/Machines/rndpointsource.rsi
-    layers:
-    - state: rndpointsource-off
-    - state: rndpointsource
-      shader: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-  - type: ResearchClient
-  - type: ResearchPointSource
-    pointspersecond: 75
-    active: true
-  - type: PointLight
-    radius: 1.5
-    energy: 1.6
-    color: "#3db83b"
-  - type: ActivatableUI
-    key: enum.ResearchClientUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ResearchClientUiKey.Key:
-        type: ResearchClientBoundUserInterface
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: {visible: true}
-          False: {visible: false}
 
 ######################################
 # How Is The Drone Is A Wizard?!?!?! #
@@ -874,7 +745,7 @@
   id: DronesGrimoire
   name: Drone Grimoire
   categories: [HideSpawnMenu]
-  parent: [ BaseItem, StorePresetSpellbook, BaseMagicalContraband ]
+  parent: [ BaseItem, StorePresetSpellbook ]
   components:
     - type: Sprite
       sprite: Objects/Misc/books.rsi
@@ -901,15 +772,14 @@
 - type: entity
   id: DroneMjollnir
   parent: [ BaseItem, BaseMagicalContraband ]
-  name: Drone Mjollnir
+  name: S.T.R.I.D.E.R Internal Combat Hammer
   categories: [HideSpawnMenu]
   description: A weapon worthy of a god, able to strike with the force of a lightning bolt. It crackles with barely contained energy.
   components:
   - type: Wieldable
     useDelayOnWield: false
   - type: ScaleVisuals
-    scale: 2.5, 2.5
-  - type: MeleeRequiresWield
+    scale: 0.5, 0.5
   - type: LandAtCursor
   - type: Sprite
     sprite: Objects/Weapons/Melee/mjollnir.rsi
@@ -925,7 +795,6 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 25
         Structural: 150
     soundHit:
       path: /Audio/Effects/tesla_consume.ogg
@@ -934,16 +803,18 @@
   - type: IncreaseDamageOnWield
     damage:
       types:
-        Blunt: 15
-        Shock: 15
-        Structural: 100
+        Blunt: 12
+        Shock: 22
+        Radiation: 16
+        Asphyxiation: 25
   - type: DamageOtherOnHit
     damage:
       types:
-        Blunt: 10
-        Structural: 100
+        Blunt: 12
+        Shock: 8
+        Radiation: 8
   - type: Item
-    size: Large
+    size: Small
 
 - type: entity
   name: Wizard Healing Module
@@ -971,7 +842,7 @@
 ###################################
 
 - type: entity
-  parent: [ ClothingUniformBase, BaseCentcommContraband ]
+  parent: [ ClothingUniformBase ]
   id: ClothingUniformJumpsuitTracker
   name: S.T.R.I.D.E.R Monitor Uplink
   categories: [HideSpawnMenu]
@@ -1010,34 +881,10 @@
   - type: Tag
     tags:
     - DoorBumpOpener
-    - HighRiskItem
 
 ########################
 # Final Drone Entities #
 ########################
-
-- type: entity
-  id: DroneModuleProtolatheHyper
-  name: Drone ProtolatheHyper
-  categories: [HideSpawnMenu]
-  parent: DroneProtolatheHyperConvection
-  components:
-    - type: Item
-      size: Large
-    - type: ApcPowerReceiver
-      needsPower: false
-    - type: Anchorable
-
-
-- type: entity
-  id: DroneModuleCommsComputer
-  name: DroneCommsComputer
-  categories: [HideSpawnMenu]
-  parent: DroneComputerComms
-  components:
-    - type: Item
-      size: Large
-
 
 - type: entity
   id: DroneModuleRDComputer
@@ -1047,18 +894,6 @@
   components:
     - type: Item
       size: Large
-
-- type: entity
-  id: DroneModuleResearchPS
-  name: Drone Research Point Source
-  categories: [HideSpawnMenu]
-  parent: DroneBaseResearchAndDevelopmentPointSource
-  components:
-    - type: Item
-      size: Huge
-    - type: ResearchPointSource
-      PointsPerSecond: 75
-
 
 - type: startingGear
   id: BeanDRGear
@@ -1092,106 +927,28 @@
       - EncryptionKeyBinary
       - EncryptionKeyBinary
       - DroneStaffHealing
-      - DroneStaffHealing
-      - DroneMjollnir
       - DroneMjollnir
       - WeaponPistolCHIMPUpgraded
       - AnomalyScanner
+      - STRIDERTechFab
       - DroneJukebox
-      - DroneModuleProtolatheHyper
-      - DroneComputerComms
       - DroneIdTerminal
-      - DroneResearchAndDevelopmentServer
       - DroneComputerResearchAndDevelopment
-      - DroneBaseResearchAndDevelopmentPointSource
       - DroneMaterialSilo
 
 - type: entity
-  save: false
-  abstract: true
-  id: CGB-Drone
-  description: It looks like a Maintenance Drone but ALOT bigger, This one looks special compared to the others... take good care of it. <3
+  parent: BaseAGhostAction
+  id: ActionDroneJukebox
+  name: Internal Jukebox
+  description: Play Music, when you want.
   components:
-    - type: Reactive
-      groups:
-        Acidic:
-          - Touch
-    - type: Input
-      context: human
-    - type: DamageOnHighSpeedImpact
-      damage:
-        types:
-          Blunt: 5
-      soundHit:
-        collection: MetalThud
-    - type: Clickable
-    - type: Damageable
-      damageContainer: Inorganic
-    - type: Bloodstream
-      bloodReagent: Oil
-      bloodlossDamage:
-        types:
-          Bloodloss: 0.1
-      bloodlossHealDamage:
-        types:
-          Bloodloss: -5
-    - type: InteractionOutline
-    - type: Fixtures
-      fixtures:
-        fix1:
-          shape:
-            radius: 0.4
-          density: 50
-          mask:
-            - MobMask
-          layer:
-            - MobLayer
-    - type: MovementSpeedModifier
-      baseWalkSpeed: 4
-      baseSprintSpeed: 3
-    - type: Sprite
-      noRot: true
-      drawdepth: Mobs
-    - type: Physics
-      bodyType: KinematicController
-    - type: Hands
-      showInHands: false
-    - type: ComplexInteraction
-    - type: Body
-      prototype: Drone
-      thermalVisibility: false
-    - type: IntrinsicRadioReceiver
-    - type: IntrinsicRadioTransmitter
-      channels:
-        - Binary
-        - Common
-        - Command
-        - Engineering
-        - Medical
-        - Science
-        - Security
-        - Supply
-    - type: ActiveRadio
-      channels:
-        - Binary
-        - Common
-        - Command
-        - Engineering
-        - Medical
-        - Science
-        - Security
-        - Supply
-    - type: DoAfter
-    - type: BodyEmotes
-      soundsid: GeneralBodyEmotes
-    - type: DamageExaminable
-    - type: IdExaminable
-    - type: Examiner
-    - type: Puller
-    - type: CombatMode
-    - type: StandingState
-    - type: Alerts
-    - type: ProtectedFromStepTriggers
+  - type: Action
+    icon: { sprite: Interface/Actions/actions_ai.rsi, state: comms_console }
+    iconOn: { sprite: Interface/Actions/actions_ai.rsi, state: comms_console }
+    keywords: [ "AI", "console", "interface" ]
+    priority: -4
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.JukeboxUiKey.Key }
 
 - type: entity
   save: false
@@ -1255,15 +1012,19 @@
       sounds:
       Unsexed: UnisexSilicon
       wilhelmProbability: 0
+    - type: BodyEmotes
+      soundsId: GeneralBodyEmotes
     - type: Body
       prototype: Drone
       thermalVisibility: false
+    - type: Emoting
     - type: IntrinsicRadioReceiver
     - type: IntrinsicRadioTransmitter
       channels:
         - Binary
         - Common
         - Command
+        - CentCom
         - Engineering
         - Medical
         - Science
@@ -1274,14 +1035,18 @@
         - Binary
         - Common
         - Command
+        - CentCom
         - Engineering
         - Medical
         - Science
         - Security
         - Supply
     - type: DoAfter
-    - type: BodyEmotes
-      soundsid: GeneralBodyEmotes
+    - type: RadarConsole
+      followEntity: true
+    - type: Stripping
+    - type: IgnoreUIRange
+    - type: SolutionScanner
     - type: DamageExaminable
     - type: IdExaminable
     - type: Examiner
@@ -1313,7 +1078,7 @@
     - type: Damageable
       damageContainer: Inorganic
     - type: Bloodstream
-      bloodReagent: Oil
+      bloodReagent: Blood
       bloodlossDamage:
         types:
           Bloodloss: 1
@@ -1353,15 +1118,25 @@
       sounds:
       Unsexed: UnisexSilicon
       wilhelmProbability: 0
+    - type: BodyEmotes
+      soundsId: GeneralBodyEmotes
     - type: Body
       prototype: Drone
       thermalVisibility: false
+    - type: RadarConsole
+      followEntity: true
+    - type: Stripping
+    - type: IgnoreUIRange
+    - type: SolutionScanner
+    - type: CrewMonitoringConsole
+    - type: Emoting
     - type: IntrinsicRadioReceiver
     - type: IntrinsicRadioTransmitter
       channels:
         - Binary
         - Common
         - Command
+        - CentCom
         - Engineering
         - Medical
         - Science
@@ -1372,18 +1147,18 @@
         - Binary
         - Common
         - Command
+        - CentCom
         - Engineering
         - Medical
         - Science
         - Security
         - Supply
     - type: DoAfter
-    - type: BodyEmotes
-      soundsId: GeneralBodyEmotes
     - type: DamageExaminable
     - type: IdExaminable
     - type: Examiner
     - type: Puller
+      needsHands: false
     - type: CombatMode
     - type: StandingState
     - type: Alerts
@@ -1430,6 +1205,40 @@
       enum.StationMapUiKey.Key: #imp
         type: StationMapBoundUserInterface
         requireInputValidation: false
+      enum.CommunicationsConsoleUiKey.Key:
+        type: CommunicationsConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.CargoConsoleUiKey.Orders:
+        type: CargoOrderConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.CrewMonitoringUIKey.Key:
+        type: CrewMonitoringBoundUserInterface
+        requireInputValidation: false
+  - type: IntrinsicUI
+    uis:
+      enum.CommunicationsConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowCommunications
+      enum.RadarConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowRadar
+      enum.CrewMonitoringUIKey.Key:
+        toggleAction: ActionAGhostShowCrewMonitoring
+  - type: CommunicationsConsole
+    title: S.T.R.I.D.E.R.
+    color: "#00aaff"
+    delay: 10
+    initialDelay: 0
+  - type: CrewMonitoringConsole
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: CrewMonitor
+    transmitFrequencyId: ShuttleTimer
+  - type: WirelessNetworkConnection
+    range: 500
+  - type: StationLimitedNetwork
+  - type: SupermatterImmune
   - type: StationMap #imp
   - type: MovementSpeedModifier
     baseWalkSpeed : 8
@@ -1453,8 +1262,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      1450: Critical
-      2000: Dead
+      450: Critical
+      500: Dead
     stateAlertDict:
       Alive: BorgHealth
       Critical: BorgCrit
@@ -1512,10 +1321,14 @@
     radius: 8
     energy: 2
     softness: 10
-    color: "#bfe9ff"
+    color: "#00aaff"
   - type: ProtectedFromStepTriggers
   - type: InputMover
   - type: MobMover
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
   - type: ContentEye
     maxZoom: 1.2, 1.2
   - type: Tag
@@ -1534,6 +1347,7 @@
     - Xenoborg
     - Silicon
     - SAN
+    - CentCom
     - GenpopLeave
     - Reporter
     - HospitalityDirector
@@ -1628,10 +1442,44 @@
       enum.StationMapUiKey.Key: #imp
         type: StationMapBoundUserInterface
         requireInputValidation: false
+      enum.CommunicationsConsoleUiKey.Key:
+        type: CommunicationsConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.CargoConsoleUiKey.Orders:
+        type: CargoOrderConsoleBoundUserInterface
+        requireInputValidation: false
+      enum.CrewMonitoringUIKey.Key:
+        type: CrewMonitoringBoundUserInterface
+        requireInputValidation: false
+  - type: IntrinsicUI
+    uis:
+      enum.CommunicationsConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowCommunications
+      enum.RadarConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowRadar
+      enum.CrewMonitoringUIKey.Key:
+        toggleAction: ActionAGhostShowCrewMonitoring
+  - type: CommunicationsConsole
+    title: S.T.R.I.D.E.R.
+    color: "#00aaff"
+    delay: 10
+    initialDelay: 0
+  - type: CrewMonitoringConsole
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: CrewMonitor
+    transmitFrequencyId: ShuttleTimer
+  - type: WirelessNetworkConnection
+    range: 500
+  - type: StationLimitedNetwork
+  - type: SupermatterImmune
   - type: StationMap #imp
   - type: MovementSpeedModifier
-    baseWalkSpeed : 8
-    baseSprintSpeed : 8
+    baseWalkSpeed : 5
+    baseSprintSpeed : 5
     minimumFrictionSpeed: 0
     weightlessAcceleration: 1.5
     weightlessFriction: 1
@@ -1705,10 +1553,14 @@
     radius: 8
     energy: 2
     softness: 10
-    color: "#bfe9ff"
+    color: "#00aaff"
   - type: ProtectedFromStepTriggers
   - type: InputMover
   - type: MobMover
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 4
   - type: ContentEye
     maxZoom: 1.2, 1.2
   - type: Tag
@@ -1728,6 +1580,7 @@
     - Xenoborg
     - Silicon
     - SAN
+    - CentCom
     - GenpopLeave
     - Reporter
     - HospitalityDirector

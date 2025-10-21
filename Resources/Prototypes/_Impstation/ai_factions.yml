@@ -17,6 +17,8 @@
     - Heretic
     - Replicator
     - Xenoborg
+    - Spider
+    - Dog
 
 - type: npcFaction
   id: Penguin
@@ -50,3 +52,13 @@
   - Dino
   - Penguin
   - AllHostile
+  - Spider
+  - Dog
+
+- type: npcFaction
+  id: Dog
+  hostile:
+  - Courier
+
+- type: npcFaction
+  id: Courier

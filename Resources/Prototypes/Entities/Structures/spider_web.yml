@@ -56,13 +56,14 @@
   - type: Fixtures
     fixtures:
       fix1:
-        hard: false
         density: 7
         shape:
           !type:PhysShapeAabb
           bounds: "-0.5,-0.5,0.5,0.5"
-        layer:
+        mask:
         - MidImpassable
+        layer:
+        - BulletImpassable # blocks bullets and keeps airlocks open
   - type: Destructible
     thresholds:
     - trigger: # Excess damage, don't spawn entities
@@ -82,6 +83,26 @@
           MaterialWebSilk:
             min: 0
             max: 1
+#imp edit begins
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: FlavorProfile
+    flavors:
+      - cobwebs
+    ignoreReagents:
+      - Protein
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 3
+        reagents:
+        - ReagentId: Protein
+          Quantity: 3
+  - type: Tag
+    tags:
+    - ClothMade
+    - SpiderFood
+#imp edit ends
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.5
     sprintSpeedModifier: 0.5

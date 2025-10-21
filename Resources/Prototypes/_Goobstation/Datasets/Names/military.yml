@@ -1,0 +1,11 @@
+﻿- type: localizedDataset
+  id: NamesFirstMilitaryHighRank
+  values:
+    prefix: names-military-high-rank-first-dataset-
+    count: 3
+
+- type: localizedDataset
+  id: NamesFirstMilitaryPolitical
+  values:
+    prefix: names-military-political-first-dataset-
+    count: 3

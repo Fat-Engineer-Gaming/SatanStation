@@ -17,6 +17,7 @@
     - SimpleHostile # imp
     - Replicator # imp
     - Amalgam
+    - Spider
 
 - type: npcFaction
   id: NanoTrasen
@@ -33,6 +34,7 @@
   - Dino # imp
   - Replicator # imp
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: Mouse
@@ -42,6 +44,7 @@
   - Wizard
   - Penguin # imp
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: Passive
@@ -60,6 +63,7 @@
   - Replicator # imp
   - Xenoborg
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: SimpleHostile
@@ -81,6 +85,7 @@
   - Penguin # imp
   - Replicator # imp
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: SimpleNeutral
@@ -103,6 +108,7 @@
   - Penguin # imp
   - Replicator # imp
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: Xeno
@@ -123,6 +129,7 @@
   - Dragon
   - Xenoborg
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: Zombie
@@ -141,9 +148,11 @@
   - Dino # imp
   - Penguin # imp
   - Replicator # imp
+  - Dog # imp
   - Dragon
   - Xenoborg
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: Revolutionary
@@ -158,6 +167,7 @@
   - Dino # imp
   - Replicator # imp
   - Amalgam
+  - Spider
 
 - type: npcFaction
   id: AllHostile
@@ -181,6 +191,8 @@
   - Penguin # imp
   - Replicator # imp
   - Amalgam
+  - Spider
+  - Dog # imp
 
 - type: npcFaction
   id: Wizard
@@ -204,6 +216,8 @@
   - Penguin # imp
   - Replicator # imp
   - Amalgam
+  - Spider
+  - Dog # imp
 
 - type: npcFaction
   id: Xenoborg
@@ -220,6 +234,7 @@
   - Xeno
   - SimpleHostile
   - AllHostile
+  - Spider
 
 - type: npcFaction
   id: Amalgam # Basically just allhostile
@@ -242,3 +257,4 @@
   - Dino # imp
   - Penguin # imp
   - Replicator # imp
+  - Spider

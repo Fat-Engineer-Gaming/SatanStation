@@ -44,8 +44,6 @@
       0: Alive
       4: Dead
   - type: MeleeWeapon
-    soundHit:
-      path: /Audio/Effects/explosion1.ogg
     animation: WeaponArcPunch
     damage:
       types:

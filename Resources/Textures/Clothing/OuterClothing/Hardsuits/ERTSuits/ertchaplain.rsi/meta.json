@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by IProduceWidgets, Kodepiia Variant by Adeinitas",
+  "copyright": "Created by IProduceWidgets. Tail sprites by Tiniest Shark (github). Kodepiia Variant by Adeinitas",
   "size": {
     "x": 32,
     "y": 32
@@ -20,6 +20,10 @@
       },
       {
           "name": "equipped-OUTERCLOTHING-harpy",
+          "directions": 4
+      },
+      {
+          "name": "equipped-OUTERCLOTHING-reptilian",
           "directions": 4
       },
       {

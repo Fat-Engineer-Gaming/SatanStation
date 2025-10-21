@@ -2,39 +2,39 @@
   id: Vulpkanin
   name: species-name-vulpkanin
   roundStart: true
-  prototype: MobVulpkanin
-  sprites: MobVulpkaninSprites
+  prototype: DV_MobVulpkanin
+  sprites: DV_MobVulpkaninSprites
   defaultSkinTone: "#985629"
-  markingLimits: MobVulpkaninMarkingLimits
-  dollPrototype: MobVulpkaninDummy
+  markingLimits: DV_MobVulpkaninMarkingLimits
+  dollPrototype: DV_MobVulpkaninDummy
   skinColoration: Hues
   maleFirstNames: names_vulpkanin_male
   femaleFirstNames: names_vulpkanin_female
   lastNames: names_vulpkanin_last
 
 - type: speciesBaseSprites
-  id: MobVulpkaninSprites
+  id: DV_MobVulpkaninSprites
   sprites:
-    Head: MobVulpkaninHead
+    Head: DV_MobVulpkaninHead
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
-    Chest: MobVulpkaninTorso
+    Chest: DV_MobVulpkaninTorso
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
     Eyes: MobHumanoidEyes
-    LArm: MobVulpkaninLArm
-    RArm: MobVulpkaninRArm
-    LHand: MobVulpkaninLHand
-    RHand: MobVulpkaninRHand
-    LLeg: MobVulpkaninLLeg
-    RLeg: MobVulpkaninRLeg
-    LFoot: MobVulpkaninLFoot
-    RFoot: MobVulpkaninRFoot
+    LArm: DV_MobVulpkaninLArm
+    RArm: DV_MobVulpkaninRArm
+    LHand: DV_MobVulpkaninLHand
+    RHand: DV_MobVulpkaninRHand
+    LLeg: DV_MobVulpkaninLLeg
+    RLeg: DV_MobVulpkaninRLeg
+    LFoot: DV_MobVulpkaninLFoot
+    RFoot: DV_MobVulpkaninRFoot
 
 - type: markingPoints
-  id: MobVulpkaninMarkingLimits
+  id: DV_MobVulpkaninMarkingLimits
   points:
     Hair:
       points: 1
@@ -45,7 +45,7 @@
     Tail:
       points: 1
       required: true
-      defaultMarkings: [ VulpTail ]
+      defaultMarkings: [ DV_VulpTail ]
     Head:
       points: 1
       required: false
@@ -61,91 +61,91 @@
     HeadTop:
       points: 1
       required: true
-      defaultMarkings: [ VulpEar ]
+      defaultMarkings: [ DV_VulpEar ]
     Overlay:
       points: 2
       required: false
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninHead
+  id: DV_MobVulpkaninHead
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: head_m
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninHeadMale
+  id: DV_MobVulpkaninHeadMale
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: head_m
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninHeadFemale
+  id: DV_MobVulpkaninHeadFemale
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: head_f
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninTorso
+  id: DV_MobVulpkaninTorso
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: torso_m
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninTorsoMale
+  id: DV_MobVulpkaninTorsoMale
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: torso_m
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninTorsoFemale
+  id: DV_MobVulpkaninTorsoFemale
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: torso_f
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninLLeg
+  id: DV_MobVulpkaninLLeg
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: l_leg
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninLHand
+  id: DV_MobVulpkaninLHand
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: l_hand
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninLArm
+  id: DV_MobVulpkaninLArm
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: l_arm
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninLFoot
+  id: DV_MobVulpkaninLFoot
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: l_foot
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninRLeg
+  id: DV_MobVulpkaninRLeg
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: r_leg
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninRHand
+  id: DV_MobVulpkaninRHand
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: r_hand
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninRArm
+  id: DV_MobVulpkaninRArm
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: r_arm
 
 - type: humanoidBaseSprite
-  id: MobVulpkaninRFoot
+  id: DV_MobVulpkaninRFoot
   baseSprite:
     sprite: _DV/Mobs/Species/Vulpkanin/parts.rsi
     state: r_foot

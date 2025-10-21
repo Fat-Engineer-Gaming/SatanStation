@@ -1,7 +1,7 @@
 # TODO: Add descriptions (many)
 # TODO BODY: Part damage
 - type: entity
-  id: PartVulpkanin
+  id: DV_PartVulpkanin
   parent: BaseItem
   name: "vulpkanin body part"
   abstract: true
@@ -18,9 +18,9 @@
       - Trash
 
 - type: entity
-  id: TorsoVulpkanin
+  id: DV_TorsoVulpkanin
   name: "vulpkanin torso"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -31,9 +31,9 @@
     state: "torso_m"
 
 - type: entity
-  id: HeadVulpkanin
+  id: DV_HeadVulpkanin
   name: "vulpkanin head"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -54,9 +54,9 @@
       - Head
 
 - type: entity
-  id: LeftArmVulpkanin
+  id: DV_LeftArmVulpkanin
   name: "left vulpkanin arm"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -70,9 +70,9 @@
     symmetry: Left
 
 - type: entity
-  id: RightArmVulpkanin
+  id: DV_RightArmVulpkanin
   name: "right vulpkanin arm"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -86,9 +86,9 @@
     symmetry: Right
 
 - type: entity
-  id: LeftHandVulpkanin
+  id: DV_LeftHandVulpkanin
   name: "left vulpkanin hand"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -102,9 +102,9 @@
     symmetry: Left
 
 - type: entity
-  id: RightHandVulpkanin
+  id: DV_RightHandVulpkanin
   name: "right vulpkanin hand"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -118,9 +118,9 @@
     symmetry: Right
 
 - type: entity
-  id: LeftLegVulpkanin
+  id: DV_LeftLegVulpkanin
   name: "left vulpkanin leg"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -135,9 +135,9 @@
   - type: MovementBodyPart
 
 - type: entity
-  id: RightLegVulpkanin
+  id: DV_RightLegVulpkanin
   name: "right vulpkanin leg"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -152,9 +152,9 @@
   - type: MovementBodyPart
 
 - type: entity
-  id: LeftFootVulpkanin
+  id: DV_LeftFootVulpkanin
   name: "left vulpkanin foot"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
@@ -168,9 +168,9 @@
     symmetry: Left
 
 - type: entity
-  id: RightFootVulpkanin
+  id: DV_RightFootVulpkanin
   name: "right vulpkanin foot"
-  parent: PartVulpkanin
+  parent: DV_PartVulpkanin
   components:
   - type: Sprite
     netsync: false
