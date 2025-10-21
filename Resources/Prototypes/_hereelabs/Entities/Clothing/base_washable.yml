@@ -5,6 +5,12 @@
   - type: WashableClothing
   - type: Temperature
   - type: AtmosExposed
+  - type: ExaminableSolution
+    solution: soaked
+    showVolume: false
+    locPhysicalQuality: "clothing-solution-container-component-on-examine-main-text"
+    locRecognizableReagents: "examinable-solution-has-recognizable-chemicals-clothing"
+
 
 - type: entity
   abstract: true
