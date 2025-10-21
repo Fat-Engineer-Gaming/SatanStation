@@ -28,29 +28,30 @@
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHelmetERTLeader
+    necK: ExecutiveIDCard
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolN1984
+    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
     pocket2: FlashlightSeclite
   storage:
     back:
     - WeaponDisabler
-    - MedicatedSuture
-    - RegenerativeMesh
+    - MedkitCombatFilled # Goobstation - No reason not to.
     - BoxZiptie
     - CrowbarRed
-    - MagazineMagnum
+#    - MagazineMagnum - no need
 
 - type: startingGear
   id: ERTLeaderGearEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsTactical
+    neck: ExecutiveIDCard
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -58,23 +59,23 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPistolN1984
+    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
     pocket2: FlashlightSeclite
   storage:
     back:
     - WeaponDisabler
-    - MedicatedSuture
-    - RegenerativeMesh
+    - MedkitCombatFilled # Goobstation - No reason not to.
     - BoxZiptie
     - CrowbarRed
-    - MagazineMagnum
+#    - MagazineMagnum - No need
 
 - type: startingGear
   id: ERTLeaderGearEVALecter
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsTactical
+    neck: ExecutiveIDCard
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -82,18 +83,19 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: MagazineRifle
-    pocket2: MagazineRifle
+    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket2: FlashlightSeclite
   inhand:
   - WeaponRifleLecterXL8
   storage:
     back:
     - WeaponDisabler
-    - MedicatedSuture
-    - RegenerativeMesh
-    - BoxZiptie
+    - MedkitCombatFilled # Goobstation - No reason not to.
+    - BoxHandcuff
     - CrowbarRed
-    - MagazineMagnum
+#    - MagazineMagnum - No need
+    - MagazineRifle
+    - MagazineRifle
 
 - type: chameleonOutfit
   id: ERTLeaderChameleonOutfit
@@ -135,7 +137,7 @@
     eyes: ClothingEyesGlasses
     neck: ClothingNeckStoleChaplain
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltStorageWaistbag
@@ -162,7 +164,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTChaplain
     back: ClothingBackpackERTChaplain
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsTactical
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlasses
     neck: ClothingNeckStoleChaplain
@@ -197,7 +199,7 @@
     head: ClothingHeadHelmetHardsuitERTChaplain
     mask: ClothingMaskGasERT
     outerClothing: ClothingOuterHardsuitERTChaplain
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsTactical
 
 # Engineer
 - type: job
@@ -231,7 +233,7 @@
     head: ClothingHeadHelmetERTEngineer
     eyes: ClothingEyesGlassesMeson
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled
@@ -255,7 +257,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsTactical
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesMeson
     gloves: ClothingHandsGlovesCombat
@@ -268,9 +270,8 @@
   storage:
     back:
     - trayScanner
-    - RCD
-    - RCDAmmo
-    - RCDAmmo
+    - RCDRecharging
+    - RPDRecharging
     - CableMVStack
     - CableHVStack
     - CableApcStack
@@ -318,7 +319,7 @@
     head: ClothingHeadHelmetERTSecurity
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
@@ -338,7 +339,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsTactical
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -362,7 +363,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsTactical
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -423,10 +424,10 @@
     head: ClothingHeadHelmetERTMedic
     eyes: ClothingEyesHudMedical
     gloves: ClothingHandsGlovesNitrile
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMedicalFilled
+    belt: ClothingBeltSecurityWebbingMedical
     pocket1: Flare
   storage:
     back:
@@ -443,14 +444,14 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedical
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsTactical
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterHardsuitERTMedical
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltMedicalFilled
+    belt: ClothingBeltSecurityWebbingMedical
     pocket1: Flare
   storage:
     back:
@@ -497,7 +498,7 @@
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHelmetERTJanitor
     gloves: ClothingHandsGlovesColorPurple
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmourDurathread # Durathread armor is cooler.
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltJanitorFilled
@@ -516,7 +517,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTJanitor
     back: ClothingBackpackERTJanitor
-    shoes: ClothingShoesBootsMag
+    shoes: ClothingShoesBootsTactical
     mask: ClothingMaskGasERT
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterHardsuitERTJanitor

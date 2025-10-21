@@ -714,6 +714,7 @@
   - type: ItemBorgModule
     hands:
     - item: RCDRecharging
+    - item: RPDRecharging
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: GasAnalyzer

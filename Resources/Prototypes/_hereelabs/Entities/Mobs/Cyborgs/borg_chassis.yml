@@ -1,5 +1,5 @@
 ﻿- type: entity
-  id: BorgChassisERT
+  id: BorgChassisErt
   parent: BaseBorgChassisNotIonStormable
   name: ERT cyborg
   description: A man-machine hybrid that's sent into high-intensity operations. You have a feeling you shouldn't try to fight this one.
