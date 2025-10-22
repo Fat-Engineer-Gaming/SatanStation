@@ -16,6 +16,9 @@
       map: ["enum.StorageVisualLayers.Base"]
     - state: closed
       map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
     - state: washOff
       shader: unshaded
       map: ["light"]
@@ -49,6 +52,10 @@
         light:
           True: { state: washOn, shader: "unshaded" }
           False: { state: washOff, shader: "unshaded" }
+      enum.StorageVisualLayers.Door:
+        enum.LockVisualLayers.Lock:
+          True: { state: unlocked, visible: false, shader: "unshaded" }
+          False: { state: unlocked, visible: true, shader: "unshaded" }
   - type: SolutionContainerManager
     solutions:
       drum:
