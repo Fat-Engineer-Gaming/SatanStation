@@ -6,11 +6,13 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Fluids;
 using Content.Shared.Forensics.Systems;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
+using Content.Shared._hereelabs.Medical;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -33,6 +35,7 @@ public sealed class VomitSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedPuddleSystem _puddle = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
 
     public override void Initialize()
     {
@@ -103,6 +106,8 @@ public sealed class VomitSystem : EntitySystem
         _movementMod.TryUpdateMovementSpeedModDuration(uid, MovementModStatusSystem.VomitingSlowdown, TimeSpan.FromSeconds(solutionSize), 0.5f);
 
         // Adds a tiny amount of the chem stream from earlier along with vomit
+        Solution? vomitChemstreamUnscaled = null; // devil !!
+
         if (TryComp<BloodstreamComponent>(uid, out var bloodStream))
         {
             var vomitAmount = solutionSize;
@@ -111,6 +116,7 @@ public sealed class VomitSystem : EntitySystem
             if (_solutionContainer.ResolveSolution(uid, bloodStream.ChemicalSolutionName, ref bloodStream.ChemicalSolution))
             {
                 var vomitChemstreamAmount = _solutionContainer.SplitSolution(bloodStream.ChemicalSolution.Value, vomitAmount);
+                vomitChemstreamUnscaled = vomitChemstreamAmount.Clone();
                 vomitChemstreamAmount.ScaleSolution(ChemMultiplier);
                 solution.AddSolution(vomitChemstreamAmount, _proto);
 
@@ -121,7 +127,21 @@ public sealed class VomitSystem : EntitySystem
             solution.AddReagent(new ReagentId(VomitPrototype, _bloodstream.GetEntityBloodData(uid)), vomitAmount);
         }
 
-        if (_puddle.TrySpillAt(uid, solution, out var puddle, false))
+        /// devil !!
+        var beforeEv = new BeforeVomitEvent(solution);
+        RaiseLocalEvent(uid, ref beforeEv);
+        if (TryComp<InventoryComponent>(uid, out var inv))
+            _inventory.RelayEvent((uid, inv), ref beforeEv);
+        if (beforeEv.Cancelled)
+        {
+            if (bloodStream is not null && vomitChemstreamUnscaled is not null && _solutionContainer.ResolveSolution(uid, bloodStream.ChemicalSolutionName, ref bloodStream.ChemicalSolution))
+            {
+                /// add back the original solution
+                _solutionContainer.AddSolution(bloodStream.ChemicalSolution.Value, vomitChemstreamUnscaled);
+            }
+            return;
+        }
+        if (beforeEv.SpawnPuddle && _puddle.TrySpillAt(uid, solution, out var puddle, false))
         {
             _forensics.TransferDna(puddle, uid, false);
         }

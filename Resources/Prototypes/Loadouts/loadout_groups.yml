@@ -1620,6 +1620,7 @@
   - MedicalHud
   - MedicalEyePatchHud
   - MedicalGlassesHud #imp
+  - MedicalGlassesHudCracked #devil!
   - Glasses
   # imp edit start - its in the middle for alphabetizing reasons sorry
   - GlassesCheapSunglasses

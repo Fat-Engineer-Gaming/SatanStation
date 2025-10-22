@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ ClothingNeckBase, ClothingWashableBase ]
+  parent: [ ClothingNeckBase, ClothingWashableBase ] # devil !
   id: ClothingNeckPinBase
   abstract: true
   name: pin
@@ -21,6 +21,8 @@
     examineText: obvious-desc-default
   - type: WashableClothing # devil !
     washFactor: 2
+    bleedChance: 0.08
+    bleedPortion: 0.05
 
 - type: entity
   parent: ClothingNeckPinBase

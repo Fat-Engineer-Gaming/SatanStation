@@ -7,30 +7,26 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
 using Content.Shared.Destructible;
-using Content.Shared.FixedPoint;
+using Content.Shared.Inventory;
 using Content.Shared.Lock;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Storage.Components;
 using Content.Shared.Temperature;
 using Content.Shared._hereelabs.Laundry;
-using Content.Server.Fluids.EntitySystems;
 using Content.Server.Temperature.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._hereelabs.Laundry;
 
 public sealed class LaundrySystem : SharedLaundrySystem
 {
-    [Dependency] private readonly PuddleSystem _puddle = default!;
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly ReactiveSystem _reactive = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -378,127 +374,7 @@ public sealed class LaundrySystem : SharedLaundrySystem
             WashableDry(ent, deltaTime, temperature);
     }
 
-    public FixedPoint2 WashableWash(Entity<WashableClothingComponent> ent, Solution washSolution)
-    {
-        if (!TryGetWashableSolution(ent, out var soln, out var solution))
-            return 0;
-
-        var incomingQuantity = FixedPoint2.Min(washSolution.Volume, solution.MaxVolume - solution.Volume);
-        if (incomingQuantity <= 0)
-            return 0;
-
-        var incomingSolution = washSolution.SplitSolution(incomingQuantity);
-        var solutionContents = solution.Contents.ToArray();
-
-        /// cleaning reagents
-        var cleaningStrength = 0f;
-        var cleaningVolume = 0f;
-
-        List<ReagentQuantity> cleaners = new();
-        foreach (var reagentQuantity in solutionContents)
-        {
-            var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
-            if (reagentProto.LaundryCleaningStrength > 0)
-            {
-                cleaningStrength += reagentProto.LaundryCleaningStrength;
-                cleaningVolume += (float)reagentQuantity.Quantity;
-                cleaners.Add(reagentQuantity);
-            }
-        }
-        if (cleaningVolume > 0)
-        {
-            cleaningStrength /= cleaningVolume;
-
-            List<ReagentQuantity> toClean = new();
-            foreach (var reagentQuantity in solutionContents)
-            {
-                var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
-                if (reagentProto.LaundryCleaningStrength <= 0 && !reagentProto.Absorbent)
-                    toClean.Add(reagentQuantity);
-            }
-
-            FixedPoint2 totalRemoved = 0;
-            foreach (var reagentQuantity in toClean)
-            {
-                var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
-                var removed = solution.RemoveReagent(reagentQuantity.Reagent, cleaningStrength * CLEAN_STRENGTH_FACTOR / reagentProto.LaundryCleanResistance);
-                totalRemoved += removed;
-            }
-            if (totalRemoved > 0)
-            {
-                foreach (var reagentQuantity in cleaners)
-                {
-                    solution.RemoveReagent(reagentQuantity.Reagent, totalRemoved * (reagentQuantity.Quantity / cleaningVolume) * CLEAN_STRENGTH_FACTOR);
-                }
-            }
-        }
-
-        /// absorbent reagents (like water) to wash away other non-absorbent or non-cleaning reagents
-        solutionContents = solution.Contents.ToArray();
-
-        Solution washedAwaySolution = new();
-        FixedPoint2 washStrength = 0;
-
-        foreach (var reagentQuantity in solutionContents)
-        {
-            var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
-            if (reagentProto.Absorbent)
-                washStrength += reagentQuantity.Quantity;
-        }
-
-        if (washStrength > 0)
-        {
-            foreach (var reagentQuantity in solutionContents)
-            {
-                var reagentProto = _prototypeManager.Index<ReagentPrototype>(reagentQuantity.Reagent.Prototype);
-                if (!reagentProto.Absorbent)
-                {
-                    var removed = solution.RemoveReagent(reagentQuantity.Reagent, washStrength * WASH_STRENGTH_FACTOR);
-                    washedAwaySolution.AddReagent(reagentQuantity.Reagent, removed);
-                }
-            }
-        }
-
-        WashableSpill(ent, washedAwaySolution);
-
-        return _solutions.AddSolution(soln.Value, incomingSolution);
-    }
-    public void WashableDrip(Entity<WashableClothingComponent> ent, FixedPoint2 amount, bool sound = false)
-    {
-        if (!TryGetWashableSolution(ent, out var soln, out var solution))
-            return;
-
-        if (amount < 0)
-            amount = solution.Volume;
-
-        var dripped = _solutions.SplitSolution(soln.Value, amount);
-
-        WashableSpill(ent, dripped, sound);
-    }
-    private void WashableSpill(Entity<WashableClothingComponent> ent, Solution solution, bool sound = false)
-    {
-        if (TryComp<InsideEntityStorageComponent>(ent.Owner, out var insideEntStorage))
-        {
-            var entStorageUid = insideEntStorage.Storage;
-            if (TryComp<EntityStorageComponent>(entStorageUid, out var _) && TryComp<LaundryMachineComponent>(entStorageUid, out var _))
-            {
-                /// try dripping into laundry machine drum
-                if (_solutions.EnsureSolutionEntity(entStorageUid, "drum", out var drumSoln))
-                {
-                    var transferred = _solutions.AddSolution(drumSoln.Value, solution);
-
-                    /// spill leftovers as a puddle
-                    if (transferred < solution.Volume)
-                        _puddle.TrySpillAt(ent.Owner, solution, out var _, sound);
-                    return;
-                }
-            }
-        }
-
-        /// spill dripped as puddle
-        _puddle.TrySpillAt(ent.Owner, solution, out var _, sound);
-    }
-    public Solution? WashableDry(Entity<WashableClothingComponent> ent, float deltaTime, TemperatureComponent temperatureComponent)
+    private Solution? WashableDry(Entity<WashableClothingComponent> ent, float deltaTime, TemperatureComponent temperatureComponent)
     {
         if (!TryGetWashableSolution(ent, out var soln, out var solution) || !soln.HasValue)
             return null;

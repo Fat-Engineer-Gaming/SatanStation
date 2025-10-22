@@ -815,67 +815,71 @@ public abstract partial class SharedSolutionContainerSystem : EntitySystem
             if (string.IsNullOrEmpty(primaryReagent?.Prototype) ||
                 !PrototypeManager.Resolve<ReagentPrototype>(primaryReagent.Value.Prototype, out var primary))
             {
-                args.PushMarkup(Loc.GetString(entity.Comp.LocVolume, ("fillLevel", ExaminedVolumeDisplay.Empty)));
+                if (entity.Comp.ShowVolume) /// devilstation!
+                    args.PushMarkup(Loc.GetString(entity.Comp.LocVolume, ("fillLevel", ExaminedVolumeDisplay.Empty)));
                 return;
             }
 
             // Push amount of reagent
-
-            args.PushMarkup(Loc.GetString(entity.Comp.LocVolume,
-                                ("fillLevel", ExaminedVolume(entity, solution, args.Examiner)),
-                                ("current", solution.Volume),
-                                ("max", solution.MaxVolume)));
-
-            // Push the physical description of the primary reagent
-
-            // IMP start, luminosity must be at least 0.4 to provide contrast with the textbox.
-            var colorHSL = Color.ToHsl(solution.GetColor(PrototypeManager));
-            colorHSL.Z = RescaleLuminosity(colorHSL.Z);
-
-            var colorHex = Color.FromHsl(colorHSL)
-                .ToHexNoAlpha();
-            // imp end
-
-            args.PushMarkup(Loc.GetString(entity.Comp.LocPhysicalQuality,
-                                        ("color", colorHex),
-                                        ("desc", primary.LocalizedPhysicalDescription),
-                                        ("chemCount", solution.Contents.Count) ));
-
-            // Push the recognizable reagents
-
-            // Sort the reagents by amount, descending then alphabetically
-            var sortedReagentPrototypes = solution.GetReagentPrototypes(PrototypeManager)
-                .OrderByDescending(pair => pair.Value.Value)
-                .ThenBy(pair => pair.Key.LocalizedName);
-
-            // Collect recognizable reagents, like water or beer
-            var recognized = new List<string>();
-            foreach (var keyValuePair in sortedReagentPrototypes)
+            if (entity.Comp.ShowVolume) /// devilstation!
             {
-                var proto = keyValuePair.Key;
-                if (!proto.Recognizable)
-                {
-                    continue;
-                }
-
-                // IMP start, luminosity must be at least 0.4 to provide contrast with the textbox.
-                var recognisedColorHSL = Color.ToHsl(keyValuePair.Key.SubstanceColor);
-                recognisedColorHSL.Z = RescaleLuminosity(recognisedColorHSL.Z);
-                // imp end
-
-                recognized.Add(Loc.GetString("examinable-solution-recognized",
-                                            ("color", Color.FromHsl(recognisedColorHSL).ToHexNoAlpha()), // imp
-                                            ("chemical", proto.LocalizedName)));
+                args.PushMarkup(Loc.GetString(entity.Comp.LocVolume,
+                                    ("fillLevel", ExaminedVolume(entity, solution, args.Examiner)),
+                                    ("current", solution.Volume),
+                                    ("max", solution.MaxVolume)));
             }
 
-            if (recognized.Count == 0)
-                return;
+            // Push the physical description of the primary reagent
+            if (entity.Comp.ShowPhysicalQuality) /// devilstation!
+            {
+                // IMP, luminosity must be at least 0.4 to provide contrast with the textbox.
+                var colorHSL = Color.ToHsl(solution.GetColor(PrototypeManager));
+                colorHSL.Z = RescaleLuminosity((float)colorHSL.Z);
 
-            var msg = ContentLocalizationManager.FormatList(recognized);
+                var colorHex = Color.FromHsl(colorHSL).ToHexNoAlpha();
 
-            // Finally push the full message
-            args.PushMarkup(Loc.GetString(entity.Comp.LocRecognizableReagents,
-                ("recognizedString", msg)));
+                args.PushMarkup(Loc.GetString(entity.Comp.LocPhysicalQuality,
+                                            ("color", colorHex),
+                                            ("desc", primary.LocalizedPhysicalDescription),
+                                            ("chemCount", solution.Contents.Count)));
+            }
+
+            // Push the recognizable reagents
+            if (entity.Comp.ShowRecognizableReagents) /// devilstation!
+            {
+                // Sort the reagents by amount, descending then alphabetically
+                var sortedReagentPrototypes = solution.GetReagentPrototypes(PrototypeManager)
+                    .OrderByDescending(pair => pair.Value.Value)
+                    .ThenBy(pair => pair.Key.LocalizedName);
+
+                // Collect recognizable reagents, like water or beer
+                var recognized = new List<string>();
+                foreach (var keyValuePair in sortedReagentPrototypes)
+                {
+                    var proto = keyValuePair.Key;
+                    if (!proto.Recognizable)
+                    {
+                        continue;
+                    }
+
+                    // IMP, luminosity must be at least 0.4 to provide contrast with the textbox.
+                    var recognisedColorHSL = Color.ToHsl(keyValuePair.Key.SubstanceColor);
+                    recognisedColorHSL.Z = RescaleLuminosity((float)recognisedColorHSL.Z);
+
+                    recognized.Add(Loc.GetString("examinable-solution-recognized",
+                                                ("color", Color.FromHsl(recognisedColorHSL).ToHexNoAlpha()), // imp
+                                                ("chemical", proto.LocalizedName)));
+                }
+
+                if (recognized.Count == 0)
+                    return;
+
+                var msg = ContentLocalizationManager.FormatList(recognized);
+
+                // Finally push the full message
+                args.PushMarkup(Loc.GetString(entity.Comp.LocRecognizableReagents,
+                    ("recognizedString", msg)));
+            }
         }
     }
 
