@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Created by by AftrLite (GitHub)",
+  "copyright": "Created by by AftrLite (GitHub), edits by miapyxel (GitHub). locked and unlocked states taken from tgstation from https://github.com/tgstation/tgstation/pull/85491",
   "size": {
     "x": 32,
     "y": 32
@@ -24,6 +24,12 @@
     },
     {
       "name": "washOff"
+    },
+    {
+      "name": "locked"
+    },
+    {
+      "name": "unlocked"
     }
   ]
 }
