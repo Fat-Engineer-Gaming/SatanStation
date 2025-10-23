@@ -15,7 +15,7 @@
       - id: BoneGel # Offbrand
       - id: BoneSetter # Offbrand
       - id: VascularRecoupler # Offbrand
-      - id: SimpleSuture # Offbrand
+      - id: Suture # Offbrand
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateMedicalBundle
@@ -331,7 +331,7 @@
       - id: DefibrillatorSyndicate
       - id: MedkitCombatFilled
         amount: 4
-      - id: Tourniquet
+      - id: TourniquetOffbrand # Offbrand
         amount: 4
       - id: CombatMedipen
         amount: 4

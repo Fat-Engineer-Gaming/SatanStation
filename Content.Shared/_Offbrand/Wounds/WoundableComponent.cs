@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared.Damage;
 
 namespace Content.Shared._Offbrand.Wounds;
@@ -20,10 +15,10 @@ public record struct WoundGetDamageEvent(DamageSpecifier Accumulator);
 /// Raised before damage is applied to a Damageable but after applying modifiers
 /// </summary>
 [ByRefEvent]
-public record struct BeforeDamageCommitEvent(DamageSpecifier Damage);
+public record struct BeforeDamageCommitEvent(DamageSpecifier Damage, bool ForceRefresh);
 
 /// <summary>
 /// Raised when the values for a damage overlay may have changed
 /// </summary>
 [ByRefEvent]
-public record struct PotentiallyUpdateDamageOverlay(EntityUid Target);
+public record struct PotentiallyUpdateDamageOverlayEvent(EntityUid Target);

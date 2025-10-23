@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using System.Linq;
 using Content.Shared.Alert;
 using Content.Shared.Mobs.Systems;
@@ -74,7 +69,7 @@ public sealed partial class BrainDamageThresholdsSystem : EntitySystem
         ent.Comp.CurrentDamageEffect = damageEffect;
         Dirty(ent);
 
-        var overlays = new PotentiallyUpdateDamageOverlay(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 
@@ -83,6 +78,7 @@ public sealed partial class BrainDamageThresholdsSystem : EntitySystem
         var brain = Comp<BrainDamageComponent>(ent);
 
         UpdateState(ent);
+        UpdateOxygenAlert((ent.Owner, ent.Comp, brain));
 
         var oxygenEffect = ent.Comp.OxygenEffectThresholds.LowestMatch(brain.Oxygen);
         if (oxygenEffect == ent.Comp.CurrentOxygenEffect)
@@ -97,7 +93,7 @@ public sealed partial class BrainDamageThresholdsSystem : EntitySystem
         ent.Comp.CurrentOxygenEffect = oxygenEffect;
         Dirty(ent);
 
-        var overlays = new PotentiallyUpdateDamageOverlay(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 
@@ -120,11 +116,23 @@ public sealed partial class BrainDamageThresholdsSystem : EntitySystem
         }
     }
 
+    private void UpdateOxygenAlert(Entity<BrainDamageThresholdsComponent, BrainDamageComponent> ent)
+    {
+        if (ent.Comp2.Oxygen == ent.Comp2.MaxOxygen)
+        {
+            _alerts.ClearAlertCategory(ent.Owner, ent.Comp1.OxygenAlertCategory);
+            return;
+        }
+
+        var oxygen = ent.Comp2.Oxygen;
+        _alerts.ShowAlert(ent.Owner, ent.Comp1.OxygenAlert, severity: (short)oxygen.Int());
+    }
+
     private void OnUpdateMobState(Entity<BrainDamageThresholdsComponent> ent, ref UpdateMobStateEvent args)
     {
         args.State = ThresholdHelpers.Max(ent.Comp.CurrentState, args.State);
 
-        var overlays = new PotentiallyUpdateDamageOverlay(ent);
+        var overlays = new PotentiallyUpdateDamageOverlayEvent(ent);
         RaiseLocalEvent(ent, ref overlays, true);
     }
 }

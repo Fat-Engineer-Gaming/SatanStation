@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using System.Linq;
 using Content.Shared.Alert;
 using Content.Shared.FixedPoint;
@@ -12,9 +7,8 @@ namespace Content.Shared._Offbrand.Wounds;
 
 public sealed class ShockAlertsSystem : EntitySystem
 {
+    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly PainSystem _pain = default!;
-
-    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
 
     public override void Initialize()
     {
@@ -45,11 +39,11 @@ public sealed class ShockAlertsSystem : EntitySystem
 
         if (targetEffect is { } effect)
         {
-            _alertsSystem.ShowAlert(ent.Owner, effect);
+            _alerts.ShowAlert(ent.Owner, effect);
         }
         else
         {
-            _alertsSystem.ClearAlertCategory(ent.Owner, ent.Comp.AlertCategory);
+            _alerts.ClearAlertCategory(ent.Owner, ent.Comp.AlertCategory);
         }
     }
 
@@ -60,7 +54,7 @@ public sealed class ShockAlertsSystem : EntitySystem
 
     private void OnComponentShutdown(Entity<ShockAlertsComponent> ent, ref ComponentShutdown args)
     {
-        _alertsSystem.ClearAlertCategory(ent.Owner, ent.Comp.AlertCategory);
+        _alerts.ClearAlertCategory(ent.Owner, ent.Comp.AlertCategory);
     }
 
     private void OnAfterShockChange(Entity<ShockAlertsComponent> ent, ref AfterShockChangeEvent args)

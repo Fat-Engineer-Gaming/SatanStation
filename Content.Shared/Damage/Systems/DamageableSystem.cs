@@ -160,6 +160,9 @@ namespace Content.Shared.Damage
                 var data = new DamageVisualizerGroupData(component.DamagePerGroup.Keys.ToList());
                 _appearance.SetData(uid, DamageVisualizerKeys.DamageUpdateGroups, data, appearance);
             }
+
+            // TODO DAMAGE
+            // byref struct event.
             RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin, forcedRefresh)); // Offbrand
         }
 
@@ -187,8 +190,8 @@ namespace Content.Shared.Damage
             bool interruptsDoAfters = true,
             DamageableComponent? damageable = null,
             EntityUid? origin = null,
-            bool ignoreGlobalModifiers = false, 
-            bool forceRefresh = false)
+            bool ignoreGlobalModifiers = false,
+            bool forceRefresh = false) // Offbrand
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
@@ -233,14 +236,11 @@ namespace Content.Shared.Damage
                 damage = ApplyUniversalAllModifiers(damage);
 
             // Begin Offbrand
-            var beforeCommit = new Content.Shared._Offbrand.Wounds.BeforeDamageCommitEvent(damage);
+            var beforeCommit = new Content.Shared._Offbrand.Wounds.BeforeDamageCommitEvent(damage, forceRefresh);
             RaiseLocalEvent(uid.Value, ref beforeCommit);
             damage = beforeCommit.Damage;
             // End Offbrand
 
-            // TODO DAMAGE PERFORMANCE
-            // Consider using a local private field instead of creating a new dictionary here.
-            // Would need to check that nothing ever tries to cache the delta.
             var delta = new DamageSpecifier();
             delta.DamageDict.EnsureCapacity(damage.DamageDict.Count);
 

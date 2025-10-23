@@ -1,7 +1,3 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 - type: reagent
   id: Paracetamol
   name: reagent-name-paracetamol
@@ -12,9 +8,16 @@
   physicalDesc: reagent-physical-desc-opaque
   metabolisms:
     Medicine:
-      metabolismRate: 0.1
+      metabolismRate: 0.05
       statusEffects:
       - statusEffect: StatusEffectPainkillersMildParacetamol
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Tramadol
+          max: 1
+        - !type:ReagentThreshold
+          reagent: Oxycodone
+          max: 1
       - statusEffect: StatusEffectPainkillersMildParacetamolOverdose
         conditions:
         - !type:ReagentThreshold
@@ -38,13 +41,16 @@
   physicalDesc: reagent-physical-desc-opaque
   metabolisms:
     Medicine:
-      metabolismRate: 0.1
+      metabolismRate: 0.05
       statusEffects:
       - statusEffect: StatusEffectPainkillersTramadol
       - statusEffect: StatusEffectPainkillersTramadolOverdose
         conditions:
         - !type:ReagentThreshold
           min: 15
+        - !type:ReagentThreshold
+          reagent: Oxycodone
+          max: 1
       - statusEffect: StatusEffectHeartStrainTramadolAlcohol
         conditions:
         - !type:ReagentThreshold
@@ -70,7 +76,7 @@
           min: 1
         damage:
           types:
-            Asphyxiation: 1
+            Asphyxiation: 0.75
 
 - type: reagent
   id: Oxycodone
@@ -82,7 +88,7 @@
   physicalDesc: reagent-physical-desc-opaque
   metabolisms:
     Medicine:
-      metabolismRate: 0.1
+      metabolismRate: 0.15
       statusEffects:
       - statusEffect: StatusEffectPainkillersStrongOxycodone
       - statusEffect: StatusEffectPainkillersStrongOxycodoneOverdose
@@ -106,7 +112,7 @@
           min: 15
         damage:
           types:
-            Asphyxiation: 1
+            Asphyxiation: 0.5
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -114,7 +120,17 @@
           min: 1
         damage:
           types:
-            Asphyxiation: 3
+            Asphyxiation: 0.75
+
+- type: reagent
+  id: Synthflesh
+  name: reagent-name-synthflesh
+  group: Medicine
+  desc: reagent-desc-synthflesh
+  flavor: meaty
+  flavorMinimum: 0.01
+  color: "#FFEBEB"
+  physicalDesc: reagent-physical-desc-oily
 
 - type: reagent
   id: Sanguine
@@ -149,10 +165,15 @@
       metabolismRate: 0.05
       effects:
       - !type:ModifyHeartDamage
-        amount: -0.2
+        amount: -0.4
         conditions:
         - !type:HeartDamage
-          max: 25
+          max: 50
+      - !type:ModifyLungDamage
+        amount: -0.4
+        conditions:
+        - !type:LungDamage
+          max: 50
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
@@ -191,7 +212,12 @@
           max: 170.0
       effects:
       - !type:ModifyHeartDamage
-        amount: -0.3
+        amount: -0.6
+        conditions:
+        - !type:Temperature
+          max: 170.0
+      - !type:ModifyLungDamage
+        amount: -0.6
         conditions:
         - !type:Temperature
           max: 170.0
@@ -200,10 +226,10 @@
         - !type:Temperature
           max: 170.0
         damage:
-          Airloss: -6
-          Brute: -4
-          Burn: -4
-          Toxin: -4
+          Airloss: -12
+          Brute: -8
+          Burn: -8
+          Toxin: -8
 
 - type: reagent
   id: SalineGlucose
@@ -245,10 +271,186 @@
         conditions:
         - !type:ReagentThreshold
           max: 1
-      - !type:HealthChange
+
+- type: reagent
+  id: Coagulant
+  name: reagent-name-coagulant
+  group: Medicine
+  desc: reagent-desc-coagulant
+  physicalDesc: reagent-physical-desc-viscous
+  flavor: metallic
+  color: "#bf0000"
+  contrabandSeverity: Syndicate
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      effects:
+      - !type:ClampWounds
+        chance: 0.4
+      - !type:RemoveStatusEffect
+        effectProto: WoundArterialBleeding
+        probability: 0.2
+
+- type: reagent
+  id: Osseous
+  name: reagent-name-osseous
+  group: Medicine
+  desc: reagent-desc-osseous
+  physicalDesc: reagent-physical-desc-putrid
+  flavor: meaty
+  color: "#c9abab"
+  contrabandSeverity: Syndicate
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:RemoveStatusEffect
+        effectProto: WoundFracture
         conditions:
-        - !type:OrganType
-          type: Snail
+        - !type:MetaboliteThreshold
+          min: 5
+      - !type:AdjustReagent
+        reagent: Osseous
+        amount: -5
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 5
+
+- type: reagent
+  id: Convermol
+  name: reagent-name-convermol
+  group: Medicine
+  desc: reagent-desc-convermol
+  physicalDesc: reagent-physical-desc-abrasive
+  flavor: chalky
+  color: "#afe1ed"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
         damage:
           types:
-            Poison: 2
+            Asphyxiation: -4
+            Blunt: 1
+        conditions:
+        - !type:TotalGroupDamage
+          group: Airloss
+          min: 4
+      - !type:HealthChange
+        damage:
+          types:
+            Asphyxiation: -4
+            Blunt: 1
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 10
+        - !type:TotalGroupDamage
+          group: Airloss
+          min: 4
+      - !type:ModifyLungDamage
+        amount: 0.05
+
+- type: reagent
+  id: SalicylicAcid
+  name: reagent-name-salicylic-acid
+  group: Medicine
+  desc: reagent-desc-salicylic-acid
+  physicalDesc: reagent-physical-desc-putrid
+  flavor: bitter
+  color: "#f7d9c0"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      statusEffects:
+      - statusEffect: StatusEffectPainkillersSalicylicAcid
+        conditions:
+        - !type:TotalGroupDamage
+          group: Brute
+          min: 35
+      effects:
+      - !type:EvenHealthChange
+        damage:
+          Brute: -2
+        conditions:
+        - !type:TotalGroupDamage
+          group: Brute
+          min: 35
+        - !type:MetaboliteThreshold
+          max: 15
+      - !type:EvenHealthChange
+        damage:
+          Brute: -2
+          Burn: 2
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 15
+      - !type:EvenHealthChange
+        damage:
+          Brute: -0.5
+        conditions:
+        - !type:TotalGroupDamage
+          group: Brute
+          max: 35
+      - !type:RemoveStatusEffect
+        effectProto: WoundBoneDeath
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 50
+      - !type:EvenHealthChange
+        damage:
+          Burn: 1
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 35
+
+- type: reagent
+  id: Oxandrolone
+  name: reagent-name-oxandrolone
+  group: Medicine
+  desc: reagent-desc-oxandrolone
+  physicalDesc: reagent-physical-desc-frosty
+  flavor: bitter
+  color: "#b8e3cb"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.2
+      statusEffects:
+      - statusEffect: StatusEffectPainkillersOxandrolone
+        conditions:
+        - !type:TotalGroupDamage
+          group: Burn
+          min: 35
+      effects:
+      - !type:EvenHealthChange
+        damage:
+          Burn: -3
+        conditions:
+        - !type:TotalGroupDamage
+          group: Burn
+          min: 35
+        - !type:MetaboliteThreshold
+          max: 15
+      - !type:EvenHealthChange
+        damage:
+          Burn: -3
+          Brute: 3
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 15
+      - !type:EvenHealthChange
+        damage:
+          Burn: -0.5
+        conditions:
+        - !type:TotalGroupDamage
+          group: Burn
+          max: 35
+      - !type:RemoveStatusEffect
+        effectProto: WoundHusking
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 50
+      - !type:EvenHealthChange
+        damage:
+          Brute: 1
+        conditions:
+        - !type:MetaboliteThreshold
+          min: 35

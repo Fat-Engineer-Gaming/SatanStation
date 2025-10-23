@@ -1,10 +1,14 @@
 - type: vendingMachineInventory
   id: SecTechInventory
   startingInventory:
-    Bola: 6
-    ClothingBeltSecurityWebbing: 5
-    ClothingEyesEyepatchHudSecurity: 2
-    ClothingEyesGlassesHudSecurity: 2 # imp
+    SecurityWhistle: 5
+    Handcuffs: 8
+    GrenadeFlashBang: 4
+    TearGasGrenade: 4
+    GrenadeStinger: 4
+    Flash: 5
+    TourniquetOffbrand: 5 # Offbrand
+    FlashlightSeclite: 5
     ClothingEyesGlassesSunglasses: 2
     ClothingEyesHudSecurity: 2
     ClothingOuterArmorBasic: 1 # imp 2>1
@@ -14,19 +18,11 @@
     ClothingOuterArmorPlateCarrier: 1 # DeltaV - moved body armour from SecDrobe to SecTech
     ClusterBangFull: 2
     CombatKnife: 3
-    Flash: 5
-    FlashlightSeclite: 5
-    GrenadeFlashBang: 4
-    GrenadeStinger: 4
-    Handcuffs: 8
     RadioHandheldSecurity: 5
     RiotBulletShield: 2
     RiotLaserShield: 2
     RiotShield: 2
-    SecurityWhistle: 5
-    TearGasGrenade: 4
     TicketPad: 5 # imp
-    Tourniquet: 5
     Zipties: 12
   # security officers need to follow a diet regimen!
   contrabandInventory:

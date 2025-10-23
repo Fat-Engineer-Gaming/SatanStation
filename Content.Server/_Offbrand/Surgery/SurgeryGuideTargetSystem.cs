@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Server.Construction;
 using Content.Shared._Offbrand.Surgery;
 using Robust.Shared.Prototypes;
@@ -17,7 +12,7 @@ public sealed class SurgeryGuideTargetSystem : SharedSurgeryGuideTargetSystem
     protected override void OnStartSurgery(Entity<SurgeryGuideTargetComponent> ent, ref SurgeryGuideStartSurgeryMessage args)
     {
         base.OnStartSurgery(ent, ref args);
-        if (!_prototype.TryIndex(args.Prototype, out var construction))
+        if (!_prototype.Resolve(args.Prototype, out var construction))
             return;
 
         _construction.SetPathfindingTarget(ent, construction.TargetNode);

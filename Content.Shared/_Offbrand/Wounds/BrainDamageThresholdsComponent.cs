@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared.Alert;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
@@ -78,6 +73,18 @@ public sealed partial class BrainDamageThresholdsComponent : Component
     /// </summary>
     [DataField(required: true)]
     public ProtoId<AlertCategoryPrototype> DamageAlertCategory;
+
+    /// <summary>
+    /// The alert used to display oxygen level.
+    /// </summary>
+    [DataField(required: true)]
+    public ProtoId<AlertPrototype> OxygenAlert;
+
+    /// <summary>
+    /// The alert category of the oxygen alerts.
+    /// </summary>
+    [DataField(required: true)]
+    public ProtoId<AlertCategoryPrototype> OxygenAlertCategory;
 
     [DataField, AutoNetworkedField]
     public ProtoId<AlertPrototype>? CurrentDamageAlertThresholdState;

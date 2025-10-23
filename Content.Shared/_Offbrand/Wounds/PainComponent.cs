@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
@@ -64,6 +59,20 @@ public sealed partial class PainComponent : Component
 
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField, AutoPausedField]
     public TimeSpan? LastUpdate;
+}
+
+[RegisterComponent]
+[Access(typeof(PainSystem))]
+public sealed partial class PainMetabolicRateComponent : Component
+{
+    [DataField(required: true)]
+    public float QuadraticFactor;
+
+    [DataField(required: true)]
+    public float LinearFactor;
+
+    [DataField(required: true)]
+    public float ConstantFactor;
 }
 
 /// <summary>

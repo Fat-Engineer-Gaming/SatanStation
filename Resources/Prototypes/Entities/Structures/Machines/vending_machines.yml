@@ -971,7 +971,7 @@
     color: "#9dc5c9"
   - type: GuideHelp
     guides:
-    - MedicalDoctor
+    - OffbrandMedical # Offbrand
 
 - type: entity
   parent: VendingMachineMedicalBase

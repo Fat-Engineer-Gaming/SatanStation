@@ -70,7 +70,7 @@
       - id: BoneGel # Offbrand
       - id: BoneSetter # Offbrand
       - id: VascularRecoupler # Offbrand
-      - id: SimpleSuture # Offbrand
+      - id: Suture # Offbrand
       - id: ClothingMaskSterile
 
 - type: entity

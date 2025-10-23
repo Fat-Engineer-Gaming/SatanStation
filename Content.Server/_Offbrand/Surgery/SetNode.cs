@@ -1,14 +1,12 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared.Construction;
 using Content.Server.Construction;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Offbrand.Surgery;
 
+/// <summary>
+/// Sets the current node of the construction graph, and clears the pathfinding target if the repeat conditions are not met
+/// </summary>
 [DataDefinition]
 public sealed partial class SetNode : IGraphAction
 {

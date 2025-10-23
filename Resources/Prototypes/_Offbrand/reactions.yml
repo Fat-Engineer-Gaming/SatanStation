@@ -1,7 +1,3 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 - type: reaction
   id: Tramadol
   reactants:
@@ -40,9 +36,21 @@
     Oxycodone: 2
 
 - type: reaction
+  id: Synthflesh
+  reactants:
+    SulfuricAcid:
+      amount: 1
+    Oxygen:
+      amount: 1
+    Acetone:
+      amount: 1
+  products:
+    Synthflesh: 4
+
+- type: reaction
   id: Sanguine
   reactants:
-    SynthFlesh:
+    Synthflesh:
       amount: 1
     DexalinPlus:
       amount: 1
@@ -85,3 +93,143 @@
       catalyst: true
   products:
     Peridaxon: 2
+
+- type: reaction
+  id: RomerolCharcoalCancellation
+  reactants:
+    Romerol:
+      amount: 1
+    Charcoal:
+      amount: 1
+  products:
+    Romerol: 1
+
+- type: reaction
+  id: Coagulant
+  reactants:
+    TranexamicAcid:
+      amount: 1
+    Lead:
+      amount: 1
+      catalyst: true
+  products:
+    Coagulant: 1
+
+- type: reaction
+  id: Osseous
+  reactants:
+    Milk:
+      amount: 1
+    SodaWater:
+      amount: 1
+    Lead:
+      amount: 1
+      catalyst: true
+  products:
+    Osseous: 2
+
+- type: reaction
+  id: Convermol
+  reactants:
+    Fluorine:
+      amount: 1
+    Aluminium:
+      amount: 1
+    Dexalin:
+      amount: 1
+  products:
+    Convermol: 3
+
+- type: reaction
+  id: SalicylicAcid
+  reactants:
+    Phenol:
+      amount: 1
+    Bicaridine:
+      amount: 1
+    SulfuricAcid:
+      amount: 1
+  products:
+    SalicylicAcid: 3
+
+- type: reaction
+  id: SalicylicAcidBruizine
+  reactants:
+    SalicylicAcid:
+      amount: 1
+    Bruizine:
+      amount: 1
+  products:
+    Razorium: 1
+
+- type: reaction
+  id: SalicylicAcidLacerinol
+  reactants:
+    SalicylicAcid:
+      amount: 1
+    Lacerinol:
+      amount: 1
+  products:
+    Razorium: 1
+
+- type: reaction
+  id: SalicylicAcidPuncturase
+  reactants:
+    SalicylicAcid:
+      amount: 1
+    Puncturase:
+      amount: 1
+  products:
+    Razorium: 1
+
+- type: reaction
+  id: Oxandrolone
+  reactants:
+    Phenol:
+      amount: 1
+    Dermaline:
+      amount: 1
+    Fluorine:
+      amount: 1
+  products:
+    Oxandrolone: 3
+
+- type: reaction
+  id: OxandrolonePyrazine
+  reactants:
+    Oxandrolone:
+      amount: 1
+    Pyrazine:
+      amount: 1
+  products:
+    Razorium: 1
+
+- type: reaction
+  id: OxandroloneInsuzine
+  reactants:
+    Oxandrolone:
+      amount: 1
+    Insuzine:
+      amount: 1
+  products:
+    Razorium: 1
+
+- type: reaction
+  id: OxandroloneSigynate
+  reactants:
+    Oxandrolone:
+      amount: 1
+    Sigynate:
+      amount: 1
+  products:
+    Razorium: 1
+
+- type: reaction
+  id: OxandroloneLeporazine
+  reactants:
+    Oxandrolone:
+      amount: 1
+    Leporazine:
+      amount: 1
+  products:
+    Razorium: 1

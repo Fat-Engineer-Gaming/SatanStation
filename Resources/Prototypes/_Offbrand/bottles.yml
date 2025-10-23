@@ -7,7 +7,7 @@
     currentLabel: tramadol
   - type: SolutionContainerManager
     solutions:
-      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+      drink:
         maxVol: 30
         reagents:
         - ReagentId: Tramadol
@@ -22,7 +22,7 @@
     currentLabel: paracetamol
   - type: SolutionContainerManager
     solutions:
-      drink: # This solution name and target volume is hard-coded in ChemMasterComponent
+      drink:
         maxVol: 30
         reagents:
         - ReagentId: Paracetamol

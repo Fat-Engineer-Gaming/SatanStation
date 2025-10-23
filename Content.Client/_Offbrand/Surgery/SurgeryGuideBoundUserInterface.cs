@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared._Offbrand.Surgery;
 using Content.Shared.Construction.Prototypes;
 using Robust.Client.UserInterface;
@@ -22,9 +17,14 @@ public sealed class SurgeryGuideBoundUserInterface : BoundUserInterface
     {
         base.Open();
 
+        if (!EntMan.TryGetComponent<SurgeryGuideTargetComponent>(Owner, out var comp))
+            return;
+
         _menu = this.CreateWindow<SurgeryGuideMenu>();
+        _menu.Category = comp.Category;
         _menu.OnSurgerySelected += OnSurgerySelected;
         _menu.OnCleanUp += OnCleanUp;
+        _menu.Populate();
     }
 
     private void OnSurgerySelected(ProtoId<ConstructionPrototype> surgery)

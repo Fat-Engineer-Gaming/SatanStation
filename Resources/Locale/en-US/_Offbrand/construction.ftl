@@ -1,8 +1,4 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
-construction-presenter-to-surgery = To perform this, first you need to:
+construction-presenter-to-node-to-node = To perform this, first you need to:
 
 construction-examine-status-effect-should-have = The target needs to have { $effect }.
 construction-examine-status-effect-should-not-have = The target needs to not have { $effect }.
@@ -25,4 +21,20 @@ construction-step-heart-damage-range = { $max ->
              }
 }
 
-construction-component-to-perform-header = To perform {$name}...
+construction-examine-lung-damage-range = { $max ->
+    [2147483648] The target needs to have at least {NATURALFIXED($min, 2)} lung damage.
+    *[other] { $min ->
+                [0] The target needs to have at most {NATURALFIXED($max, 2)} lung damage.
+                *[other] The target needs to have between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} lung damage.
+             }
+}
+
+construction-step-lung-damage-range = { $max ->
+    [2147483648] The target needs to have at least {NATURALFIXED($min, 2)} lung damage.
+    *[other] { $min ->
+                [0] The target needs to have at most {NATURALFIXED($max, 2)} lung damage.
+                *[other] The target needs to have between {NATURALFIXED($min, 2)} and {NATURALFIXED($max, 2)} lung damage.
+             }
+}
+
+construction-component-to-perform-header = To perform {$targetName}...

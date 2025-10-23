@@ -96,10 +96,8 @@
       - id: Ointment
       - id: Gauze
       - id: ChemistryBottleParacetamol # Offbrand
-      - id: SimpleSuture #start imp
-      - id: Tincture
-    - !type:NestedSelector
-      tableId: LetterImpRareEntityTable # end imp
+    - id: SyndicateBusinessCard
+      weight: 0.5
 
 # Packages
 # TODO: Currently mostly maints loot, should be updated in the future.

@@ -1,9 +1,5 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 heart-defibrillatable-target-is-dead = Severe neurological decay makes rescuitation impossible. Further attempts futile.
-heart-defibrillatable-target-hypovolemia = Patient is in hypovolemic shock and will require a blood transfuion: rescuitation failed.
+heart-defibrillatable-target-strain = Patient's vitals are outside of acceptable parameters: the patient will likely re-enter cardiac arrest.
 
 mmi-extractor-no-mind = No neurological activity detected in patient; brain will not be extracted.
 mmi-extractor-probing = Probing patient for neurological activity...
@@ -22,7 +18,9 @@ mmi-extractor-prompt =
 mmi-extractor-accept = Accept
 mmi-extractor-decline = Decline
 
-chat-emote-name-paingasp = Paingasp
-chat-emote-msg-paingasp = twitches uncontrollably, before drawing still...
+chat-emote-name-brainslump = Paingasp
+chat-emote-msg-brainslump = twitches uncontrollably, before drawing still...
 chat-emote-name-braingasp = Braingasp
 chat-emote-msg-braingasp = falls limp, a deathly pallor hovering over {OBJECT($entity)}...
+chat-emote-name-painslump = Painslump
+chat-emote-msg-painslump = slumps over, too weak to continue fighting...

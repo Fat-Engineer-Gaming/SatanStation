@@ -47,11 +47,6 @@ namespace Content.Shared.Construction.Steps
                 return typeof(PartAssemblyConstructionGraphStep);
             }
 
-            if (node.Has("remove")) // imp
-            {
-                return typeof(EntityRemoveConstructionGraphStep);
-            }
-
             // Begin Offbrand
             if (node.Has("whitelist") || node.Has("blacklist"))
             {
