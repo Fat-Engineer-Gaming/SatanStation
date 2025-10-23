@@ -240,10 +240,7 @@
   - BaseMobHeartrate # Offbrand
   - BaseMobBrain # Offbrand
   - BaseMobCryostasis # Offbrand
-<<<<<<< HEAD
-=======
   - BaseMobLungDamage # Offbrand
->>>>>>> wizden/offmed-staging
   id: BaseMobSpeciesOrganic
   abstract: true
   components:
