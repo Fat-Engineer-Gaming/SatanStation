@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
@@ -55,7 +50,7 @@ public sealed partial class WoundDescriptionComponent : Component
 }
 
 [RegisterComponent, NetworkedComponent]
-[Access(typeof(WoundableSystem), typeof(WoundableHealthAnalyzerSystem))]
+[Access(typeof(WoundableSystem), typeof(SharedWoundableHealthAnalyzerSystem))]
 public sealed partial class AnalyzableWoundComponent : Component
 {
     /// <summary>
@@ -82,7 +77,7 @@ public sealed partial class PainfulWoundComponent : Component
     public Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> FreshPainCoefficients;
 
     [DataField]
-    public double FreshPainDecreasePerSecond = 0.15d;
+    public double FreshPainDecreasePerSecond = 0.05d;
 }
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -105,6 +100,17 @@ public sealed partial class TendableWoundComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Tended;
+}
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[Access(typeof(WoundableSystem))]
+public sealed partial class ClampableWoundComponent : Component
+{
+    /// <summary>
+    /// Whether or not the wound has been clamped
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool Clamped;
 }
 
 [RegisterComponent, NetworkedComponent]
@@ -155,13 +161,19 @@ public record struct HealWoundsEvent(DamageSpecifier Damage);
 public record struct GetPainEvent(FixedPoint2 Pain);
 
 /// <summary>
-/// Raised on an entity to get the sum total of heart strain
-/// </summary>
-[ByRefEvent]
-public record struct GetStrainEvent(FixedPoint2 Strain);
-
-/// <summary>
 /// Raised on an entity to get the amount it should bleed
 /// </summary>
 [ByRefEvent]
 public record struct GetBleedLevelEvent(float BleedLevel);
+
+/// <summary>
+/// Raised on an entity to modify the bleed level before committing to bleeding
+/// </summary>
+[ByRefEvent]
+public record struct ModifyBleedLevelEvent(float BleedLevel);
+
+/// <summary>
+/// Raised on an entity's wounds to clamp them with the given probability
+/// </summary>
+[ByRefEvent]
+public record struct ClampWoundsEvent(float Probability);

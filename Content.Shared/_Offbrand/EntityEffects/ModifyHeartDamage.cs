@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared._Offbrand.Wounds;
 using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
@@ -20,7 +15,7 @@ public sealed partial class ModifyHeartDamage : EntityEffect
         if (Amount < FixedPoint2.Zero)
             return Loc.GetString("reagent-effect-guidebook-modify-heart-damage-heals", ("chance", Probability), ("amount", -Amount));
         else
-            return Loc.GetString("reagent-effect-guidebook-modify-heart-damage-deals", ("chance", Probability), ("amount", -Amount));
+            return Loc.GetString("reagent-effect-guidebook-modify-heart-damage-deals", ("chance", Probability), ("amount", Amount));
     }
 
     public override void Effect(EntityEffectBaseArgs args)

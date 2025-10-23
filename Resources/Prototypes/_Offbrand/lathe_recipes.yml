@@ -14,10 +14,19 @@
   materials:
     Plastic: 200
 
+- type: latheRecipe
+  id: Suture1
+  result: Suture1
+  completetime: 1
+  materials:
+    Steel: 25
+    Plastic: 25
+
 - type: latheRecipePack
   id: OffbrandMedicalStatic
   recipes:
   - IVBag
+  - Suture1
 
 - type: latheRecipePack
   id: OffbrandSurgeryStatic

@@ -134,6 +134,9 @@
       metabolismRate: 0.2
       statusEffects:
       - statusEffect: StatusEffectPainkillersNegligibleRobustHarvest
+        conditions:
+        - !type:OrganType
+          type: Plant
       effects:
       - !type:HealthChange
         damage:
@@ -141,7 +144,7 @@
             Poison: -1
       - !type:EvenHealthChange
         damage:
-          Brute: -0.75 # Offbrand
+          Brute: -1 # Offbrand
       # End Offbrand
         conditions:
         - !type:OrganType
@@ -157,15 +160,17 @@
             Asphyxiation: 1
             Heat: 2
             Poison: 1
-    Medicine:
-      effects:
+    # Begin Offbrand Removals
+    # Medicine:
+    #   effects:
+    # End Offbrand Removals
       - !type:Polymorph
         prototype: TreeMorph
         conditions:
           - !type:OrganType
             type: Plant
-          - !type:ReagentThreshold
-            min: 40 #imp edit (was 80)
+          - !type:MetaboliteThreshold # Offbrand
+            min: 80
 
 - type: reagent
   id: Sedin

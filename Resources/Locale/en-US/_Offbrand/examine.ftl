@@ -1,11 +1,16 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+cpr-target-needs-cpr = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } no pulse and is gasping for breath![/color]
+
+fracture-examine = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-BASIC($target, "look", "looks") } like something is shaped wrong under { POSS-ADJ($target) } skin![/color]
+arterial-bleeding-examine = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-BE($target) } spurting blood![/color]
+bone-death-examine = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-BE($target) } severely mangled![/color]
 
 wound-bleeding-modifier = [color=red]bleeding {$wound}[/color]
 wound-tended-modifier = tended {$wound}
 wound-bandaged-modifier = bandaged {$wound}
 wound-salved-modifier = salved {$wound}
+
+tourniquet-applied-examine = { CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } a tourniquet clamped on { OBJECT($target) }.
+splints-applied-examine = { CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } some splints on { OBJECT($target) }.
 
 wound-count-modifier =
     { CAPITALIZE(SUBJECT($target)) } { CONJUGATE-HAVE($target) } { $count ->
@@ -34,6 +39,9 @@ wound-count-modifier =
     [one]{"patch of"}
    *[other]{"patches of"}
 }
+
+wound-incision-examine = [color=yellow]open incision{-wound-plural-modifier-s(count: $count)}[/color]
+wound-ribcage-open-examine = [color=yellow]open ribcage{-wound-plural-modifier-s(count: $count)}[/color]
 
 wound-bruise-80 = [color=crimson]monumental bruise{-wound-plural-modifier-s(count: $count)}[/color]
 wound-bruise-50 = [color=crimson]huge bruise{-wound-plural-modifier-s(count: $count)}[/color]

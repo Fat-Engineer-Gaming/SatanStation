@@ -222,23 +222,13 @@
   plantMetabolism:
   - !type:PlantAdjustHealth
     amount: -5
-  metabolisms: # imp edit begin
+  metabolisms: # Offbrand
     Narcotic:
-      statusEffects: # Offbrand
+      statusEffects:
       - statusEffect: StatusEffectHeartStrainNicotine
       effects:
-      - !type:HealthChange
-        probability: 0.1
-        damage:
-          types:
-            Cellular: 0.2
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentThreshold
-          min: 1
-        damage:
-          types:
-            Cellular: 0.2 # imp edit end
+      - !type:ModifyLungDamage
+        amount: 0.25
 
 # TODO: Replace these nonstandardized effects with generic brain damage
 - type: reagent
@@ -317,7 +307,10 @@
     Narcotic:
       statusEffects: # Offbrand
       - statusEffect: StatusEffectPainSuppressionNocturine
-      effects:
+      effects: # It would be nice to have speech slurred or mumbly, but accents are a bit iffy atm. Same for distortion effects.
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.65
+        sprintSpeedModifier: 0.65
       - !type:ModifyStatusEffect
         conditions:
         - !type:ReagentThreshold

@@ -100,7 +100,6 @@
     contents:
       - id: MedicatedSuture
       - id: RegenerativeMesh
-      - id: Tincture #IMP
       - id: ChemistryBottleTramadol # Offbrand
 
 - type: entity

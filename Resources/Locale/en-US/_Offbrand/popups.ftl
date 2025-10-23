@@ -1,7 +1,3 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 own-heart-has-stopped-beating = Your heart has stopped beating.
 minor-pain-applied = Your body begins to ache.
 moderate-pain-applied = You struggle to keep your eyes open.
@@ -16,6 +12,26 @@ tendable-used-up = You used { THE($tending) } up.
 tendable-self-tending = You begin tending your { $wound } with { THE($tending) }.
 tendable-user-tending = You begin tending { $target }'s { $wound } with { THE($tending) }.
 tendable-other-tending = { $user } begins tending { $target }'s { $wound } with { THE($tending) }.
+
+persistent-tender-already-applied = { $target } already has { INDEFINITE($trigger) } { $trigger }.
+
+persistent-tender-reflexive-user-completed = You tightened { THE($trigger) } around yourself.
+persistent-tender-reflexive-other-completed = { $user } tightened { THE($trigger) } around { REFLEXIVE($user) }.
+persistent-tender-user-completed = You tightened { THE($trigger) } around { $target }.
+persistent-tender-other-completed = { $user } tightened { THE($trigger) } around { $target }.
+persistent-tender-reflexive-user-started = You begin to tighten { THE($trigger) } around yourself.
+persistent-tender-reflexive-other-started = { $user } begins to tighten { THE($trigger) } around { REFLEXIVE($user) }.
+persistent-tender-user-started = You begin to tighten { THE($trigger) } around { $target }.
+persistent-tender-other-started = { $user } begins to tighten { THE($trigger) } around { $target }.
+
+persistent-tender-removal-reflexive-user-completed = You removed { THE($effect) } from yourself.
+persistent-tender-removal-reflexive-other-completed = { $user } removed { THE($effect) } from { REFLEXIVE($user) }.
+persistent-tender-removal-user-completed = You removed { THE($effect) } from { $target }.
+persistent-tender-removal-other-completed = { $user } removed { THE($effect) } from { $target }.
+persistent-tender-removal-reflexive-user-started = You begin to loosen { THE($effect) } from yourself.
+persistent-tender-removal-reflexive-other-started = { $user } begins to loosen { THE($effect) } from { REFLEXIVE($user) }.
+persistent-tender-removal-user-started = You begin to loosen { THE($effect) } from { $target }.
+persistent-tender-removal-other-started = { $user } begins to loosen { THE($effect) } around { $target }.
 
 cpr-target-started-user = You begin to perform chest compressions on { $target }.
 cpr-target-started-others = { $user } begins performing chest compressions { $target }.
@@ -41,3 +57,23 @@ iv-bag-disconnected-others = { $user } unhooked { $target } from { THE($source) 
 
 backfired-gun = You struggle to aim the gun, and it backfires!
 backfired-hypospray = You struggle to aim the hypo, and you accidentally jam it into yourself.
+
+zombification-30-message-1 = A heat spreads through your body.
+zombification-30-message-2 = Your head feels warm.
+zombification-30-message-3 = You feel dizzy.
+zombification-30-message-4 = You feel light-headed.
+
+zombification-60-message-1 = Something's under your skin.
+zombification-60-message-2 = Something's burning.
+zombification-60-message-3 = Something's itching.
+zombification-60-message-4 = Sweat beads on you.
+
+zombification-90-message-1 = Your heart is racing.
+zombification-90-message-2 = A strange pain fills your body.
+zombification-90-message-3 = Something's running down your throat.
+zombification-90-message-4 = Your skin is withering.
+
+zombification-120-message-1 = Something's bursting open in your head.
+zombification-120-message-2 = You feel strange needles piercing your skin.
+zombification-120-message-3 = Your insides are squirming.
+zombification-120-message-4 = Something wants you to feel calm.

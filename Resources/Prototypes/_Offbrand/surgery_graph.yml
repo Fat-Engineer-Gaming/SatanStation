@@ -1,13 +1,10 @@
-# This Source Code Form is subject to the terms of the Mozilla Public
-# License, v. 2.0. If a copy of the MPL was not distributed with this
-# file, You can obtain one at http://mozilla.org/MPL/2.0/.
-
 - type: constructionGraph
   id: SurgeryGraph
   start: Base
   graph:
   - node: Base
-    surgeryName: surgery-cleanup-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-cleanup-name
     edges:
     - to: OpenIncision
       steps:
@@ -103,15 +100,18 @@
       - !type:RemoveStatusEffect
         effect: WoundFracture
       steps:
-      - tool: BoneSetting
+      - tool: BoneMending
+        doAfter: 1
   - node: WoundFractureTreatment
-    surgeryName: surgery-wound-fracture-treatment-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-wound-fracture-treatment-name
     actions:
     - !type:SetNode
       node: RetractedIncision
       repeatConditions: *fracture-conditions
   - node: WoundArterialTreatment
-    surgeryName: surgery-wound-arterial-treatment-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-wound-arterial-treatment-name
     actions:
     - !type:SetNode
       node: RetractedIncision
@@ -122,22 +122,22 @@
       steps:
       - tool: BoneMending
         doAfter: 1
-    - to: HeartTreatmentSimpleSuture
+    - to: HeartTreatmentSuture
       conditions: &heart-damage-conditions
       - !type:HeartDamage
         min: 1
       completed:
       - !type:ChangeHeartDamage
-        amount: -5
+        amount: -10
       steps:
-      - material: SimpleSuture
+      - material: Suture
         amount: 1
         doAfter: 5
     - to: HeartTreatmentMedicatedSuture
       conditions: *heart-damage-conditions
       completed:
       - !type:ChangeHeartDamage
-        amount: -10
+        amount: -20
       steps:
       - material: MedicatedSuture
         amount: 1
@@ -151,12 +151,42 @@
         effect: WoundHusking
       steps:
       - material: RegenerativeMesh
-        amount: 10
+        amount: 3
         doAfter: 5
     - to: CavityManipulationOpen
       steps:
       - tool: Drilling
         doAfter: 2
+    - to: OpenRibCageRecoupling
+      steps:
+      - tool: Recoupling
+        doAfter: 1
+  - node: OpenRibCageRecoupling
+    edges:
+    - to: OpenRibCage
+      steps:
+      - tool: Clamping
+        doAfter: 1
+    - to: LungTreatmentSuture
+      conditions: &lung-damage-conditions
+      - !type:LungDamage
+        min: 1
+      completed:
+      - !type:ChangeLungDamage
+        amount: -10
+      steps:
+      - material: Suture
+        amount: 1
+        doAfter: 5
+    - to: LungTreatmentMedicatedSuture
+      conditions: *lung-damage-conditions
+      completed:
+      - !type:ChangeLungDamage
+        amount: -20
+      steps:
+      - material: MedicatedSuture
+        amount: 1
+        doAfter: 3
   - node: OpenRibCageMending
     edges:
     - to: OpenRibCageSetting
@@ -172,7 +202,7 @@
         effect: WoundBoneDeath
       steps:
       - material: MedicatedSuture
-        amount: 10
+        amount: 3
         doAfter: 5
   - node: OpenRibCageSetting
     edges:
@@ -184,25 +214,43 @@
       - tool: BoneMending
         doAfter: 1
   - node: BoneDeathTreatment
-    surgeryName: surgery-bone-death-treatment-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-bone-death-treatment-name
     actions:
     - !type:SetNode
       node: OpenRibCage
       repeatConditions: *bone-death-conditions
-  - node: HeartTreatmentSimpleSuture
-    surgeryName: surgery-heart-treatment-simple-suture-name
+  - node: HeartTreatmentSuture
+    header: construction-component-to-perform-header
+    localizedName: surgery-heart-treatment-suture-name
     actions:
     - !type:SetNode
       node: OpenRibCage
       repeatConditions: *heart-damage-conditions
   - node: HeartTreatmentMedicatedSuture
-    surgeryName: surgery-heart-treatment-medicated-suture-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-heart-treatment-medicated-suture-name
     actions:
     - !type:SetNode
       node: OpenRibCage
       repeatConditions: *heart-damage-conditions
+  - node: LungTreatmentSuture
+    header: construction-component-to-perform-header
+    localizedName: surgery-lung-treatment-suture-name
+    actions:
+    - !type:SetNode
+      node: OpenRibCageRecoupling
+      repeatConditions: *lung-damage-conditions
+  - node: LungTreatmentMedicatedSuture
+    header: construction-component-to-perform-header
+    localizedName: surgery-lung-treatment-medicated-suture-name
+    actions:
+    - !type:SetNode
+      node: OpenRibCageRecoupling
+      repeatConditions: *lung-damage-conditions
   - node: HuskingTreatment
-    surgeryName: surgery-husking-treatment-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-husking-treatment-name
     actions:
     - !type:SetNode
       node: OpenRibCage
@@ -221,11 +269,13 @@
         guideStep: cavity-slot-insertion-guide
       steps:
       - whitelist:
-          components:
-          - Item
           sizes:
           - Tiny
           - Small
+        blacklist:
+          components:
+          - NukeDisk
+        doAfter: 2
         store: cavity_slot
         name: cavity-slot-insertion-small-item
     - to: CavityManipulationRemoval
@@ -244,12 +294,14 @@
       - tool: Clamping
         doAfter: 2
   - node: CavityManipulationInsert
-    surgeryName: surgery-cavity-manipulation-insert-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-cavity-manipulation-insert-name
     actions:
     - !type:SetNode
       node: CavityManipulationOpen
   - node: CavityManipulationRemoval
-    surgeryName: surgery-cavity-manipulation-removal-name
+    header: construction-component-to-perform-header
+    localizedName: surgery-cavity-manipulation-removal-name
     actions:
     - !type:SetNode
       node: CavityManipulationOpen

@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared._Offbrand.Wounds;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
@@ -130,9 +125,9 @@ public sealed class IVSystem : EntitySystem
 
         if (bloodTransferAmount > 0)
         {
-            solution.SplitSolutionWithOnly(bloodTransferAmount, target.Comp2.BloodReagent);
+            var taken = solution.SplitSolutionWithOnly(bloodTransferAmount, target.Comp2.BloodReagent);
 
-            _bloodstream.TryModifyBloodLevel((target.Owner, target.Comp2), bloodTransferAmount);
+            _bloodstream.TryModifyBloodLevel((target.Owner, target.Comp2), taken.Volume);
         }
 
         if (chemsTransferAmount > 0)

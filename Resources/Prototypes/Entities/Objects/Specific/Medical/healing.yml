@@ -473,27 +473,6 @@
   - type: Stack
     stackType: AloeCream
     count: 10
-  # imp edit start
-  - type: Healing
-    damageContainers:
-    - Biological
-    damage:
-      types:
-        Heat: -10
-    healingBeginSound:
-      path: "/Audio/Items/Toys/ToyFall2.ogg"
-    healingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
-  - type: EmitSoundOnLand
-    sound:
-      path: "/Audio/Voice/Slime/slime_squish.ogg"
-  - type: PluralName
-    oneOf: plural-name-tube-1
-    someOf: plural-name-tube-2plus
-  - type: Tag
-    tags:
-    - Aloe
-  # imp edit end
   # Begin Offbrand
   - type: Tending
     woundWhitelist:
@@ -501,10 +480,6 @@
     damage:
       types:
         Heat: -10
-    tendingBeginSound:
-      path: "/Audio/Items/Toys/ToyFall2.ogg"
-    tendingEndSound:
-      path: "/Audio/Items/Medical/ointment_end.ogg"
   # End Offbrand
 
 - type: entity

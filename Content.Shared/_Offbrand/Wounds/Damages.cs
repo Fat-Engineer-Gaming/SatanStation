@@ -1,14 +1,10 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using System.Linq;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Offbrand.Wounds;
 
@@ -63,6 +59,35 @@ public sealed partial class Damages : IEquatable<Damages>, IRobustCloneable<Dama
             specifier.DamageDict[type] = value;
         }
         return specifier;
+    }
+
+    public Damages Heal(DamageSpecifier incoming)
+    {
+        var remainder = new Damages(incoming);
+
+        foreach (var (type, value) in remainder.DamageDict)
+        {
+            DebugTools.Assert(value <= 0);
+
+            if (!DamageDict.TryGetValue(type, out var existing))
+                continue;
+
+            var newValue = existing + value;
+            if (newValue <= 0)
+            {
+                remainder.DamageDict[type] = newValue;
+                newValue = 0;
+            }
+            else
+            {
+                remainder.DamageDict[type] = 0;
+            }
+
+            DamageDict[type] = newValue;
+        }
+
+        remainder.TrimZeros();
+        return remainder;
     }
 
     public static Damages operator +(Damages damages, DamageSpecifier specifier)

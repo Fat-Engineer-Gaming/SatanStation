@@ -1,8 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
@@ -19,7 +14,6 @@ namespace Content.Shared._Offbrand.Wounds;
 
 public sealed class TendingSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
@@ -142,10 +136,7 @@ public sealed class TendingSystem : EntitySystem
         if (!TryComp<TendingComponent>(args.Used, out var tending))
             return;
 
-        _woundable.TendWound(ent, tending.Damage);
-
-        if (tending.Damage is { } damage)
-            _damageable.TryChangeDamage(target, damage, true, origin: args.Args.User);
+        _woundable.TendWound(target, ent, tending.Damage);
 
         var hasMoreItems = true;
         if (TryComp<StackComponent>(args.Used.Value, out var stackComp))

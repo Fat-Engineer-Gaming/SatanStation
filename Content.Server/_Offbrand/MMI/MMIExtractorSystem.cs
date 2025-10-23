@@ -1,13 +1,8 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/.
- */
-
-using Content.Shared.Body.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.EUI;
 using Content.Shared._Offbrand.MMI;
 using Content.Shared._Offbrand.Wounds;
+using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.DoAfter;
