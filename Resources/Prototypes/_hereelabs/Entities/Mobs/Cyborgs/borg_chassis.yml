@@ -4,51 +4,32 @@
   name: ERT cyborg
   description: A man-machine hybrid that's sent into high-intensity operations. You have a feeling you shouldn't try to fight this one.
   components:
-  - type: Reactive
-    groups:
-      Acidic: [ Touch ]
-  - type: DamageOnHighSpeedImpact
-    damage:
-      types:
-        Blunt: 5
-    soundHit:
-      collection: MetalThud
-  - type: CombatMode
-  - type: NoSlip
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 300
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 5
+    baseWalkSpeed: 2
+    baseSprintSpeed: 4
   - type: BorgTransponder
-    name: heavy xenoborg
+    name: emergency response team
     sprite:
-        sprite: Mobs/Silicon/chassis.rsi
-        state: ERT
+        sprite: _hereelabs/Mobs/Silicon/chassis.rsi
+        state: ert
   - type: Sprite
     layers:
-      - state: ERT
-      - state: ERT_e
+      - state: ert
+        sprite: _hereelabs/Mobs/Silicon/chassis.rsi
+      - state: ert_e
         map: [ "enum.BorgVisualLayers.Light" ]
         shader: unshaded
         visible: false
-      - state: ERT_l
+        sprite: _hereelabs/Mobs/Silicon/chassis.rsi
+      - state: ert_l
         shader: unshaded
         map: [ "light" ]
         visible: false
+        sprite: _hereelabs/Mobs/Silicon/chassis.rsi
   - type: BorgChassis
     maxModules: 3
-    hasMindState: ERT_e
-    noMindState: ERT_e_r
+    hasMindState: ert_e
+    noMindState: ert_e_r
     moduleWhitelist:
         tags:
         - BorgModuleGeneric
@@ -114,7 +95,6 @@
     - Security
     - Service
     - Supply
-  - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
   - type: ContainerFill
@@ -147,6 +127,14 @@
   - type: AccessReader
     access: [["CentralCommand"]]
   - type: ShowJobIcons
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+    - Inorganic
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+  - type: ShowContrabandDetails
+
 
 - type: entity
   id: BorgChassisDeathsquad
@@ -154,47 +142,28 @@
   name: Commando Cyborg
   description: A man-machine hybrid that's equipped with the finest technology Nanotrasen could supply, this chassis is outfitted for one purpose and one purpose only, the complete annihilation of anything and everything in its path. Equipped with an energy sword, pulse rifle, and top-tier power cell, nothing can stand in its way for long.
   components:
-  - type: Reactive
-    groups:
-      Acidic: [ Touch ]
-  - type: DamageOnHighSpeedImpact
-    damage:
-      types:
-        Blunt: 5
-    soundHit:
-      collection: MetalThud
-  - type: CombatMode
-  - type: NoSlip
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 300
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
   - type: MovementSpeedModifier
-    baseWalkSpeed: 3
-    baseSprintSpeed: 5
+    baseWalkSpeed: 2.7
+    baseSprintSpeed: 4.7
   - type: BorgTransponder
-    name: heavy xenoborg
+    name: commando
     sprite:
-      sprite: Mobs/Silicon/chassis.rsi
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
       state: commando
   - type: Sprite
     layers:
     - state: commando
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
     - state: commando_e
       map: [ "enum.BorgVisualLayers.Light" ]
       shader: unshaded
       visible: false
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
     - state: commando_l
       shader: unshaded
       map: [ "light" ]
       visible: false
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
   - type: BorgChassis
     maxModules: 3
     hasMindState: commando_e
@@ -264,7 +233,6 @@
     - Service
     - Supply
     - Binary
-  - type: ZombieImmune
   - type: Repairable
     doAfterDelay: 10
   - type: ContainerFill
@@ -298,9 +266,13 @@
     access: [["CentralCommand"]]
   - type: ShowJobIcons
   - type: ShowHealthBars
-    damageContainers:
-    - Biological
-    - Inorganic
+  - type: ShowHealthIcons
+  - type: ThermalVision
+    color: "#98EEFB"
+    lightRadius: 15
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+  - type: ShowContrabandDetails
 
 - type: entity
   id: PlayerBorgErtGhostRole

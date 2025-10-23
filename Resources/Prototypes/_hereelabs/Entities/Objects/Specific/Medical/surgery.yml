@@ -1,0 +1,39 @@
+﻿- type: entity
+  name: surgical omnitool
+  id: OmnimedTool
+  parent: BaseToolSurgery
+  description: A compact surgical omnitool conveniently packed like a Swiss Army knife, at the cost of being slower.
+  components:
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
+    state: omnimed
+  - type: Item
+    size: Small
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimed.rsi
+  - type: Tool # Offbrand
+    qualities:
+    - Cauterizing
+    - Drilling
+    - Incising
+    - Retracting
+    - Clamping
+    - Sawing
+    - BoneSetting
+    - Recoupling
+    - BoneMending
+    speedModifier: 0.5
+
+- type: entity
+  parent: [ OmnimedTool, BaseSyndicateContraband ]
+  id: OmnimedToolSyndie
+  name: interdyne surgical omnitool
+  description: A compact surgical omnitool conveniently packed like a Swiss Army knife, except that its user has probably violated a couple of Swiss conventions. Can preform far quicker then a regular Surgical Omnitool.
+  components:
+  - type: Sprite
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimedevil.rsi
+    state: evil
+  - type: Item
+    size: Small
+    sprite: _Shitmed/Objects/Specific/Medical/Surgery/omnimedevil.rsi
+  - type: Tool
+    speedModifier: 1.5

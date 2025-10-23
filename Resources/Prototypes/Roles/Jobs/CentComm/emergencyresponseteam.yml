@@ -35,7 +35,7 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket1: WeaponPistolN1984
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -43,7 +43,7 @@
     - MedkitCombatFilled # Goobstation - No reason not to.
     - BoxZiptie
     - CrowbarRed
-#    - MagazineMagnum - no need
+    - MagazineMagnum
 
 - type: startingGear
   id: ERTLeaderGearEVA
@@ -59,7 +59,7 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket1: WeaponPistolN1984
     pocket2: FlashlightSeclite
   storage:
     back:
@@ -67,7 +67,7 @@
     - MedkitCombatFilled # Goobstation - No reason not to.
     - BoxZiptie
     - CrowbarRed
-#    - MagazineMagnum - No need
+    - MagazineMagnum
 
 - type: startingGear
   id: ERTLeaderGearEVALecter
@@ -83,7 +83,7 @@
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
-    pocket1: WeaponPulsePistol # Literally described as "Favored sidearm of NT ERT operatives". Is never used anywhere else.
+    pocket1: WeaponPistolN1984
     pocket2: FlashlightSeclite
   inhand:
   - WeaponRifleLecterXL8
@@ -93,7 +93,7 @@
     - MedkitCombatFilled # Goobstation - No reason not to.
     - BoxHandcuff
     - CrowbarRed
-#    - MagazineMagnum - No need
+    - MagazineMagnum
     - MagazineRifle
     - MagazineRifle
 
@@ -160,7 +160,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTChaplain
     back: ClothingBackpackERTChaplain
-    shoes: ClothingShoesBootsTactical
+    shoes: ClothingShoesBootsMag
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlasses
     neck: ClothingNeckStoleChaplain
@@ -191,7 +191,7 @@
     head: ClothingHeadHelmetHardsuitERTChaplain
     mask: ClothingMaskGasERT
     outerClothing: ClothingOuterHardsuitERTChaplain
-    shoes: ClothingShoesBootsTactical
+    shoes: ClothingShoesBootsMag
 
 # Engineer
 - type: job
@@ -249,7 +249,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
-    shoes: ClothingShoesBootsTactical
+    shoes: ClothingShoesBootsMag
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesMeson
     gloves: ClothingHandsGlovesCombat
@@ -422,10 +422,8 @@
     back:
     - Hypospray
     - MedkitCombatFilled
-    - MedkitCombatFilled
     - CrowbarRed
     - ChemistryBottleOmnizine
-    - ChemistryBottleEpinephrine
     - ChemistryBottleEpinephrine
 
 - type: startingGear
@@ -433,7 +431,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedical
-    shoes: ClothingShoesBootsTactical
+    shoes: ClothingShoesBootsMag
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
     gloves: ClothingHandsGlovesNitrile
@@ -442,6 +440,7 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityWebbingMedical
     pocket1: Flare
+    pocket2: Disabler
   storage:
     back:
     - Hypospray
@@ -506,7 +505,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTJanitor
     back: ClothingBackpackERTJanitor
-    shoes: ClothingShoesBootsTactical
+    shoes: ClothingShoesBootsMag
     mask: ClothingMaskGasERT
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterHardsuitERTJanitor

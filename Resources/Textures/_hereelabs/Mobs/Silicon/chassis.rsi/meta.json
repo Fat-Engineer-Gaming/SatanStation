@@ -1,0 +1,119 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Xenoborg Janitor, Xenoborg Bomber, and ert Cyborg made by FatEngineerGaming (Discord), Commando sprites from Paradise (or TG, i literally do not know -Fat Engi) https://github.com/ParadiseSS13/Paradise/tree/master.",
+    "states": [
+        {
+            "name": "xenoborg_janitor",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "xenoborg_janitor_l",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "xenoborg_janitor_e",
+            "delays": [
+                [
+                    0.2,
+                    0.2
+                ]
+            ]
+        },
+        {
+            "name": "xenoborg_janitor_e_r",
+            "delays": [
+                [
+                    0.3,
+                    0.3,
+                    0.3,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "xenoborg_bomber",
+            "directions": 4
+        },
+        {
+            "name": "xenoborg_bomber_moving",
+            "directions": 4,
+            "delays": [
+                [
+                    0.2,
+                    0.3
+                ],
+                [
+                    0.2,
+                    0.3
+                ],
+                [
+                    0.2,
+                    0.3
+                ],
+                [
+                    0.2,
+                    0.3
+                ]
+            ]
+        },
+        {
+            "name": "xenoborg_bomber_e",
+            "directions": 4
+        },
+        {
+            "name": "xenoborg_bomber_e_r",
+            "directions": 4
+        },
+        {
+            "name": "xenoborg_bomber_l",
+            "directions": 4
+        },
+        {
+            "name": "ert",
+            "directions": 4
+        },
+        {
+            "name": "ert_e",
+            "directions": 4
+        },
+        {
+            "name": "ert_e_r",
+            "directions": 4
+        },
+        {
+            "name": "ert_l",
+            "directions": 4
+        },
+        {
+            "name": "commando",
+            "directions": 4
+        },
+        {
+            "name": "commando_e",
+            "directions": 4
+        },
+        {
+            "name": "commando_e_r",
+            "directions": 4
+        },
+        {
+            "name": "commando_l",
+            "directions": 4
+        }
+    ]
+}

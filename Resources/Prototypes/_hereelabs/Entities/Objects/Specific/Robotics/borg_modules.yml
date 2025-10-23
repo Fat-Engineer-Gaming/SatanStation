@@ -34,7 +34,9 @@
   - type: Sprite
     layers:
     - state: centcomm
+      sprite: _hereelabs/Objects/Specific/Robotics/borgmodule.rsi
     - state: icon-ert
+      sprite: _hereelabs/Objects/Specific/Robotics/borgmodule.rsi
   - type: ItemBorgModule
     hands:
     - item: WeaponPulsePistol
@@ -44,7 +46,7 @@
     - item: SonicJackhammer
     - item: JetpackXenoborg
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: ert-module }
+    icon: { sprite: _hereelabs/Interface/Actions/actions_borg.rsi, state: ert-module }
 
 - type: entity
   parent: [ BaseBorgModuleCentComm, BaseProviderBorgModule, BaseCentcommContraband ]
@@ -55,6 +57,7 @@
   - type: Sprite
     layers:
     - state: centcomm
+      sprite: _hereelabs/Objects/Specific/Robotics/borgmodule.rsi
     - state: icon-xenoborg-laser # it fits.
   - type: ItemBorgModule
     hands:
@@ -64,7 +67,7 @@
     - item: SonicJackhammer
     - item: JetpackXenoborg
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-autopulser-module } # i'm not making another sprite, fuck you.
+    icon: { sprite: _hereelabs/Interface/Actions/actions_borg.rsi, state: xenoborg-autopulser-module } # i'm not making another sprite.
 
 - type: entity
   parent: [ BaseBorgModule, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -99,3 +102,43 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
         color: "#7B0F12"
+
+- type: entity
+  parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleAutopulser
+  name: autopulser xenoborg module
+  description: Module with a Autopulser.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_heavy
+    - state: icon-xenoborg-autopulser
+      sprite: _hereelabs/Objects/Specific/Robotics/borgmodule.rsi
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponRifleAsakimAutopulser
+  - type: BorgModuleIcon
+    icon: { sprite: _hereelabs/Interface/Actions/actions_borg.rsi, state: xenoborg-autopulser-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleGeneric, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleJanitor
+  name: janitor xenoborg module
+  description: Module that allows Xenoborgs to become... a janitor, and can work on any chassis type... wh... WHY THE FUCK ARE YOU EVEN MAKING THIS??
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_generic
+    - state: icon-xenoborg-janitor
+      sprite: _hereelabs/Objects/Specific/Robotics/borgmodule.rsi
+  - type: ItemBorgModule
+    hands:
+    - item: AdvMopItem
+    - item: TrashBagBlue
+    - item: BorgMegaSprayBottle
+    - item: HoloprojectorBorg
+    - item: BorgDropper
+    - item: Beaker
+    - item: SprayPainter
+  - type: BorgModuleIcon
+    icon: { sprite: _hereelabs/Interface/Actions/actions_borg.rsi, state: xenoborg-janitor-module }

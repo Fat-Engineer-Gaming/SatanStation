@@ -162,7 +162,7 @@
   id: RandomHumanoidSpawnerERTChaplain
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT chaplain
-  suffix: ERTRole, Basic
+  suffix: ERTRole, Basic, Blue/Green
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -200,7 +200,7 @@
   id: RandomHumanoidSpawnerERTChaplainEVA
   parent: RandomHumanoidSpawnerERTChaplain
   name: ERT chaplain
-  suffix: ERTRole, Enviro EVA
+  suffix: ERTRole, Enviro EVA, Red
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -230,7 +230,7 @@
   id: RandomHumanoidSpawnerERTJanitor
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT janitor
-  suffix: ERTRole, Basic
+  suffix: ERTRole, Basic, Blue/Green
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -267,7 +267,7 @@
   id: RandomHumanoidSpawnerERTJanitorEVA
   parent: RandomHumanoidSpawnerERTJanitor
   name: ERT janitor
-  suffix: ERTRole, Enviro EVA
+  suffix: ERTRole, Enviro EVA, Red
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -296,7 +296,7 @@
   id: RandomHumanoidSpawnerERTEngineer
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT engineer
-  suffix: ERTRole, Basic
+  suffix: ERTRole, Basic, Blue/Green
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -333,7 +333,7 @@
   id: RandomHumanoidSpawnerERTEngineerEVA
   parent: RandomHumanoidSpawnerERTEngineer
   name: ERT engineer
-  suffix: ERTRole, Enviro EVA
+  suffix: ERTRole, Enviro EVA, Red
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -362,7 +362,7 @@
   id: RandomHumanoidSpawnerERTSecurity
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT security
-  suffix: ERTRole, Basic
+  suffix: ERTRole, Basic, Blue/Green
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -399,7 +399,7 @@
   id: RandomHumanoidSpawnerERTSecurityEVA
   parent: RandomHumanoidSpawnerERTSecurity
   name: ERT security
-  suffix: ERTRole, Armored EVA
+  suffix: ERTRole, Armored EVA, Red
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -425,7 +425,7 @@
 - type: entity
   id: RandomHumanoidSpawnerERTSecurityEVALecter
   parent: RandomHumanoidSpawnerERTSecurityEVA
-  suffix: ERTRole, Lecter, EVA
+  suffix: ERTRole, Lecter, EVA, Red
   components:
     - type: RandomHumanoidSpawner
       settings: ERTSecurityEVALecter
@@ -451,7 +451,7 @@
   id: RandomHumanoidSpawnerERTMedical
   parent: RandomHumanoidSpawnerERTLeader
   name: ERT medic
-  suffix: ERTRole, Basic
+  suffix: ERTRole, Basic, Blue/Green
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi
@@ -488,7 +488,7 @@
   id: RandomHumanoidSpawnerERTMedicalEVA
   parent: RandomHumanoidSpawnerERTMedical
   name: ERT medic
-  suffix: ERTRole, Armored EVA
+  suffix: ERTRole, Armored EVA, Red
   components:
     - type: Sprite
       sprite: Markers/jobs.rsi

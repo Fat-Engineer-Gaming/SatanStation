@@ -40,17 +40,16 @@
   components:
   - type: StorageFill
     contents:
-    - id: EnergyCautery
-    - id: EnergyScalpel
-    - id: AdvancedRetractor
+    - id: OmnimedTool
     - id: BoneGel
     - id: MedicatedSuture
     - id: RegenerativeMesh
     - id: Bloodpack
     - id: BruteAutoInjector
+      amount: 2
     - id: BurnAutoInjector
+      amount: 2
     - id: EmergencyMedipen
-      amount: 3
 
 - type: entity
   id: ClothingBeltSheathFilledNavyOfficer

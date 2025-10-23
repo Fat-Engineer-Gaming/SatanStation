@@ -1,0 +1,23 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Centcomm module, Autopulser, and ERT Icon made by FatEngineerGaming (Discord/Github)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "icon-ert"
+        },
+        {
+            "name": "centcomm"
+        },
+        {
+            "name": "icon-xenoborg-janitor"
+        },
+        {
+            "name": "icon-xenoborg-autopulser"
+        }
+    ]
+}
