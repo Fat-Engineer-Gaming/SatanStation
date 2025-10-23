@@ -8,9 +8,7 @@
   - type: SubdermalImplant
     permanent: true
     implantAction: ActionActivateBluespaceLifeline
-  - type: TriggerOnMobstateChange
-    mobState:
-    - Dead
+  - type: DeleteParentOnTrigger
   - type: GibOnTrigger
     targetUser: true
     deleteItems: true

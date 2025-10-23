@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: TrashBag
+  parent: TrashBagBlue
   id: TrashBagHolding
   name: trash bag of holding
   description: A trash bag capable of accessing a Bluespace Pocket.
@@ -10,11 +10,3 @@
     - 0,0,14,12
   - type: Item
     size: Normal
-  - type: Sprite
-    layers:
-    - state: blue-icon-0
-      map: [ "enum.StorageFillLayers.Fill" ]
-  - type: Item
-    heldPrefix: blue
-  - type: StorageFillVisualizer
-    fillBaseName: blue-icon

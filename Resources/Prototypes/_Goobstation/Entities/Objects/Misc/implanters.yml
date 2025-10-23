@@ -31,7 +31,7 @@
 
 - type: entity
   id: BluespaceLifelineImplanter
-  suffix: Bluespace Lifeline
+  suffix: Bluespace Lifeline, unfinished, DO NOT MAP.
   parent: BaseImplantOnlyImplanterCentcomm
   components:
   - type: Implanter
@@ -60,3 +60,11 @@
   components:
   - type: Implanter
     implant: MindShieldImplant
+
+- type: entity
+  id: CentcommDeathAcidiferImplanter
+  suffix: Freedom
+  parent: BaseImplantOnlyImplanterCentcomm
+  components:
+  - type: Implanter
+    implant: DeathAcidifierImplant

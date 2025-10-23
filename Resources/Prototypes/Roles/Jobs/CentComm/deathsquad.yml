@@ -14,7 +14,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplanter, CentcommFreedomImplanter ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, DeathAcidifierImplanter, CentcommFreedomImplanter, RadioImplantCentcomm ]
   requirements: #imp edit
   - !type:OverallPlaytimeRequirement
     time: 4h

@@ -440,7 +440,7 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityWebbingMedical
     pocket1: Flare
-    pocket2: Disabler
+    pocket2: WeaponDisabler
   storage:
     back:
     - Hypospray
