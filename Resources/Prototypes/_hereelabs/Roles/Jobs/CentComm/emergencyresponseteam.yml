@@ -137,3 +137,32 @@
     - DrinkWaterBottleFull # here to be made into holy water
     - CrowbarRed
     - NullRodDefault # imp
+
+# Janitor
+- type: startingGear
+  id: ERTJanitorGearGamma
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTJanitor
+    back: ClothingBackpackERTJanitor
+    shoes: ClothingShoesBootsTactical
+    mask: ClothingMaskGasERT
+    gloves: ClothingHandsGlovesColorPurple
+    outerClothing: ClothingOuterHardsuitERTJanitor
+    id: ERTJanitorPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltJanitorFilled
+    pocket1: WeaponPulsePistol
+  storage:
+    back:
+    - LightReplacerBluespace
+    - Soap
+    - CrowbarRed
+    - AdvMopItem
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - TrashBagHolding
