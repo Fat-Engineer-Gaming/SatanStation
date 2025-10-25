@@ -5,7 +5,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseEngineeringContraband]
   id: ClothingOuterHardsuitAtmos
-  name: atmos hardsuit
+  name: AR-05 "Canary" hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has thermal shielding.
   components:
   - type: Sprite
@@ -43,7 +43,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitAtmos
   - type: Tag
     tags:
-    - CorgiWearable      
+    - CorgiWearable
     - Hardsuit
     - WhitelistChameleon
 
@@ -51,7 +51,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseEngineeringContraband]
   id: ClothingOuterHardsuitEngineering
-  name: engineering hardsuit
+  name: ENG-02 "Spark" hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has radiation shielding.
   components:
   - type: Sprite
@@ -85,7 +85,7 @@
     clothingPrototype: ClothingHeadHelmetHardsuitEngineering
   - type: Tag
     tags:
-    - CorgiWearable      
+    - CorgiWearable
     - Hardsuit
     - WhitelistChameleon
 
@@ -93,7 +93,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
   id: ClothingOuterHardsuitSpatio
-  name: spationaut hardsuit
+  name: SLV-01 "Sauver" hardsuit
   description: A lightweight hardsuit designed for industrial EVA in zero gravity.
   components:
   - type: Sprite
@@ -133,7 +133,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
   id: ClothingOuterHardsuitSalvage
-  name: mining hardsuit
+  name: MI-03 "Pioneer" hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has reinforced plating for wildlife encounters.
   components:
   - type: Sprite
@@ -175,7 +175,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
   id: ClothingOuterHardsuitGoliath
-  name: goliath hardsuit
+  name: GL-02 "Goliath" hardsuit
   description: A lightweight hardsuit, adorned with a patchwork of thick, chitinous goliath hide.
   components:
   - type: Sprite
@@ -215,7 +215,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCargoContraband]
   id: ClothingOuterHardsuitMaxim
-  name: salvager maxim hardsuit
+  name: SLV-16 "Vulcan" hardsuit
   description: Fire. Heat. These things forge great weapons, they also forge great salvagers.
   components:
   - type: Sprite
@@ -248,7 +248,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseSecurityContraband]
   id: ClothingOuterHardsuitSecurity
-  name: security hardsuit
+  name: SEC-02 "Takabara" hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
   components:
   - type: Sprite
@@ -289,7 +289,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseSecurityContraband]
   id: ClothingOuterHardsuitBrigmedic
-  name: brigmedic hardsuit
+  name: SEC-03 "Apollo" hardsuit
   description: Special hardsuit of the guardian angel of the brig. It is the medical version of the security hardsuit.
   components:
   - type: Sprite
@@ -324,7 +324,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseSecurityContraband]
   id: ClothingOuterHardsuitWarden
-  name: warden's hardsuit
+  name: SEC-04 "Keeper" hardsuit
   description: A specialized riot suit geared to combat low pressure environments.
   components:
   - type: Sprite
@@ -355,7 +355,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCommandContraband]
   id: ClothingOuterHardsuitCap
-  name: captain's armored spacesuit
+  name: BRG-05 "Magnate" hardsuit
   description: A formal armored spacesuit, made for the station's captain.
   components:
   - type: Sprite
@@ -392,7 +392,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCommandContraband]
   id: ClothingOuterHardsuitEngineeringWhite
-  name: chief engineer's hardsuit
+  name: ENG-07 "Daedalus" hardsuit
   description: A special hardsuit that protects against hazardous, low pressure environments, made for the chief engineer of the station.
   components:
   - type: Sprite
@@ -442,7 +442,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCommandContraband]
   id: ClothingOuterHardsuitMedical
-  name: chief medical officer's hardsuit
+  name: MO-15 "Valkyrie" hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Built with lightweight materials for easier movement.
   components:
   - type: Sprite
@@ -479,7 +479,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseGrandTheftContraband]
   id: ClothingOuterHardsuitRd
-  name: experimental research hardsuit
+  name: SC-05 "Minerva" hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
   components:
   - type: Sprite
@@ -525,7 +525,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, BaseCommandContraband]
   id: ClothingOuterHardsuitSecurityRed
-  name: head of security's hardsuit
+  name: SEC-04 "Safeguard" hardsuit
   description: A special suit that protects against hazardous, low pressure environments. Has an additional layer of armor.
   components:
   - type: Sprite
@@ -557,7 +557,7 @@
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitLuxury #DO NOT MAP - https://github.com/space-wizards/space-station-14/pull/19738#issuecomment-1703486738
-  name: luxury mining hardsuit
+  name: MI-06 "Heracles" hardsuit
   description: A refurbished mining hardsuit, fashioned after the Quartermaster's colors. Graphene lining provides less protection, but is much easier to move.
   categories: [ DoNotMap ]
   components:
@@ -591,7 +591,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase, Tier3Contraband ]
   id: ClothingOuterHardsuitSyndie
-  name: blood-red hardsuit
+  name: SYD-06 "Raider" hardsuit
   description: A heavily armored hardsuit designed for work in special operations. Property of Gorlex Marauders.
   components:
   - type: Sprite
@@ -636,7 +636,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitSyndie, Tier3Contraband]
   id: ClothingOuterHardsuitSyndieMedic
-  name: blood-red medic hardsuit
+  name: SYD-07 "Arogya" hardsuit
   description: A heavily armored and agile advanced hardsuit specifically designed for field medic operations.
   components:
   - type: Sprite
@@ -654,7 +654,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, Tier3Contraband]
   id: ClothingOuterHardsuitSyndieElite
-  name: syndicate elite hardsuit
+  name: SYD-08 "Jaeger" Elite Hardsuit
   description: An elite version of the blood-red hardsuit, with improved radiation resistance and fireproofing. Property of Gorlex Marauders.
   components:
   - type: Sprite
@@ -700,7 +700,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, Tier3Contraband]
   id: ClothingOuterHardsuitSyndieCommander
-  name: syndicate commander hardsuit
+  name: SYD-10 "Commando" hardsuit
   description: A bulked up version of the blood-red hardsuit, purpose-built for the commander of a syndicate operative squad. Has significantly improved armor for those deadly front-lines firefights.
   components:
   - type: Sprite
@@ -740,7 +740,7 @@
 - type: entity
   parent: [ClothingOuterHardsuitBase, Tier3Contraband]
   id: ClothingOuterHardsuitJuggernaut
-  name: Cybersun juggernaut suit # imp edit; preferential to capitalizing company names
+  name: SYD-12 "Juggernaut" hardsuit
   description: A suit of compressed red matter, originally used by Cybersun's legal honor guard. An absolute beast, it's been hand-crafted by the cutting-edge R&D department at Cybersun to be hyper resilient. # imp rewrite
   components:
   - type: Sprite
@@ -783,7 +783,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMagicalContraband ]
   id: ClothingOuterHardsuitWizard
-  name: wizard hardsuit
+  name: WIZ-32 "Fireball" hardsuit
   description: A bizarre gem-encrusted suit that radiates magical energies.
   components:
   - type: Sprite
@@ -815,6 +815,7 @@
     - CorgiWearable
     - Hardsuit
     - WhitelistChameleon
+  - type: WizardClothes
 
 #Ling Space Suit
 - type: entity
@@ -851,7 +852,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
   id:  ClothingOuterHardsuitPirateEVA
-  name: deep space EVA suit
+  name: P-01 "Cutlass" EVA Suit
   suffix: Pirate
   description: A heavy space suit that provides some basic protection from the cold harsh realities of deep space.
   components:
@@ -884,7 +885,7 @@
 - type: entity
   parent: [ ClothingOuterHardsuitBase, BaseMajorContraband ]
   id: ClothingOuterHardsuitPirateCap
-  name: pirate captain's hardsuit
+  name: P-03 "Goldmine" hardsuit
   description: An ancient armored hardsuit, perfect for defending against space scurvy and toolbox-wielding scallywags.
   components:
   - type: Sprite
@@ -920,7 +921,7 @@
 - type: entity
   parent: [ BaseCentcommContraband, ClothingOuterHardsuitSyndieCommander ]
   id: ClothingOuterHardsuitERTLeader
-  name: ERT leader's hardsuit
+  name: N-15 "Sentinel" hardsuit
   description: A protective hardsuit worn by the leader of an emergency response team.
   components:
   - type: Sprite
@@ -934,7 +935,7 @@
 - type: entity
   parent: [ BaseCentcommContraband, ClothingOuterHardsuitJuggernaut ]
   id: ClothingOuterHardsuitERTChaplain
-  name: ERT chaplain's hardsuit
+  name: N-14 "Purified" hardsuit
   description: A protective hardsuit worn by the chaplains of an Emergency Response Team.
   components:
   - type: Sprite
@@ -948,7 +949,7 @@
 - type: entity
   parent: ClothingOuterHardsuitCBURN
   id: ClothingOuterHardsuitERTEngineer
-  name: ERT engineer's hardsuit
+  name: N-11 "Hephaestus" hardsuit
   description: A protective hardsuit worn by the engineers of an emergency response team.
   components:
   - type: Sprite
@@ -964,7 +965,7 @@
 - type: entity
   parent: [ BaseCentcommContraband, ClothingOuterHardsuitSyndieMedic ]
   id: ClothingOuterHardsuitERTMedical
-  name: ERT medic's hardsuit
+  name: N-12 "Asclepius" hardsuit
   description: A protective hardsuit worn by the medics of an emergency response team.
   components:
   - type: Sprite
@@ -978,7 +979,7 @@
 - type: entity
   parent: [ BaseCentcommContraband, ClothingOuterHardsuitSyndie ]
   id: ClothingOuterHardsuitERTSecurity
-  name: ERT security's hardsuit
+  name: N-13 "Guardian" hardsuit
   description: A protective hardsuit worn by the security officers of an emergency response team.
   components:
   - type: Sprite
@@ -996,7 +997,7 @@
 - type: entity
   parent: ClothingOuterHardsuitCBURN
   id: ClothingOuterHardsuitERTJanitor
-  name: ERT janitor's hardsuit
+  name: N-10 "Whirlpool" hardsuit
   description: A protective hardsuit worn by the janitors of an emergency response team.
   components:
   - type: Sprite
@@ -1010,7 +1011,7 @@
 - type: entity
   parent: [ BaseCentcommContraband, ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitDeathsquad
-  name: death squad hardsuit
+  name: N-42 "Apocryphal" hardsuit
   description: An advanced hardsuit favored by commandos for use in special operations.
   components:
   - type: Sprite
@@ -1027,6 +1028,8 @@
     damageCoefficient: 0.2
   - type: FireProtection
     reduction: 0.8
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.0001 # it'd be REALLLYYYY funny if that rolls
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.15 # Needs 21 hits with a disabler to stun :godo:
   - type: Armor
@@ -1049,7 +1052,7 @@
 - type: entity
   parent: [ BaseCentcommContraband, ClothingOuterHardsuitBase ]
   id: ClothingOuterHardsuitCBURN
-  name: CBURN exosuit
+  name: N-18 "Cleanser" hardsuit
   description: A lightweight yet strong exosuit used for special cleanup operations.
   components:
   - type: Sprite
@@ -1068,15 +1071,15 @@
     modifiers:
       coefficients:
         Blunt: 0.7
-        Slash: 0.7
+        Slash: 0.3 # Goobstation - CBURN should protect against zombie attacks
         Piercing: 0.6
-        Heat: 0.1
-        Cold: 0.1
-        Shock: 0.1
+        Heat: 0.10
+        Cold: 0.10
+        Shock: 0.15
         Radiation: 0.1
         Caustic: 0.1
   - type: ZombificationResistance
-    zombificationResistanceCoefficient: 0.25
+    zombificationResistanceCoefficient: 0.10 # mfw the CBURN operatives get infected
   - type: ClothingSpeedModifier
     walkModifier: 1.0
     sprintModifier: 1.0
@@ -1089,7 +1092,7 @@
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitClown
-  name: clown hardsuit
+  name: HONK-02 "Robert" hardsuit
   description: A custom-made clown hardsuit.
   components:
   - type: Sprite
@@ -1127,7 +1130,7 @@
 - type: entity
   parent: ClothingOuterHardsuitClown
   id: ClothingOuterHardsuitMime
-  name: red mime hardsuit # Imp
+  name: 00 "    " hardsuit
   description: A custom-made mime hardsuit.
   components:
   - type: Tag
@@ -1147,7 +1150,7 @@
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitSanta
-  name: Santa's hardsuit
+  name: JOL-07 "HoHo" hardsuit
   description: A festive, cheerful hardsuit that protects the jolly gift-giver while on sleighrides in space. Offers some resistance against asteroid strikes.
   components:
   - type: Sprite

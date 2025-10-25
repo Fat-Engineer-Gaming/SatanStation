@@ -1,0 +1,86 @@
+﻿- type: entity
+  id: ThrusterHuge
+  name: huge thruster
+  parent: BaseStructure
+  description: A massive thruster used for gigantic ships... that is, if it could use enough power to properly run it. It only serves as decoration.
+  placement:
+    mode: AlignTileAny
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 3500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 1900
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.65,-1.65,1.65,1.65"
+        density: 1750
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Sprite
+    sprite: _hereelabs/Structures/Decoration/thruster_huge.rsi
+    state: huge_thruster
+  - type: Anchorable
+    flags: None
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  id: ThrusterHugeAlt
+  name: huge thruster
+  suffix: INSIDE
+  parent: BaseStructure
+  description: A massive thruster used for gigantic ships... that is, if it could use enough power to properly run it. It only serves as decoration.
+  placement:
+    mode: AlignTileAny
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 3500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 1900
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+  - type: Fixtures
+    fixtures:
+      fix1:
+        density: 1750
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Sprite
+    sprite: _hereelabs/Structures/Decoration/thruster_huge.rsi
+    state: huge_thruster_w
+    offset: 0, 1
+  - type: Anchorable
+    flags: None
+  - type: StaticPrice
+    price: 1500

@@ -1,0 +1,20 @@
+﻿- type: entity
+  parent: ClothingShoesBootsMagAdv
+  id: ClothingShoesBootsTactical
+  name: tactical magboots
+  description: State-of-the-art magnetic boots used by ERT Operatives.
+  components:
+  - type: Sprite
+    sprite: _hereelabs/Clothing/Shoes/Boots/tactical-magboots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _hereelabs/Clothing/Shoes/Boots/tactical-magboots.rsi
+  - type: GasTank
+    outputPressure: 42.6
+    air:
+      # 2 minutes of thrust
+      volume: 0.75
+      temperature: 293.15
+      moles:
+        Oxygen: 0.153853429 # oxygen
+        Nitrogen: 0.153853429 # nitrogen

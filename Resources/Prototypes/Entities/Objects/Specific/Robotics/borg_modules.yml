@@ -714,6 +714,7 @@
   - type: ItemBorgModule
     hands:
     - item: RCDRecharging
+    - item: RPDRecharging
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     - item: GasAnalyzer
@@ -1468,22 +1469,6 @@
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser2-module }
 
 - type: entity
-  parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
-  id: XenoborgModuleAutopulser
-  name: autopulser xenoborg module
-  description: Module with a Autopulser.
-  components:
-  - type: Sprite
-    layers:
-    - state: xenoborg_heavy
-    - state: icon-xenoborg-autopulser
-  - type: ItemBorgModule
-    hands:
-    - item: WeaponRifleAsakimAutopulser
-  - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-autopulser-module }
-
-- type: entity
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleSpaceMovement
   name: space movement xenoborg module
@@ -1600,24 +1585,3 @@
     - item: SuperCloakingDevice
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye2-module }
-
-- type: entity
-  parent: [ BaseXenoborgModuleGeneric, BaseProviderBorgModule, BaseXenoborgContraband ]
-  id: XenoborgModuleJanitor
-  name: janitor xenoborg module
-  description: Module that allows Xenoborgs to become... a janitor, and can work on any chassis type... wh... WHY THE FUCK ARE YOU EVEN MAKING THIS??
-  components:
-  - type: Sprite
-    layers:
-    - state: xenoborg_generic
-    - state: icon-xenoborg-janitor
-  - type: ItemBorgModule
-    hands:
-    - item: AdvMopItem
-    - item: BorgMegaSprayBottle
-    - item: HoloprojectorBorg
-    - item: BorgDropper
-    - item: Beaker
-    - item: SprayPainter
-  - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-janitor-module }

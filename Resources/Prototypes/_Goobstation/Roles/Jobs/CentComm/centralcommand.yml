@@ -32,6 +32,7 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSheathFilledNavyOfficer
     pocket1: BoxFolderCentCom
+    pocket2: AmnestizineHypospray
   storage:
     back:
     - Flash
@@ -72,10 +73,12 @@
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSheathFilledNavyOfficer
     pocket1: BoxFolderCentCom
+    pocket2: AmnestizineHypospray
   storage:
     back:
     - WeaponPulsePistol
     - Flash
+    - NukeOverride
 
 # Undercover Officer
 
@@ -112,6 +115,7 @@
     id: ChameleonPDA
     ears: ClothingHeadsetChameleon
     pocket1: WeaponPistolCentcommAgent
+    pocket2: AmnestizineHypospray
   storage:
     back:
     - ExecutiveIDCardChameleon
@@ -164,6 +168,7 @@
     - MagazineRifleUranium
     - MagazineRifleUranium
     - Flash
+    - AmnestizineHypospray
 
 # Diplomat
 
@@ -197,6 +202,7 @@
     neck: ExecutiveIDCard
     id: DiplomatPDA
     ears: ClothingHeadsetAltCentCom
+    pocket1: AmnestizineHypospray
   storage:
     back:
     - WeaponPulsePistol

@@ -313,7 +313,7 @@
 - type: entity
   id: RadioImplanterCentcomm
   name: CentComm radio implanter # imp caps
-  parent: BaseImplantOnlyImplanter
+  parent: BaseImplantOnlyImplanterCentcomm
   components:
   - type: Implanter
     implant: RadioImplantCentcomm
@@ -321,7 +321,7 @@
 - type: entity
   id: DeathRattleImplanterCentcomm
   name: CentComm death rattle implanter # imp caps
-  parent: BaseImplantOnlyImplanter
+  parent: BaseImplantOnlyImplanterCentcomm
   components:
   - type: Implanter
     implant: DeathRattleImplantCentcomm
