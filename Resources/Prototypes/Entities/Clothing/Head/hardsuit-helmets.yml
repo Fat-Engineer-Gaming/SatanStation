@@ -756,6 +756,7 @@
     tags:
     - CorgiWearable
     - WhitelistChameleon
+  - type: WizardClothes
 
 #Organic Space Suit
 - type: entity

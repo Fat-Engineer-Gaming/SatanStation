@@ -111,7 +111,7 @@
     - type: GhostRole
       name: ghost-role-information-syndicate-cyborg-assault-name
       description: ghost-role-information-syndicate-cyborg-description
-      rules: ghost-role-information-silicon-rules
+      rules: ghost-role-information-higher-standard-silicon-rules
       mindRoles:
       - MindRoleGhostRoleSilicon
       raffle:

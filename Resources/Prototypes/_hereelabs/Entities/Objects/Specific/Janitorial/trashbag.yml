@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: TrashBagBlue
+  id: TrashBagHolding
+  name: trash bag of holding
+  description: A trash bag capable of accessing a Bluespace Pocket.
+  components:
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,14,12
+  - type: Item
+    size: Normal

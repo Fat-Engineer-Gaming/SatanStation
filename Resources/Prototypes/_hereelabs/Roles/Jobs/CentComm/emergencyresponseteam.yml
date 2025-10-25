@@ -1,0 +1,168 @@
+# Leader
+- type: startingGear
+  id: ERTLeaderGearGamma
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTLeader
+    back: ClothingBackpackERTLeader
+    shoes: ClothingShoesBootsTactical
+    neck: ExecutiveIDCard
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesGlassesCentComm
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTLeader
+    id: ERTLeaderPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityFilled
+    pocket1: WeaponPulsePistol
+    pocket2: FlashlightSeclite
+  inhand:
+  - WeaponPulseCarbine
+  storage:
+    back:
+    - WeaponDisabler
+    - MedkitCombatFilled
+    - BoxHandcuff
+    - CrowbarRed
+    - DoorRemoteCustom
+    - CentcommStimpack
+    - CentcommStimpack
+
+# Security
+- type: startingGear
+  id: ERTSecurityGearGamma
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTSecurity
+    back: ClothingBackpackERTSecurity
+    shoes: ClothingShoesBootsTactical
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTSecurity
+    id: ERTSecurityPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityFilled
+    pocket1: WeaponPulsePistol
+    pocket2: FlashlightSeclite
+  inhand:
+  - WeaponPulseCarbine
+  storage:
+    back:
+    - WeaponDisabler
+    - MedkitCombatFilled
+    - BoxHandcuff
+    - CrowbarRed
+    - MagazinePistol
+    - CentcommStimpack
+    - CentcommStimpack
+
+# Engineer
+- type: startingGear
+  id: ERTEngineerGearGamma
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTEngineer
+    back: ClothingBackpackERTEngineer
+    shoes: ClothingShoesBootsTactical
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesGlassesMeson
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTEngineer
+    id: ERTEngineerPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltChiefEngineerFilled
+    pocket1: WeaponPulsePistol
+  storage:
+    back:
+    - trayScanner
+    - RCDCombat
+    - RPDCombat
+    - CableMVStack
+    - CableHVStack
+    - CableApcStack
+    - SheetPlasteel
+    - SheetSteel
+    - SheetGlass
+
+# Medic
+- type: startingGear
+  id: ERTMedicalGearGamma
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTMedic
+    back: ClothingBackpackERTMedical
+    shoes: ClothingShoesBootsTactical
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesHudMedical
+    gloves: ClothingHandsGlovesNitrile
+    outerClothing: ClothingOuterHardsuitERTMedical
+    id: ERTMedicPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltSecurityWebbingFilledMedical
+    pocket1: WeaponPulsePistol # the best part of the healing is the hurting
+  storage:
+    back:
+    - Hypospray
+    - MedkitCombatFilled
+    - MedkitCombatFilled
+    - CrowbarRed
+    - ChemistryBottleOmnizine
+    - ChemistryBottleOmnizine
+    - ChemistryBottleOmnizine
+    - BurnAutoInjector
+    - BurnAutoInjector
+    - BruteAutoInjector
+    - BruteAutoInjector
+
+# Chaplain
+- type: startingGear
+  id: ERTChaplainGearGamma
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTChaplain
+    back: ClothingBackpackERTChaplain
+    shoes: ClothingShoesBootsTactical
+    mask: ClothingMaskGasERT
+    eyes: ClothingEyesGlasses
+    neck: ClothingNeckStoleChaplain
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitERTChaplain
+    id: ERTChaplainPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltStorageWaistbag
+    pocket1: WeaponPulsePistol
+    pocket2: DrinkWaterBottleFull
+  storage:
+    back:
+    - BoxHandcuff
+    - Bible
+    - DrinkWaterBottleFull # here to be made into holy water
+    - DrinkWaterBottleFull # here to be made into holy water
+    - DrinkWaterBottleFull # here to be made into holy water
+    - CrowbarRed
+    - NullRodDefault # imp
+
+# Janitor
+- type: startingGear
+  id: ERTJanitorGearGamma
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitERTJanitor
+    back: ClothingBackpackERTJanitor
+    shoes: ClothingShoesBootsTactical
+    mask: ClothingMaskGasERT
+    gloves: ClothingHandsGlovesColorPurple
+    outerClothing: ClothingOuterHardsuitERTJanitor
+    id: ERTJanitorPDA
+    ears: ClothingHeadsetAltCentCom
+    belt: ClothingBeltJanitorFilled
+    pocket1: WeaponPulsePistol
+  storage:
+    back:
+    - LightReplacerBluespace
+    - Soap
+    - CrowbarRed
+    - AdvMopItem
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - CleanerGrenadeBleach
+    - TrashBagHolding

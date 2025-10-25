@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: LightReplacer
+  id: LightReplacerBluespace
+  name: bluespace light replacer
+  description: An item which uses magnets to easily replace broken lights. Refill by adding more lights into the replacer. This one has far, far more lights then a usual one.
+  components:
+  - type: LightReplacer
+    contents:
+    - id: LightTube
+      amount: 500
+    - id: LightBulb
+      amount: 500

@@ -353,7 +353,7 @@
   name: PXS-21 pulse pistol #imp
   parent: [BaseWeaponBatterySmall, BaseCentcommContraband]
   id: WeaponPulsePistol
-  description: A state-of-the-art energy pistol favored as a sidearm by Nanotrasen operatives.
+  description: A state-of-the-art pulse based weapon. It's smaller frame allows it to passively regenerate charge. # Goobstation
   components:
   - type: Sprite
     sprite: _Impstation/Objects/Weapons/Guns/Battery/pulse_pistol.rsi #imp
@@ -379,19 +379,22 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
   - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+    proto: LightPulse
     fireCost: 200
   - type: Battery
     maxCharge: 2000
     startingCharge: 2000
   - type: MeleeWeapon #imp; for pistolwhip anim
     wideAnimationRotation: -80
+  - type: BatterySelfRecharger # Goobstation - CentComm Job Revamp
+    autoRecharge: true
+    autoRechargeRate: 40
 
 - type: entity
   name: PX-14C pulse carbine #imp
   parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
   id: WeaponPulseCarbine
-  description: A high-tech energy carbine favored by Nanotrasen ERT operatives. #imp
+  description: A state-of-the-art pulse carbine, typically used by Nanotrasen militia. # Goobstation
   components:
   - type: Item
     size: Large
@@ -412,7 +415,7 @@
     sprite: _Impstation/Objects/Weapons/Guns/Battery/pulse_carbine.rsi #imp
   - type: Gun
     selectedMode: SemiAuto
-    fireRate: 3
+    fireRate: 1.5
     availableModes:
       - SemiAuto
       - FullAuto
@@ -422,8 +425,8 @@
     proto: Pulse
     fireCost: 200
   - type: Battery
-    maxCharge: 5000
-    startingCharge: 5000
+    maxCharge: 3000
+    startingCharge: 3000
 #imp edit begin; weapon melee
   - type: MeleeWeapon
     attackRate: 0.6
@@ -470,7 +473,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
   - type: HitscanBatteryAmmoProvider
-    proto: Pulse
+    proto: HeavyPulse # Goobstation - Deathsquad revamp
     fireCost: 100
   - type: Battery
     maxCharge: 40000

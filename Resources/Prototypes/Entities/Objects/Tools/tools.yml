@@ -375,6 +375,18 @@
     sprite: Objects/Tools/rpd.rsi
 
 - type: entity
+  id: RPDRecharging
+  parent: RPD
+  name: experimental RPD
+  description: Cyborg-mounted Rapid Piping Device which creates compressed matter on the fly using an internal fabricator.
+  suffix: AutoRecharge
+  components:
+  - type: LimitedCharges
+    maxCharges: 20
+  - type: AutoRecharge
+    rechargeDuration: 5
+
+- type: entity
   id: RCD
   parent: [ BaseItem, BaseEngineeringContraband ]
   name: RCD

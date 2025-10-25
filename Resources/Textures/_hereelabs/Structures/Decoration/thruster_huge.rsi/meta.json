@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "license": "CC-BY-NC-4.0",
+  "copyright": "taken from TG station at https://github.com/tgstation/tgstation/blob/master/icons/obj/fluff/3x3.dmi",
+  "size": {
+    "x": 96,
+    "y": 96
+  },
+  "states": [
+    {
+      "name": "huge_thruster",
+      "directions": 4
+    },
+    {
+      "name": "huge_thruster_w",
+      "directions": 4
+    }
+  ]
+}

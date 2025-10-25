@@ -1,0 +1,23 @@
+- type: entity
+  id: RCDCombat
+  parent: RCD
+  name: combat RCD
+  description: A Rapid Construction Device utilized by ERT operatives, capable of reecharging far, far quicker then a regular RCD, along with having far more charges.
+  suffix: AutoRecharge
+  components:
+  - type: LimitedCharges
+    maxCharges: 40
+  - type: AutoRecharge
+    rechargeDuration: 2
+
+- type: entity
+  id: RPDCombat
+  parent: RPD
+  name: combat RPD
+  description: A Rapid Piping Device utilized by ERT operatives, capable of reecharging far, far quicker then a regular RCD, along with having far more charges.
+  suffix: AutoRecharge
+  components:
+  - type: LimitedCharges
+    maxCharges: 40
+  - type: AutoRecharge
+    rechargeDuration: 2

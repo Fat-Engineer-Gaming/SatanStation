@@ -71,3 +71,6 @@ trait-hemophilia-desc = Your body fails to make blood clots.
 
 trait-impaired-mobility-name = Impaired Mobility
 trait-impaired-mobility-desc = You have difficulty moving without a mobility aid.
+
+trait-fortgetful-name = Forgetful
+trait-forgetful-desc = You-... uh, what was this one about again? Oh right! You forget a lot.

@@ -14,7 +14,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, DeathAcidifierImplanter, CentcommFreedomImplanter, RadioImplantCentcomm ]
   requirements: #imp edit
   - !type:OverallPlaytimeRequirement
     time: 4h
@@ -25,27 +25,23 @@
     jumpsuit: ClothingUniformJumpsuitDeathSquad
     back: ClothingBackpackDeathSquad
     mask: ClothingMaskGasDeathSquad
-    eyes: ClothingEyesHudSecurity
-    ears: ClothingHeadsetAltCentCom
+    neck: ExecutiveIDCard
+    eyes: ClothingEyesGlassesDeathsquad
+    ears: ClothingHeadsetDeathsquad
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitDeathsquad
-    shoes: ClothingShoesBootsMagAdv
+    shoes: ClothingShoesBootsMagDeathsquad
     id: DeathsquadPDA
-    pocket1: EnergySwordBlue # me when blue
-    pocket2: EnergyShield
-    belt: ClothingBeltMilitaryWebbingMedFilled
+    pocket1: PhoronSabre
+    pocket2: WeaponRevolverMatebaAP
+    belt: ClothingBeltDeathsquadWebbingFilled # Centcomm Doesn't use syndicate tech.
   storage:
     back:
-    - WeaponPulsePistol
-    - WeaponRevolverMatebaAP
     - SpeedLoaderMagnumAP
     - SpeedLoaderMagnumAP
-    - BoxFlashbang
     - ToolDebug # spanish army knife
     - WelderExperimental
-    - Hypospray
-    - DeathAcidifierImplanter # crew will try to steal their amazing hardsuits
-    - FreedomImplanter
+    - AmnestizineHypospray
   inhand:
   - WeaponPulseRifle
 

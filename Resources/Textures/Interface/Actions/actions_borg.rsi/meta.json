@@ -158,9 +158,6 @@
             "name":"xenoborg-space-movement-module"
         },
         {
-            "name": "xenoborg-autopulser-module"
-        },
-        {
             "name":"xenoborg-sword-module"
         },
         {
@@ -170,13 +167,7 @@
             "name":"xenoborg-tool-module"
         },
         {
-            "name": "xenoborg-janitor-module"
-        },
-        {
             "name": "select-type"
-        },
-        {
-            "name": "ert-module"
         }
     ]
 }

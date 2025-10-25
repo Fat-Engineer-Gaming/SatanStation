@@ -6,3 +6,12 @@
   - bingle-verb-2
   - bingle-verb-3
   - bingle-verb-4
+
+- type: speechSounds
+  id: Chrono
+  saySound:
+    path: /Audio/_Goobstation/Voice/Chrono/contact.ogg
+  askSound:
+    path: /Audio/_Goobstation/Voice/Chrono/dagger.ogg
+  exclaimSound:
+    path: /Audio/_Goobstation/Voice/Chrono/contact.ogg

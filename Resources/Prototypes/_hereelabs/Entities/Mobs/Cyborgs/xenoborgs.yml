@@ -302,19 +302,22 @@
   - type: BorgTransponder
     name: janitor xenoborg
     sprite:
-      sprite: Mobs/Silicon/chassis.rsi
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
       state: xenoborg_janitor
   - type: Sprite
     layers:
     - state: xenoborg_janitor
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
     - state: xenoborg_janitor_e
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
     - state: xenoborg_janitor_l
       shader: unshaded
       map: ["light"]
       visible: false
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
   - type: BorgChassis
     maxModules: 4
     hasMindState: xenoborg_janitor_e
@@ -405,19 +408,22 @@
   - type: BorgTransponder
     name: bomber xenoborg
     sprite:
-      sprite: Mobs/Silicon/chassis.rsi
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
       state: xenoborg_bomber_moving # dont know why it isn't moving automatically, just gonna have this be the default.
   - type: Sprite
     layers:
     - state: xenoborg_bomber_moving
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
     - state: xenoborg_bomber_e
       map: ["enum.BorgVisualLayers.Light"]
       shader: unshaded
       visible: false
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
     - state: xenoborg_bomber_l
       shader: unshaded
       map: ["light"]
       visible: false
+      sprite: _hereelabs/Mobs/Silicon/chassis.rsi
   - type: BorgChassis
     maxModules: 4
     hasMindState: xenoborg_bomber_e
@@ -475,3 +481,21 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellSmall # Make it count!
+
+- type: entity
+  parent: XenoborgBomber
+  id: XenoborgBomberPrinted
+  suffix: no brain
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMI
+      borg_module:
+      - XenoborgModuleBasic
+      - BorgModuleXenoborgBomber
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmallPrinted

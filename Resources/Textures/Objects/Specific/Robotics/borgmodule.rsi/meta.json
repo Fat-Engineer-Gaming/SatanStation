@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC0-1.0",
-    "copyright": "Created by EmoGarbage404 (github) for Space Station 14. icon-construction.png created by deltanedas (github). syndicateborgbomb.png created by Mangohydra (github). icon-chem.png & icon-mining-adv.png created by mubururu_ (github) icon-inflatable.png made by FungiFellow (GitHub), Xenoborg modules sprites by Samuka-C (github), icon-beer by aada. Mining module by LazyRiverfolk. ERT, Autopulser, Xenoborg Janitor, and Centcomm modules made by FatEngineerGaming (Discord/Github)",
+    "copyright": "Created by EmoGarbage404 (github) for Space Station 14. icon-construction.png created by deltanedas (github). syndicateborgbomb.png created by Mangohydra (github). icon-chem.png & icon-mining-adv.png created by mubururu_ (github) icon-inflatable.png made by FungiFellow (GitHub), Xenoborg modules sprites by Samuka-C (github), icon-beer by aada. Mining module by LazyRiverfolk.",
     "size": {
         "x": 32,
         "y": 32
@@ -155,12 +155,6 @@
             "name": "icon-xenoborg-tools"
         },
         {
-            "name": "icon-xenoborg-autopulser"
-        },
-        {
-            "name": "icon-xenoborg-janitor"
-        },
-        {
             "name": "icon-syndicate"
         },
         {
@@ -239,12 +233,6 @@
         },
         {
             "name": "icon-mining-basic"
-        },
-        {
-            "name": "icon-ert"
-        },
-        {
-            "name": "centcomm"
         }
     ]
 
