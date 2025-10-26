@@ -102,8 +102,6 @@
   - type: ReinforcedWallReplacementMarker
   - type: StaticPrice
     price: 250
-  - type: RadiationBlocker
-    resistance: 5
   - type: Fixtures
     fixtures:
       fix1:
@@ -255,8 +253,6 @@
   - type: ReinforcedWallReplacementMarker
   - type: StaticPrice
     price: 250
-  - type: RadiationBlocker
-    resistance: 5
   - type: Fixtures
     fixtures:
       fix1:
@@ -415,7 +411,7 @@
   parent: BaseWall
   id: r4407_WallSolid
   name: solid wall
-  suffix: Classic, Ancient
+  suffix: Ancient
   components:
   - type: Sprite
     snapCardinals: true
@@ -453,9 +449,9 @@
         
 - type: entity
   parent: BaseWall
-  id: r4407_ClassicWallReinforced
+  id: r4407_WallReinforced
   name: reinforced wall
-  suffix: Classic, Ancient
+  suffix: Ancient
   components:
   - type: Sprite
     snapCardinals: true
@@ -506,3 +502,387 @@
         node: girder
       - !type:DoActsBehavior
         acts: ["Destruction"]
+        
+- type: entity
+  parent: BaseWall
+  id: r4407_WallShuttle
+  name: shuttle wall
+  suffix: Ancient
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: wall1
+  - type: Icon
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: wall1
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: ReinforcedWallReplacementMarker
+  - type: StaticPrice
+    price: 250
+  - type: RadiationBlocker
+    resistance: 5
+  - type: Reflect
+    reflectProb: 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 2000
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+        
+- type: entity
+  parent: BaseWall
+  id: r4407_WallShuttleDark
+  name: dark shuttle wall
+  suffix: Ancient
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: wall3
+  - type: Icon
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: wall3
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: ReinforcedWallReplacementMarker
+  - type: StaticPrice
+    price: 250
+  - type: Reflect
+    reflectProb: 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 2000
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: RadiationBlocker
+    resistance: 5
+        
+- type: entity
+  parent: BaseWall
+  id: r4407_WallShuttleRed
+  name: red shuttle wall
+  suffix: Ancient
+  components:
+  - type: Sprite
+    snapCardinals: true
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: wall2
+  - type: Icon
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: wall2
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: ReinforcedWallReplacementMarker
+  - type: StaticPrice
+    price: 250
+  - type: Reflect
+    reflectProb: 1
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 2000
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrong
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: RadiationBlocker
+    resistance: 5
+
+- type: entity
+  parent: BaseStructureWall
+  id: r4407_WallShuttleDiagonal
+  name: diagonal shuttle wall
+  suffix: Ancient
+  components:
+  - type: Sprite
+    snapCardinals: false
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: diagonalWall
+  - type: Icon
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: diagonalWall
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: ReinforcedWallReplacementMarker
+  - type: StaticPrice
+    price: 250
+  - type: RadiationBlocker
+    resistance: 5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 800
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Tag
+    tags:
+    - Wall
+    - Diagonal
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+
+- type: entity
+  parent: BaseStructureWall
+  id: r4407_WallShuttleDarkDiagonal
+  name: diagonal dark shuttle wall
+  suffix: Ancient
+  components:
+  - type: Sprite
+    snapCardinals: false
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: diagonalWall3
+  - type: Icon
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: diagonalWall3
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: ReinforcedWallReplacementMarker
+  - type: StaticPrice
+    price: 250
+  - type: RadiationBlocker
+    resistance: 5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 800
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Tag
+    tags:
+    - Wall
+    - Diagonal
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+
+- type: entity
+  parent: BaseStructureWall
+  id: r4407_WallShuttleRedDiagonal
+  name: diagonal red shuttle wall
+  suffix: Ancient
+  components:
+  - type: Sprite
+    snapCardinals: false
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: diagonalWall2
+  - type: Icon
+    sprite: _Ancient/r4407/shuttle.rsi
+    state: diagonalWall2
+  - type: RCDDeconstructable
+    cost: 6
+    delay: 8
+    fx: EffectRCDDeconstruct8
+  - type: ReinforcedWallReplacementMarker
+  - type: StaticPrice
+    price: 250
+  - type: RadiationBlocker
+    resistance: 5
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+    - trigger:
+        !type:DamageTrigger
+        damage: 800
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalSlam
+      - !type:ChangeConstructionNodeBehavior
+        node: girder
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Tag
+    tags:
+    - Wall
+    - Diagonal
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer

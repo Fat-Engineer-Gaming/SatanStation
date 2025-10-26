@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "doorc0",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "door1"
+    },
+    {
+      "name": "doorc1",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "door0"
+    },
+    {
+      "name": "diagonalWall",
+      "directions": 4
+    },
+    {
+      "name": "wall1"
+    },
+    {
+      "name": "wall2"
+    },
+    {
+      "name": "diagonalWall2"
+    },
+    {
+      "name": "wall3"
+    },
+    {
+      "name": "diagonalWall3",
+      "directions": 4
+    }
+  ]
+}

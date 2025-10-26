@@ -1,0 +1,7 @@
+- type: startingGear
+  id: SS13DisasterVictim
+  equipment:
+    id: r4407_DoctorIDCard
+    ears: ClothingHeadsetMedical
+    jumpsuit: r4407_ClothingUniformDoctor
+    shoes: ClothingShoesColorBlack
