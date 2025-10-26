@@ -1,0 +1,498 @@
+# ID Cards
+- type: entity
+  parent: Clothing
+  id: r4407_IDCardStandard
+  name: identification card
+  description: A card necessary to access various areas aboard the station.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/card.rsi
+  - type: Clothing
+    slots:
+    - idcard
+    sprite: _Ancient/r4407/card.rsi
+  - type: Item
+    size: Small
+    heldPrefix: default
+    storedRotation: -90
+  - type: Access
+  - type: IdCard
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  
+- type: entity
+  parent: r4407_IDCardStandard
+  id: r4407_AssistantIDCard
+  name: assistant ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: id
+  - type: PresetIdCard
+    job: Assistant
+  
+- type: entity
+  parent: r4407_IDCardStandard
+  id: r4407_CaptainIDCard
+  name: captain ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: gold
+  - type: PresetIdCard
+    job: Captain
+  
+- type: entity
+  parent: r4407_IDCardStandard
+  id: r4407_HoPIDCard
+  name: head of personnel ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: silver
+  - type: PresetIdCard
+    job: HeadOfPersonnel
+    
+# Jumpsuits
+
+# Miscellaneous
+- type: entity
+  parent: [ClothingUniformBase]
+  id: r4407_ClothingUniformOwl
+  name: owl jumpsuit
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/uniform.rsi
+    state: owl_s
+  - type: Clothing
+    sprite: _Ancient/r4407/uniform.rsi
+    equippedState: owl_s
+
+# Jobs
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: r4407_ClothingUniformCaptain
+  name: captain's jumpsuit
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/uniform.rsi
+    state: captain_s
+  - type: Clothing
+    sprite: _Ancient/r4407/uniform.rsi
+    equippedState: captain_s
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: r4407_ClothingUniformDoctor
+  name: doctor's jumpsuit
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/uniform.rsi
+    state: medical_s
+  - type: Clothing
+    sprite: _Ancient/r4407/uniform.rsi
+    equippedState: medical_s
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: r4407_ClothingUniformHoP
+  name: head of personnel's jumpsuit
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/uniform.rsi
+    state: hopgreen_s
+  - type: Clothing
+    sprite: _Ancient/r4407/uniform.rsi
+    equippedState: hopgreen_s
+    
+# Soft Suits / Outer Clothing
+
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothingGasTanks]
+  id: r4407_ClothingOuterBio
+  name: bio suit
+  description: A suit that protects against biological contamination.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/suit.rsi
+    state: bio
+  - type: Clothing
+    sprite: _Ancient/r4407/suit.rsi
+    equippedState: bio
+  - type: Armor
+    modifiers:
+      coefficients:
+        Caustic: 0.75
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.35
+  - type: GroupExamine
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+    
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: r4407_ClothingOuterSuitFire
+  name: fire suit
+  description: A suit that helps protect against hazardous temperatures.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/suit.rsi
+    state: fire
+  - type: Clothing
+    sprite: _Ancient/r4407/suit.rsi
+    equippedState: fire
+  - type: PressureProtection
+    highPressureMultiplier: 0.04
+  - type: TemperatureProtection
+    heatingCoefficient: 0.005
+    coolingCoefficient: 0.05
+  - type: FireProtection
+    reduction: 0.65 # doesnt have a full seal so not as good
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.9
+        Heat: 0.8
+        Cold: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.7
+    sprintModifier: 0.7
+  - type: HeldSpeedModifier
+  - type: GroupExamine
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+    
+- type: entity
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  id: r4407_ClothingOuterSuitThermal
+  name: thermal suit
+  description: An expensive firesuit that protects against even the most deadly of station fires. Designed to protect even if the wearer is set aflame.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/suit.rsi
+    state: thermal
+  - type: Clothing
+    sprite: _Ancient/r4407/suit.rsi
+    equippedState: thermal
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    heatingCoefficient: 0.001
+    coolingCoefficient: 0.05
+  - type: FireProtection
+    reduction: 0.8 # atmos firesuit offers best protection, hardsuits are a little vulnerable
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.9
+        Heat: 0.8
+        Cold: 0.8
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: GroupExamine
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+  - type: Tag
+    tags:
+    - CorgiWearable
+    
+- type: entity
+  parent: ClothingOuterEVASuitBase
+  id: r4407_ClothingOuterSpaceSuit
+  name: space suit
+  description: A lightweight space suit with the basic ability to protect the wearer from the vacuum of space during emergencies.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/suit.rsi
+    state: space
+  - type: Clothing
+    sprite: _Ancient/r4407/suit.rsi
+    equippedState: space
+  - type: Tag
+    tags:
+    - SuitEVA
+    
+- type: entity
+  parent: [ ClothingOuterEVASuitBase, Tier1Contraband ]
+  id: r4407_ClothingOuterSpaceSuitSyndicate
+  name: syndicate space suit
+  description: A lightweight space suit with the basic ability to protect the wearer from the vacuum of space during emergencies.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/suit.rsi
+    state: syndicate
+  - type: Clothing
+    sprite: _Ancient/r4407/suit.rsi
+    equippedState: syndicate
+  - type: Tag
+    tags:
+    - SuitEVA
+    
+# Hardsuits
+
+- type: entity
+  parent: [ClothingOuterEVASuitBase, BaseCommandContraband]
+  id: r4407_ClothingOuterArmorCap
+  name: captain's armor
+  description: A formal armored suit, made for the station's captain. Has pressure protection, but does not come with a helmet.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/suit.rsi
+    state: caparmor
+  - type: Clothing
+    sprite: _Ancient/r4407/suit.rsi
+    equippedState: caparmor
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.6
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: Tag
+    tags:
+    - Hardsuit
+
+- type: entity
+  parent: [ClothingOuterEVASuitBase, BaseCentcommContraband]
+  id: r4407_ClothingOuterArmorCentcom
+  name: central commander's armor
+  description: A formal armored suit, made for Central Commanders. Has pressure protection, but does not come with a helmet.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/suit.rsi
+    state: centcom
+  - type: Clothing
+    sprite: _Ancient/r4407/suit.rsi
+    equippedState: centcom
+  - type: PressureProtection
+    highPressureMultiplier: 0.02
+    lowPressureMultiplier: 1000
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.6
+        Heat: 0.5
+        Radiation: 0.5
+        Caustic: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: Tag
+    tags:
+    - Hardsuit
+    
+# Head items
+
+- type: entity
+  parent: ClothingHeadBase
+  id: r4407_ClothingHeadHatHoodBio
+  name: bio hood
+  description: A hood that protects the head and face from biological contaminants.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/head.rsi
+    state: bio
+  - type: Clothing
+    sprite: _Ancient/r4407/head.rsi
+    equippedState: bio
+  - type: BreathMask
+  - type: IngestionBlocker
+  - type: GroupExamine
+  - type: Armor
+    modifiers: { }
+  - type: ZombificationResistance
+    zombificationResistanceCoefficient: 0.9
+  - type: Tag
+  - type: HideLayerClothing
+    layers:
+      Hair: HEAD
+      Snout: HEAD
+      HeadTop: HEAD
+      HeadSide: HEAD
+      
+- type: entity
+  parent: ClothingHeadEVAHelmetBase
+  id: r4407_ClothingHeadHelmetSpace
+  name: space suit helmet
+  description: An old-but-gold helmet designed for extravehicular activites. Infamous for making security officers paranoid.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/head.rsi
+    state: space
+  - type: Clothing
+    sprite: _Ancient/r4407/head.rsi
+    equippedState: space
+  - type: Tag
+    tags:
+    - HelmetEVA
+      
+- type: entity
+  parent: [ ClothingHeadEVAHelmetBase, Tier1Contraband ]
+  id: r4407_ClothingHeadHelmetSpaceSyndicate
+  name: syndicate space suit helmet
+  description: An old-but-gold helmet designed for extravehicular activites. Infamous for making security officers paranoid.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/head.rsi
+    state: syndicate
+  - type: Clothing
+    sprite: _Ancient/r4407/head.rsi
+    equippedState: syndicate
+  - type: Tag
+    tags:
+    - HelmetEVA
+    
+- type: entity
+  parent: [ClothingHeadBase, BaseCommandContraband]
+  id: r4407_ClothingHeadHatCaptain
+  name: captain's hardhat
+  description: Feels good being the king.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/head.rsi
+    state: captain
+  - type: Clothing
+    sprite: _Ancient/r4407/head.rsi
+    equippedState: captain
+    
+- type: entity
+  parent: [ClothingHeadBase, BaseCentcommContraband]
+  id: r4407_ClothingHeadHatCentCom
+  name: central commander's hardhat
+  description: Feels good being the king.
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/head.rsi
+    state: centcom
+  - type: Clothing
+    sprite: _Ancient/r4407/head.rsi
+    equippedState: centcom
+    
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: r4407_GasTankBase
+  components:
+  - type: Sprite
+    sprite: _Ancient/r4407/tank.rsi
+    state: oxygen
+  - type: Item
+    size: Normal
+    sprite: _Ancient/r4407/tank.rsi
+    state: oxygen
+  - type: Tag
+    tags:
+    - GasTank
+  - type: Clothing
+    quickEquip: false
+    sprite: _Impstation/Objects/Tanks/generic.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: UseDelay
+    delays:
+      gasTank:
+        length: 1.0
+  - type: ActivatableUI
+    key: enum.SharedGasTankUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.SharedGasTankUiKey.Key:
+        type: GasTankBoundUserInterface
+  - type: GasTank
+    outputPressure: 21.3
+    air:
+      # If gas tank volume is changed, adjust MinimumTritiumOxyburnEnergy in Atmospherics.cs by the same proportions
+      volume: 5
+      temperature: 293.15
+    tankLowPressure: 30.0
+  - type: Explosive
+    explosionType: MicroBomb
+    maxIntensity: 20
+  - type: MeleeWeapon
+    wideAnimationRotation: 45
+    attackRate: 0.8
+    damage:
+      types:
+        Blunt: 10
+    soundHit: # imp
+      path: /Audio/Weapons/smash.ogg
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 185
+  - type: StaticPrice
+    price: 30
+  - type: DamageOtherOnHit # imp
+    staminaCost: 8
+    
+- type: entity
+  id: r4407_OxygenTank
+  parent: r4407_GasTankBase
+  name: oxygen tank
+  suffix: Filled
+  components:
+  - type: GasTank
+    outputPressure: 21.3
+    air:
+      # 31 minutes
+      volume: 5
+      moles:
+        Oxygen: 2.051379050 # oxygen
+      temperature: 293.15
+  - type: Sprite
+    sprite: _Ancient/r4407/tank.rsi
+    state: oxygen
+  - type: Item
+    size: Normal
+    sprite: _Ancient/r4407/tank.rsi
+    state: oxygen
+  - type: Clothing
+    sprite: _Impstation/Objects/Tanks/oxygen.rsi
+    
+- type: entity
+  id: r4407_NitrogenTank
+  parent: r4407_GasTankBase
+  name: nitrogen tank
+  suffix: Filled
+  components:
+  - type: GasTank
+    outputPressure: 21.3
+    air:
+      # 31 minutes
+      volume: 5
+      moles:
+        Nitrogen: 2.051379050
+      temperature: 293.15
+  - type: Sprite
+    sprite: _Ancient/r4407/tank.rsi
+    state: nitrogen
+  - type: Item
+    size: Normal
+    sprite: _Ancient/r4407/tank.rsi
+    state: nitrogen
+  - type: Clothing
+    sprite: _Impstation/Objects/Tanks/nitrogen.rsi

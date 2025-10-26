@@ -160,6 +160,52 @@
 # r4407
 
 - type: entity
+  parent: AirlockShuttle
+  id: r4407_AirlockShuttle
+  suffix: Shuttle
+  components:
+  - type: Sprite
+    snapCardinals: false
+    drawdepth: Mobs # They're on the same layer as mobs, perspective.
+    sprite: Structures/Doors/Airlocks/Standard/shuttle.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+    - state: closed_unlit
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseUnlit"]
+    - state: closed_unlit
+      map: ["enum.DoorVisualLayers.BaseEmergencyAccess"]
+      shader: unshaded
+    - state: welded
+      map: ["enum.WeldableLayers.BaseWelded"]
+    - state: bolted_unlit
+      shader: unshaded
+      map: ["enum.DoorVisualLayers.BaseBolted"]
+    - state: panel_open
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+    - state: electrified_ai
+      sprite: Interface/Misc/ai_hud.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.HUD"]
+    - state: electrified
+      sprite: Effects/electricity.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.Sparks"]
+  - type: Door
+    crushDamage:
+      types:
+        Blunt: 15
+    openSound:
+      path: /Audio/Machines/airlock_open.ogg
+    closeSound:
+      path: /Audio/Machines/airlock_close.ogg
+    denySound:
+      path: /Audio/Machines/airlock_deny.ogg
+
+- type: entity
   parent: r4407_Airlock
   id: r4407_AirlockFreezer
   suffix: Freezer
