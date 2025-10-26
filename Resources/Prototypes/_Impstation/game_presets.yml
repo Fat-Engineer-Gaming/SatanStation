@@ -10,7 +10,7 @@
   rules:
     - DummyNonAntagChance
     - SpyVsSpy
-    - SleeperlessStationEventScheduler
+    #- SleeperlessStationEventScheduler Devilstation
     #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
@@ -24,7 +24,7 @@
   rules:
     - DummyNonAntagChance
     - SpyVsSpy3TC
-    - SleeperlessStationEventScheduler
+    #- SleeperlessStationEventScheduler Devilstation
     #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
@@ -39,7 +39,7 @@
   rules:
     - DummyNonAntagChance
     - SpyVsSpy
-    - SleeperlessStationEventScheduler
+    #- SleeperlessStationEventScheduler Devilstation
     #- MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
@@ -56,7 +56,7 @@
     - SpyVsSpy3TC
     - SleeperlessStationEventScheduler
     #- MeteorSwarmScheduler
-    - SpaceTrafficControlEventScheduler
+    #- SpaceTrafficControlEventScheduler Devilstation
     - BasicRoundstartVariation
 
 - type: gamePreset
@@ -68,6 +68,7 @@
   cooldown: 1
   showInVote: false
   rules:
+    - Changeling # Devilstation
     - Heretic
     - HereticBooksEventScheduler
     - SubGamemodesRule
@@ -75,7 +76,7 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-    - PopLimiter20
+    #- PopLimiter20
 
 - type: gamePreset
   id: SecretLowpopHeretics
@@ -85,6 +86,11 @@
   description: secret-description
   showInVote: false
   rules:
+    - Changeling # Devilstation
+    - Zombie # Devilstation
+    - Thief # Devilstation
+    - Revolutionary # Devilstation
+    - SpyVsSpy20TC # Devilstation
     - Heretic
     - HereticBooksEventScheduler
     - SubGamemodesRule
@@ -92,7 +98,7 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-    - PopLimiter20
+    #- PopLimiter20 Devilstation
 
 - type: gamePreset
   id: AllAboardTheShip
@@ -122,12 +128,16 @@
   description: thief-description
   showInVote: false
   rules:
+  - Changeling # Devilstation
+  - Revolutionary #Devilstation
+  - SpyVsSpy20TC #Devilstation
   - Thief
+  - Heretic #Devilstation
   - BasicStationEventScheduler
   #- MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - LowpopLimiter
+  #- LowpopLimiter - Devilstation
 
 - type: gamePreset
   id: PacifistVsPacifist

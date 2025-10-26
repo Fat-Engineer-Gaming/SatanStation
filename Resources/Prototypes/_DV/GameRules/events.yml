@@ -13,9 +13,9 @@
   components:
   - type: StationEvent
     weight: 7
-    reoccurrenceDelay: 5
-    minimumPlayers: 15
-    earliestStart: 25
+    reoccurrenceDelay: 3 # Devilstation
+    minimumPlayers: 3 # Devilstation
+    earliestStart: 10 # Devilstation
   - type: MidRoundAntagRule
 
 - type: entity
@@ -23,10 +23,10 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
-    earliestStart: 15
+    earliestStart: 5 # Devilstation
     weight: 2
-    minimumPlayers: 30
-    maxOccurrences: 1
+    minimumPlayers: 0 # Devilstation
+    maxOccurrences: 3 # Devilstation
     duration: null
   - type: RuleGrids
   - type: LoadFarGridRule
