@@ -1,0 +1,2 @@
+ghost-role-information-ss13-name = space station 13 disaster victim
+ghost-role-information-ss13-description = You heard a loud explosion, and instinctively ducked into a cryosleep pod. Where are you now...? What happened?

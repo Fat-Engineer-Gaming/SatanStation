@@ -158,3 +158,15 @@
   - type: RotationVisuals
     defaultRotation: 90
     horizontalRotation: 90
+    
+- type: entity
+  categories: [ HideSpawnMenu ]
+  name: SS13 disaster victim
+  parent: MobHuman
+  id: MobHumanSS13Disaster
+  components:
+  - type: RandomHumanoidAppearance
+  - type: TileMovement
+  - type: Loadout
+    prototypes: [ SS13DisasterVictim ]
+    roleLoadout: [ RoleSurvivalStandard ]

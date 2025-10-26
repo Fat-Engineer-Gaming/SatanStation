@@ -35,6 +35,17 @@
   
 - type: entity
   parent: r4407_IDCardStandard
+  id: r4407_DoctorIDCard
+  name: medical doctor ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: id
+  - type: PresetIdCard
+    job: MedicalDoctor
+  
+- type: entity
+  parent: r4407_IDCardStandard
   id: r4407_CaptainIDCard
   name: captain ID card
   components:

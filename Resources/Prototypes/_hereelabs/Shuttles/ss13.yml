@@ -1,0 +1,15 @@
+- type: entity
+  id: UnknownShuttleSS13DisasterVictim
+  parent: BaseUnknownShuttleRule
+  components:
+  - type: StationEvent
+    startAnnouncement: false # Wait, SS13 is real!?!?!?!?
+    weight: 10 # this is higher because I want people to see it
+    maxOccurrences: 1
+  - type: LoadMapRule
+    preloadedGrid: SS13Disaster
+
+- type: preloadedGrid
+  id: SS13Disaster
+  path: /Maps/_hereelabs/Shuttles/ShuttleEvent/ss13disaster.yml
+  copies: 1

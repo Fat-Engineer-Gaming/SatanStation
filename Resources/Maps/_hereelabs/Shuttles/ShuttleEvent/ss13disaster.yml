@@ -4,8 +4,8 @@ meta:
   engineVersion: 267.2.0
   forkId: ""
   forkVersion: ""
-  time: 10/26/2025 01:53:54
-  entityCount: 264
+  time: 10/26/2025 03:10:55
+  entityCount: 265
 maps: []
 grids:
 - 1
@@ -1974,6 +1974,13 @@ entities:
       needsPower: False
     - type: Fixtures
       fixtures: {}
+- proto: SpawnPointGhostSS13DisasterVictim
+  entities:
+  - uid: 265
+    components:
+    - type: Transform
+      pos: 1.5,-7.5
+      parent: 1
 - proto: Table
   entities:
   - uid: 253
