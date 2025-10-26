@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "oxygen"
+    },
+    {
+      "name": "anesthetic"
+    },
+    {
+      "name": "nitrogen"
+    },
+    {
+      "name": "plasma"
+    },
+    {
+      "name": "jetpack0"
+    },
+    {
+      "name": "jetpack1",
+      "delays": [
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "emergency"
+    },
+    {
+      "name": "emergency_nitrogen"
+    }
+  ]
+}

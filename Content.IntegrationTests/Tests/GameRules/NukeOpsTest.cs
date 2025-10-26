@@ -96,7 +96,7 @@ public sealed class NukeOpsTest
         ticker.ToggleReadyAll(true);
         Assert.That(ticker.PlayerGameStatuses.Values.All(x => x == PlayerGameStatus.ReadyToPlay));
         await pair.WaitCommand("forcepreset Nukeops");
-        await pair.RunTicksSync(10);
+        await pair.RunTicksSync(5);
 
         // Game should have started
         Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound));

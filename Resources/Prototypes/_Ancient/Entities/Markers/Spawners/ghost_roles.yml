@@ -1,0 +1,23 @@
+- type: entity
+  id: SpawnPointGhostSS13DisasterVictim
+  name: ghost role spawn point
+  suffix: SS13 disaster victim
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-ss13-name
+    description: ghost-role-information-ss13-description
+    rules: ghost-role-information-nonantagonist-rules
+    allowSpeech: true
+    makeSentient: true
+    probability: 1
+    reregisterOnGhost: true
+    mindRoles:
+    - MindRoleNeutral
+  - type: GhostRoleMobSpawner
+    prototype: MobHumanSS13Disaster
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - sprite: Mobs/Species/Human/parts.rsi
+        state: full

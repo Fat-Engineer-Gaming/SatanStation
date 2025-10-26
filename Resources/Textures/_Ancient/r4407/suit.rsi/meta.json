@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "fire",
+      "directions": 4
+    },
+    {
+      "name": "bio",
+      "directions": 4
+    },
+    {
+      "name": "space",
+      "directions": 4
+    },
+    {
+      "name": "thermal",
+      "directions": 4
+    },
+    {
+      "name": "syndicate",
+      "directions": 4
+    },
+    {
+      "name": "caparmor",
+      "directions": 4
+    },
+    {
+      "name": "centcom",
+      "directions": 4
+    }
+  ]
+}
