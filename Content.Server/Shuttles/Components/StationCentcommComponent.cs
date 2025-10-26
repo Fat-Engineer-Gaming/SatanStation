@@ -16,7 +16,7 @@ public sealed partial class StationCentcommComponent : Component
     public float ShuttleIndex;
 
     [DataField]
-    public ResPath Map = new("/Maps/_hereelabs/apartments.yml"); // apartments map to replace CC
+    public ResPath Map = new("/Maps/_hereelabs/centcomm.yml"); // apartments no more
 
     /// <summary>
     /// Centcomm entity that was loaded.
