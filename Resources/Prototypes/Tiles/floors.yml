@@ -634,7 +634,7 @@
 - type: tile
   id: FloorReinforced
   name: tiles-reinforced-floor
-  sprite: /Textures/_hereelabs/Tiles/reinforced.png
+  sprite: /Textures/_Devilstation/Tiles/reinforced.png
   variants: 4
   placementVariants:
   - 1.0
@@ -1880,7 +1880,7 @@
 - type: tile
   id: FloorTechMaint2
   name: tiles-techmaint2-floor
-  sprite: /Textures/_hereelabs/Tiles/techfloor.png
+  sprite: /Textures/_Devilstation/Tiles/techfloor.png
   variants: 4
   placementVariants:
   - 1.0
@@ -1898,7 +1898,7 @@
 - type: tile
   id: FloorTechMaint3
   name: tiles-techmaint3-floor
-  sprite: /Textures/_hereelabs/Tiles/techfloor_grid.png
+  sprite: /Textures/_Devilstation/Tiles/techfloor_grid.png
   variants: 4
   placementVariants:
   - 1.0

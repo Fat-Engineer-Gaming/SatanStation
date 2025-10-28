@@ -1,0 +1,49 @@
+﻿- type: entity
+  id: CyborgStatue
+  name: cyborg statue
+  parent: BaseStructure
+  description: An old, deactivated cyborg. Whilst once actively used to guard against intruders, it now simply intimidates them with its cold, steely gaze.
+  placement:
+    mode: AlignTileAny
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+  - type: Sprite
+    sprite: _Devilstation/Structures/Decoration/cyborgstatue.rsi
+    state: statue
+  - type: Anchorable
+    flags: None
+  - type: StaticPrice
+    price: 1500
+
+- type: entity
+  id: CyborgStatueOffset
+  name: cyborg statue
+  suffix: Offset
+  parent: CyborgStatue
+  components:
+  - type: Sprite
+    offset: 0, 0.5
+  - type: Fixtures
+    fixtures: { }
+

@@ -1,0 +1,249 @@
+# new tiled variants
+
+- type: tile
+  id: FloorSteelTiledCargo
+  name: tiles-steel-floor-tile-cargo
+  sprite: /Textures/_Devilstation/Tiles/tiled_cargo.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteelTiledCargo
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSteelTiledEngineering
+  name: tiles-steel-floor-tile-engineering
+  sprite: /Textures/_Devilstation/Tiles/tiled_engineering.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteelTiledEngineering
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSteelTiledScience
+  name: tiles-steel-floor-tile-science
+  sprite: /Textures/_Devilstation/Tiles/tiled_science.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteelTiledScience
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSteelTiledMedical
+  name: tiles-steel-floor-tile-medical
+  sprite: /Textures/_Devilstation/Tiles/tiled_medical.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteelTiledMedical
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSteelTiledSecurity
+  name: tiles-steel-floor-tile-security
+  sprite: /Textures/_Devilstation/Tiles/tiled_security.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteelTiledSecurity
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSteelTiledHydro
+  name: tiles-steel-floor-tile-hydro
+  sprite: /Textures/_Devilstation/Tiles/tiled_hydro.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteelTiledHydro
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSteelTiledCommand
+  name: tiles-steel-floor-tile-command
+  sprite: /Textures/_Devilstation/Tiles/tiled_command.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteelTiledCommand
+  heatCapacity: 10000
+
+# "Suns" floors
+
+## Dark
+- type: tile
+  id: FloorSunsSteelDark
+  name: tiles-steel-suns-dark
+  sprite: /Textures/_Devilstation/Tiles/Suns/dark.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsDark
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSunsSteelDarkChunky
+  name: tiles-steel-suns-dark-chunky
+  sprite: /Textures/_Devilstation/Tiles/Suns/darkchunky.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsDarkChunky
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSunsSteelDarkPattern
+  name: tiles-steel-suns-dark-pattern
+  sprite: /Textures/_Devilstation/Tiles/Suns/darkpattern.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsDarkPattern
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSunsSteelDarkPlain
+  name: tiles-steel-suns-dark-plain
+  sprite: /Textures/_Devilstation/Tiles/Suns/darkplain.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsDarkPlain
+  heatCapacity: 10000
+
+## Light
+
+- type: tile
+  id: FloorSunsSteelLight
+  name: tiles-steel-suns-light
+  sprite: /Textures/_Devilstation/Tiles/Suns/light.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsLight
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSunsSteelLightDiagonal
+  name: tiles-steel-suns-light-diagonal
+  sprite: /Textures/_Devilstation/Tiles/Suns/lightdiag.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsLightDiagonal
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSunsSteelLightHatched
+  name: tiles-steel-suns-light-hatched
+  sprite: /Textures/_Devilstation/Tiles/Suns/lighthatched.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsLightHatched
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSunsSteelLightPattern
+  name: tiles-steel-suns-light-pattern
+  sprite: /Textures/_Devilstation/Tiles/Suns/lightpattern.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsLightPattern
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorSunsSteelLightPlain
+  name: tiles-steel-suns-light-plain
+  sprite: /Textures/_Devilstation/Tiles/Suns/lightplain.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSunsLightPlain
+  heatCapacity: 10000

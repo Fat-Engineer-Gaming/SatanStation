@@ -152,7 +152,7 @@
     omega:
       announcement: alert-level-omega-announcement
       selectable: false
-      sound: /Audio/_hereelabs/Misc/omega.ogg
+      sound: /Audio/_Devilstation/Misc/omega.ogg
       disableSelection: true
       color: DarkViolet
       emergencyLightColor: DarkViolet

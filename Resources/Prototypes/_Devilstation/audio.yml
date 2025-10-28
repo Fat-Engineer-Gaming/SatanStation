@@ -1,0 +1,38 @@
+- type: soundCollection
+  id: SCPSL_FootstepHuman
+  files:
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step1.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step2.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step3.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step4.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step5.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step6.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step7.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Human/Step8.ogg
+
+- type: soundCollection
+  id: SCPSL_FootstepChaos
+  files:
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal1.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal2.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal3.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal4.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal5.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal6.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal7.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/ChaosInsurgency/StepMetal8.ogg
+
+- type: soundCollection
+  id: SCPSL_Footstep049
+  files:
+    - /Audio/_Devilstation/SCPSL/Footsteps/Misc/StepMisc01.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Misc/StepMisc02.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Misc/StepMisc03.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Misc/StepMisc04.ogg
+
+- type: soundCollection
+  id: SCPSL_Footstep106
+  files:
+    - /Audio/_Devilstation/SCPSL/Footsteps/Misc/StepPD1.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Misc/StepPD2.ogg
+    - /Audio/_Devilstation/SCPSL/Footsteps/Misc/StepPD3.ogg
