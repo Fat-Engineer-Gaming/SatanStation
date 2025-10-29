@@ -1,8 +1,6 @@
 <p align="center"> <img alt="Devilstation" src="https://github.com/Devilstation/imp-station-14/blob/master/Resources/Textures/Logo/logo.png" /></p>
 
-This is the repository for SatanStation, which is a fork of Devilstation, a fork of Impstation. Wow, pretty confusing, haha!
-
-We lack a proper server at the moment. Feel free to DM me on discord if you're willing to host this! (fatengineergaming)
+This is the repository for Devilstation, a fork of Impstation.
 
 Impstation is a fork of Space Station 14, a remake of SS13 that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), a homegrown engine written in C#.
 
@@ -18,9 +16,9 @@ Additionally, see these resources for license and attribution information:
 
 ## Contributing
 
-Do whatever regarding your PR's as long as it doesn't break the game or is just kind of bad. No, I'm not adding goobs 5000 weapons.
+If you plan on making any intensive PRs, try sending it to our upstream, Impstation, first. We'll get the PR regardless if it does get merged there, and I'm sure the people over there would enjoy more cool content.
 
-Also, personally, I'd suggest uploading any bigger PR's to Impstation, unless you REALLY want to help out with this.
+Devilstation's PR guidelines are very lax. If you want something added, and are able to contribute, then you can get it in without much difficulty. I only ask that you make sure to have whatever you PR work.
 
 ## AI-generated contributions disclaimer
 
