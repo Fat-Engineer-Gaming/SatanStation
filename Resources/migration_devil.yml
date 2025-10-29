@@ -1,0 +1,77 @@
+﻿# Shiptest
+## There are no diagonal windows. As such, we need to remove diagonal grilles and windows.
+WindowDiagonal: Window
+UraniumWindowDiagonal: UraniumWindow
+ShuttleWindowDiagonal: ShuttleWindow
+ReinforcedUraniumWindowDiagonal: ReinforcedUraniumWindow
+ReinforcedPlasmaWindowDiagonal: ReinforcedPlasmaWindow
+ReinforcedWindowDiagonal: ReinforcedWindow
+PlastitaniumWindowDiagonal: PlastitaniumWindow
+PlastitaniumWindowDiagonalIndestructible: PlastitaniumWindowIndestructible
+PlasmaWindowDiagonal: PlasmaWindow
+GrilleDiagonal: Grille
+WallShuttleInterior: WallShuttle
+# 2025-06-21
+ClothingNeckHeadphones: ClothingMultipleHeadphones
+ClothingNeckFuckhubMedal: ClothingNeckOddMedal
+
+# 2025-07-17
+RipleyChassis: null
+HonkerChassis: null
+HamtrChassis: null
+VimChassis: null
+
+# 2025-08-01
+FoodDonutJellySlugcat: FoodDonutJellyScurret
+
+# 2025-08-11
+ClothingUniformJumpsuitChiefEngineerNT: ClothingUniformJumpsuitChiefEngineer
+ClothingUniformJumpsuitParamedicNT: ClothingUniformJumpsuitParamedic
+
+# 2025-08-11
+## we use 100tc systems now.
+BaseUplinkRadio20TC: BaseUplinkRadio100TC
+BaseUplinkRadio25TC: BaseUplinkRadio125TC
+BaseUplinkRadio40TC: BaseUplinkRadio200TC
+BaseUplinkRadio60TC: BaseUplinkRadio300TC
+
+# 2025-10-17
+## We use a different thing for this. Also come on man, why the fuck does this exist and it doesn't even come from spiders?
+EggSpider: null
+
+## migrations for removed protos. should making porting old maps easier
+DrinkBeer: DrinkBeerBottleFull
+WindoorBrigLocked: WindoorSecureBrigLocked
+WindoorChemistryLocked: WindoorSecureChemistryLocked
+chem_dispenser: ChemDispenser
+WindoorCommandLocked: WindoorSecureCommandLocked
+WindoorSecurityLocked: WindoorSecureSecurityLocked
+WindoorArmoryLocked: WindoorSecureArmoryLocked
+WindoorScienceLocked: WindoorSecureScienceLocked
+WindoorMedicalLocked: WindoorSecureMedicalLocked
+VehiclePussyWagonDestroyed: null
+SpawnVehiclePussywagon: null
+VehicleKeyPussyWagon: null
+AMEController: AmeController
+d100Dice: d20Dice
+HatBandBlack: ClothingHeadHatBeaverHat
+WindoorEngineeringLocked: WindoorSecureEngineeringLocked
+AMEJar: AmeJar
+MicroLaserStockPart: null
+CrateFunInstruments: null
+CrateFunBrass: null
+HatBandSkull: null
+
+# 2025-08-29
+PrefilledSyringe: Syringe
+
+# 2025-10-6
+#BibleTanakh: null # imp revert
+BibleSatanic: null
+
+# 2025-10-8
+ClothingBeltAssault: ClothingBeltMilitaryWebbing
+WarpPointBombing: null
+
+# Offbrand
+Tourniquet: TourniquetOffbrand
