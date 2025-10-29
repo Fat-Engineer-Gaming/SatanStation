@@ -5,7 +5,7 @@ This is the repository for Devilstation, a fork of Impstation.
 Impstation is a fork of Space Station 14, a remake of SS13 that runs on [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), a homegrown engine written in C#.
 
 ## Links
-[Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.io/about/nightlies/)
+[Discord](https://discord.gg/FKzYjETDrH) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Standalone Download](https://spacestation14.io/about/nightlies/)
 
 ## Documentation/Wiki
 
@@ -16,7 +16,7 @@ Additionally, see these resources for license and attribution information:
 
 ## Contributing
 
-If you plan on making any intensive PRs, try sending it to our upstream, Impstation, first. We'll get the PR regardless if it does get merged there, and I'm sure the people over there would enjoy more cool content.
+If you plan on making any intensive PRs, try sending it to our upstream, [Impstation](https://github.com/impstation/imp-station-14), first. We'll get the PR regardless if it does get merged there, and I'm sure the people over there would enjoy more cool content.
 
 Devilstation's PR guidelines are very lax. If you want something added, and are able to contribute, then you can get it in without much difficulty. I only ask that you make sure to have whatever you PR work.
 
@@ -33,7 +33,9 @@ Exceptions to this are simple tools like Rider's single-line completion feature.
 ## Building
 
 1. Clone this repo:
-You can do such by making a fork, then copying the link at "Code".
+```shell
+git clone https://github.com/Devilstation/imp-station-14.git
+```
 
 2. Go to the project folder and run `RUN_THIS.py` to initialize the submodules and load the engine:
 ```shell
