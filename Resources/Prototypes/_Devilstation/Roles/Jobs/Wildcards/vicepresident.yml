@@ -1,0 +1,151 @@
+- type: job
+  id: VicePresident
+  name: Vice-President
+  description: Tour the ship/station. Make demands that you have no right to make. Claim the maintainence bar as yours. Be important!
+  playTimeTracker: JobVicePresident
+  startingGear: VicePresidentGear
+  canBeAntag: true # command access and antag is iffy but whatever, gimmick role
+  icon: JobIconVicePresident
+  setPreference: true
+  access:
+  - Maintenance
+  - Command
+  - External
+
+- type: startingGear
+  id: VicePresidentGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitChiefJusticeFormal
+    id: VicePresidentPDA
+    back: ClothingBackpackSatchelLeather
+    head: ClothingHeadHatTophat
+    ears: ClothingHeadsetAdminAssistant
+    eyes: ClothingEyesGlassesColorfulYellow
+    shoes: ClothingShoesBootsLaceup
+    gloves: ClothingHandsGlovesVicePresident
+  storage:
+    back:
+    - StunCane
+
+- type: entity
+  parent: [ClothingHandsInedibleBase]
+  id: ClothingHandsGlovesVicePresident
+  name: faux flight gloves
+  description: "Even with money, there are certain things that are just one of a kind. This belongs to the Vice-President, but doesn't fit the whole 'rich person' schtick."
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Hands/Gloves/captainflightgloves.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Hands/Gloves/captainflightgloves.rsi
+  - type: Fiber
+    fiberMaterial: fibers-leather
+    fiberColor: fibers-regal-black
+  - type: FingerprintMask
+
+- type: entity
+  name: vice-president's cane
+  parent: [BaseItem]
+  id: StunCane
+  description: A cane owned by the elusive Vice-President. Has a strange button on it... What does it do?
+  components:
+  - type: Tag # goob edit
+    tags:
+    - Stunbaton
+  - type: Sprite
+    sprite: Objects/Weapons/Melee/cane.rsi
+    state: cane
+  - type: Item
+    size: Normal
+    sprite: Objects/Weapons/Melee/cane.rsi
+  - type: Stunbaton
+    energyPerUse: 50
+  - type: ItemToggle
+    predictable: false
+    soundActivate:
+      collection: sparks
+      params:
+        variation: 0.250
+    soundDeactivate:
+      collection: sparks
+      params:
+        variation: 0.250
+    soundFailToActivate:
+      path: /Audio/Machines/button.ogg
+      params:
+        variation: 0.250
+  - type: ItemToggleMeleeWeapon
+    activatedDamage:
+      types:
+        Blunt: 0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 7
+    bluntStaminaDamageFactor: 2.0
+    angle: 60
+    animation: WeaponArcThrust
+  - type: StaminaDamageOnHit
+    damage: 15
+    sound: /Audio/Weapons/egloves.ogg
+  - type: LandAtCursor # it deals stamina damage when thrown
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: UseDelay
+  - type: DisarmMalus
+    malus: 0.225
+  - type: Appearance
+  - type: StaticPrice
+    price: 80
+  - type: Riggable
+  - type: SolutionContainerManager
+    solutions:
+      battery:
+        maxVol: 5
+  - type: InjectableSolution
+    solution: battery
+  - type: DrawableSolution
+    solution: battery
+  - type: Explosive
+    explosionType: Default
+    intensitySlope: 1.5
+    maxIntensity: 200
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 100
+      Plastic: 100
+  - type: ItemToggleDamageOtherOnHit
+  - type: DamageOtherOnHit
+
+- type: entity
+  parent: BasePDA
+  id: VicePresidentPDA
+  name: vice-president PDA
+  description: Why isn't it gold? This is very cheap for an important person.
+  components:
+  - type: Pda
+    id: VicePresidentIDCard
+  - type: PdaBorderColor
+    borderColor: "#717059"
+
+- type: entity
+  parent: IDCardStandard
+  id: VicePresidentIDCard
+  name: vice-president ID card
+  components:
+  - type: Sprite
+    sprite: _Devilstation/Objects/Misc/id_cards.rsi
+    layers:
+    - state: weatheredgold
+    - state: idvicepresident
+  - type: PresetIdCard
+    job: VicePresident
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconVicePresident
+  icon:
+    sprite: /Textures/_Devilstation/Interface/Misc/job_icons.rsi
+    state: VicePresident
+  jobName: Vice-President

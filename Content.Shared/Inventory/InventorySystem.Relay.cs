@@ -31,7 +31,7 @@ using Content.Shared.Verbs;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared._EE.Overlays.Switchable; // EE Edit
 using Content.Shared._Impstation.SalvoHud; // imp edit
-using Content.Shared._hereelabs.Body.Events; // devil !!
+using Content.Shared._Devilstation.Body.Events; // devil !!
 using Content.Shared.Mobs; // EE edit
 using Content.Shared.Wieldable;
 using Content.Shared.Zombies;

@@ -18,7 +18,7 @@
   - type: InteractionOutline
   - type: Anchorable
   - type: Sprite
-    sprite: Structures/Power/Generation/Singularity/containment.rsi
+    sprite: _Devilstation/Structures/Power/Generation/Singularity/containment.rsi
     state: icon
     noRot: true
     layers:
@@ -36,7 +36,7 @@
         visible: false
         shader: unshaded
   - type: Icon
-    sprite: Structures/Power/Generation/Singularity/containment.rsi
+    sprite: _Devilstation/Structures/Power/Generation/Singularity/containment.rsi
     state: icon
   - type: ContainmentFieldGenerator
   - type: PointLight

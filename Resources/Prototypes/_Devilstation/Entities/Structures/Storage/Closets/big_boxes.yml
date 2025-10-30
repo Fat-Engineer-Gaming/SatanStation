@@ -1,0 +1,70 @@
+- type: entity
+  id: AdmemeTheAdminbus
+  name: The Adminbus
+  description: It's the Admin Bus! Hooray! There's nothing you can do to stop it.
+  components:
+    - type: InteractionOutline
+    - type: InputMover
+    - type: Sprite
+      noRot: false
+      sprite: _Devilstation/Objects/Storage/adminbus.rsi
+      layers:
+      - state: adminbus
+        map: ["enum.StorageVisualLayers.Base"]
+    - type: Transform
+      noRot: false
+    - type: Clickable
+    - type: Physics
+      bodyType: KinematicController
+    - type: Rotatable
+      rotateWhileAnchored: false
+    - type: MobMover
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: "0.35"
+          density: 100
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+          hard: true
+    - type: Pullable
+    - type: CardboardBox
+      effectSound: /Audio/_Impstation/Effects/tinycarhorn.ogg
+    - type: EntityStorage
+      isCollidableWhenOpen: false
+      openOnMove: false
+      airtight: true
+      capacity: 50
+    - type: ContainerContainer
+      containers:
+        entity_storage: !type:Container
+#    - type: Damageable # you cannot stop it
+#      damageContainer: Box
+    - type: Appearance
+    - type: EntityStorageVisuals
+      stateBaseClosed: adminbus
+      stateDoorOpen: adminbus
+    - type: Tag
+      tags:
+        - DoorBumpOpener
+        - FootstepSound
+    - type: FootstepModifier
+      footstepSoundCollection:
+        collection: FootstepSkates
+    - type: DamageContacts
+      damage:
+        types:
+          Slash: 500
+          Piercing: 500
+          Radiation: 500
+          Caustic: 500
+          Blunt: 500
+          Holy: 500
+          Heat: 500
+          Cold: 500
+          Poison: 500
+          Cellular: 500

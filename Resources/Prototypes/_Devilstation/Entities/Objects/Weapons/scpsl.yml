@@ -1,0 +1,344 @@
+- type: entity
+  name: COM-15 Sidearm
+  parent: [BaseWeaponPistol]
+  id: WeaponSCPSL_Com15
+  description: An unassuming 9mm pistol. It’s compact, reliable, and low-capacity. Not a bad gun, but it doesn’t stack up to other foundation equipment.
+  components:
+  - type: Sprite
+    sprite: _Devilstation/Objects/Weapons/com15.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Devilstation/Objects/Weapons/com15.rsi
+  - type: Item
+    storedOffset: 0,-2
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Devilstation/SCPSL/Weapons/COM15_Rack.ogg
+  - type: Gun
+    fireRate: 5
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_Devilstation/SCPSL/Weapons/COM15_Shoot.ogg
+    soundEmpty:
+      path: /Audio/_Devilstation/SCPSL/Weapons/NoAmmo.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistol
+        insertSound: /Audio/_Devilstation/SCPSL/Weapons/COM15_Load.ogg
+        ejectSound: /Audio/_Devilstation/SCPSL/Weapons/COM15_Unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistol
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+
+- type: entity
+  name: USP
+  parent: [BaseWeaponPistol]
+  id: WeaponSCPSL_USP
+  description: A very powerful semi-automatic handcannon. Very few have survived the recieving end of this weapon's wrath.
+  components:
+  - type: Sprite
+    sprite: _Devilstation/Objects/Weapons/usp.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: _Devilstation/Objects/Weapons/usp.rsi
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Devilstation/SCPSL/Weapons/USP_Rack.ogg
+  - type: Gun
+    minAngle: 1
+    maxAngle: 20
+    angleIncrease: 8
+    angleDecay: 9
+    fireRate: 4
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_Devilstation/SCPSL/Weapons/USP_Shoot.ogg
+    soundEmpty:
+      path: /Audio/_Devilstation/SCPSL/Weapons/NoAmmo.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineMagnum
+        insertSound: /Audio/_Devilstation/SCPSL/Weapons/USP_Load.ogg
+        ejectSound: /Audio/_Devilstation/SCPSL/Weapons/USP_Unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineMagnum
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeMagnum
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeMagnum
+
+- type: entity
+  name: Logicer
+  parent: BaseItem
+  id: WeaponSCPSL_Logicer
+  description: Light machine gun. Standard C.I. equipment.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/LMGs/l6.rsi #imp
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-3
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 4
+    zeroVisible: true
+  - type: Appearance
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,3
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/LMGs/l6.rsi #imp
+    quickEquip: false
+    slots:
+    - Pocket
+  - type: Wieldable
+    unwieldOnUse: false
+  - type: GunWieldBonus
+    minAngle: -20
+    maxAngle: -20
+  - type: Gun
+    minAngle: 1
+    maxAngle: 5
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 8
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot:
+      path: /Audio/_Devilstation/SCPSL/Weapons/Logicer_Shoot.ogg
+    soundEmpty:
+      path: /Audio/_Devilstation/SCPSL/Weapons/NoAmmo.ogg
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Devilstation/SCPSL/Weapons/Logicer_Rack.ogg
+  - type: AmmoCounter
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazineLightRifleBox
+        insertSound: /Audio/_Devilstation/SCPSL/Weapons/Logicer_Load.ogg #imp
+        ejectSound: /Audio/_Devilstation/SCPSL/Weapons/Logicer_Unload.ogg #imp
+        priority: 2
+        whitelist:
+          tags:
+            - MagazineLightRifleBox
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgeRifle #imp
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgeRifle
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: StaticPrice
+    price: 500
+  - type: UseDelay
+    delay: 1
+#imp edit begin; weapon melee
+  - type: MeleeWeapon
+    range: 0.8
+    attackRate: 0.4 #slower, but hits harder; bigger object to shove with
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      path: /Audio/Effects/hit_kick.ogg
+    soundSwing:
+      path: /Audio/_Impstation/Weapons/Guns/Melee/shove_foley.ogg
+    resetOnHandSelected: false
+  - type: AltFireMelee
+    attackType: Heavy
+  - type: DamageOtherOnHit #for throwing
+    staminaCost: 15
+    damage:
+      types:
+        Blunt: 12
+  - type: StaminaDamageOnHit
+    damage: 15 #slight stagger, but still like 7 hits to stun completely
+  - type: MeleeRequiresWield
+  - type: MeleeThrowOnHit
+    distance: 0.8
+    speed: 5
+
+- type: entity
+  name: H&K MP7
+  parent: [BaseWeaponSubMachineGun]
+  id: WeaponSCPSL_MP7
+  description: Guard's standard equipment.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Objects/Weapons/Guns/SMGs/wt550.rsi #imp
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: base-unshaded
+        map: ["enum.GunVisualLayers.BaseUnshaded"]
+        shader: unshaded
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+      - state: mag-unshaded-0
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: Clothing
+    sprite: _Impstation/Objects/Weapons/Guns/SMGs/wt550.rsi #imp
+    quickEquip: false
+    slots:
+    - Pocket
+  - type: ChamberMagazineAmmoProvider
+    boltClosed: null
+    soundRack:
+      path: /Audio/_Devilstation/SCPSL/Weapons/MP7_Rack.ogg
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_Devilstation/SCPSL/Weapons/P90_Shoot.ogg
+    soundEmpty:
+      path: /Audio/_Devilstation/SCPSL/Weapons/NoAmmo.ogg
+    fireRate: 5.5
+    minAngle: 1
+    maxAngle: 6
+    angleIncrease: 1.5
+    angleDecay: 6
+    selectedMode: FullAuto
+    shotsPerBurst: 3 #imp
+    burstCooldown: 0.5 #imp
+    burstFireRate: 12 #imp
+    availableModes:
+    - Burst
+    - FullAuto
+    - SemiAuto
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolSubMachineGunTopMounted
+        insertSound: /Audio/_Devilstation/SCPSL/Weapons/MP7_Load.ogg
+        ejectSound: /Audio/_Devilstation/SCPSL/Weapons/MP7_Unload.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistolSubMachineGunTopMounted
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+  - type: Appearance
+
+- type: entity
+  name: Project-90 (P90)
+  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  id: WeaponSCPSL_P90
+  description: The weapon of the lesser respected NTF Cadets. Surprisingly, it isn't that bad.
+  components:
+    - type: Sprite
+      sprite: _Impstation/Objects/Weapons/Guns/SMGs/drozd.rsi #imp
+      layers:
+        - state: base
+          map: ["enum.GunVisualLayers.Base"]
+        - state: mag-0
+          map: ["enum.GunVisualLayers.Mag"]
+    - type: Clothing
+      sprite: _Impstation/Objects/Weapons/Guns/SMGs/drozd.rsi #imp
+      quickEquip: false
+      slots:
+      - Pocket
+    - type: Wieldable
+      unwieldOnUse: false
+    - type: GunWieldBonus
+      minAngle: -19
+      maxAngle: -16
+    - type: Gun
+      minAngle: 21
+      maxAngle: 32
+      fireRate: 6
+      soundGunshot:
+        path: /Audio/_Devilstation/SCPSL/Weapons/P90_Shoot.ogg
+      soundEmpty:
+        path: /Audio/_Devilstation/SCPSL/Weapons/NoAmmo.ogg
+      availableModes:
+      - FullAuto
+      shotsPerBurst: 3
+      burstCooldown: 0.25
+      selectedMode: Burst #imp
+    - type: ItemSlots
+      slots:
+        gun_magazine:
+          name: Magazine
+          startingItem: MagazinePistolSubMachineGun
+          insertSound: /Audio/_Devilstation/SCPSL/Weapons/P90_Load.ogg
+          ejectSound: /Audio/_Devilstation/SCPSL/Weapons/P90_Unload.ogg
+          priority: 2
+          whitelist:
+            tags:
+              - MagazinePistolSubMachineGun
+          whitelistFailPopup: gun-magazine-whitelist-fail
+        gun_chamber:
+          name: Chamber
+          startingItem: CartridgePistol
+          priority: 1
+          whitelist:
+            tags:
+              - CartridgePistol
+    - type: MagazineVisuals
+      magState: mag
+      steps: 1 #imp edit
+      zeroVisible: true
+    - type: Appearance
+#imp edit begin; weapon melee
+    - type: MeleeWeapon
+      attackRate: 0.6
+    - type: StaminaDamageOnHit
+      damage: 10 #slight stagger, but still like 10 hits to stun completely
+    - type: MeleeRequiresWield
+    - type: MeleeThrowOnHit
+      distance: 0.8
+      speed: 5
+    - type: DamageOtherOnHit #for throwing
+      staminaCost: 10
+      damage:
+        types:
+          Blunt: 8

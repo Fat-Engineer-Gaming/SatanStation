@@ -1,0 +1,16 @@
+﻿- type: entity
+  parent: BaseItem
+  id: SpiderEgg
+  name: Spider Egg
+  suffix: DO NOT MAP
+  description: It looks like it will hatch at any moment.
+  components:
+  - type: Sprite
+    sprite: _Devilstation/TerrorSpiders/Objects/Misc/spideregg.rsi
+    state: egg
+  - type: Item
+    size: Small
+  - type: TimedDespawn
+    lifetime: 80
+  - type: SpawnOnDespawn
+    prototype: MobSpiderling

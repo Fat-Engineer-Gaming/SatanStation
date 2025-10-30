@@ -96,7 +96,7 @@
     volume: 0
     range: 6
     sound:
-      path: /Audio/_hereelabs/Machines/laundry_spin.ogg
+      path: /Audio/_Devilstation/Machines/laundry_spin.ogg
   - type: EntityStorage
     openOnMove: false
   - type: Climbable

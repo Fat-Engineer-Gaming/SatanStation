@@ -1,0 +1,296 @@
+﻿- type: entity
+  parent: [ SimpleSpaceMobBase, MobCombat ]
+  name: Amalgam
+  description: No head is connected. No body is connected. No arms are connected. No legs are connected. No skin is connected. No ears are connected. No face is connected. No soul is connected. No hearts are connected. No lungs are connected. No teeth are connected.
+  suffix: Small, Swarmer
+  id: MobAmalgamSwarmer
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Piercing: 3
+        Slash: 3
+        Structural: 10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 2.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      20: Dead
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Devilstation/Mobs/Aliens/amalgams.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: swarmer_alive
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: swarmer_alive
+      Dead:
+        Base: dead
+  - type: NpcFactionMember
+    factions:
+    - Amalgam
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepSlime
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: FoodMeatAnomaly
+      amount: 5
+    - id: OrganHumanAppendix
+      amount: 1
+    - id: OrganHumanKidneys
+      amount: 1
+    - id: OrganHumanEars
+      amount: 1
+    - id: OrganHumanEyes
+      amount: 1
+    - id: OrganHumanLungs
+      amount: 1
+    - id: OrganHumanLiver
+      amount: 1
+    - id: OrganHumanStomach
+      amount: 1
+    - id: OrganHumanHeart
+      amount: 1
+    - id: OrganHumanTongue
+      amount: 1
+  - type: SpamEmitSound
+    minInterval: 7
+    maxInterval: 16
+    sound:
+      path: /Audio/_RMC14/Xeno/alien_echoroar_1.ogg
+      params:
+        volume: -5
+        maxDistance: 4
+        variation: 0.5
+  - type: Bloodstream
+    bloodReagent: Blood
+    bloodlossDamage:
+      types:
+        Bloodloss:
+          0.5
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+  - type: TypingIndicator
+    proto: slime # melty human...
+  - type: NightVision
+    isActive: true
+    toggleAction: null
+    color: "#8B0000"
+    activateSound: null
+    deactivateSound: null
+  - type: ThermalVision
+    isActive: true
+    toggleAction: null
+    color: "#8B0000"
+    activateSound: null
+    deactivateSound: null
+
+- type: entity
+  parent: [ SimpleSpaceMobBase, MobCombat ]
+  name: Human?
+  description: This isn't right.
+  suffix: Amalgam, Faker
+  id: MobAmalgamFaker
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Piercing: 5
+        Slash: 5
+        Structural: 10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 2.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      75: Dead
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Devilstation/Mobs/Aliens/amalgams.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: faker_alive
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: faker_alive
+      Dead:
+        Base: dead
+  - type: NpcFactionMember
+    factions:
+    - Amalgam
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepSlime
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: FoodMeatAnomaly
+      amount: 5
+    - id: OrganHumanAppendix
+      amount: 1
+    - id: OrganHumanKidneys
+      amount: 1
+    - id: OrganHumanEars
+      amount: 1
+    - id: OrganHumanEyes
+      amount: 1
+    - id: OrganHumanLungs
+      amount: 1
+    - id: OrganHumanLiver
+      amount: 1
+    - id: OrganHumanStomach
+      amount: 1
+    - id: OrganHumanHeart
+      amount: 1
+    - id: OrganHumanTongue
+      amount: 1
+  - type: Bloodstream
+    bloodReagent: Blood
+    bloodlossDamage:
+      types:
+        Bloodloss:
+          0.5
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+  - type: TypingIndicator
+    proto: slime # melty human...
+  - type: NightVision
+    isActive: true
+    toggleAction: null
+    color: "#8B0000"
+    activateSound: null
+    deactivateSound: null
+  - type: ThermalVision
+    isActive: true
+    toggleAction: null
+    color: "#8B0000"
+    activateSound: null
+    deactivateSound: null
+
+- type: entity
+  parent: [ SimpleSpaceMobBase, MobCombat ]
+  name: ???
+  description: Your mind struggles to comprehend what... ever this is.
+  suffix: Amalgam, Incomprehensible
+  id: MobAmalgamReal
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    damage:
+      types:
+        Blunt: 10
+        Structural: 10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Devilstation/Mobs/Aliens/amalgams.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: thing_alive
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: thing_alive
+      Dead:
+        Base: dead
+  - type: NpcFactionMember
+    factions:
+    - Amalgam
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: FoodMeatAnomaly
+      amount: 5
+    - id: OrganHumanAppendix
+      amount: 1
+    - id: OrganHumanKidneys
+      amount: 1
+    - id: OrganHumanEars
+      amount: 1
+    - id: OrganHumanEyes
+      amount: 1
+    - id: OrganHumanLungs
+      amount: 1
+    - id: OrganHumanLiver
+      amount: 1
+    - id: OrganHumanStomach
+      amount: 1
+    - id: OrganHumanHeart
+      amount: 1
+    - id: OrganHumanTongue
+      amount: 1
+  - type: Bloodstream
+    bloodReagent: Blood
+    bloodlossDamage:
+      types:
+        Bloodloss:
+          0.5
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+  - type: ThermalVision
+    isActive: true
+    toggleAction: null
+    color: "#8B0000"
+    activateSound: null
+    deactivateSound: null

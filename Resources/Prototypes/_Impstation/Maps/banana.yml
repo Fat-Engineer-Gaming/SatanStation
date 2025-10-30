@@ -1,7 +1,7 @@
 - type: gameMap
   id: Banana
   mapName: 'Banana'
-  mapPath: /Maps/_hereelabs/banana.yml
+  mapPath: /Maps/_Devilstation/banana.yml
   minPlayers: 0
   maxPlayers: 7
   stations:
